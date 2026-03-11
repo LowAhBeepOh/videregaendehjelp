@@ -7,36 +7,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     :root {
-      /* Light mode (default) */
-      --primary: #d32f2f;
-      --primary-light: #ef5350;
-      --primary-dark: #b71c1c;
-      --bg: #f8f9fa;
-      --surface: #ffffff;
-      --surface-light: #f5f5f5;
-      --text: #212121;
-      --text-muted: #757575;
-      --border: #e0e0e0;
-      --shadow: 0 2px 8px rgba(0,0,0,0.08);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+      /* Bold Palette */
+      --bg: #050505; 
+      --text: #ffffff;
+      --text-muted: #888;
+      
+      --card-red: #FF453A;
+      --card-lime: #D0F54E; /* Acid Lime/Yellow */
+      --card-blue: #5865F2; /* Discord Blurple */
+      --card-orange: #FF9F0A;
+      --card-green: #30D158;
+      --card-pale: #F2F2F7;
+      
+      --surface: #1c1c1e;
+      --border: #2c2c2e;
+      
+      /* Typography */
+      --font-display: 'Inter Tight', sans-serif;
+      --font-body: 'Manrope', sans-serif;
     }
 
-    [data-theme="dark"] {
-      --primary: #ff5252;
-      --primary-light: #ff7070;
-      --primary-dark: #d32f2f;
-      --bg: #121212;
-      --surface: #1e1e1e;
-      --surface-light: #2a2a2a;
-      --text: #ffffff;
-      --text-muted: #b0b0b0;
-      --border: #333333;
-      --shadow: 0 2px 8px rgba(0,0,0,0.30);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-muted: #555;
+      --surface: #f2f2f7;
+      --border: #e5e5ea;
     }
 
     *, *::before, *::after {
@@ -46,560 +45,463 @@
     }
 
     body {
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      line-height: 1.4;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* Layout */
     main {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 20px 60px 20px;
     }
 
     /* Header */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 20px 0;
       margin-bottom: 40px;
       border-bottom: 1px solid var(--border);
     }
 
-    .logo {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
     }
 
-    .header-controls {
-      display: flex;
-      gap: 20px;
-      align-items: center;
+    .logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-      align-items: center;
-      list-style: none;
+      gap: 24px;
     }
 
     .nav-links a {
+      color: var(--text-muted);
       text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 15px;
       transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .settings-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 24px;
       color: var(--text);
-      transition: color 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+    
+    .subtitle {
+      display: none; /* Hidden in new layout */
     }
 
-    .settings-btn:hover {
-      color: var(--primary);
-    }
-
-    .material-icons {
-      font-size: 24px;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      margin-bottom: 80px;
-    }
-
-    .hero h1 {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--text-muted);
+    /* Search Section */
+    .search-container {
       margin-bottom: 40px;
-      font-weight: 500;
+      position: relative;
     }
-
-    .hero-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .hero-btn {
-      padding: 18px 24px;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Manrope', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      background: var(--surface-light);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .hero-btn:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .nav-links {
-        gap: 15px;
-      }
-
-      header {
-        flex-direction: column;
-        gap: 20px;
-      }
-    }
-
-    /* Sections */
-    .sections {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .section-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: all 0.3s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .section-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-
-    .section-icon {
-      font-size: 48px;
-      color: var(--primary);
-    }
-
-    .section-card h2 {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    .section-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    /* Featured Section */
-    .featured {
-      background: var(--surface);
-      border: 1px solid var(--primary);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 80px;
-    }
-
-    .featured-header {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .featured-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .featured-text h3 {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .featured-text p {
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.7;
-    }
-
-    .featured-btn {
-      background: var(--primary);
-      color: white;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 10px;
-      font-family: 'Manrope', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: inline-block;
-      text-decoration: none;
-    }
-
-    .featured-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .featured-image {
+    
+    .search-input {
       width: 100%;
-      height: 280px;
-      background: var(--surface-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .featured-content {
-        grid-template-columns: 1fr;
-      }
-
-      .featured {
-        padding: 24px;
-      }
-    }
-
-    /* Settings Modal */
-    .settings-modal {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
       background: var(--surface);
       border: 1px solid var(--border);
+      padding: 20px 24px;
       border-radius: 12px;
-      padding: 20px;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      width: 280px;
-    }
-
-    .settings-modal.show {
-      display: block;
-      animation: slideUp 0.3s ease;
-    }
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .settings-modal h3 {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .close-settings {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 20px;
       color: var(--text);
-      padding: 0;
-    }
-
-    .theme-options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .theme-option {
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: transparent;
-      cursor: pointer;
-      font-family: 'Manrope', sans-serif;
-      font-size: 14px;
-      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 18px;
+      outline: none;
       transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .theme-option:hover {
-      border-color: var(--primary);
-      background: var(--surface-light);
-    }
-
-    .theme-option.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
-    .radio {
-      width: 18px;
-      height: 18px;
-      border: 2px solid currentColor;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .theme-option.active .radio::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: currentColor;
-      border-radius: 50%;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
+    .search-results {
+      position: absolute;
+      top: 100%;
       left: 0;
       right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: 999;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-top: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .modal-overlay.show {
+    .search-result-item {
+      padding: 12px 20px;
       display: block;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover, .search-result-item.active {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .search-result-title {
+        font-weight: 700;
+        display: block;
+    }
+    
+    .search-result-meta {
+        font-size: 12px;
+        color: var(--text-muted);
+    }
+
+    [data-theme="light"] .search-input {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      color: #000;
+    }
+
+    .search-input:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    [data-theme="light"] .search-input:focus {
+      background: #fff;
+      border-color: #ccc;
+    }
+
+    /* Main Actions */
+    .main-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .action-btn {
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .btn-start {
+      background: #3e5c35; /* Dark Green */
+      color: #b8e994;
+    }
+
+    .btn-current {
+      background: #2c3e50; /* Dark Blue */
+      color: #74b9ff;
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, minmax(240px, auto));
+      }
+      
+      .card-calc {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+
+      .card-grades {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        background: var(--card-lime);
+      }
+
+      .card-discord {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        background: var(--card-blue);
+      }
+
+      .card-choice {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        background: var(--card-red); /* Using Red for Choice as per user hint/boldness */
+      }
+
+      .card-updates {
+        grid-column: 1 / 3; /* Spans full width at bottom */
+        grid-row: 3 / 4;
+        min-height: 180px;
+        background: var(--card-pale);
+      }
+    }
+
+    .bento-card {
+      padding: 32px;
+      border-radius: 4px; /* Sharp corners */
+      text-decoration: none;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card:hover {
+      transform: scale(1.02);
+      z-index: 10;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 42px; /* Bigger bold text */
+      font-weight: 400; /* Serif usually looks better regular/italic */
+      font-style: italic;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    /* Override for specific cards */
+    .card-calc .card-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800;
+      font-style: normal;
+      font-size: 36px;
+    }
+    
+    .card-calc {
+        background: var(--card-orange);
+    }
+
+    .card-grades .card-title {
+      color: #000;
+      font-size: 48px;
+    }
+
+    .card-choice .card-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 32px;
+      color: #000;
+    }
+
+    .card-updates .card-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 24px;
+      color: #000;
+    }
+
+    .card-icon {
+      background: #000;
+      color: #fff;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-top: auto;
+    }
+    
+    .card-calc .card-icon {
+        background: #fff;
+        color: #000;
+    }
+    
+    .card-choice .card-icon {
+        background: #fff;
+        color: #000;
+    }
+
+    .discord-svg {
+      width: 80px;
+      height: 80px;
+      fill: #fff;
+    }
+    
+    /* Footer */
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 12px;
+    }
+
   </style>
 </head>
 <body>
   <main>
     <header>
-      <a href="/" class="logo">Videregående Hjelp</a>
-      <div class="header-controls">
-        <nav>
-          <ul class="nav-links">
-            <li><a href="guides.html">Guider</a></li>
-            <li><a href="tools.html">Verktøy</a></li>
-            <li><a href="interactives.html">Interaktivt</a></li>
-          </ul>
+      <div class="header-content">
+        <a href="/" class="logo">Videregående Hjelp</a>
+        <nav class="nav-links">
+          <a href="guides.html">Guider</a>
+          <a href="tools.html">Verktøy</a>
+          <a href="interactives.html">Interaktivt</a>
         </nav>
-        <button class="settings-btn" id="settingsBtn" aria-label="Settings">
-          <span class="material-icons">settings</span>
-        </button>
       </div>
     </header>
 
-    <section class="hero">
-      <h1>Videregående Hjelp</h1>
-      <p>Få hjelp med alt om Videregående</p>
-      <div class="hero-buttons">
-        <button class="hero-btn" onclick="navigateTo('Guides/new-students.html')">Jeg starter på videregående snart.</button>
-        <button class="hero-btn" onclick="navigateTo('Guides/current-students.html')">Jeg er i videregående.</button>
-        <button class="hero-btn" onclick="navigateTo('Guides/finished-students.html')">Jeg er ferdig på videregående.</button>
-      </div>
-    </section>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Søk etter guider, verktøy..." autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </div>
 
-    <section class="featured">
-      <div class="featured-header">
-        <span class="material-icons">star</span>
-        Fremhevet Verktøy
-      </div>
-      <div class="featured-content">
-        <div class="featured-text">
-          <h3>Inntakskalkulator</h3>
-          <p>Beregn dine sjanser for opptaking til videregående skole basert på karakterene dine. Støtter skoler i Møre og Romsdal, Vestland, og Oslo. Perfekt for å planlegge dine søknader!</p>
-          <a href="Tools/inntakskalkulator.html" class="featured-btn">Åpne kalkulator →</a>
-        </div>
-        <div class="featured-image">
-          <span>📊 Inntakskalkulator</span>
-        </div>
-      </div>
-    </section>
+    <div class="main-actions">
+      <a href="Guides/new-students.html" class="action-btn btn-start">
+        Jeg starter på videregående
+      </a>
+      <a href="Guides/current-students.html" class="action-btn btn-current">
+        Jeg går på videregående
+      </a>
+    </div>
 
-    <section class="sections">
-      <a href="guides.html" class="section-card">
-        <span class="material-icons section-icon">school</span>
-        <h2>Guider</h2>
-        <p>Lær hvordan videregående fungerer, velg program, og planlegg din framtid.</p>
+    <div class="bento-grid">
+      <!-- Inntakskalkulator -->
+      <a href="Tools/inntakskalkulator.html" class="bento-card card-calc">
+        <div class="card-title">Inntakskalkulator</div>
+        <div class="card-icon">
+          <span class="material-icons">arrow_forward</span>
+        </div>
       </a>
-      <a href="tools.html" class="section-card">
-        <span class="material-icons section-icon">build</span>
-        <h2>Verktøy</h2>
-        <p>Kalkulatorer, planleggingsverktøy og praktiske ressurser som gjør livet enklere.</p>
+
+      <!-- Bedre Karakterer -->
+      <a href="Guides/grades-system.html" class="bento-card card-grades">
+        <div class="card-title">Hvordan få bedre karakterer?</div>
       </a>
-      <a href="interactives.html" class="section-card">
-        <span class="material-icons section-icon">games</span>
-        <h2>Interaktivt</h2>
-        <p>Lær gjennom interaktive oppgaver, spill og læringsressurser.</p>
+
+      <!-- Discord -->
+      <a href="#" class="bento-card card-discord" style="justify-content: center; align-items: center;">
+        <svg class="discord-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
+          <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.11,77.11,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.42,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22c2.36-24.44-4.2-50.1-20.8-74.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+        </svg>
       </a>
-    </section>
+
+      <!-- Usikkert valg -->
+      <a href="Guides/program-choice.html" class="bento-card card-choice">
+        <div class="card-title">Usikkert på hva å velg?</div>
+        <div class="card-icon">
+          <span class="material-icons">arrow_forward</span>
+        </div>
+      </a>
+      
+      <!-- Oppdateringer -->
+       <a href="#" class="bento-card card-updates">
+        <div class="card-title" style="margin-bottom: 16px;">Oppdateringer</div>
+        <div style="font-size: 16px; color: #555;">
+          <div style="margin-bottom: 8px;"><strong>Ny kalkulator</strong> • Lagt til støtte for Rogaland og Akershus</div>
+          <div><strong>Nettside</strong> • Nytt design lansert!</div>
+        </div>
+      </a>
+
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Videregående Hjelp. Et åpent prosjekt for alle.</p>
-  </footer>
-
-  <!-- Settings Modal -->
-  <div class="modal-overlay" id="modalOverlay"></div>
-  <div class="settings-modal" id="settingsModal">
-    <h3>Innstillinger<button class="close-settings" id="closeSettings">×</button></h3>
-    <div class="theme-options" id="themeOptions">
-      <button class="theme-option" data-theme="system" onclick="setTheme('system')">
-        <span class="radio"></span>
-        System tema
-      </button>
-      <button class="theme-option" data-theme="light" onclick="setTheme('light')">
-        <span class="radio"></span>
-        Lyst tema
-      </button>
-      <button class="theme-option" data-theme="dark" onclick="setTheme('dark')">
-        <span class="radio"></span>
-        Mørkt tema
-      </button>
-    </div>
-  </div>
-
   <script>
-    // Theme Management
-    function initTheme() {
-      const saved = localStorage.getItem('theme') || 'system';
-      setTheme(saved);
-    }
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    let searchData = [];
 
-    function setTheme(theme) {
-      localStorage.setItem('theme', theme);
+    // Fetch search data
+    fetch('search-data.json')
+      .then(response => response.json())
+      .then(data => {
+        searchData = data;
+      })
+      .catch(error => console.error('Error loading search data:', error));
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      searchResults.innerHTML = '';
       
-      let finalTheme = theme;
-      if (theme === 'system') {
-        finalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
       }
 
-      document.documentElement.setAttribute('data-theme', finalTheme);
-      updateThemeButtons(theme);
-      updateThemeIcon(finalTheme);
-    }
-
-    function updateThemeButtons(theme) {
-      document.querySelectorAll('.theme-option').forEach(btn => {
-        btn.classList.remove('active');
+      const filtered = searchData.filter(item => {
+        return item.title.toLowerCase().includes(query) || 
+               item.keywords.some(k => k.toLowerCase().includes(query));
       });
-      document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
-    }
 
-    // Settings Modal
-    const settingsBtn = document.getElementById('settingsBtn');
-    const settingsModal = document.getElementById('settingsModal');
-    const closeSettings = document.getElementById('closeSettings');
-    const modalOverlay = document.getElementById('modalOverlay');
-
-    settingsBtn.addEventListener('click', () => {
-      settingsModal.classList.toggle('show');
-      modalOverlay.classList.toggle('show');
-    });
-
-    closeSettings.addEventListener('click', () => {
-      settingsModal.classList.remove('show');
-      modalOverlay.classList.remove('show');
-    });
-
-    modalOverlay.addEventListener('click', () => {
-      settingsModal.classList.remove('show');
-      modalOverlay.classList.remove('show');
-    });
-
-    // System Theme Listener
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if ((localStorage.getItem('theme') || 'system') === 'system') {
-        initTheme();
+      if (filtered.length > 0) {
+        searchResults.style.display = 'block';
+        filtered.slice(0, 8).forEach(item => {
+          const div = document.createElement('a');
+          div.href = item.url;
+          div.className = 'search-result-item';
+          div.innerHTML = `
+            <span class="search-result-title">${item.title}</span>
+            <span class="search-result-meta">${item.keywords.slice(0, 3).join(', ')}</span>
+          `;
+          searchResults.appendChild(div);
+        });
+      } else {
+        searchResults.style.display = 'none';
       }
     });
 
-    function navigateTo(url) {
-      window.location.href = url;
-    }
+    // Close search when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
 
-    // Initialize
-    initTheme();
+    // Handle Enter key to go to first result
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const firstResult = searchResults.querySelector('a');
+        if (firstResult) {
+          window.location.href = firstResult.href;
+        }
+      }
+    });
+
+    // Simple theme init (defaults to dark for the 'bold' look)
+    // The previous theme logic is preserved but simplified
+    if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'dark');
+    }
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
   </script>
 </body>
 </html>

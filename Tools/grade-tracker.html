@@ -14,51 +14,63 @@
     --bg: #f2f5f9; --surface: #ffffff; --surface2: #eef2f8;
     --text: #0d2340; --text-muted: #5a7399; --border: #d4dff0;
     --green: #1a9e5c; --orange: #e07b2a; --red: #d63b3b;
-    --radius: 14px; --shadow: 0 4px 24px rgba(13,35,64,0.10);
+    --radius: 16px; --shadow: 0 4px 24px rgba(13,35,64,0.10);
   }
   body { font-family: 'Inter Tight', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.5; }
-  header { background: var(--navy); padding: 22px 40px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .header-badge { background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; }
+  header { background: var(--navy); padding: 22px 40px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-bottom: 4px solid var(--accent); }
   header h1 { color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-right: auto; }
   .back-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
   .back-link:hover { color: #fff; }
   
-  .container { max-width: 860px; margin: 0 auto; padding: 36px 20px 80px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 24px; }
+  @media (max-width: 850px) { .container { grid-template-columns: 1fr; } }
   
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); margin-bottom: 24px; }
-  .card-title { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 5px; }
-  .card-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 26px; }
+  .main-content { display: flex; flex-direction: column; gap: 24px; }
 
-  .summary-card { background: var(--navy); color: #fff; padding: 30px; border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; box-shadow: var(--shadow); }
-  .summary-label { font-size: 14px; font-weight: 500; opacity: 0.8; margin-bottom: 4px; }
-  .summary-value { font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
-  .summary-sub { font-size: 12px; opacity: 0.5; margin-top: 6px; }
+  .summary-panel { background: var(--navy); color: #fff; padding: 32px; border-radius: var(--radius); position: sticky; top: 40px; height: fit-content; box-shadow: var(--shadow); border-bottom: 6px solid var(--accent); }
+  .summary-label { font-size: 13px; font-weight: 700; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .summary-value { font-size: 64px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 12px; color: var(--accent); }
+  .summary-stats { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid rgba(255,255,255,0.1); pt: 20px; margin-top: 20px; padding-top: 20px; }
+  .stat-item { display: flex; justify-content: space-between; font-size: 14px; font-weight: 600; }
+  .stat-item span:last-child { color: var(--accent); }
 
-  .subject-list { display: flex; flex-direction: column; gap: 12px; }
-  .subject-item { display: flex; align-items: center; gap: 12px; background: var(--surface2); padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; }
-  .subject-item:hover { border-color: var(--accent); background: #fff; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+  .card-header { margin-bottom: 24px; }
+  .card-title { font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: var(--navy); }
+  .card-sub { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+  .subject-list { display: flex; flex-direction: column; gap: 10px; }
+  .subject-item { display: flex; align-items: center; gap: 12px; background: var(--surface2); padding: 14px 18px; border-radius: 12px; border: 1.5px solid transparent; transition: all 0.2s; }
+  .subject-item:hover { border-color: var(--accent); background: #fff; transform: translateX(4px); }
   
-  .subject-name-input { flex: 1; border: none; background: transparent; font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); padding: 8px 0; }
+  .subject-name-input { flex: 1; border: none; background: transparent; font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); padding: 8px 0; }
   .subject-name-input:focus { outline: none; }
-  .subject-name-input::placeholder { color: var(--text-muted); opacity: 0.5; }
+  .subject-name-input::placeholder { color: var(--text-muted); opacity: 0.4; }
 
-  .grade-select { width: 60px; padding: 8px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 700; text-align: center; background: var(--surface); color: var(--text); cursor: pointer; appearance: none; }
-  .grade-select:focus { outline: none; border-color: var(--accent); }
+  .grade-select { width: 70px; padding: 10px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Inter Tight', sans-serif; font-size: 16px; font-weight: 800; text-align: center; background: var(--surface); color: var(--navy); cursor: pointer; appearance: none; transition: all 0.2s; }
+  .grade-select:focus { outline: none; border-color: var(--accent); background: var(--surface2); }
+  .grade-select option { font-weight: 700; }
 
-  .btn-remove { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 8px; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .btn-remove { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 10px; border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
   .btn-remove:hover { background: #fee; color: var(--red); }
 
-  .btn-add { width: 100%; padding: 16px; background: var(--surface); border: 2px dashed var(--border); border-radius: 10px; color: var(--text-muted); font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-  .btn-add:hover { border-color: var(--accent); color: var(--accent); background: var(--surface2); }
+  .btn-add { width: 100%; padding: 18px; background: var(--surface2); border: 2px dashed var(--border); border-radius: 12px; color: var(--navy-mid); font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .btn-add:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
 
-  .actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
-  .btn { padding: 10px 20px; border-radius: 8px; font-family: 'Inter Tight', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-  .btn-ghost { background: transparent; color: var(--text-muted); }
-  .btn-ghost:hover { color: var(--red); background: #fee; }
+  .footer-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .btn { padding: 12px 24px; border-radius: 10px; font-family: 'Inter Tight', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .btn-danger { background: transparent; color: var(--text-muted); }
+  .btn-danger:hover { color: var(--red); background: #fee; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--navy); transform: translateY(-2px); }
 
-  @media (max-width: 600px) {
-    .summary-card { flex-direction: column; text-align: center; gap: 20px; }
-  }
+  /* Grade colors */
+  .grade-6 { color: var(--green) !important; }
+  .grade-5 { color: #2ecc71 !important; }
+  .grade-4 { color: var(--orange) !important; }
+  .grade-3 { color: #f39c12 !important; }
+  .grade-2 { color: #e67e22 !important; }
+  .grade-1 { color: var(--red) !important; }
 </style>
 </head>
 <body>
@@ -70,28 +82,51 @@
 
 <div class="container">
   
-  <div class="summary-card">
-    <div>
-      <div class="summary-label">Ditt gjennomsnitt</div>
-      <div class="summary-sub">Basert på <span id="subjectCount">0</span> fag</div>
+  <div class="main-content">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Dine fag</div>
+        <div class="card-sub">Legg til dine fag og karakterer for å se snittet ditt.</div>
+      </div>
+      
+      <div class="subject-list" id="subjectList">
+        <!-- Items will be added here -->
+      </div>
+
+      <button class="btn-add" onclick="addSubject()">
+        <span class="material-icons">add_circle</span> Legg til nytt fag
+      </button>
+
+      <div class="footer-actions">
+        <button class="btn btn-danger" onclick="clearAll()">
+          <span class="material-icons">delete_sweep</span> Nullstill alt
+        </button>
+        <button class="btn btn-primary" onclick="window.print()">
+          <span class="material-icons">print</span> Skriv ut vitnemål
+        </button>
+      </div>
     </div>
-    <div class="summary-value" id="averageDisplay">0.0</div>
   </div>
 
-  <div class="card">
-    <div class="card-title">Dine fag</div>
-    <div class="card-sub">Legg til fag og karakterer. Endringer lagres automatisk i nettleseren din.</div>
-    
-    <div class="subject-list" id="subjectList">
-      <!-- Items will be added here -->
-    </div>
-
-    <button class="btn-add" onclick="addSubject()">
-      <span class="material-icons">add</span> Legg til nytt fag
-    </button>
-
-    <div class="actions">
-      <button class="btn btn-ghost" onclick="clearAll()">Nullstill alt</button>
+  <div class="sidebar">
+    <div class="summary-panel">
+      <div class="summary-label">Gjennomsnitt</div>
+      <div class="summary-value" id="averageDisplay">0.0</div>
+      
+      <div class="summary-stats">
+        <div class="stat-item">
+          <span>Antall fag</span>
+          <span id="subjectCount">0</span>
+        </div>
+        <div class="stat-item">
+          <span>Skolepoeng</span>
+          <span id="schoolPoints">0.0</span>
+        </div>
+        <div class="stat-item">
+          <span>Status</span>
+          <span id="statusText">Ingen fag</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -105,14 +140,14 @@
     if (saved) {
       subjects = JSON.parse(saved);
     } else {
-      // Default subjects
       subjects = [
-        { id: 1, name: 'Norsk (skriftlig)', grade: '' },
-        { id: 2, name: 'Matematikk', grade: '' },
+        { id: 1, name: 'Norsk hovedmål', grade: '' },
+        { id: 2, name: 'Norsk sidemål', icon: 'edit' },
         { id: 3, name: 'Engelsk', grade: '' },
-        { id: 4, name: 'Naturfag', grade: '' },
-        { id: 5, name: 'Samfunnsfag', grade: '' },
-        { id: 6, name: 'Kroppsøving', grade: '' }
+        { id: 4, name: 'Matematikk', grade: '' },
+        { id: 5, name: 'Naturfag', grade: '' },
+        { id: 6, name: 'Samfunnsfag', grade: '' },
+        { id: 7, name: 'Kroppsøving', grade: '' }
       ];
     }
     render();
@@ -144,6 +179,7 @@
     if (subject) {
       subject[field] = value;
       save();
+      if (field === 'grade') render(); // Re-render to update colors
     }
   }
 
@@ -159,9 +195,19 @@
       }
     });
 
-    const avg = count > 0 ? (sum / count).toFixed(2) : '0.0';
-    document.getElementById('averageDisplay').textContent = avg;
+    const avg = count > 0 ? (sum / count) : 0;
+    const avgFormatted = avg.toFixed(2);
+    
+    document.getElementById('averageDisplay').textContent = avg === 0 ? '0.0' : avgFormatted;
     document.getElementById('subjectCount').textContent = count;
+    document.getElementById('schoolPoints').textContent = (avg * 10).toFixed(1);
+
+    const status = document.getElementById('statusText');
+    if (count === 0) status.textContent = "Ingen fag";
+    else if (avg >= 5.5) status.textContent = "Eksepsjonelt! 🏆";
+    else if (avg >= 5.0) status.textContent = "Veldig bra! 🌟";
+    else if (avg >= 4.0) status.textContent = "Godt jobba! 👍";
+    else status.textContent = "Stå på! 💪";
   }
 
   function render() {
@@ -171,19 +217,23 @@
     subjects.forEach(s => {
       const item = document.createElement('div');
       item.className = 'subject-item';
+      
+      let gradeClass = '';
+      if (s.grade) gradeClass = 'grade-' + s.grade;
+
       item.innerHTML = `
-        <input type="text" class="subject-name-input" placeholder="Fagnavn..." value="${s.name}" oninput="updateSubject(${s.id}, 'name', this.value)">
-        <select class="grade-select" onchange="updateSubject(${s.id}, 'grade', this.value)">
+        <input type="text" class="subject-name-input" placeholder="Navn på fag..." value="${s.name}" oninput="updateSubject(${s.id}, 'name', this.value)">
+        <select class="grade-select ${gradeClass}" onchange="updateSubject(${s.id}, 'grade', this.value)">
           <option value="" ${s.grade === '' ? 'selected' : ''}>-</option>
-          <option value="6" ${s.grade === '6' ? 'selected' : ''}>6</option>
-          <option value="5" ${s.grade === '5' ? 'selected' : ''}>5</option>
-          <option value="4" ${s.grade === '4' ? 'selected' : ''}>4</option>
-          <option value="3" ${s.grade === '3' ? 'selected' : ''}>3</option>
-          <option value="2" ${s.grade === '2' ? 'selected' : ''}>2</option>
-          <option value="1" ${s.grade === '1' ? 'selected' : ''}>1</option>
+          <option value="6" class="grade-6" ${s.grade === '6' ? 'selected' : ''}>6</option>
+          <option value="5" class="grade-5" ${s.grade === '5' ? 'selected' : ''}>5</option>
+          <option value="4" class="grade-4" ${s.grade === '4' ? 'selected' : ''}>4</option>
+          <option value="3" class="grade-3" ${s.grade === '3' ? 'selected' : ''}>3</option>
+          <option value="2" class="grade-2" ${s.grade === '2' ? 'selected' : ''}>2</option>
+          <option value="1" class="grade-1" ${s.grade === '1' ? 'selected' : ''}>1</option>
         </select>
         <button class="btn-remove" onclick="removeSubject(${s.id})" title="Fjern fag">
-          <span class="material-icons">delete</span>
+          <span class="material-icons">close</span>
         </button>
       `;
       list.appendChild(item);
@@ -193,7 +243,7 @@
   }
 
   function clearAll() {
-    if (confirm('Er du sikker på at du vil slette alle fag og karakterer?')) {
+    if (confirm('Er du sikker på at du vil slette alt? Dette kan ikke angres.')) {
       subjects = [];
       save();
       render();

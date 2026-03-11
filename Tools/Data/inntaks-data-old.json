@@ -1,0 +1,2662 @@
+[
+  {
+    "s": "Atlanten videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": null,
+    "g": 42.01
+  },
+  {
+    "s": "Atlanten videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (dans)",
+    "n": 34.7,
+    "g": 45.93
+  },
+  {
+    "s": "Atlanten videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 34.7,
+    "g": 44.82
+  },
+  {
+    "s": "Atlanten videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 26,
+    "g": 46.85
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 25.3,
+    "g": 36.33
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 35.6,
+    "g": 41.89
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": 29.2,
+    "g": 38.5
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 30,
+    "g": 40.9
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Håndverk, design, produktutv.",
+    "n": 27.7,
+    "g": 39.43
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": null,
+    "g": 35.18
+  },
+  {
+    "s": "Borgund vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 28,
+    "g": 36.53
+  },
+  {
+    "s": "Gjermundnes vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": null,
+    "g": 36.75
+  },
+  {
+    "s": "Gjermundnes vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 30.3,
+    "g": 38.28
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": 37.15
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi (YSK 4år)",
+    "n": 51.3,
+    "g": 52.66
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 26.3,
+    "g": 40.66
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 38.1,
+    "g": 44.2
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering (internasjonalisering)",
+    "n": 27.2,
+    "g": 43.43
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": 34.54
+  },
+  {
+    "s": "Haram vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi-/industrifag (YSK 4år)",
+    "n": 41,
+    "g": 47.14
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": 30.77
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": 39.88
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": 30.9,
+    "g": 39.67
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": 30.7,
+    "g": 42.95
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": 37.12
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Fiske og fangst",
+    "n": 27.1,
+    "g": 37.66
+  },
+  {
+    "s": "Herøy vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Maritime fag",
+    "n": 33.8,
+    "g": 41.6
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 27.5,
+    "g": 37
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": 39.4,
+    "g": 44.31
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": 36.6,
+    "g": 44.28
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 30.6,
+    "g": 37.19
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Akvakultur",
+    "n": 35.7,
+    "g": 42.88
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Fiske og fangst",
+    "n": 45.7,
+    "g": 49.6
+  },
+  {
+    "s": "Hustadvika vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Kjemiprosess- og labfag",
+    "n": 42.5,
+    "g": 48.77
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": 28.51
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 30.6,
+    "g": 38.65
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": null,
+    "g": 28.11
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": 38.97
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "IT og medieproduksjon",
+    "n": 33.1,
+    "g": 38.98
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Kunst, design og arkitektur",
+    "n": 30,
+    "g": 42.39
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": 44.4,
+    "g": 47.05
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": 41.8,
+    "g": 45.84
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Salg, service og reiseliv",
+    "n": 27.6,
+    "g": 37.58
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 32.9,
+    "g": 40.9
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Akvakultur",
+    "n": 41.4,
+    "g": 48.13
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Kjemiprosess- og labfag",
+    "n": 47.8,
+    "g": 51.29
+  },
+  {
+    "s": "Kristiansund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Maritime fag",
+    "n": 30,
+    "g": 38.3
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Kunst, design og arkitektur",
+    "n": null,
+    "g": 41.49
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (jazz, LAL)",
+    "n": 42.9,
+    "g": 42.9
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 36.9,
+    "g": 45.87
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Salg, service og reiseliv m/ innov/ledelse",
+    "n": 40.9,
+    "g": 46.42
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 38.8,
+    "g": 47.92
+  },
+  {
+    "s": "Molde videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering (toppidrett)",
+    "n": 36.7,
+    "g": 45.48
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 26.4,
+    "g": 33.66
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 28.8,
+    "g": 37.54
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag (bratt friluftsliv, LAL)",
+    "n": 40,
+    "g": 47.69
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": null,
+    "g": 32.24
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": 42.19
+  },
+  {
+    "s": "Rauma videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": 32.29
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 33.1,
+    "g": 39.4
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 37.8,
+    "g": 44.81
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi (SK 3år)",
+    "n": 37.8,
+    "g": 46.11
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": null,
+    "g": 34.59
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 38.8,
+    "g": 43.69
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 46.5,
+    "g": 51.92
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": 39.3,
+    "g": 47.58
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "IT og medieproduksjon",
+    "n": 37.3,
+    "g": 39.98
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Salg, service og reiseliv",
+    "n": 37.5,
+    "g": 41.9
+  },
+  {
+    "s": "Romsdal videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 35.9,
+    "g": 41.3
+  },
+  {
+    "s": "Spjelkavik videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": 34.4,
+    "g": 46.89
+  },
+  {
+    "s": "Spjelkavik videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 28.5,
+    "g": 45.29
+  },
+  {
+    "s": "Spjelkavik videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering (internasjonalisering)",
+    "n": 38.8,
+    "g": 49.03
+  },
+  {
+    "s": "Stranda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 33.7,
+    "g": 40.05
+  },
+  {
+    "s": "Stranda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": 30.7,
+    "g": 41.27
+  },
+  {
+    "s": "Stranda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": 26.9,
+    "g": 38.32
+  },
+  {
+    "s": "Stranda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 35.6,
+    "g": 41.76
+  },
+  {
+    "s": "Stranda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Akvakultur",
+    "n": 30,
+    "g": 33.17
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": 31.48
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": 37
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 31.3,
+    "g": 33.94
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 30,
+    "g": 45.15
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 30.9,
+    "g": 39.83
+  },
+  {
+    "s": "Sunndal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Kjemiprosess- og labfag",
+    "n": 38.6,
+    "g": 43.99
+  },
+  {
+    "s": "Surnadal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": 33.23
+  },
+  {
+    "s": "Surnadal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": 37.33
+  },
+  {
+    "s": "Surnadal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 31.9,
+    "g": 40.69
+  },
+  {
+    "s": "Surnadal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 33.1,
+    "g": 46.49
+  },
+  {
+    "s": "Surnadal vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 28.5,
+    "g": 34.41
+  },
+  {
+    "s": "Sykkylven vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 34.6,
+    "g": 40.54
+  },
+  {
+    "s": "Sykkylven vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 26.7,
+    "g": 37.52
+  },
+  {
+    "s": "Sykkylven vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 32.9,
+    "g": 47.24
+  },
+  {
+    "s": "Sykkylven vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 26.1,
+    "g": 34.45
+  },
+  {
+    "s": "Tingvoll vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 27.8,
+    "g": 39.56
+  },
+  {
+    "s": "Tingvoll vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": 45,
+    "g": 46.32
+  },
+  {
+    "s": "Tingvoll vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": null,
+    "g": 29.99
+  },
+  {
+    "s": "Tingvoll vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 39.8,
+    "g": 47.35
+  },
+  {
+    "s": "Ulstein vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 39,
+    "g": 44.78
+  },
+  {
+    "s": "Ulstein vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Idrettsfag",
+    "n": 33.3,
+    "g": 45.32
+  },
+  {
+    "s": "Ulstein vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "IT og medieproduksjon",
+    "n": 27.5,
+    "g": 34.88
+  },
+  {
+    "s": "Ulstein vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Salg, service og reiseliv",
+    "n": 31.9,
+    "g": 40.44
+  },
+  {
+    "s": "Ulstein vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 28.1,
+    "g": 45.65
+  },
+  {
+    "s": "Volda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Kunst, design og arkitektur",
+    "n": 45.7,
+    "g": 48.6
+  },
+  {
+    "s": "Volda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Medier og kommunikasjon",
+    "n": 34.7,
+    "g": 43.18
+  },
+  {
+    "s": "Volda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 36.5,
+    "g": 49.27
+  },
+  {
+    "s": "Volda vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": 29.4,
+    "g": 46.64
+  },
+  {
+    "s": "Ørsta vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": 29.93
+  },
+  {
+    "s": "Ørsta vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Elektro og datateknologi",
+    "n": 37.2,
+    "g": 44.23
+  },
+  {
+    "s": "Ørsta vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": 41.22
+  },
+  {
+    "s": "Ørsta vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Restaurant- og matfag",
+    "n": 26.9,
+    "g": 32.74
+  },
+  {
+    "s": "Ørsta vidaregåande skule",
+    "f": "Møre og Romsdal",
+    "p": "Teknologi- og industrifag",
+    "n": 32.4,
+    "g": 39.79
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Helse- og oppvekstfag",
+    "n": 30.5,
+    "g": 40.08
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "IT og medieproduksjon",
+    "n": 35.3,
+    "g": 42.4
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Kunst, design og arkitektur",
+    "n": null,
+    "g": 38.48
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (dans)",
+    "n": 40,
+    "g": 48.44
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (drama)",
+    "n": 34.7,
+    "g": 43.82
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 25.3,
+    "g": 41.48
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Naturbruk",
+    "n": 41.3,
+    "g": 45.44
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Salg, service og reiseliv",
+    "n": 33.8,
+    "g": 40.76
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": 42.76
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering (forskerlinje)",
+    "n": 27.3,
+    "g": 51.23
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Studiespesialisering (internasjonalisering)",
+    "n": 37.4,
+    "g": 46.06
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Akvakultur",
+    "n": 38.6,
+    "g": 48.83
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Fiske og fangst",
+    "n": 40,
+    "g": 48.14
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Kjemiprosess- og labfag",
+    "n": 36.3,
+    "g": 43.04
+  },
+  {
+    "s": "Ålesund videregående skole",
+    "f": "Møre og Romsdal",
+    "p": "Vg2 Maritime fag",
+    "n": 35,
+    "g": 43.08
+  },
+  {
+    "s": "Amalie Skram videregående skole",
+    "f": "Vestland",
+    "p": "IT og medieproduksjon",
+    "n": 43.1,
+    "g": null
+  },
+  {
+    "s": "Amalie Skram videregående skole",
+    "f": "Vestland",
+    "p": "Medier og kommunikasjon",
+    "n": 45.9,
+    "g": null
+  },
+  {
+    "s": "Amalie Skram videregående skole",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 43.1,
+    "g": null
+  },
+  {
+    "s": "Amalie Skram videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 51.9,
+    "g": null
+  },
+  {
+    "s": "Arna vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 0,
+    "g": null
+  },
+  {
+    "s": "Arna vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Arna vidaregåande skule",
+    "f": "Vestland",
+    "p": "IT og medieproduksjon",
+    "n": 28,
+    "g": null
+  },
+  {
+    "s": "Arna vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 37.5,
+    "g": null
+  },
+  {
+    "s": "Askøy videregående skole",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 31.9,
+    "g": null
+  },
+  {
+    "s": "Askøy videregående skole",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 39.3,
+    "g": null
+  },
+  {
+    "s": "Askøy videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Askøy videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 43.1,
+    "g": null
+  },
+  {
+    "s": "Askøy videregående skole",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Austrheim vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 37.1,
+    "g": null
+  },
+  {
+    "s": "Austrheim vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Austrheim vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Austrheim vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Austrheim vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 40.4,
+    "g": null
+  },
+  {
+    "s": "Bergen katedralskole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 48.5,
+    "g": null
+  },
+  {
+    "s": "Bømlo vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 22.3,
+    "g": null
+  },
+  {
+    "s": "Bømlo vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Bømlo vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": 32.3,
+    "g": null
+  },
+  {
+    "s": "Bømlo vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 44.3,
+    "g": null
+  },
+  {
+    "s": "Bømlo vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Dale vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 32.7,
+    "g": null
+  },
+  {
+    "s": "Dale vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 43.4,
+    "g": null
+  },
+  {
+    "s": "Eid vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Eid vidaregåande skule",
+    "f": "Vestland",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": 36.5,
+    "g": null
+  },
+  {
+    "s": "Eid vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Eid vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 23.1,
+    "g": null
+  },
+  {
+    "s": "Eid vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 22,
+    "g": null
+  },
+  {
+    "s": "Firda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 25.3,
+    "g": null
+  },
+  {
+    "s": "Firda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (dans)",
+    "n": 33.4,
+    "g": null
+  },
+  {
+    "s": "Firda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (drama)",
+    "n": 29.3,
+    "g": null
+  },
+  {
+    "s": "Firda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 35.9,
+    "g": null
+  },
+  {
+    "s": "Firda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Fitjar vidaregåande skule",
+    "f": "Vestland",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Fitjar vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 12.1,
+    "g": null
+  },
+  {
+    "s": "Fitjar vidaregåande skule",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 20.6,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 29,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 38.8,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 36.6,
+    "g": null
+  },
+  {
+    "s": "Flora vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Fusa vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 35,
+    "g": null
+  },
+  {
+    "s": "Fusa vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": 29.4,
+    "g": null
+  },
+  {
+    "s": "Fusa vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 31.6,
+    "g": null
+  },
+  {
+    "s": "Fyllingsdalen videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 39.4,
+    "g": null
+  },
+  {
+    "s": "Fyllingsdalen videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 42.5,
+    "g": null
+  },
+  {
+    "s": "Fyllingsdalen videregående skole",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (drama)",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Fyllingsdalen videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 45.8,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 30.6,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 37,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 39.4,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 45,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Kunst, design og arkitektur",
+    "n": 41.9,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Medier og kommunikasjon",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 38.8,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 41.2,
+    "g": null
+  },
+  {
+    "s": "Førde vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 27.3,
+    "g": null
+  },
+  {
+    "s": "Høyanger vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 30.6,
+    "g": null
+  },
+  {
+    "s": "Høyanger vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Høyanger vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 30.6,
+    "g": null
+  },
+  {
+    "s": "Knarvik vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 35.9,
+    "g": null
+  },
+  {
+    "s": "Knarvik vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 38.7,
+    "g": null
+  },
+  {
+    "s": "Knarvik vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 38.7,
+    "g": null
+  },
+  {
+    "s": "Knarvik vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 33.8,
+    "g": null
+  },
+  {
+    "s": "Knarvik vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 42.7,
+    "g": null
+  },
+  {
+    "s": "Kvam vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 39.7,
+    "g": null
+  },
+  {
+    "s": "Kvam vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 27.9,
+    "g": null
+  },
+  {
+    "s": "Kvam vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 38.3,
+    "g": null
+  },
+  {
+    "s": "Kvinnherad vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 35,
+    "g": null
+  },
+  {
+    "s": "Kvinnherad vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 41.5,
+    "g": null
+  },
+  {
+    "s": "Kvinnherad vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 30,
+    "g": null
+  },
+  {
+    "s": "Kvinnherad vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 43.3,
+    "g": null
+  },
+  {
+    "s": "Kvinnherad vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 37.6,
+    "g": null
+  },
+  {
+    "s": "Laksevåg og Bergen Maritime vgs",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 36.6,
+    "g": null
+  },
+  {
+    "s": "Laksevåg og Bergen Maritime vgs",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 46.3,
+    "g": null
+  },
+  {
+    "s": "Laksevåg og Bergen Maritime vgs",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi (SK 3år)",
+    "n": 47.6,
+    "g": null
+  },
+  {
+    "s": "Laksevåg og Bergen Maritime vgs",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 43.8,
+    "g": null
+  },
+  {
+    "s": "Langhaugen videregående skole",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (dans)",
+    "n": 47.8,
+    "g": null
+  },
+  {
+    "s": "Langhaugen videregående skole",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 55.6,
+    "g": null
+  },
+  {
+    "s": "Langhaugen videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 48.1,
+    "g": null
+  },
+  {
+    "s": "Måløy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 27.5,
+    "g": null
+  },
+  {
+    "s": "Måløy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 35.6,
+    "g": null
+  },
+  {
+    "s": "Måløy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": 33.1,
+    "g": null
+  },
+  {
+    "s": "Måløy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Måløy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Nordahl Grieg videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 37.1,
+    "g": null
+  },
+  {
+    "s": "Nordahl Grieg videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 41.7,
+    "g": null
+  },
+  {
+    "s": "Nordahl Grieg videregående skole",
+    "f": "Vestland",
+    "p": "Medier og kommunikasjon",
+    "n": 40.2,
+    "g": null
+  },
+  {
+    "s": "Nordahl Grieg videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 43.8,
+    "g": null
+  },
+  {
+    "s": "Odda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 38.1,
+    "g": null
+  },
+  {
+    "s": "Odda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Odda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 31.3,
+    "g": null
+  },
+  {
+    "s": "Odda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Odda vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 35.6,
+    "g": null
+  },
+  {
+    "s": "Olsvikåsen videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 38.7,
+    "g": null
+  },
+  {
+    "s": "Olsvikåsen videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 41.8,
+    "g": null
+  },
+  {
+    "s": "Olsvikåsen videregående skole",
+    "f": "Vestland",
+    "p": "Kunst, design og arkitektur",
+    "n": 41.3,
+    "g": null
+  },
+  {
+    "s": "Olsvikåsen videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 44.4,
+    "g": null
+  },
+  {
+    "s": "Os gymnas",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 42.7,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 31.2,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 34.2,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 38.8,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag (SK 3år)",
+    "n": 36,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 40.4,
+    "g": null
+  },
+  {
+    "s": "Os vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 35.3,
+    "g": null
+  },
+  {
+    "s": "Osterøy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 37.2,
+    "g": null
+  },
+  {
+    "s": "Osterøy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 35.9,
+    "g": null
+  },
+  {
+    "s": "Osterøy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 32.7,
+    "g": null
+  },
+  {
+    "s": "Osterøy vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 31.9,
+    "g": null
+  },
+  {
+    "s": "Sandsli videregående skole",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": 34.4,
+    "g": null
+  },
+  {
+    "s": "Sandsli videregående skole",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 42.5,
+    "g": null
+  },
+  {
+    "s": "Sandsli videregående skole",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 45.9,
+    "g": null
+  },
+  {
+    "s": "Slåtthaug videregående skole",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 34.7,
+    "g": null
+  },
+  {
+    "s": "Slåtthaug videregående skole",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 40.7,
+    "g": null
+  },
+  {
+    "s": "Slåtthaug videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 36,
+    "g": null
+  },
+  {
+    "s": "Slåtthaug videregående skole",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 38.2,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 23.8,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 37.7,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 42.4,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": 25.3,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 32.5,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Sogndal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 31.6,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 30.7,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 37.8,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 37.1,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 38.1,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": 32.7,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 40.4,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 42.7,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering (teknologifag)",
+    "n": 42.3,
+    "g": null
+  },
+  {
+    "s": "Sotra vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 42.7,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (anleggsgartner)",
+    "n": 26.5,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (dyrefag)",
+    "n": 32.1,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (friluftsliv)",
+    "n": 31.9,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (hest)",
+    "n": 41.8,
+    "g": null
+  },
+  {
+    "s": "Stend vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 37.5,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "IT og medieproduksjon",
+    "n": 36.2,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Medier og kommunikasjon",
+    "n": 36.9,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 42.7,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 35.3,
+    "g": null
+  },
+  {
+    "s": "Stord vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 26.7,
+    "g": null
+  },
+  {
+    "s": "Stryn vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 20,
+    "g": null
+  },
+  {
+    "s": "Stryn vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 32.6,
+    "g": null
+  },
+  {
+    "s": "Stryn vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Tertnes vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": 41.9,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": 35.9,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 37.1,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 31.9,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "IT og medieproduksjon",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Kunst, design og arkitektur",
+    "n": 33.9,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Musikk, dans og drama (musikk)",
+    "n": 37.4,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Voss gymnas",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 33.5,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 35.7,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk",
+    "n": 30.4,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (friluftsliv)",
+    "n": 38.7,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Naturbruk (hest)",
+    "n": 33.5,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Restaurant- og matfag",
+    "n": 0,
+    "g": null
+  },
+  {
+    "s": "Voss vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 34.4,
+    "g": null
+  },
+  {
+    "s": "Årdal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 31.4,
+    "g": null
+  },
+  {
+    "s": "Årdal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Årdal vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 40.3,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Frisør, blomst, int, eksp.design",
+    "n": 37.3,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 36.4,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Håndverk, design, produktutv.",
+    "n": 39.2,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Kunst, design og arkitektur",
+    "n": 41.5,
+    "g": null
+  },
+  {
+    "s": "Årstad videregående skole",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 36.9,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 36,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Elektro og datateknologi",
+    "n": 39.4,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Helse- og oppvekstfag",
+    "n": 37.5,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Idrettsfag",
+    "n": 43.5,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Salg, service og reiseliv",
+    "n": 38.7,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Studiespesialisering",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Åsane vidaregåande skule",
+    "f": "Vestland",
+    "p": "Teknologi- og industrifag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Blindern vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 42.2,
+    "g": null
+  },
+  {
+    "s": "Edvard Munch vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": 45,
+    "g": null
+  },
+  {
+    "s": "Edvard Munch vgs",
+    "f": "Oslo",
+    "p": "Kunst, design og arkitektur",
+    "n": 44.7,
+    "g": null
+  },
+  {
+    "s": "Edvard Munch vgs",
+    "f": "Oslo",
+    "p": "Musikk, dans og drama",
+    "n": 46.9,
+    "g": null
+  },
+  {
+    "s": "Edvard Munch vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 48.7,
+    "g": null
+  },
+  {
+    "s": "Elvebakken vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": 44,
+    "g": null
+  },
+  {
+    "s": "Elvebakken vgs",
+    "f": "Oslo",
+    "p": "Medier og kommunikasjon",
+    "n": 48.2,
+    "g": null
+  },
+  {
+    "s": "Elvebakken vgs",
+    "f": "Oslo",
+    "p": "Musikk, dans og drama",
+    "n": 51.6,
+    "g": null
+  },
+  {
+    "s": "Elvebakken vgs",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 37.8,
+    "g": null
+  },
+  {
+    "s": "Elvebakken vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering (IB)",
+    "n": 52.8,
+    "g": null
+  },
+  {
+    "s": "Fyrstikkalleen skole",
+    "f": "Oslo",
+    "p": "IT og medieproduksjon",
+    "n": 38.8,
+    "g": null
+  },
+  {
+    "s": "Fyrstikkalleen skole",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 42.1,
+    "g": null
+  },
+  {
+    "s": "Fyrstikkalleen skole",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 44.1,
+    "g": null
+  },
+  {
+    "s": "Foss vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 50.2,
+    "g": null
+  },
+  {
+    "s": "Hartvig Nissens skole",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 42.4,
+    "g": null
+  },
+  {
+    "s": "Hellerud vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": 26.3,
+    "g": null
+  },
+  {
+    "s": "Hellerud vgs",
+    "f": "Oslo",
+    "p": "Teknologi- og industrifag",
+    "n": 30.7,
+    "g": null
+  },
+  {
+    "s": "Hersleb vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": 14.6,
+    "g": null
+  },
+  {
+    "s": "Hersleb vgs",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 16.2,
+    "g": null
+  },
+  {
+    "s": "Holtet vgs",
+    "f": "Oslo",
+    "p": "Naturbruk",
+    "n": 24.7,
+    "g": null
+  },
+  {
+    "s": "Holtet vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 42.2,
+    "g": null
+  },
+  {
+    "s": "Kongshavn vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 37.3,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Elektro og datateknologi",
+    "n": 42.9,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": 34.4,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Naturbruk",
+    "n": 36.2,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Restaurant- og matfag",
+    "n": 36.3,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 40.8,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 40.6,
+    "g": null
+  },
+  {
+    "s": "Kuben vgs",
+    "f": "Oslo",
+    "p": "Teknologi- og industrifag",
+    "n": 37.9,
+    "g": null
+  },
+  {
+    "s": "Lambertseter vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": 42.8,
+    "g": null
+  },
+  {
+    "s": "Lambertseter vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 43.1,
+    "g": null
+  },
+  {
+    "s": "Bjerke vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Bjerke vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 37.7,
+    "g": null
+  },
+  {
+    "s": "Nydalen vgs",
+    "f": "Oslo",
+    "p": "Kunst, design og arkitektur",
+    "n": 37.5,
+    "g": null
+  },
+  {
+    "s": "Nydalen vgs",
+    "f": "Oslo",
+    "p": "Medier og kommunikasjon",
+    "n": 39.2,
+    "g": null
+  },
+  {
+    "s": "Nydalen vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 51.6,
+    "g": null
+  },
+  {
+    "s": "Oslo handelsgymnasium",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 37.1,
+    "g": null
+  },
+  {
+    "s": "Oslo handelsgymnasium",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 38.1,
+    "g": null
+  },
+  {
+    "s": "Oslo katedralskole",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 46.5,
+    "g": null
+  },
+  {
+    "s": "Etterstad vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": 10,
+    "g": null
+  },
+  {
+    "s": "Etterstad vgs",
+    "f": "Oslo",
+    "p": "Restaurant- og matfag",
+    "n": 11.3,
+    "g": null
+  },
+  {
+    "s": "Etterstad vgs",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 33.1,
+    "g": null
+  },
+  {
+    "s": "Persbråten vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Persbråten vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 40,
+    "g": null
+  },
+  {
+    "s": "Stovner vgs",
+    "f": "Oslo",
+    "p": "Bygg- og anleggsteknikk",
+    "n": 10,
+    "g": null
+  },
+  {
+    "s": "Stovner vgs",
+    "f": "Oslo",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stovner vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Stovner vgs",
+    "f": "Oslo",
+    "p": "Teknologi- og industrifag",
+    "n": 9.4,
+    "g": null
+  },
+  {
+    "s": "Bjørnholt vgs",
+    "f": "Oslo",
+    "p": "Bygg- og anleggsteknikk",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Bjørnholt vgs",
+    "f": "Oslo",
+    "p": "Elektro og datateknologi",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Bjørnholt vgs",
+    "f": "Oslo",
+    "p": "Teknologi- og industrifag",
+    "n": 16.4,
+    "g": null
+  },
+  {
+    "s": "Ullern vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": 37.2,
+    "g": null
+  },
+  {
+    "s": "Ullern vgs",
+    "f": "Oslo",
+    "p": "Kunst, design og arkitektur",
+    "n": 41.2,
+    "g": null
+  },
+  {
+    "s": "Ullern vgs",
+    "f": "Oslo",
+    "p": "Musikk, dans og drama",
+    "n": 45.7,
+    "g": null
+  },
+  {
+    "s": "Ullern vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 46.9,
+    "g": null
+  },
+  {
+    "s": "Ulsrud vgs",
+    "f": "Oslo",
+    "p": "Helse- og oppvekstfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Ulsrud vgs",
+    "f": "Oslo",
+    "p": "Salg, service og reiseliv",
+    "n": 16.9,
+    "g": null
+  },
+  {
+    "s": "Ulsrud vgs",
+    "f": "Oslo",
+    "p": "Teknologi- og industrifag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Ulsrud vgs",
+    "f": "Oslo",
+    "p": "Naturbruk",
+    "n": 32.2,
+    "g": null
+  },
+  {
+    "s": "Valle Hovin vgs",
+    "f": "Oslo",
+    "p": "Idrettsfag",
+    "n": null,
+    "g": null
+  },
+  {
+    "s": "Valle Hovin vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 48.8,
+    "g": null
+  },
+  {
+    "s": "Vika vgs",
+    "f": "Oslo",
+    "p": "Studiespesialisering",
+    "n": 45,
+    "g": null
+  }
+]

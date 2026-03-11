@@ -1,0 +1,67 @@
+[
+  {
+    "title": "Hjem",
+    "url": "index.html",
+    "keywords": ["hjem", "start", "forside"]
+  },
+  {
+    "title": "Guider",
+    "url": "guides.html",
+    "keywords": ["guider", "hjelp", "veiledning", "tips"]
+  },
+  {
+    "title": "Verktøy",
+    "url": "tools.html",
+    "keywords": ["verktøy", "kalkulator", "beregn", "planlegging"]
+  },
+  {
+    "title": "Interaktivt",
+    "url": "interactives.html",
+    "keywords": ["interaktivt", "spill", "quiz", "læring"]
+  },
+  {
+    "title": "Jeg starter på VGS snart",
+    "url": "Guides/new-students.html",
+    "keywords": ["ny student", "start", "første dag", "skolestart"]
+  },
+  {
+    "title": "Jeg er i videregående nå",
+    "url": "Guides/current-students.html",
+    "keywords": ["student", "nåværende", "tips", "råd"]
+  },
+  {
+    "title": "Jeg er ferdig på VGS",
+    "url": "Guides/finished-students.html",
+    "keywords": ["ferdig", "vitnemål", "veien videre", "studier"]
+  },
+  {
+    "title": "Hvordan velge program",
+    "url": "Guides/program-choice.html",
+    "keywords": ["valg", "programfag", "linje", "utdanning"]
+  },
+  {
+    "title": "Master karaktersystemet",
+    "url": "Guides/grades-system.html",
+    "keywords": ["karakterer", "system", "vurdering", "skala"]
+  },
+  {
+    "title": "Motivasjon og velvære",
+    "url": "Guides/motivation.html",
+    "keywords": ["motivasjon", "helse", "stress", "mestring"]
+  },
+  {
+    "title": "Inntakskalkulator",
+    "url": "Tools/inntakskalkulator.html",
+    "keywords": ["inntak", "poeng", "snitt", "beregn"]
+  },
+  {
+    "title": "Karaktertrakker",
+    "url": "Tools/grade-tracker.html",
+    "keywords": ["karakterer", "oversikt", "snitt", "mål"]
+  },
+  {
+    "title": "Fagvelger",
+    "url": "Tools/subject-selector.html",
+    "keywords": ["fag", "velg", "kombinasjoner", "realfag", "språk"]
+  }
+]
