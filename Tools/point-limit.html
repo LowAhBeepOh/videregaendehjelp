@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poenggrense-søk – Videregående Hjelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111111;
+      --surface: #1a1a1a;
+      --surface2: #222222;
+      --border: #2e2e2e;
+      --red: #f04040;
+      --red-dim: rgba(240,64,64,0.12);
+      --text: #f0f0f0;
+      --muted: #888;
+      --muted2: #555;
+      --green: #4caf7d;
+      --yellow: #f0b840;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--red); }
+
+    /* PAGE */
+    .page { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+
+    /* SEARCH FORM */
+    .search-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .search-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .field select, .field input {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0.6rem 0.8rem;
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      padding-right: 2rem;
+    }
+    .field select:focus, .field input:focus { border-color: var(--red); }
+    .field select option { background: #1a1a1a; }
+
+    .search-actions { display: flex; gap: 0.8rem; align-items: center; }
+    .btn-search {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.65rem 1.4rem;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
+    .btn-search:hover { opacity: 0.88; }
+    .btn-search:active { transform: scale(0.97); }
+    .btn-reset {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-reset:hover { border-color: var(--muted); color: var(--text); }
+
+    /* RESULTS */
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .results-count span { color: var(--text); font-weight: 700; }
+
+    .sort-bar {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .sort-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .sort-btn:hover { border-color: var(--muted); color: var(--text); }
+    .sort-btn.active { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
+    /* CARDS */
+    .results-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.6rem 1.5rem;
+      align-items: start;
+      transition: border-color 0.15s, transform 0.1s;
+      cursor: default;
+    }
+    .result-card:hover {
+      border-color: #3e3e3e;
+      transform: translateY(-1px);
+    }
+
+    .card-left {}
+    .card-school {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+    .card-program {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      color: var(--muted);
+    }
+    .tag.vg { color: #a0c4ff; border-color: rgba(160,196,255,0.2); background: rgba(160,196,255,0.07); }
+    .tag.year { color: var(--muted); }
+    .tag.inntak { color: #b8a0ff; border-color: rgba(184,160,255,0.2); background: rgba(184,160,255,0.07); }
+    .tag.fylke { color: #80d8b0; border-color: rgba(128,216,176,0.2); background: rgba(128,216,176,0.07); }
+
+    .card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+      min-width: 130px;
+    }
+
+    .stat { text-align: right; }
+    .stat-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted2);
+      margin-bottom: 0.1rem;
+    }
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .stat-value.nedregrense { color: var(--red); }
+    .stat-value.snitt { color: var(--yellow); }
+    .stat-value.alle-inn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(76,175,125,0.1);
+      border: 1px solid rgba(76,175,125,0.25);
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--muted);
+    }
+    .empty-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
+    .empty-state h3 { font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; }
+    .empty-state p { font-size: 0.875rem; }
+
+    /* LOADING */
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 2rem;
+    }
+    .page-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.45rem 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      min-width: 36px;
+    }
+    .page-btn:hover { border-color: var(--muted); color: var(--text); }
+    .page-btn.active { background: var(--red-dim); border-color: var(--red); color: var(--red); font-weight: 700; }
+    .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      .result-card { grid-template-columns: 1fr; }
+      .card-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .stat { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Videregående Hjelp</a>
+  <div class="nav-links">
+    <a href="../guides.html">Guider</a>
+    <a href="../tools.html" class="active">Verktøy</a>
+    <a href="../interactive.html">Interaktivt</a>
+  </div>
+</nav>
+
+<div class="page">
+  <h1>Poenggrense-søk</h1>
+  <p class="subtitle">Søk opp historiske inntakspoeng per skole, fylke og program. Data viser nedregrense og snitt fra tidligere opptak.</p>
+
+  <div class="search-box">
+    <div class="search-grid">
+      <div class="field">
+        <label>Fylke</label>
+        <select id="filter-fylke">
+          <option value="">Alle fylker</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Skole</label>
+        <select id="filter-skole">
+          <option value="">Alle skoler</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Program</label>
+        <select id="filter-program">
+          <option value="">Alle program</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Trinn</label>
+        <select id="filter-vg">
+          <option value="">VG1, VG2, VG3</option>
+          <option value="1">VG1</option>
+          <option value="2">VG2</option>
+          <option value="3">VG3</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>År</label>
+        <select id="filter-year">
+          <option value="">Alle år</option>
+        </select>
+      </div>
+    </div>
+    <div class="search-actions">
+      <button class="btn-search" onclick="doSearch()">Søk</button>
+      <button class="btn-reset" onclick="resetFilters()">Nullstill</button>
+    </div>
+  </div>
+
+  <div id="results-header" class="results-header" style="display:none">
+    <div class="results-count">Viser <span id="count-display">0</span> resultater</div>
+    <div class="sort-bar">
+      Sorter:
+      <button class="sort-btn active" data-sort="year" onclick="setSort('year')">Nyeste</button>
+      <button class="sort-btn" data-sort="nedregrense" onclick="setSort('nedregrense')">Nedregrense</button>
+      <button class="sort-btn" data-sort="snitt" onclick="setSort('snitt')">Snitt</button>
+      <button class="sort-btn" data-sort="school" onclick="setSort('school')">Skole A–Å</button>
+    </div>
+  </div>
+
+  <div id="results-container">
+    <div class="empty-state">
+      <div class="empty-icon">🔍</div>
+      <h3>Klar til å søke</h3>
+      <p>Velg ett eller flere filter og trykk Søk for å se resultater.</p>
+    </div>
+  </div>
+
+  <div id="pagination" class="pagination"></div>
+</div>
+
+<script>
+  const DATA_PATH = 'Data/inntaks-data.json';
+  const PER_PAGE = 20;
+
+  let allData = [];
+  let filtered = [];
+  let currentPage = 1;
+  let sortMode = 'year';
+  let hasSearched = false;
+
+  // Load data
+  async function loadData() {
+    try {
+      const res = await fetch(DATA_PATH);
+      if (!res.ok) throw new Error('Feil ved lasting av data');
+      allData = await res.json();
+      populateFilters();
+    } catch (e) {
+      document.getElementById('results-container').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">⚠️</div>
+          <h3>Kunne ikke laste data</h3>
+          <p>Sjekk at <code>data/poenggrenser.json</code> finnes og er gyldig JSON.</p>
+        </div>`;
+    }
+  }
+
+  function populateFilters() {
+    const fylker = [...new Set(allData.map(d => d.f))].sort();
+    const skoler = [...new Set(allData.map(d => d.s))].sort();
+    const program = [...new Set(allData.map(d => d.p))].sort();
+    const years = [...new Set(allData.map(d => d.y))].sort().reverse();
+
+    setOptions('filter-fylke', fylker);
+    setOptions('filter-skole', skoler);
+    setOptions('filter-program', program);
+    setOptions('filter-year', years);
+
+    // Cascade: when fylke changes, filter skoler
+    document.getElementById('filter-fylke').addEventListener('change', updateSchoolOptions);
+  }
+
+  function updateSchoolOptions() {
+    const fylke = document.getElementById('filter-fylke').value;
+    const skoler = [...new Set(
+      allData
+        .filter(d => !fylke || d.f === fylke)
+        .map(d => d.s)
+    )].sort();
+    setOptions('filter-skole', skoler);
+  }
+
+  function setOptions(id, values) {
+    const sel = document.getElementById(id);
+    const first = sel.options[0];
+    sel.innerHTML = '';
+    sel.appendChild(first);
+    values.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    });
+  }
+
+  function doSearch() {
+    hasSearched = true;
+    const fylke = document.getElementById('filter-fylke').value;
+    const skole = document.getElementById('filter-skole').value;
+    const program = document.getElementById('filter-program').value;
+    const vg = document.getElementById('filter-vg').value;
+    const year = document.getElementById('filter-year').value;
+
+    filtered = allData.filter(d => {
+      if (fylke && d.f !== fylke) return false;
+      if (skole && d.s !== skole) return false;
+      if (program && d.p !== program) return false;
+      if (vg && String(d.vg) !== vg) return false;
+      if (year && d.y !== year) return false;
+      return true;
+    });
+
+    applySort();
+    currentPage = 1;
+    render();
+  }
+
+  function resetFilters() {
+    document.getElementById('filter-fylke').value = '';
+    document.getElementById('filter-skole').value = '';
+    document.getElementById('filter-program').value = '';
+    document.getElementById('filter-vg').value = '';
+    document.getElementById('filter-year').value = '';
+    updateSchoolOptions();
+    hasSearched = false;
+    filtered = [];
+    document.getElementById('results-header').style.display = 'none';
+    document.getElementById('pagination').innerHTML = '';
+    document.getElementById('results-container').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3>Klar til å søke</h3>
+        <p>Velg ett eller flere filter og trykk Søk for å se resultater.</p>
+      </div>`;
+  }
+
+  function setSort(mode) {
+    sortMode = mode;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === mode));
+    applySort();
+    currentPage = 1;
+    render();
+  }
+
+  function applySort() {
+    filtered = [...filtered].sort((a, b) => {
+      if (sortMode === 'year') return b.y.localeCompare(a.y) || a.s.localeCompare(b.s);
+      if (sortMode === 'nedregrense') {
+        const an = a.n ?? 999, bn = b.n ?? 999;
+        return bn - an;
+      }
+      if (sortMode === 'snitt') return b.g - a.g;
+      if (sortMode === 'school') return a.s.localeCompare(b.s, 'nb');
+      return 0;
+    });
+  }
+
+  function render() {
+    const header = document.getElementById('results-header');
+    const container = document.getElementById('results-container');
+
+    if (!hasSearched) return;
+
+    header.style.display = 'flex';
+    document.getElementById('count-display').textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">😶</div>
+          <h3>Ingen resultater</h3>
+          <p>Prøv å endre eller fjerne noen av filtrene dine.</p>
+        </div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+
+    const totalPages = Math.ceil(filtered.length / PER_PAGE);
+    const start = (currentPage - 1) * PER_PAGE;
+    const page = filtered.slice(start, start + PER_PAGE);
+
+    container.innerHTML = `<div class="results-list">${page.map(renderCard).join('')}</div>`;
+    renderPagination(totalPages);
+  }
+
+  function renderCard(d) {
+    const nedregrenseHTML = d.n === null
+      ? `<div class="stat-value alle-inn">✓ Alle kom inn</div>`
+      : `<div class="stat-value nedregrense">${d.n.toFixed(1)}</div>`;
+
+    return `
+    <div class="result-card">
+      <div class="card-left">
+        <div class="card-school">${esc(d.s)}</div>
+        <div class="card-program">${esc(d.p)}</div>
+        <div class="card-tags">
+          <span class="tag fylke">📍 ${esc(d.f)}</span>
+          <span class="tag vg">VG${d.vg}</span>
+          <span class="tag year">🗓 ${esc(d.y)}</span>
+          <span class="tag inntak">Inntak ${d.i}</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <div class="stat">
+          <div class="stat-label">Nedregrense</div>
+          ${nedregrenseHTML}
+        </div>
+        <div class="stat">
+          <div class="stat-label">Snitt</div>
+          <div class="stat-value snitt">${d.g != null ? d.g.toFixed(2) : '–'}</div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderPagination(totalPages) {
+    const pg = document.getElementById('pagination');
+    if (totalPages <= 1) { pg.innerHTML = ''; return; }
+
+    let html = '';
+    const prev = currentPage - 1;
+    const next = currentPage + 1;
+
+    html += `<button class="page-btn" onclick="goPage(${prev})" ${currentPage === 1 ? 'disabled' : ''}>←</button>`;
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+        html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+      } else if (i === currentPage - 3 || i === currentPage + 3) {
+        html += `<button class="page-btn" disabled>…</button>`;
+      }
+    }
+
+    html += `<button class="page-btn" onclick="goPage(${next})" ${currentPage === totalPages ? 'disabled' : ''}>→</button>`;
+    pg.innerHTML = html;
+  }
+
+  function goPage(n) {
+    currentPage = n;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Allow pressing Enter to search
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+
+  loadData();
+</script>
+</body>
+</html>
