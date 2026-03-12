@@ -1,733 +1,1557 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eksamen Simulator – Videregående Hjelp</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <style>
-    :root {
-      --primary: #d32f2f;
-      --primary-light: #ef5350;
-      --primary-dark: #b71c1c;
-      --bg: #f8f9fa;
-      --surface: #ffffff;
-      --surface-light: #f5f5f5;
-      --text: #212121;
-      --text-muted: #757575;
-      --border: #e0e0e0;
-      --success: #2e7d32;
-      --error: #c62828;
-      --warning: #f9a825;
-      --shadow: 0 2px 8px rgba(0,0,0,0.08);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGS-hjelp sin eksamen (2026) - Videregående Hjelp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    [data-theme="dark"] {
-      --primary: #ff5252;
-      --primary-light: #ff7070;
-      --primary-dark: #d32f2f;
-      --bg: #121212;
-      --surface: #1e1e1e;
-      --surface-light: #2a2a2a;
-      --text: #ffffff;
-      --text-muted: #b0b0b0;
-      --border: #333333;
-      --success: #66bb6a;
-      --error: #ef5350;
-      --warning: #fbc02d;
-      --shadow: 0 2px 8px rgba(0,0,0,0.30);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
-    }
+        :root {
+            --primary-red: #d32f2f;
+            --primary-red-dark: #b71c1c;
+            --primary-red-light: #ffcdd2;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --text-muted: #9e9e9e;
+            --bg-white: #ffffff;
+            --bg-light: #fafafa;
+            --bg-gray: #f5f5f5;
+            --border-light: #e0e0e0;
+            --border-medium: #bdbdbd;
+            --success-green: #4caf50;
+            --error-red: #f44336;
+            --warning-orange: #ff9800;
+            --locked-gray: #bdbdbd;
+        }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
 
-    body {
-      font-family: 'Manrope', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-      min-height: 100vh;
-    }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
 
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+        /* Header */
+        .header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      margin-bottom: 40px;
-      border-bottom: 1px solid var(--border);
-    }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    .logo {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-    }
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      list-style: none;
-    }
+        .back-link:hover {
+            color: var(--primary-red);
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
+        .exam-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
 
-    .nav-links a:hover {
-      color: var(--primary);
-    }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
 
-    /* Simulator Styles */
-    .simulator-container {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: var(--shadow);
-      min-height: 400px;
-      position: relative;
-    }
+        .delivery-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-    /* Screen Transitions */
-    .screen {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
+        .delivery-time .material-icons {
+            font-size: 1.2rem;
+            color: var(--primary-red);
+        }
 
-    .screen.active {
-      display: block;
-    }
+        /* Progress Steps */
+        .progress-container {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.5rem 3rem;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .progress-steps {
+            display: flex;
+            gap: 3rem;
+            max-width: 800px;
+        }
 
-    /* Welcome Screen */
-    .welcome-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
 
-    .welcome-header h1 {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
+        .step.active {
+            color: var(--primary-red);
+        }
 
-    .subject-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
+        .step.completed {
+            color: var(--success-green);
+        }
 
-    .subject-card {
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s;
-    }
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
 
-    .subject-card:hover {
-      border-color: var(--primary);
-      background: var(--surface-light);
-    }
+        .step.active .step-number {
+            background: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+        }
 
-    .subject-card.selected {
-      border-color: var(--primary);
-      background: rgba(211, 47, 47, 0.05);
-      color: var(--primary);
-      font-weight: 700;
-    }
+        .step.completed .step-number {
+            background: var(--success-green);
+            color: white;
+            border-color: var(--success-green);
+        }
 
-    .subject-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-      color: var(--text-muted);
-    }
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
 
-    .subject-card.selected .subject-icon {
-      color: var(--primary);
-    }
+        /* Subject Selection */
+        .subject-selection {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
 
-    .start-btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 20px;
-    }
+        .selection-header {
+            margin-bottom: 2.5rem;
+        }
 
-    .start-btn:hover {
-      background: var(--primary-dark);
-    }
+        .selection-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
 
-    .start-btn:disabled {
-      background: var(--text-muted);
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+        .selection-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
 
-    /* Exam Screen */
-    .exam-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
 
-    .timer {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .subject-card {
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .progress-pill {
-      background: var(--surface-light);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
+        .subject-card:hover:not(.locked) {
+            border-color: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(211, 47, 47, 0.12);
+        }
 
-    .question-container {
-      margin-bottom: 40px;
-    }
+        .subject-card.selected {
+            border-color: var(--primary-red);
+            background: var(--primary-red-light);
+        }
 
-    .question-text {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      font-family: 'Inter Tight', sans-serif;
-    }
+        .subject-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: var(--bg-gray);
+        }
 
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .subject-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
 
-    .option-item {
-      display: flex;
-      align-items: center;
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+        .subject-card:not(.locked) .subject-icon {
+            background: var(--primary-red-light);
+            color: var(--primary-red);
+        }
 
-    .option-item:hover {
-      background: var(--surface-light);
-      border-color: var(--text-muted);
-    }
+        .subject-card.locked .subject-icon {
+            background: #e0e0e0;
+            color: var(--locked-gray);
+        }
 
-    .option-item.selected {
-      border-color: var(--primary);
-      background: rgba(211, 47, 47, 0.05);
-    }
+        .subject-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .option-radio {
-      margin-right: 16px;
-      width: 20px;
-      height: 20px;
-      accent-color: var(--primary);
-    }
+        .subject-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
 
-    .exam-controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: auto;
-    }
+        .lock-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--locked-gray);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
 
-    .nav-btn {
-      padding: 12px 24px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
+        .lock-badge .material-icons {
+            font-size: 1rem;
+        }
 
-    .nav-btn:hover {
-      background: var(--surface-light);
-    }
+        .exam-info {
+            background: var(--bg-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-    .nav-btn.primary {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    .nav-btn.primary:hover {
-      background: var(--primary-dark);
-    }
+        .info-item .material-icons {
+            color: var(--primary-red);
+            font-size: 1.25rem;
+        }
 
-    /* Results Screen */
-    .results-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .info-item span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
 
-    .score-circle {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: var(--surface);
-      border: 8px solid var(--primary);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
+        /* Button */
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Inter Tight', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            margin-top: 2rem;
+        }
 
-    .score-value {
-      font-size: 32px;
-      font-weight: 800;
-      font-family: 'Inter Tight', sans-serif;
-      line-height: 1;
-    }
+        .btn-primary:hover:not(:disabled) {
+            background: var(--primary-red-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        }
 
-    .score-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-    .review-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 40px;
-    }
+        /* Exam Interface */
+        .exam-interface {
+            display: none;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
 
-    .review-item {
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
+        .exam-header {
+            background: var(--bg-gray);
+            padding: 2rem 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
 
-    .review-item.correct {
-      border-left: 4px solid var(--success);
-    }
+        .exam-meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
 
-    .review-item.incorrect {
-      border-left: 4px solid var(--error);
-    }
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
 
-    .review-question {
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
+        .meta-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
 
-    .review-answer {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
+        .meta-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
-    .review-answer.user {
-      color: var(--text-muted);
-    }
+        .exam-content {
+            padding: 3rem;
+        }
 
-    .review-answer.correct-text {
-      color: var(--success);
-      font-weight: 600;
-    }
+        .task {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
 
-    @media (max-width: 600px) {
-      .exam-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      
-      .simulator-container {
-        padding: 20px;
-      }
-    }
-  </style>
+        .task:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .task-header {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .task-number {
+            background: var(--primary-red);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .task-title {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .task-content {
+            margin-left: 56px;
+        }
+
+        .task-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .task-text {
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .task-subtitle {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Input Types */
+        .input-section {
+            margin-top: 1.5rem;
+        }
+
+        .text-input-area {
+            width: 100%;
+            min-height: 200px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        .text-input-area:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .text-input-area::placeholder {
+            color: var(--text-muted);
+        }
+
+        .multiple-choice {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .choice-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .choice-option:hover {
+            border-color: var(--border-medium);
+            background: var(--bg-light);
+        }
+
+        .choice-option.selected {
+            border-color: var(--primary-red);
+            background: var(--primary-red-light);
+        }
+
+        .choice-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-red);
+        }
+
+        .choice-option label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .calculation-box {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .calculation-box label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calculation-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-medium);
+            border-radius: 6px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* Submit Section */
+        .submit-section {
+            background: var(--bg-gray);
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .submit-warning {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .submit-warning .material-icons {
+            color: var(--warning-orange);
+        }
+
+        /* Results Section */
+        .results-interface {
+            display: none;
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .results-header {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .results-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-display {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .results-content {
+            padding: 3rem;
+        }
+
+        .result-task {
+            margin-bottom: 2rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .result-task-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .result-task-header:hover {
+            background: var(--bg-light);
+        }
+
+        .result-task.correct .result-task-header {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success-green);
+        }
+
+        .result-task.incorrect .result-task-header {
+            background: #ffebee;
+            border-left: 4px solid var(--error-red);
+        }
+
+        .result-task.partial .result-task-header {
+            background: #fff3e0;
+            border-left: 4px solid var(--warning-orange);
+        }
+
+        .result-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .result-status.correct {
+            color: var(--success-green);
+        }
+
+        .result-status.incorrect {
+            color: var(--error-red);
+        }
+
+        .result-status.partial {
+            color: var(--warning-orange);
+        }
+
+        .result-details {
+            padding: 2rem;
+            background: var(--bg-light);
+            display: none;
+        }
+
+        .result-details.expanded {
+            display: block;
+        }
+
+        .your-answer, .correct-answer, .explanation {
+            margin-bottom: 1.5rem;
+        }
+
+        .answer-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .answer-content {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+        }
+
+        .explanation-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .explanation-title {
+            font-weight: 600;
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .main-container {
+                padding: 1.5rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exam-content, .results-content {
+                padding: 1.5rem;
+            }
+
+            .task-content {
+                margin-left: 0;
+            }
+
+            .task-header {
+                flex-direction: column;
+            }
+
+            .submit-section {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Formula styling */
+        .formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            background: var(--bg-light);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+
+        /* Graph placeholder */
+        .graph-container {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: linear-gradient(to bottom, #fafafa 0%, #f5f5f5 100%);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            position: relative;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .graph-line {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--primary-red);
+            transform: rotate(-15deg);
+            transform-origin: left center;
+        }
+
+        .graph-axis {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 2px;
+            height: 60%;
+            background: var(--text-primary);
+        }
+
+        .graph-axis-x {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--text-primary);
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-  <main>
-    <header>
-      <a href="../interactives.html" class="logo">Videregående Hjelp</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="../guides.html">Guider</a></li>
-          <li><a href="../tools.html">Verktøy</a></li>
-          <li><a href="../interactives.html">Tilbake</a></li>
-        </ul>
-      </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <a href="../interactives.html" class="back-link">
+                <span class="material-icons">arrow_back</span>
+                Tilbake til verktøy
+            </a>
+            <h1 class="exam-title">Inntakskalkulator</h1>
+        </div>
+        <div class="header-right">
+            <div class="delivery-time">
+                <span class="material-icons">schedule</span>
+                <span>Leveres innen: <strong id="delivery-time">14:00</strong></span>
+            </div>
+        </div>
     </header>
 
-    <div class="simulator-container">
-      
-      <!-- Screen 1: Welcome / Selection -->
-      <div id="welcome-screen" class="screen active">
-        <div class="welcome-header">
-          <h1>Eksamen Simulator</h1>
-          <p>Velg fag for å starte en realistisk eksamenssimulering.</p>
+    <!-- Progress Steps -->
+    <div class="progress-container">
+        <div class="progress-steps">
+            <div class="step active" id="step-1">
+                <div class="step-number">01</div>
+                <span>Fagvalg</span>
+            </div>
+            <div class="step" id="step-2">
+                <div class="step-number">02</div>
+                <span>Eksamen</span>
+            </div>
+            <div class="step" id="step-3">
+                <div class="step-number">03</div>
+                <span>Resultat</span>
+            </div>
         </div>
-        
-        <div class="subject-grid">
-          <div class="subject-card" onclick="selectSubject('math', this)">
-            <div class="material-icons subject-icon">calculate</div>
-            <h3>Matematikk 1T</h3>
-            <p style="font-size: 12px; color: var(--text-muted);">Algebra, Funksjoner, Geometri</p>
-          </div>
-          <div class="subject-card" onclick="selectSubject('english', this)">
-            <div class="material-icons subject-icon">language</div>
-            <h3>Engelsk</h3>
-            <p style="font-size: 12px; color: var(--text-muted);">Grammatikk, Forståelse, Ordforråd</p>
-          </div>
-          <div class="subject-card" onclick="selectSubject('science', this)">
-            <div class="material-icons subject-icon">science</div>
-            <h3>Naturfag</h3>
-            <p style="font-size: 12px; color: var(--text-muted);">Atomer, Energi, Økologi</p>
-          </div>
-          <div class="subject-card" onclick="selectSubject('social', this)">
-            <div class="material-icons subject-icon">public</div>
-            <h3>Samfunnsfag</h3>
-            <p style="font-size: 12px; color: var(--text-muted);">Politikk, Økonomi, Kultur</p>
-          </div>
-        </div>
-
-        <button id="start-btn" class="start-btn" disabled onclick="startExam()">Start Eksamen</button>
-      </div>
-
-      <!-- Screen 2: Exam Interface -->
-      <div id="exam-screen" class="screen">
-        <div class="exam-header">
-          <div class="timer">
-            <span class="material-icons">timer</span>
-            <span id="timer-display">60:00</span>
-          </div>
-          <div class="progress-pill">
-            Spørsmål <span id="current-q-num">1</span> av <span id="total-q-num">10</span>
-          </div>
-        </div>
-
-        <div class="question-container">
-          <div class="question-text" id="question-text">
-            Hva er løsningen på ligningen 2x + 5 = 15?
-          </div>
-          <div class="options-list" id="options-list">
-            <!-- Options generated by JS -->
-          </div>
-        </div>
-
-        <div class="exam-controls">
-          <button class="nav-btn" id="prev-btn" onclick="prevQuestion()" disabled>Forrige</button>
-          <button class="nav-btn primary" id="next-btn" onclick="nextQuestion()">Neste</button>
-        </div>
-      </div>
-
-      <!-- Screen 3: Results -->
-      <div id="results-screen" class="screen">
-        <div class="results-header">
-          <div class="score-circle">
-            <div class="score-value" id="final-score">8/10</div>
-            <div class="score-label">Poeng</div>
-          </div>
-          <h2 id="feedback-title">Godt jobbet!</h2>
-          <p id="feedback-text">Du har god kontroll på dette emnet.</p>
-        </div>
-
-        <div class="review-list" id="review-list">
-          <!-- Review items generated by JS -->
-        </div>
-
-        <button class="start-btn" onclick="location.reload()">Ta ny eksamen</button>
-      </div>
-
     </div>
-  </main>
 
-  <script>
-    // --- Data ---
-    const questionBank = {
-      math: [
-        { q: "Løs ulikheten: x² - 5x + 6 < 0", options: ["x < 2 eller x > 3", "2 < x < 3", "x < -3 eller x > -2", "-3 < x < -2"], correct: 1 },
-        { q: "Hva er den deriverte av f(x) = 3x² + ln(x)?", options: ["6x + 1/x", "6x + ln(x)", "3x + 1/x", "6x - 1/x"], correct: 0 },
-        { q: "Hva er eksakt verdi av sin(60°)?", options: ["1/2", "√2/2", "√3/2", "1"], correct: 2 },
-        { q: "En trekant har sider 3, 4 og 5. Hva er arealet?", options: ["6", "12", "10", "7.5"], correct: 0 },
-        { q: "Løs ligningssettet: 2x + y = 10 og 3x - y = 5", options: ["x=2, y=6", "x=3, y=4", "x=4, y=2", "x=5, y=0"], correct: 1 },
-        { q: "Hva er definisjonsmengden til f(x) = √(x-2)?", options: ["x > 2", "x ≥ 2", "x < 2", "x ≤ 2"], correct: 1 },
-        { q: "Forenkle uttrykket: (a² - b²) / (a - b)", options: ["a - b", "a + b", "a² + b²", "1"], correct: 1 },
-        { q: "Hva er sannsynligheten for å få sum 12 med to terninger?", options: ["1/6", "1/12", "1/36", "1/18"], correct: 2 },
-        { q: "Hvilken funksjon er en eksponentialfunksjon?", options: ["f(x) = x²", "f(x) = 2x", "f(x) = 2^x", "f(x) = 1/x"], correct: 2 },
-        { q: "Hva er verdien av log(1000)?", options: ["2", "3", "10", "100"], correct: 1 }
-      ],
-      english: [
-        { q: "What literary device is used in 'The wind whispered through the trees'?", options: ["Metaphor", "Simile", "Personification", "Alliteration"], correct: 2 },
-        { q: "Which sentence uses the subjunctive mood correctly?", options: ["I wish I was there.", "I wish I were there.", "I wish I am there.", "I wish I will be there."], correct: 1 },
-        { q: "What does the idiom 'Devil's Advocate' mean?", options: ["Someone who is evil", "To argue against a popular view for the sake of debate", "A lawyer for criminals", "To agree with everyone"], correct: 1 },
-        { q: "Identify the error: 'Neither of the boys are going to the party.'", options: ["Neither", "of", "are", "going"], correct: 2 },
-        { q: "What is the primary theme of Orwell's '1984'?", options: ["Romance", "Totalitarianism", "Adventure", "Comedy"], correct: 1 },
-        { q: "Choose the correct synonym for 'Ephemeral'", options: ["Lasting", "Short-lived", "Heavy", "Bright"], correct: 1 },
-        { q: "Which word completes the sentence: 'The politician's speech was full of _____ rhetoric.'", options: ["vacuous", "tangible", "lucid", "stoic"], correct: 0 },
-        { q: "What is the past participle of 'swim'?", options: ["Swam", "Swum", "Swimmed", "Swimming"], correct: 1 },
-        { q: "In which sentence is the comma used correctly?", options: ["Lets eat grandma.", "Lets eat, grandma.", "Lets, eat grandma.", "Lets eat grandma,"], correct: 1 },
-        { q: "What does 'Ubiquitous' mean?", options: ["Rare", "Present everywhere", "Unique", "Hidden"], correct: 1 }
-      ],
-      science: [
-        { q: "Hva er elektronkonfigurasjonen til Karbon (atomnummer 6)?", options: ["2, 4", "2, 6", "4, 2", "2, 8"], correct: 0 },
-        { q: "Hvilken bindingstype er sterkest?", options: ["Hydrogenbinding", "Kovalent binding", "Van der Waals krefter", "Dipolbinding"], correct: 1 },
-        { q: "Hva er formelen for kinetisk energi?", options: ["E = mc²", "E = mgh", "E = 1/2 mv²", "E = Fs"], correct: 2 },
-        { q: "Hva kalles prosessen der DNA kopieres til RNA?", options: ["Translasjon", "Transkripsjon", "Replikasjon", "Mutasjon"], correct: 1 },
-        { q: "Hva er Newtons første lov også kjent som?", options: ["Kraftloven", "Treghetsloven", "Handlingsloven", "Gravitasjonsloven"], correct: 1 },
-        { q: "Hvilken gass er hovedårsaken til drivhuseffekten?", options: ["Oksygen", "Nitrogen", "Karbondioksid", "Argon"], correct: 2 },
-        { q: "Hva er pH i en 0.1 M HCl løsning?", options: ["0.1", "1", "7", "13"], correct: 1 },
-        { q: "Hva skjer med trykket i en gass hvis volumet halveres (ved konstant temp)?", options: ["Det halveres", "Det forblir uendret", "Det dobles", "Det firedobles"], correct: 2 },
-        { q: "Hvilken celledel er ansvarlig for energiproduksjon?", options: ["Kjernen", "Ribosomet", "Mitokondriet", "Golgiapparatet"], correct: 2 },
-        { q: "Hva er en isotop?", options: ["Atomer med ulikt antall protoner", "Atomer med ulikt antall nøytroner", "Atomer med ulik ladning", "Ioner"], correct: 1 }
-      ],
-      social: [
-        { q: "Hva kjennetegner en parlamentarisk styringsform?", options: ["Presidenten har all makt", "Regjeringen utgår fra Stortinget", "Domstolene lager lover", "Kongen bestemmer regjeringen"], correct: 1 },
-        { q: "Hva er forskjellen på BNP og BNP per innbygger?", options: ["Ingen forskjell", "BNP er total verdiskaping, den andre deler på befolkning", "BNP per innbygger inkluderer oljefondet", "BNP måler kun eksport"], correct: 1 },
-        { q: "Hva menes med 'maktfordelingsprinsippet'?", options: ["Makten er delt mellom stat og kommune", "Makten er delt mellom lovgivende, utøvende og dømmende makt", "Makten er delt mellom konge og folk", "Makten er delt mellom rike og fattige"], correct: 1 },
-        { q: "Hva var hovedårsaken til den kalde krigen?", options: ["Religiøs konflikt", "Ideologisk konflikt mellom USA og Sovjetunionen", "Kamp om landområder i Afrika", "Handelskrig mellom Kina og USA"], correct: 1 },
-        { q: "Hva er en 'blandingsøkonomi'?", options: ["Kun statlig eie", "Kun privat eie", "Kombinasjon av markedsøkonomi og statlig styring", "Bytteøkonomi"], correct: 2 },
-        { q: "Hvilket organ er FNs øverste beslutningsorgan?", options: ["Generalforsamlingen", "Sikkerhetsrådet", "Domstolen i Haag", "Sekretariatet"], correct: 1 },
-        { q: "Hva betyr begrepet 'lobbyvirksomhet'?", options: ["Å jobbe i hotellobby", "Å påvirke politikere utenfor formelle kanaler", "Å demonstrere", "Å stemme ved valg"], correct: 1 },
-        { q: "Når fikk kvinner stemmerett i Norge?", options: ["1814", "1898", "1913", "1945"], correct: 2 },
-        { q: "Hva er EØS-avtalen?", options: ["Norges medlemskap i EU", "En handelsavtale som gir tilgang til EUs indre marked", "En militær allianse", "En klimaavtale"], correct: 1 },
-        { q: "Hva menes med 'velferdsstaten'?", options: ["At alle er rike", "At staten har ansvar for borgernes grunnleggende velferd", "At vi har lave skatter", "At vi ikke har private bedrifter"], correct: 1 }
-      ]
-    };
-
-    // --- State ---
-    let currentSubject = null;
-    let questions = [];
-    let userAnswers = []; // Array of indices
-    let currentQuestionIndex = 0;
-    let timerInterval;
-    let timeRemaining = 60 * 60; // 60 minutes in seconds
-
-    // --- Elements ---
-    const screens = {
-      welcome: document.getElementById('welcome-screen'),
-      exam: document.getElementById('exam-screen'),
-      results: document.getElementById('results-screen')
-    };
-
-    // --- Functions ---
-
-    function selectSubject(subject, element) {
-      currentSubject = subject;
-      
-      // Update UI selection
-      document.querySelectorAll('.subject-card').forEach(card => {
-        card.classList.remove('selected');
-      });
-      element.classList.add('selected');
-      
-      document.getElementById('start-btn').disabled = false;
-    }
-
-    function startExam() {
-      if (!currentSubject) return;
-
-      // Load questions
-      questions = [...questionBank[currentSubject]]; // Copy array
-      shuffleArray(questions);
-      userAnswers = new Array(questions.length).fill(null);
-      currentQuestionIndex = 0;
-
-      // Initialize UI
-      document.getElementById('total-q-num').textContent = questions.length;
-      switchScreen('exam');
-      loadQuestion(0);
-      timeRemaining = 60 * 60; // Reset timer to 60 minutes
-      startTimer();
-    }
-
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    function switchScreen(screenName) {
-      Object.values(screens).forEach(s => s.classList.remove('active'));
-      screens[screenName].classList.add('active');
-    }
-
-    function loadQuestion(index) {
-      const q = questions[index];
-      document.getElementById('current-q-num').textContent = index + 1;
-      document.getElementById('question-text').textContent = q.q;
-
-      const optionsList = document.getElementById('options-list');
-      optionsList.innerHTML = '';
-
-      q.options.forEach((opt, i) => {
-        const el = document.createElement('div');
-        el.className = `option-item ${userAnswers[index] === i ? 'selected' : ''}`;
-        el.onclick = () => selectOption(i);
-        el.innerHTML = `
-          <input type="radio" name="opt" class="option-radio" ${userAnswers[index] === i ? 'checked' : ''}>
-          <span>${opt}</span>
-        `;
-        optionsList.appendChild(el);
-      });
-
-      // Update Nav Buttons
-      document.getElementById('prev-btn').disabled = index === 0;
-      const nextBtn = document.getElementById('next-btn');
-      if (index === questions.length - 1) {
-        nextBtn.textContent = 'Fullfør';
-        nextBtn.onclick = finishExam;
-      } else {
-        nextBtn.textContent = 'Neste';
-        nextBtn.onclick = nextQuestion;
-      }
-    }
-
-    function selectOption(optionIndex) {
-      userAnswers[currentQuestionIndex] = optionIndex;
-      // Re-render to update styling
-      loadQuestion(currentQuestionIndex);
-    }
-
-    function prevQuestion() {
-      if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        loadQuestion(currentQuestionIndex);
-      }
-    }
-
-    function nextQuestion() {
-      if (currentQuestionIndex < questions.length - 1) {
-        currentQuestionIndex++;
-        loadQuestion(currentQuestionIndex);
-      }
-    }
-
-    function startTimer() {
-      updateTimerDisplay();
-      timerInterval = setInterval(() => {
-        timeRemaining--;
-        updateTimerDisplay();
-        if (timeRemaining <= 0) {
-          finishExam();
-        }
-      }, 1000);
-    }
-
-    function updateTimerDisplay() {
-      const minutes = Math.floor(timeRemaining / 60);
-      const seconds = timeRemaining % 60;
-      document.getElementById('timer-display').textContent = 
-        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    function finishExam() {
-      // Check for unanswered questions
-      const unanswered = userAnswers.filter(a => a === null).length;
-      if (unanswered > 0) {
-        if (!confirm(`Du har ${unanswered} ubesvarte spørsmål. Er du sikker på at du vil levere?`)) {
-          return;
-        }
-      }
-
-      clearInterval(timerInterval);
-      
-      // Calculate Score
-      let score = 0;
-      questions.forEach((q, i) => {
-        if (userAnswers[i] === q.correct) score++;
-      });
-
-      // Show Results
-      document.getElementById('final-score').textContent = `${score}/${questions.length}`;
-      
-      const percentage = (score / questions.length) * 100;
-      let title = "Godt jobbet!";
-      let text = "Du har stålkontroll.";
-      
-      if (percentage < 40) {
-        title = "Prøv igjen!";
-        text = "Du trenger litt mer øving.";
-      } else if (percentage < 70) {
-        title = "Bra!";
-        text = "Du er på god vei, men kan bli enda bedre.";
-      } else if (percentage === 100) {
-        title = "Perfekt!";
-        text = "Alt riktig! Imponerende.";
-      }
-
-      document.getElementById('feedback-title').textContent = title;
-      document.getElementById('feedback-text').textContent = text;
-
-      // Generate Review
-      const reviewList = document.getElementById('review-list');
-      reviewList.innerHTML = '';
-      
-      questions.forEach((q, i) => {
-        const isCorrect = userAnswers[i] === q.correct;
-        const userAnswerText = userAnswers[i] !== null ? q.options[userAnswers[i]] : "Ingen svar";
-        const item = document.createElement('div');
-        item.className = `review-item ${isCorrect ? 'correct' : 'incorrect'}`;
+    <!-- Main Container -->
+    <main class="main-container">
         
-        item.innerHTML = `
-          <div class="review-question">${i + 1}. ${q.q}</div>
-          <div class="review-answer user">Ditt svar: ${userAnswerText}</div>
-          ${!isCorrect ? `<div class="review-answer correct-text">Riktig svar: ${q.options[q.correct]}</div>` : ''}
-        `;
-        reviewList.appendChild(item);
-      });
+        <!-- Subject Selection -->
+        <div class="subject-selection fade-in" id="subject-selection">
+            <div class="selection-header">
+                <h2>Velg eksamensfag</h2>
+                <p>Velg hvilket fag du vil øve på. Vi simulerer en ekte eksamenssituasjon med skriveoppgaver, utregninger og problemløsning. Du har 5 timer på deg.</p>
+            </div>
 
-      switchScreen('results');
-    }
+            <div class="subjects-grid">
+                <!-- Mathematics - Available -->
+                <div class="subject-card" onclick="selectSubject('matte')" id="card-matte">
+                    <div class="subject-icon">
+                        <span class="material-icons">calculate</span>
+                    </div>
+                    <h3>Matematikk</h3>
+                    <p>MAT0015 - 10. årstrinn<br>Full eksamen med del 1 og del 2</p>
+                </div>
 
-  </script>
+                <!-- Norwegian - Locked -->
+                <div class="subject-card locked" id="card-norsk">
+                    <div class="lock-badge">
+                        <span class="material-icons">lock</span>
+                        Kommer snart
+                    </div>
+                    <div class="subject-icon">
+                        <span class="material-icons">menu_book</span>
+                    </div>
+                    <h3>Norsk</h3>
+                    <p>NOR0010 - Hovedmål<br>Skriveoppgaver og tekstanalyse</p>
+                </div>
+
+                <!-- English - Locked -->
+                <div class="subject-card locked" id="card-engelsk">
+                    <div class="lock-badge">
+                        <span class="material-icons">lock</span>
+                        Kommer snart
+                    </div>
+                    <div class="subject-icon">
+                        <span class="material-icons">language</span>
+                    </div>
+                    <h3>Engelsk</h3>
+                    <p>ENG0010 - Internasjonal engelsk<br>Lese- og skriveferdigheter</p>
+                </div>
+            </div>
+
+            <div class="exam-info">
+                <div class="info-item">
+                    <span class="material-icons">schedule</span>
+                    <div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Varighet</div>
+                        <span>5 timer</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons">assignment</span>
+                    <div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Oppgaver</div>
+                        <span>6 oppgaver (2 flervalgs, 4 skrive)</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons">help_outline</span>
+                    <div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Hjelpemidler</div>
+                        <span>Tillatt etter del 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" id="start-btn" onclick="startExam()" disabled>
+                Start eksamen
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+
+        <!-- Exam Interface -->
+        <div class="exam-interface" id="exam-interface">
+            <div class="exam-header">
+                <h2>VGS-hjelp sin eksamen (2026) - Matematikk</h2>
+                <div class="exam-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Fagkode</span>
+                        <span class="meta-value">MAT0015</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Dato</span>
+                        <span class="meta-value">21. mai 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tid</span>
+                        <span class="meta-value">09:00 - 14:00 (5 timer)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Del</span>
+                        <span class="meta-value">Del 1 og 2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-content">
+                <!-- Task 1 -->
+                <div class="task" data-task="1" data-type="multiple">
+                    <div class="task-header">
+                        <div class="task-number">1</div>
+                        <h3 class="task-title">Helltunnelen utenfor Trondheim er 4 km lang. En bil kjører i 80 km/h gjennom tunnelen. Hvor lang tid vil bilen bruke gjennom tunnelen?</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="multiple-choice">
+                            <div class="choice-option" onclick="selectChoice(this, 'A')">
+                                <input type="radio" name="task1" value="A" id="t1a">
+                                <label for="t1a">2 minutter</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'B')">
+                                <input type="radio" name="task1" value="B" id="t1b">
+                                <label for="t1b">3 minutter</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'C')">
+                                <input type="radio" name="task1" value="C" id="t1c">
+                                <label for="t1c">5 minutter</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'D')">
+                                <input type="radio" name="task1" value="D" id="t1d">
+                                <label for="t1d">20 minutter</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="task" data-task="2" data-type="calculation">
+                    <div class="task-header">
+                        <div class="task-number">2</div>
+                        <h3 class="task-title">Figurene nedenfor viser de tre første figurene i et mønster. Figurene er satt sammen av trekanter og firkanter.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text">
+                            <p>Figur 1 har 4 trekanter og 1 firkant.<br>
+                            Figur 2 har 6 trekanter og 2 firkanter.<br>
+                            Figur 3 har 8 trekanter og 3 firkanter.</p>
+                        </div>
+                        
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit</span>
+                            a) Hvor mange trekanter og firkanter vil det være i figur nr. 10?
+                        </div>
+                        
+                        <div class="calculation-box">
+                            <label>Trekanter:</label>
+                            <input type="number" class="calculation-input" id="task2a-triangles" placeholder="Skriv ditt svar...">
+                        </div>
+                        
+                        <div class="calculation-box" style="margin-top: 1rem;">
+                            <label>Firkanter:</label>
+                            <input type="number" class="calculation-input" id="task2a-squares" placeholder="Skriv ditt svar...">
+                        </div>
+
+                        <div class="task-subtitle" style="margin-top: 2rem;">
+                            <span class="material-icons">functions</span>
+                            b) Lag en formel for antall trekanter i figur n.
+                        </div>
+                        
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task2b-formula" placeholder="Beskriv formelen og forklar hvordan du kom frem til den..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="task" data-task="3" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">3</div>
+                        <h3 class="task-title">Bruk figuren og samtalen mellom de to jentene nedenfor til å utforske og finne sammenhenger.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text">
+                            <p>I et 5×5 rutenett merker vi ut et 2×2 kvadrat. To jenter undersøker et mønster:</p>
+                            <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px; font-style: italic;">
+                                "Jeg tok det røde kvadratet, multipliserte 13 med 17 og 12 med 18. Da jeg trakk det laveste produktet fra det høyeste, fikk jeg differansen 5."
+                            </p>
+                            <p style="margin-top: 0.5rem; padding: 1rem; background: var(--bg-light); border-radius: 8px; font-style: italic;">
+                                "Jeg tok det blå kvadratet, multipliserte 5 med 9 og 4 med 10. Da jeg trakk det laveste produktet fra det høyeste, fikk jeg også differansen 5."
+                            </p>
+                        </div>
+
+                        <div class="task-subtitle">
+                            <span class="material-icons">psychology</span>
+                            Er det mulig å finne en generell sammenheng?
+                        </div>
+
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task3-answer" placeholder="Beskriv mønsteret du finner. Bruk algebra og hensiktsmessige representasjoner. Vis utregninger og forklaringer..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 4 -->
+                <div class="task" data-task="4" data-type="multiple">
+                    <div class="task-header">
+                        <div class="task-number">4</div>
+                        <h3 class="task-title">Trine beskriver grafen til en funksjon: "Grafen er en rett linje. Grafen skjærer y-aksen i 2."</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text">
+                            <p>Hvilket av funksjonsuttrykkene nedenfor passer til Trines beskrivelse?</p>
+                        </div>
+                        
+                        <div class="multiple-choice">
+                            <div class="choice-option" onclick="selectChoice(this, 'A')">
+                                <input type="radio" name="task4" value="A" id="t4a">
+                                <label for="t4a"><span class="formula">y = x² + 2</span></label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'B')">
+                                <input type="radio" name="task4" value="B" id="t4b">
+                                <label for="t4b"><span class="formula">y = 2x + 1</span></label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'C')">
+                                <input type="radio" name="task4" value="C" id="t4c">
+                                <label for="t4c"><span class="formula">y = 2/x</span></label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'D')">
+                                <input type="radio" name="task4" value="D" id="t4d">
+                                <label for="t4d"><span class="formula">y = x + 2</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 5 -->
+                <div class="task" data-task="5" data-type="graph">
+                    <div class="task-header">
+                        <div class="task-number">5</div>
+                        <h3 class="task-title">Eirik har laget en graf som viser sammenhengen mellom euro og norske kroner.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="graph-container">
+                            <div class="graph-axis"></div>
+                            <div class="graph-axis-x"></div>
+                            <div class="graph-line"></div>
+                            <span class="axis-label" style="bottom: 22%; left: 5%;">0</span>
+                            <span class="axis-label" style="bottom: 22%; right: 8%;">Euro →</span>
+                            <span class="axis-label" style="top: 15%; left: 5%;">NOK ↑</span>
+                        </div>
+
+                        <div class="task-text">
+                            <p>Grafen er en rett linje gjennom origo. Ved 100 euro tilsvarer det 1027 norske kroner.</p>
+                        </div>
+
+                        <div class="task-subtitle">
+                            <span class="material-icons">functions</span>
+                            Funksjonsuttrykket til grafen er <span class="formula">y = 10,27x</span>
+                        </div>
+
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit_note</span>
+                            Gi en forklaring på funksjonsuttrykket, der du forklarer hva 10,27 og x betyr i denne sammenhengen.
+                        </div>
+
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task5-answer" placeholder="Forklar hva som skjer når x øker med 1, hva skjer med y? Hva representerer tallene i den praktiske situasjonen?"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 6 -->
+                <div class="task" data-task="6" data-type="modeling">
+                    <div class="task-header">
+                        <div class="task-number">6</div>
+                        <h3 class="task-title">Anne er 15 år, og ønsker å ta førerkort for moped. Hun skal kjøpe moped når hun blir 16 år. Hun planlegger å selge den når hun blir 18 år.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text">
+                            <p><strong>Obligatorisk opplæring:</strong> Samlet pris: kr 8 800 (inkludert 3 kjøretimer)<br>
+                            <strong>Gebyr førerkort moped:</strong> kr 1 150<br>
+                            <strong>Moped:</strong> Peugeot Speedfight 4 Pure - Pris: kr 16 000<br>
+                            <strong>Forsikring:</strong> ca. kr 3 000 per år</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Tilleggsinformasjon:</strong></p>
+                            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                <li>Verditapet til en ny moped er 25-30% det første året, 20% det andre året og så 10% per år.</li>
+                                <li>Mopeden bruker ca. 1/3 L bensin per mil.</li>
+                                <li>En liter bensin koster ca. kr 15.</li>
+                                <li>Anne bor 2 km fra skolen og fra fotballbanen.</li>
+                                <li>Anne har liten erfaring med moped, så hun trenger trolig flere kjøretimer.</li>
+                            </ul>
+                        </div>
+
+                        <div class="task-subtitle">
+                            <span class="material-icons">lightbulb</span>
+                            Bruk opplysningene ovenfor til å vise din kompetanse innen modellering og anvendelse.
+                        </div>
+
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task6-answer" placeholder="Still relevante matematiske spørsmål, lag modeller, gjør beregninger og vurder gyldighet og avgrensninger. Husk å vise fremgangsmåter og resonnementer..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <div class="submit-warning">
+                    <span class="material-icons">warning</span>
+                    <span>Når du leverer kan du ikke gå tilbake. Sjekk at alle oppgaver er besvart.</span>
+                </div>
+                <button class="btn-primary" onclick="submitExam()">
+                    <span class="material-icons">check_circle</span>
+                    Lever eksamen
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Interface -->
+        <div class="results-interface" id="results-interface">
+            <div class="results-header">
+                <h2>Eksamen er levert!</h2>
+                <div class="score-display" id="score-display">4/6</div>
+                <div class="score-label">oppgaver besvart tilfredsstillende</div>
+            </div>
+
+            <div class="results-content">
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Her ser du en gjennomgang av dine svar med fasit og begrunnelser. 
+                    Husk at på en skriftlig eksamen vurderes også fremgangsmåte, resonnement og kommunikasjon.
+                </p>
+
+                <!-- Task 1 Result -->
+                <div class="result-task correct" data-result="1">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgave 1 - Tidsberegning</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content">3 minutter</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">3 minutter (B)</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Begrunnelse
+                                </div>
+                                <p>Tid = Avstand / Hastighet = 4 km / 80 km/t = 0,05 timer = 3 minutter. 
+                                Husk å konvertere timer til minutter ved å multiplisere med 60.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 2 Result -->
+                <div class="result-task partial" data-result="2">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--warning-orange);">adjust</span>
+                            <strong>Oppgave 2 - Figurmønster</strong>
+                        </div>
+                        <div class="result-status partial">
+                            <span class="material-icons">remove</span>
+                            Delvis riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content">
+                                a) Trekanter: <span id="res2-tri">22</span>, Firkanter: <span id="res2-sq">10</span><br>
+                                b) <span id="res2-form">2n + 2</span>
+                            </div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">
+                                a) Trekanter: 22, Firkanter: 10<br>
+                                b) Antall trekanter = 2n + 2 (eller ekvivalent)
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Begrunnelse
+                                </div>
+                                <p><strong>a)</strong> Mønsteret for trekanter: 4, 6, 8... øker med 2 hver gang. Dette er en aritmetisk følge. 
+                                For figur 10: 4 + 2·(10-1) = 4 + 18 = 22 trekanter. Firkanter følger figur nummer: 10 firkanter.</p>
+                                <p style="margin-top: 0.5rem;"><strong>b)</strong> Formelen kan utledes ved å se at for figur n: 
+                                Startverdi 4, økning på 2 per steg: T(n) = 4 + 2(n-1) = 2n + 2.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 3 Result -->
+                <div class="result-task" data-result="3" id="res3-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgave 3 - Algebraisk mønster</strong>
+                        </div>
+                        <div class="result-status" id="res3-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res3-ans" style="white-space: pre-wrap;">[Ditt resonnement]</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Fasit og veiledende vurdering
+                                </div>
+                                <p><strong>Generell sammenheng:</strong> For et 2×2 kvadrat i et rutenett med påfølgende tall, 
+                                er differansen alltid lik avstanden mellom radene (som er 5 i et 5×5 rutenett).</p>
+                                <p style="margin-top: 0.5rem;"><strong>Algebraisk bevis:</strong> La øvre venstre hjørne være n. 
+                                Da er hjørnene: n, n+1, n+5, n+6. 
+                                Produkt av diagonaler: n(n+6) = n² + 6n og (n+1)(n+5) = n² + 6n + 5. 
+                                Differansen er alltid 5.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Vurdering:</strong> Se etter om eleven har:
+                                    <br>• Systematisk undersøkt flere eksempler
+                                    <br>• Formulert en hypotese
+                                    <br>• Brukt algebra for å bevise/generalisiere
+                                    <br>• Kommunisert resonnementet tydelig
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 4 Result -->
+                <div class="result-task correct" data-result="4">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgave 4 - Lineær funksjon</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content">y = x + 2</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">y = x + 2 (D)</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Begrunnelse
+                                </div>
+                                <p>En rett linje som skjærer y-aksen i 2 må ha konstantledd 2 (y = ... + 2). 
+                                Alternativ D er den eneste lineære funksjonen (grad 1) med dette konstantleddet. 
+                                A er kvadratisk (parabel), B skjærer i 1, C er hyperbel (ikke lineær).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 5 Result -->
+                <div class="result-task" data-result="5" id="res5-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgave 5 - Proportionalitet</strong>
+                        </div>
+                        <div class="result-status" id="res5-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res5-ans" style="white-space: pre-wrap;">[Din forklaring]</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Fasit og veiledende vurdering
+                                </div>
+                                <p><strong>x</strong> representerer antall euro (den uavhengige variabelen/input).<br>
+                                <strong>10,27</strong> er vekstfaktoren/stigningstallet som forteller hvor mange norske kroner 
+                                man får for 1 euro (kursen).<br>
+                                <strong>y</strong> er antall norske kroner (den avhengige variabelen/output).</p>
+                                <p style="margin-top: 0.5rem;">Når x øker med 1 (1 euro mer), øker y med 10,27 (10,27 kroner mer). 
+                                Dette er en proporsjonal sammenheng (rett linje gjennom origo).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 6 Result -->
+                <div class="result-task" data-result="6" id="res6-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgave 6 - Modellering (moped)</strong>
+                        </div>
+                        <div class="result-status" id="res6-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res6-ans" style="white-space: pre-wrap;">[Din modellering]</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Veiledende fasit - Viktige elementer
+                                </div>
+                                <p><strong>Relevante spørsmål å undersøke:</strong></p>
+                                <ul style="margin-left: 1.5rem; margin: 0.5rem 0;">
+                                    <li>Hva blir totale kostnader for 2 år?</li>
+                                    <li>Hva blir salgsverdien etter 2 år?</li>
+                                    <li>Hva koster drivstoffet per år?</li>
+                                    <li>Lønner det seg økonomisk?</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem;"><strong>Eksempel på beregninger:</strong><br>
+                                • Verditap år 1: 25% av 16 000 = 4 000 kr → verdi 12 000 kr<br>
+                                • Verditap år 2: 20% av 12 000 = 2 400 kr → salgsverdi 9 600 kr<br>
+                                • Totale kostnader: 8 800 + 1 150 + (16 000 - 9 600) + 6 000 (forsikring) + drivstoff<br>
+                                • Drivstoff: 2 km × 2 turer × 190 skoledager × 2 år = 1 520 km ≈ 507 L ≈ 7 605 kr</p>
+                                <p style="margin-top: 0.5rem;"><strong>Vurdering:</strong> Sensor vektlegger evne til å stille relevante spørsmål, 
+                                lage hensiktsmessige modeller, gjøre kritiske vurderinger av forutsetninger, og kommunisere tydelig.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 12px; text-align: center;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Tips til videre øving</h3>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                        På en ekte eksamen vurderes ikke bare svaret, men også hvordan du kommer frem til det. 
+                        Øv på å forklare tankegangen din tydelig, bruke riktig fagspråk, og vurdere om svarene dine er rimelige.
+                    </p>
+                    <button class="btn-primary" onclick="location.reload()" style="margin-top: 1.5rem;">
+                        <span class="material-icons">refresh</span>
+                        Prøv igjen
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let selectedSubject = null;
+        let examData = {
+            task1: null,
+            task2a_triangles: null,
+            task2a_squares: null,
+            task2b: null,
+            task3: null,
+            task4: null,
+            task5: null,
+            task6: null
+        };
+
+        // Calculate delivery time (5 hours from now, rounded to nearest hour)
+        function setDeliveryTime() {
+            const now = new Date();
+            now.setHours(now.getHours() + 5);
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = '00';
+            document.getElementById('delivery-time').textContent = `${hours}:${minutes}`;
+        }
+
+        // Subject selection
+        function selectSubject(subject) {
+            if (subject === 'matte') {
+                selectedSubject = subject;
+                document.querySelectorAll('.subject-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                document.getElementById('card-matte').classList.add('selected');
+                document.getElementById('start-btn').disabled = false;
+            }
+        }
+
+        // Start exam
+        function startExam() {
+            if (!selectedSubject) return;
+            
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('exam-interface').style.display = 'block';
+            document.getElementById('exam-interface').classList.add('fade-in');
+            
+            document.getElementById('step-1').classList.remove('active');
+            document.getElementById('step-1').classList.add('completed');
+            document.getElementById('step-2').classList.add('active');
+            
+            setDeliveryTime();
+        }
+
+        // Multiple choice selection
+        function selectChoice(element, value) {
+            const task = element.closest('.task');
+            const taskNum = task.dataset.task;
+            const options = task.querySelectorAll('.choice-option');
+            
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            const radio = element.querySelector('input[type="radio"]');
+            radio.checked = true;
+            
+            examData[`task${taskNum}`] = value;
+        }
+
+        // Submit exam
+        function submitExam() {
+            // Collect all answers
+            examData.task2a_triangles = document.getElementById('task2a-triangles').value;
+            examData.task2a_squares = document.getElementById('task2a-squares').value;
+            examData.task2b = document.getElementById('task2b-formula').value;
+            examData.task3 = document.getElementById('task3-answer').value;
+            examData.task5 = document.getElementById('task5-answer').value;
+            examData.task6 = document.getElementById('task6-answer').value;
+
+            // Show results
+            document.getElementById('exam-interface').style.display = 'none';
+            document.getElementById('results-interface').style.display = 'block';
+            document.getElementById('results-interface').classList.add('fade-in');
+            
+            document.getElementById('step-2').classList.remove('active');
+            document.getElementById('step-2').classList.add('completed');
+            document.getElementById('step-3').classList.add('active');
+
+            // Populate results with user answers
+            document.getElementById('res2-tri').textContent = examData.task2a_triangles || '[Ikke besvart]';
+            document.getElementById('res2-sq').textContent = examData.task2a_squares || '[Ikke besvart]';
+            document.getElementById('res2-form').textContent = examData.task2b || '[Ikke besvart]';
+            document.getElementById('res3-ans').textContent = examData.task3 || '[Ikke besvart]';
+            document.getElementById('res5-ans').textContent = examData.task5 || '[Ikke besvart]';
+            document.getElementById('res6-ans').textContent = examData.task6 || '[Ikke besvart]';
+
+            // Update status for text tasks based on if they were answered
+            updateTextTaskStatus(3, examData.task3, 'res3-task', 'res3-status');
+            updateTextTaskStatus(5, examData.task5, 'res5-task', 'res5-status');
+            updateTextTaskStatus(6, examData.task6, 'res6-task', 'res6-status');
+
+            // Calculate score
+            let score = 0;
+            if (examData.task1 === 'B') score++;
+            if (examData.task4 === 'D') score++;
+            if (examData.task2a_triangles === '22') score += 0.5;
+            if (examData.task2a_squares === '10') score += 0.5;
+            
+            // Text tasks count as 1 each if answered
+            if (examData.task3 && examData.task3.length > 50) score++;
+            if (examData.task5 && examData.task5.length > 30) score++;
+            if (examData.task6 && examData.task6.length > 100) score++;
+
+            document.getElementById('score-display').textContent = Math.round(score) + '/6';
+        }
+
+        function updateTextTaskStatus(taskNum, answer, taskId, statusId) {
+            const taskEl = document.getElementById(taskId);
+            const statusEl = document.getElementById(statusId);
+            
+            if (answer && answer.length > (taskNum === 6 ? 100 : 30)) {
+                taskEl.classList.add('correct');
+                statusEl.classList.add('correct');
+                statusEl.innerHTML = '<span class="material-icons">check</span> Besvart';
+            } else if (answer && answer.length > 0) {
+                taskEl.classList.add('partial');
+                statusEl.classList.add('partial');
+                statusEl.innerHTML = '<span class="material-icons">remove</span> Kort svar';
+            } else {
+                taskEl.classList.add('incorrect');
+                statusEl.classList.add('incorrect');
+                statusEl.innerHTML = '<span class="material-icons">close</span> Ikke besvart';
+            }
+        }
+
+        // Toggle result details
+        function toggleResult(header) {
+            const details = header.nextElementSibling;
+            details.classList.toggle('expanded');
+        }
+
+        // Initialize
+        setDeliveryTime();
+    </script>
 </body>
 </html>

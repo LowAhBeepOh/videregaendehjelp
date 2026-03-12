@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VGS-basics Quiz – Videregående Hjelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ef5350;
+      --primary-dark: #b71c1c;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface-light: #f5f5f5;
+      --text: #212121;
+      --text-muted: #757575;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+      --success: #4caf50;
+      --error: #f44336;
+      --warning: #ff9800;
+    }
+
+    [data-theme="dark"] {
+      --primary: #ff5252;
+      --primary-light: #ff7070;
+      --primary-dark: #d32f2f;
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --surface-light: #2a2a2a;
+      --text: #ffffff;
+      --text-muted: #b0b0b0;
+      --border: #333333;
+      --shadow: 0 2px 8px rgba(0,0,0,0.30);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .quiz-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .quiz-header h1 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .quiz-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--surface-light);
+      border-radius: 4px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .question-counter {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .question {
+      margin-bottom: 32px;
+    }
+
+    .question h2 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option {
+      padding: 16px 20px;
+      background: var(--surface-light);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .option:hover {
+      border-color: var(--primary-light);
+      background: var(--surface);
+    }
+
+    .option.selected {
+      border-color: var(--primary);
+      background: rgba(211, 47, 47, 0.1);
+    }
+
+    .option.correct {
+      border-color: var(--success);
+      background: rgba(76, 175, 80, 0.1);
+    }
+
+    .option.incorrect {
+      border-color: var(--error);
+      background: rgba(244, 67, 54, 0.1);
+    }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .option.selected .option-letter {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .option.correct .option-letter {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+
+    .option.incorrect .option-letter {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+
+    .quiz-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--surface-light);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .results {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .results h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .score {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 24px;
+      font-family: 'Inter Tight', sans-serif;
+    }
+
+    .results p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .result-message {
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .result-message.excellent {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .result-message.good {
+      background: rgba(255, 152, 0, 0.1);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .result-message.needs-work {
+      background: rgba(244, 67, 54, 0.1);
+      color: var(--error);
+      border: 1px solid var(--error);
+    }
+
+    .feedback {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.correct {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success);
+    }
+
+    .feedback.incorrect {
+      background: rgba(244, 67, 54, 0.1);
+      color: var(--error);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-container {
+        padding: 24px;
+      }
+
+      .quiz-header h1 {
+        font-size: 24px;
+      }
+
+      .question h2 {
+        font-size: 20px;
+      }
+
+      .option {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .quiz-actions {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="../interactives.html" class="back-btn">
+        <span class="material-icons">arrow_back</span>
+        Tilbake til interaktivt
+      </a>
+      <a href="/" class="logo">Videregående Hjelp</a>
+    </header>
+
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h1>VGS-basics Quiz</h1>
+        <p>Test din kunnskap om grunnleggende spørsmål om videregående skole</p>
+      </div>
+
+      <div id="quizContent">
+        <!-- Quiz content will be dynamically inserted here -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const quizData = [
+      {
+        question: "Hvor mange år varer vanligvis videregående opplæring i Norge?",
+        options: ["2 år", "3 år", "4 år", "5 år"],
+        correct: 1,
+        feedback: "Videregående opplæring i Norge varer normalt 3 år, men kan variere avhengig av utdanningsprogram."
+      },
+      {
+        question: "Hvilket av disse er ikke et studieforberedende utdanningsprogram?",
+        options: ["Studiespesialisering", "Eiendomsmegler", "Musikk, dans og drama", "Idrettsfag"],
+        correct: 1,
+        feedback: "Eiendomsmegler er et yrkesfaglig utdanningsprogram, ikke studieforberedende."
+      },
+      {
+        question: "Hva kalles det første året på videregående?",
+        options: ["Vg1", "Klasse 10", "1. videregående", "Grunnkurs"],
+        correct: 0,
+        feedback: "Første året på videregående kalles Vg1 (videregående trinn 1)."
+      },
+      {
+        question: "Hvilken karakter er den beste i det norske karaktersystemet?",
+        options: ["5", "6", "A", "M"],
+        correct: 1,
+        feedback: "I det norske karaktersystemet er 6 den beste karakteren, mens 1 er dårligst."
+      },
+      {
+        question: "Hva er formålet med fagbrev?",
+        options: ["Å komme inn på universitetet", "Å dokumentere faglig kompetanse", "Å få bedre karakterer", "Å slippe eksamen"],
+        correct: 1,
+        feedback: "Fagbrev dokumenterer at man har oppnådd faglig kompetanse innen et yrke."
+      },
+      {
+        question: "Hvilket fag er obligatorisk for alle på studieforberedende programmer?",
+        options: ["Matematikk", "Samfunnsfag", "Norsk", "Biologi"],
+        correct: 2,
+        feedback: "Norsk er obligatorisk fag for alle elever på videregående skole."
+      },
+      {
+        question: "Hva betyr forkortelsen 'Vg'?",
+        options: ["Videregående", "Viktig grunnlag", "Vekst og utvikling", "Verdifull kunnskap"],
+        correct: 0,
+        feedback: "Vg står for 'videregående', som i Vg1, Vg2 og Vg3."
+      },
+      {
+        question: "Hvor mange timer har en vanlig skoledag på videregående?",
+        options: ["4-5 timer", "6-7 timer", "8-9 timer", "10 timer"],
+        correct: 0,
+        feedback: "En vanlig skoledag på videregående varer vanligvis 4-5 timer, inkludusive pauser."
+      },
+      {
+        question: "Hva er hovedforskjellen mellom yrkesfag og studieforberedende?",
+        options: ["Karakterkrav", "Skolepengar", "Målsetting etter videregående", "Antall fag"],
+        correct: 2,
+        feedback: "Hovedforskjellen er målsettingen: yrkesfag forbereder til arbeidslivet, studieforberedende til høyere utdanning."
+      },
+      {
+        question: "Når tar vanligvis elever på studieforberedende program eksamen?",
+        options: ["Hvert år", "Bare siste året", "Bare første året", "Aldri"],
+        correct: 0,
+        feedback: "På studieforberedende programmer tar elever eksamen hvert år i sentrale fag."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let selectedOption = null;
+    let quizCompleted = false;
+
+    function initQuiz() {
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const quizContent = document.getElementById('quizContent');
+      const question = quizData[currentQuestion];
+      
+      quizContent.innerHTML = `
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${(currentQuestion / quizData.length) * 100}%"></div>
+        </div>
+        
+        <div class="question-counter">
+          Spørsmål ${currentQuestion + 1} av ${quizData.length}
+        </div>
+        
+        <div class="question">
+          <h2>${question.question}</h2>
+          <div class="options">
+            ${question.options.map((option, index) => `
+              <div class="option" onclick="selectOption(${index})">
+                <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                <span>${option}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="feedback" id="feedback"></div>
+        </div>
+        
+        <div class="quiz-actions">
+          <button class="btn btn-secondary" onclick="previousQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>
+            <span class="material-icons">arrow_back</span>
+            Forrige
+          </button>
+          <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" disabled>
+            Neste
+            <span class="material-icons">arrow_forward</span>
+          </button>
+        </div>
+      `;
+    }
+
+    function selectOption(index) {
+      if (quizCompleted) return;
+      
+      selectedOption = index;
+      const options = document.querySelectorAll('.option');
+      const feedback = document.getElementById('feedback');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      options.forEach((option, i) => {
+        option.classList.remove('selected', 'correct', 'incorrect');
+        if (i === index) {
+          option.classList.add('selected');
+        }
+      });
+      
+      // Show feedback
+      const question = quizData[currentQuestion];
+      feedback.textContent = question.feedback;
+      feedback.className = 'feedback show ' + (index === question.correct ? 'correct' : 'incorrect');
+      
+      // Mark correct answer
+      if (index !== question.correct) {
+        options[question.correct].classList.add('correct');
+      }
+      
+      // Update score
+      if (index === question.correct) {
+        score++;
+      }
+      
+      nextBtn.disabled = false;
+    }
+
+    function nextQuestion() {
+      if (selectedOption === null) return;
+      
+      currentQuestion++;
+      selectedOption = null;
+      
+      if (currentQuestion >= quizData.length) {
+        showResults();
+      } else {
+        showQuestion();
+      }
+    }
+
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        selectedOption = null;
+        showQuestion();
+      }
+    }
+
+    function showResults() {
+      quizCompleted = true;
+      const quizContent = document.getElementById('quizContent');
+      const percentage = Math.round((score / quizData.length) * 100);
+      
+      let resultMessage = '';
+      let messageClass = '';
+      
+      if (percentage >= 80) {
+        resultMessage = 'Fantastisk! Du kan mye om videregående skole!';
+        messageClass = 'excellent';
+      } else if (percentage >= 60) {
+        resultMessage = 'Bra jobbet! Du har god kunnskap, men det er fortsatt mer å lære.';
+        messageClass = 'good';
+      } else {
+        resultMessage = 'Du har fortsatt mye å lære om videregående skole. Fortsett å øve!';
+        messageClass = 'needs-work';
+      }
+      
+      quizContent.innerHTML = `
+        <div class="results">
+          <h2>Quiz fullført!</h2>
+          <div class="score">${score}/${quizData.length}</div>
+          <div class="result-message ${messageClass}">${resultMessage}</div>
+          <p>Du svarte riktig på ${percentage}% av spørsmålene.</p>
+          <button class="btn btn-primary" onclick="restartQuiz()">
+            <span class="material-icons">refresh</span>
+            Start quiz på nytt
+          </button>
+        </div>
+      `;
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      selectedOption = null;
+      quizCompleted = false;
+      showQuestion();
+    }
+
+    // Initialize quiz when page loads
+    document.addEventListener('DOMContentLoaded', initQuiz);
+  </script>
+</body>
+</html>

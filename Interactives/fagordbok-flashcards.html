@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fagordbok Flashcards – Videregående Hjelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ef5350;
+      --primary-dark: #b71c1c;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface-light: #f5f5f5;
+      --text: #212121;
+      --text-muted: #757575;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    [data-theme="dark"] {
+      --primary: #ff5252;
+      --primary-light: #ff7070;
+      --primary-dark: #d32f2f;
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --surface-light: #2a2a2a;
+      --text: #ffffff;
+      --text-muted: #b0b0b0;
+      --border: #333333;
+      --shadow: 0 2px 8px rgba(0,0,0,0.30);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .flashcard-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .flashcard-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .flashcard-header h1 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .flashcard-header p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .subject-selector {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .subject-btn {
+      padding: 8px 16px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .subject-btn:hover {
+      border-color: var(--primary);
+    }
+
+    .subject-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .flashcard-wrapper {
+      perspective: 1000px;
+      margin-bottom: 40px;
+    }
+
+    .flashcard {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .flashcard-front {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+    }
+
+    .flashcard-back {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      color: var(--text);
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-term {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .flashcard-hint {
+      font-size: 16px;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    .flashcard-definition {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .flashcard-example {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .flashcard-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .control-btn {
+      padding: 12px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .control-btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .control-btn.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--surface-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .flip-hint {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: var(--surface-light);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .completion-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .completion-modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-content h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .modal-content p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .flashcard-container {
+        padding: 24px;
+      }
+
+      .flashcard-header h1 {
+        font-size: 24px;
+      }
+
+      .flashcard {
+        height: 300px;
+      }
+
+      .flashcard-term {
+        font-size: 24px;
+      }
+
+      .flashcard-definition {
+        font-size: 16px;
+      }
+
+      .flashcard-controls {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .control-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="../interactives.html" class="back-btn">
+        <span class="material-icons">arrow_back</span>
+        Tilbake til interaktivt
+      </a>
+      <a href="/" class="logo">Videregående Hjelp</a>
+    </header>
+
+    <div class="flashcard-container">
+      <div class="flashcard-header">
+        <h1>Fagordbok Flashcards</h1>
+        <p>Lær viktige termer og konsepter fra ulike fag</p>
+      </div>
+
+      <div class="subject-selector">
+        <button class="subject-btn active" onclick="selectSubject('norsk')">Norsk</button>
+        <button class="subject-btn" onclick="selectSubject('matte')">Matematikk</button>
+        <button class="subject-btn" onclick="selectSubject('samfunnsfag')">Samfunnsfag</button>
+        <button class="subject-btn" onclick="selectSubject('biologi')">Biologi</button>
+        <button class="subject-btn" onclick="selectSubject('kjemi')">Kjemi</button>
+        <button class="subject-btn" onclick="selectSubject('fysikk')">Fysikk</button>
+      </div>
+
+      <div class="progress-info">
+        <span>Kort <span id="currentCard">1</span> av <span id="totalCards">10</span></span>
+        <span>Fag: <span id="currentSubject">Norsk</span></span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+      </div>
+
+      <div class="flashcard-wrapper">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+          <div class="flashcard-face flashcard-front">
+            <div class="flashcard-term" id="termTerm">Metafor</div>
+            <div class="flashcard-hint">Klikk for å se definisjon</div>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-definition" id="termDefinition">Et billedlig uttrykk der noe beskrives som noe annet for å skape en assosiasjon eller sammenligning.</div>
+            <div class="flashcard-example" id="termExample">Eksempel: "Hun er en solstråle i klasserommet."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button class="control-btn" onclick="previousCard()">
+          <span class="material-icons">arrow_back</span>
+          Forrige
+        </button>
+        <button class="control-btn primary" onclick="flipCard()">
+          <span class="material-icons">flip</span>
+          Snu kort
+        </button>
+        <button class="control-btn" onclick="nextCard()">
+          Neste
+          <span class="material-icons">arrow_forward</span>
+        </button>
+      </div>
+
+      <div class="flip-hint">
+        <span class="material-icons">touch_app</span>
+        Klikk på kortet for å snu det
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-number" id="cardsStudied">0</div>
+          <div class="stat-label">Kort studert</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="subjectsCompleted">0</div>
+          <div class="stat-label">Fag fullført</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="studyTime">0</div>
+          <div class="stat-label">Minutter brukt</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="completion-modal" id="completionModal">
+    <div class="modal-content">
+      <h2>Gratulerer! 🎉</h2>
+      <p>Du har fullført alle kortene i <span id="completedSubject">Norsk</span>!</p>
+      <button class="control-btn primary" onclick="closeModal()">
+        Fortsett til neste fag
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const flashcards = {
+      norsk: [
+        {
+          term: "Metafor",
+          definition: "Et billedlig uttrykk der noe beskrives som noe annet for å skape en assosiasjon eller sammenligning.",
+          example: "Eksempel: 'Hun er en solstråle i klasserommet.'"
+        },
+        {
+          term: "Simile",
+          definition: "En direkte sammenligning mellom to ting ved hjelp av ord som 'som' eller 'likt'.",
+          example: "Eksempel: 'Hun løper som vinden.'"
+        },
+        {
+          term: "Personifikasjon",
+          definition: "Å gi menneskelige egenskaper til dyr, gjenstander eller abstrakte ideer.",
+          example: "Eksempel: 'Vinden hvisket gjennom trærne.'"
+        },
+        {
+          term: "Ironi",
+          definition: "Å si det motsatte av det man mener, ofte for å være humoristisk eller kritisk.",
+          example: "Eksempel: 'Så flott vær!' når det pøser ned."
+        },
+        {
+          term: "Symbol",
+          definition: "Noe som representerer en større idé eller et konsept utover sin bokstavelige betydning.",
+          example: "Eksempel: En due er et symbol for fred."
+        },
+        {
+          term: "Alliterasjon",
+          definition: "Gjentakelse av samme lydd eller bokstav i begynnelsen av ord som står nær hverandre.",
+          example: "Eksempel: 'Vakkert vær varmer velvillige vener.'"
+        },
+        {
+          term: "Rim",
+          definition: "Likhet i lyd mellom ord, spesielt på slutten av verslinjer.",
+          example: "Eksempel: 'Hjem og kjem'"
+        },
+        {
+          term: "Rytme",
+          definition: "Mønster av betoning og pauser i dikt eller prosa.",
+          example: "Eksempel: Takten i en sang eller et dikt."
+        },
+        {
+          term: "Hyperbol",
+          definition: "En overdreven påstand eller fremstilling som ikke er ment å tas bokstavelig.",
+          example: "Eksempel: 'Jeg er så sulten at jeg kunne spist en hest.'"
+        },
+        {
+          term: "Eufemisme",
+          definition: "En mildere eller mindre direkte måte å si noe ubehagelig på.",
+          example: "Eksempel: 'Han har gått bort' i stedet for 'han er død'."
+        }
+      ],
+      matte: [
+        {
+          term: "Derivasjon",
+          definition: "Prosessen med å finne den momentane endringsraten til en funksjon, også kalt å derivere.",
+          example: "Eksempel: Derivasjonen av x² er 2x."
+        },
+        {
+          term: "Integral",
+          definition: "Motsatsen til derivasjon; brukes til å finne arealet under en kurve.",
+          example: "Eksempel: Integralet av 2x er x² + C."
+        },
+        {
+          term: "Funksjon",
+          definition: "En regel som tilordner hvert element i en mengde nøyaktig ett element i en annen mengde.",
+          example: "Eksempel: f(x) = 2x + 3"
+        },
+        {
+          term: "Likning",
+          definition: "En matematisk setning som uttrykker likhet mellom to uttrykk.",
+          example: "Eksempel: 2x + 5 = 15"
+        },
+        {
+          term: "Ulikhet",
+          definition: "En matematisk setning som sammenligner to uttrykk med <, >, ≤ eller ≥.",
+          example: "Eksempel: x > 5"
+        },
+        {
+          term: "Polynom",
+          definition: "Et algebraisk uttrykk som består av variabler og koeffisienter med bare addisjon, subtraksjon og multiplikasjon.",
+          example: "Eksempel: 3x² + 2x - 1"
+        },
+        {
+          term: "Eksponentialfunksjon",
+          definition: "En funksjon der variabelen opptrer i eksponenten.",
+          example: "Eksempel: f(x) = 2^x"
+        },
+        {
+          term: "Logaritme",
+          definition: "Motsatsen til eksponentialfunksjonen; brukkes til å løse ligninger med ukjent eksponent.",
+          example: "Eksempel: log₂(8) = 3 fordi 2³ = 8"
+        },
+        {
+          term: "Vektor",
+          definition: "En matematisk objekt som har både størrelse (magnitud) og retning.",
+          example: "Eksempel: Hastighet og kraft er vektorer."
+        },
+        {
+          term: "Matrise",
+          definition: "Et rektangulært arrangement av tall, symboler eller uttrykk i rader og kolonner.",
+          example: "Eksempel: [[1,2],[3,4]] er en 2x2 matrise."
+        }
+      ],
+      samfunnsfag: [
+        {
+          term: "Demokrati",
+          definition: "Et styresett der folket har makten, vanligvis gjennom valgte representanter.",
+          example: "Eksempel: Norge er et parlamentarisk demokrati."
+        },
+        {
+          term: "Maktfordelingsprinsippet",
+          definition: "Ideén om at statsmakten bør deles mellom ulike organer for å forhindre maktmisbruk.",
+          example: "Eksempel: Lovgivende, utøvende og dømmende makt."
+        },
+        {
+          term: "Sosialisme",
+          definition: "En politisk ideologi som fremmer felles eierskap til produksjonsmidlene.",
+          example: "Eksempel: Målet er jevnere fordeling av ressurser."
+        },
+        {
+          term: "Kapitalisme",
+          definition: "Et økonomisk system der private eier produksjonsmidlene og driver for profitt.",
+          example: "Eksempel: Markedsøkonomi med fri konkurranse."
+        },
+        {
+          term: "Globalisering",
+          definition: "Prosessen med økende økonomisk, politisk og kulturell integrasjon mellom land.",
+          example: "Eksempel: Internasjonal handel og internett."
+        },
+        {
+          term: "Bærekraftig utvikling",
+          definition: "Utvikling som dekker dagens behov uten å ødelegge mulighetene for fremtidige generasjoner.",
+          example: "Eksempel: Balanse mellom økonomi, miljø og sosiale forhold."
+        },
+        {
+          term: "Integrering",
+          definition: "Prosessen der minoritetsgrupper blir en del av majoritetssamfunnet.",
+          example: "Eksempel: Innvandrere som deltar i norsk samfunnsliv."
+        },
+        {
+          term: "Likestilling",
+          definition: "Prinsippet om at alle mennesker har like rettigheter og muligheter.",
+          example: "Eksempel: Likestilling mellom kjønnene."
+        },
+        {
+          term: "Velferdsstat",
+          definition: "En stat som sikrer grunnleggende sosiale og økonomiske goder til sine borgere.",
+          example: "Eksempel: Norsk velferdsstat med helse- og utdanningstilbud."
+        },
+        {
+          term: "Sivil ulydighet",
+          definition: "Bevisst brudd på lover man mener er urettferdige, utført på en ikke-voldelig måte.",
+          example: "Eksempel: Martin Luther Kings borgerrettsbevegelse."
+        }
+      ],
+      biologi: [
+        {
+          term: "Fotosyntese",
+          definition: "Prosessen der planter bruker sollys til å omdanne CO₂ og vann til glukose og oksygen.",
+          example: "Eksempel: Planter produserer sin egen mat ved hjelp av sollys."
+        },
+        {
+          term: "DNA",
+          definition: "Deoksyribonukleinsyre; molekylet som bærer genetisk informasjon i levende organismer.",
+          example: "Eksempel: DNA inneholder kodene for arvelige egenskaper."
+        },
+        {
+          term: "Evolusjon",
+          definition: "Prosessen der arter endrer seg over tid gjennom naturlig seleksjon.",
+          example: "Eksempel: Darwins teori om artenes opprinnelse."
+        },
+        {
+          term: "Økosystem",
+          definition: "Et system der levende organismer samvirker med hverandre og det miljøet de lever i.",
+          example: "Eksempel: En skog med planter, dyr og sopp."
+        },
+        {
+          term: "Celle",
+          definition: "Den grunnleggende strukturelle og funksjonelle enheten i alle levende organismer.",
+          example: "Eksempel: Menneskekroppen består av billioner av celler."
+        },
+        {
+          term: "Enzym",
+          definition: "Et protein som katalyserer biokjemiske reaksjoner i kroppen.",
+          example: "Eksempel: Amylase bryter ned stivelse i munnen."
+        },
+        {
+          term: "Metabolisme",
+          definition: "Alle kjemiske reaksjoner som skjer i en organisme for å opprettholde liv.",
+          example: "Eksempel: Forbrenning av mat for å produsere energi."
+        },
+        {
+          term: "Hormon",
+          definition: "Kjemiske signalstoffer som transporteres i blodet og regulerer kroppens funksjoner.",
+          example: "Eksempel: Insulin regulerer blodsukker."
+        },
+        {
+          term: "Arter",
+          definition: "En gruppe organismer som kan formere seg og produsere fruktbart avkom.",
+          example: "Eksempel: Alle mennesker tilhører arten Homo sapiens."
+        },
+        {
+          term: "Biodiversitet",
+          definition: "Varieten av liv på jorden, inkludert genetisk, artsmessig og økologisk mangfold.",
+          example: "Eksempel: Regnskogen har høy biodiversitet."
+        }
+      ],
+      kjemi: [
+        {
+          term: "Atom",
+          definition: "Den minste enheten av et grunnstoff som beholder grunnstoffets kjemiske egenskaper.",
+          example: "Eksempel: Et hydrogenatom består av én proton og én elektron."
+        },
+        {
+          term: "Molekyl",
+          definition: "En gruppe av to eller flere atomer bundet sammen ved kjemiske bindinger.",
+          example: "Eksempel: Et vannmolekyl (H₂O) består av to hydrogenatomer og ett oksygenatom."
+        },
+        {
+          term: "Ion",
+          definition: "Et atom eller molekyl som har mistet eller fått elektroner og derfor har ladning.",
+          example: "Eksempel: Na⁺ er et natriumion som har mistet én elektron."
+        },
+        {
+          term: "pH",
+          definition: "Et mål på surhet eller basiskitet i en løsning, skalert fra 0 til 14.",
+          example: "Eksempel: Rent vann har pH 7, nøytral."
+        },
+        {
+          term: "Oksidasjon",
+          definition: "Kjemisk prosess der et stoff mister elektroner eller øker sitt oksidasjonstall.",
+          example: "Eksempel: Jern som ruster (Fe → Fe²⁺ + 2e⁻)."
+        },
+        {
+          term: "Reduksjon",
+          definition: "Kjemisk prosess der et stoff får elektroner eller reduserer sitt oksidasjonstall.",
+          example: "Eksempel: Oksygen som får elektroner (O₂ + 4e⁻ → 2O²⁻)."
+        },
+        {
+          term: "Løsning",
+          definition: "En homogen blanding av to eller flere stoffer der det ene stoffet er oppløst i det andre.",
+          example: "Eksempel: Salt oppløst i vann."
+        },
+        {
+          term: "Konsentrasjon",
+          definition: "Mengden av et stof i en gitt mengde løsning.",
+          example: "Eksempel: 1 mol/L betyr én mol stoff per liter løsning."
+        },
+        {
+          term: "Syre",
+          definition: "Et stoff som kan avgi H⁺-ioner (protoner) i vannløsning.",
+          example: "Eksempel: Saltsyre (HCl) er en sterk syre."
+        },
+        {
+          term: "Base",
+          definition: "Et stoff som kan ta imot H⁺-ioner eller avgi OH⁻-ioner i vannløsning.",
+          example: "Eksempel: Natriumhydroksid (NaOH) er en sterk base."
+        }
+      ],
+      fysikk: [
+        {
+          term: "Kraft",
+          definition: "En påvirkning som forårsaker endring i et objekts bevegelse eller form.",
+          example: "Eksempel: Tyngdekraften trekker objekter mot jorden."
+        },
+        {
+          term: "Energi",
+          definition: "Evnen til å utføre arbeid eller forårsake forandring.",
+          example: "Eksempel: Kinetisk energi er energi i bevegelse."
+        },
+        {
+          term: "Hastighet",
+          definition: "Endring i posisjon per tidsenhet, inkludert retning.",
+          example: "Eksempel: 60 km/t nordover."
+        },
+        {
+          term: "Akselerasjon",
+          definition: "Endring i hastighet per tidsenhet.",
+          example: "Eksempel: 9.8 m/s² er tyngdeakselerasjonen."
+        },
+        {
+          term: "Masse",
+          definition: "Et mål på mengden materie i et objekt.",
+          example: "Eksempel: 1 kg er massen til én liter vann."
+        },
+        {
+          term: "Vekt",
+          definition: "Kraften som utøves på et objekt på grunn av tyngdekraften.",
+          example: "Eksempel: Vekt = masse × tyngdeakselerasjon."
+        },
+        {
+          term: "Trykk",
+          definition: "Kraft per arealenhet.",
+          example: "Eksempel: Lufttrykk måles i Pascal (Pa)."
+        },
+        {
+          term: "Bølge",
+          definition: "En forstyrrelse som overfører energi gjennom et medium uten å transportere materie.",
+          example: "Eksempel: Lydbølger og lysbølger."
+        },
+        {
+          term: "Frekvens",
+          definition: "Antall bølgesvingninger per tidsenhet, målt i Hertz (Hz).",
+          example: "Eksempel: 440 Hz er tonen A i musikk."
+        },
+        {
+          term: "Strøm",
+          definition: "Flyt av elektrisk ladning, målt i Ampere (A).",
+          example: "Eksempel: En vanlig stikkontakt leverer opptil 16 A."
+        }
+      ]
+    };
+
+    let currentSubject = 'norsk';
+    let currentCardIndex = 0;
+    let cardsStudied = 0;
+    let subjectsCompleted = 0;
+    let startTime = Date.now();
+    let isFlipped = false;
+
+    function selectSubject(subject) {
+      currentSubject = subject;
+      currentCardIndex = 0;
+      isFlipped = false;
+      
+      // Update subject buttons
+      document.querySelectorAll('.subject-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update display
+      document.getElementById('currentSubject').textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
+      document.getElementById('totalCards').textContent = flashcards[subject].length;
+      
+      // Reset flashcard
+      const flashcard = document.getElementById('flashcard');
+      flashcard.classList.remove('flipped');
+      
+      showCard();
+      updateProgress();
+    }
+
+    function showCard() {
+      const card = flashcards[currentSubject][currentCardIndex];
+      document.getElementById('termTerm').textContent = card.term;
+      document.getElementById('termDefinition').textContent = card.definition;
+      document.getElementById('termExample').textContent = card.example;
+      document.getElementById('currentCard').textContent = currentCardIndex + 1;
+      
+      // Reset flip state
+      isFlipped = false;
+      const flashcard = document.getElementById('flashcard');
+      flashcard.classList.remove('flipped');
+    }
+
+    function flipCard() {
+      const flashcard = document.getElementById('flashcard');
+      isFlipped = !isFlipped;
+      
+      if (isFlipped) {
+        flashcard.classList.add('flipped');
+        cardsStudied++;
+        updateStats();
+      } else {
+        flashcard.classList.remove('flipped');
+      }
+    }
+
+    function nextCard() {
+      if (currentCardIndex < flashcards[currentSubject].length - 1) {
+        currentCardIndex++;
+        showCard();
+        updateProgress();
+      } else {
+        // Subject completed
+        showCompletionModal();
+      }
+    }
+
+    function previousCard() {
+      if (currentCardIndex > 0) {
+        currentCardIndex--;
+        showCard();
+        updateProgress();
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentCardIndex + 1) / flashcards[currentSubject].length) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+
+    function updateStats() {
+      document.getElementById('cardsStudied').textContent = cardsStudied;
+      document.getElementById('subjectsCompleted').textContent = subjectsCompleted;
+      
+      // Update study time
+      const minutes = Math.floor((Date.now() - startTime) / 60000);
+      document.getElementById('studyTime').textContent = minutes;
+    }
+
+    function showCompletionModal() {
+      subjectsCompleted++;
+      updateStats();
+      
+      document.getElementById('completedSubject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+      document.getElementById('completionModal').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('completionModal').classList.remove('show');
+      
+      // Move to next subject
+      const subjects = Object.keys(flashcards);
+      const currentIndex = subjects.indexOf(currentSubject);
+      if (currentIndex < subjects.length - 1) {
+        const nextSubject = subjects[currentIndex + 1];
+        currentSubject = nextSubject;
+        currentCardIndex = 0;
+        
+        // Update UI
+        document.querySelectorAll('.subject-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.textContent.toLowerCase() === nextSubject) {
+            btn.classList.add('active');
+          }
+        });
+        
+        document.getElementById('currentSubject').textContent = nextSubject.charAt(0).toUpperCase() + nextSubject.slice(1);
+        document.getElementById('totalCards').textContent = flashcards[nextSubject].length;
+        
+        showCard();
+        updateProgress();
+      } else {
+        // All subjects completed
+        alert('Gratulerer! Du har fullført alle fagene!');
+        // Reset to first subject
+        selectSubject('norsk');
+      }
+    }
+
+    // Update stats every minute
+    setInterval(updateStats, 60000);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      showCard();
+      updateProgress();
+      updateStats();
+    });
+  </script>
+</body>
+</html>
