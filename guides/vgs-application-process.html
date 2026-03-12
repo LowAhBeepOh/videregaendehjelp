@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verktøy – Videregående Hjelp</title>
+  <title>Søknadsprosessen til VGS – Videregående Hjelp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     :root {
@@ -54,7 +53,7 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -128,75 +127,107 @@
 
     /* Page Title */
     .page-header {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .page-header h1 {
       font-family: 'Inter Tight', sans-serif;
-      font-size: 40px;
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
 
     .page-header p {
       font-size: 16px;
       color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    /* Content Grid */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .tool-card {
+    /* Content */
+    .content {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
-      transition: all 0.3s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+      line-height: 1.8;
     }
 
-    .tool-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+    .content h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0 20px 0;
+      letter-spacing: -0.02em;
     }
 
-    .tool-icon {
-      font-size: 40px;
-      color: var(--primary);
+    .content h2:first-child {
+      margin-top: 0;
     }
 
-    .tool-card h2 {
+    .content h3 {
       font-family: 'Inter Tight', sans-serif;
       font-size: 20px;
       font-weight: 700;
-      margin: 0;
+      margin: 30px 0 15px 0;
+      color: var(--primary);
     }
 
-    .tool-card p {
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content ul, .content ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .highlight-box {
+      background: var(--surface-light);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+      color: var(--text-muted);
+    }
+
+    .highlight-box strong {
+      color: var(--text);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: gap 0.2s;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .tool-meta {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
     }
 
     /* Settings Modal */
@@ -299,14 +330,6 @@
       border-radius: 50%;
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
     .modal-overlay {
       display: none;
       position: fixed;
@@ -327,13 +350,13 @@
         font-size: 28px;
       }
 
-      .tools-grid {
-        grid-template-columns: 1fr;
+      .content {
+        padding: 24px;
       }
 
       header {
-        flex-direction: column;
-        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
     }
   </style>
@@ -345,9 +368,9 @@
       <div class="header-controls">
         <nav>
           <ul class="nav-links">
-            <li><a href="guides.html">Guider</a></li>
-            <li><a href="tools.html" class="active">Verktøy</a></li>
-            <li><a href="interactives.html">Interaktivt</a></li>
+            <li><a href="/guides.html">Guider</a></li>
+            <li><a href="/tools.html">Verktøy</a></li>
+            <li><a href="/interactives.html">Interaktivt</a></li>
           </ul>
         </nav>
         <button class="settings-btn" id="settingsBtn" aria-label="Settings">
@@ -356,44 +379,130 @@
       </div>
     </header>
 
+    <a href="/guides.html" class="back-link"><span class="material-icons" style="font-size: 20px;">arrow_back</span> Tilbake til alle guider</a>
+
     <section class="page-header">
-      <h1>Verktøy</h1>
-      <p>Praktiske kalkulatorer og verktøy som gjør livet ditt enklere. Planlegg, beregn, og ta bedre beslutninger.</p>
+      <h1>Søknadsprosessen til VGS</h1>
+      <p>Når du skal begynne på videregående skole i Norge, må du sende en søknad gjennom det nasjonale systemet for skoleinntak. Her forklarer vi hvordan prosessen fungerer, hvilke frister som gjelder, og hva du må gjøre.</p>
     </section>
 
-    <section class="tools-grid">
-      <a href="Tools/inntakskalkulator.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Inntakskalkulator</h2>
-        <p>Beregn dine sjanser for opptaking basert på karakterer. Støtter flere fylker.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">star</span>
-          <span>Populært verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/point-limit.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Poenggrense Søk</h2>
-        <p>Søk etter fag, fylke og program til å finne ut cirka hvor mye poeng du trenger til å komme inn.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">new_releases</span>
-          <span>Nytt verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/grade-tracker.html" class="tool-card">
-        <span class="material-icons tool-icon">trending_up</span>
-        <h2>Karaktertrakker</h2>
-        <p>Følg dine karakterer og se hvordan de påvirker ditt gjennomsnitt over tid.</p>
-      </a>
-      <a href="Tools/program-finder.html" class="tool-card">
-        <span class="material-icons tool-icon">subject</span>
-        <h2>Fagvelger</h2>
-        <p>Velg fag som passer ditt program og karrieremål. Få anbefalinger basert på dine interesser.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">cake</span>
-          <span>Forbedret</span>
-        </div>
-      </a>
+    <section class="content">
+      <h2>Hvordan søker man?</h2>
+
+      <p>Alle elever søker videregående opplæring gjennom søknadsportalen <strong>Vigo</strong>.</p>
+
+      <p>I Vigo kan du:</p>
+      <ul>
+        <li>Velge utdanningsprogram</li>
+        <li>Velge hvilke skoler du ønsker</li>
+        <li>Rangere valgene dine i prioritert rekkefølge</li>
+        <li>Endre søknaden før fristen går ut</li>
+      </ul>
+
+      <p>Du logger inn med:</p>
+      <ul>
+        <li>BankID</li>
+        <li>MinID</li>
+        <li>eller annen ID-porten løsning</li>
+      </ul>
+
+      <p>Det er også mulig å få hjelp av rådgiver på ungdomsskolen når du søker.</p>
+
+      <h2>Søknadsfrister</h2>
+
+      <p>Det finnes to viktige frister:</p>
+
+      <h3>1. februar</h3>
+      <p>Denne fristen gjelder for elever som:</p>
+      <ul>
+        <li>søker med fortrinnsrett</li>
+        <li>trenger individuell behandling</li>
+        <li>har særskilte behov</li>
+        <li>nylig har kommet til Norge</li>
+      </ul>
+
+      <h3>1. mars</h3>
+      <p>Dette er <strong>den ordinære søknadsfristen</strong> for de fleste elever.</p>
+      <p>Alle som søker vanlig skoleplass må søke før denne datoen.</p>
+
+      <h2>Hva kan du søke på?</h2>
+
+      <p>Når du søker videregående skole velger du et <strong>utdanningsprogram</strong>.</p>
+
+      <p>Eksempler på studieforberedende programmer:</p>
+
+      <ul>
+        <li>Studiespesialisering</li>
+        <li>Idrettsfag</li>
+        <li>Musikk, dans og drama</li>
+        <li>Kunst, design og arkitektur</li>
+      </ul>
+
+      <p>Eksempler på yrkesfaglige programmer:</p>
+
+      <ul>
+        <li>Elektro og datateknologi</li>
+        <li>Teknologi- og industrifag</li>
+        <li>Helse- og oppvekstfag</li>
+        <li>Bygg- og anleggsteknikk</li>
+        <li>Restaurant- og matfag</li>
+      </ul>
+
+      <p>Du kan velge flere alternativer og prioritere dem i rekkefølge.</p>
+
+      <h2>Hvordan fungerer inntaket?</h2>
+
+      <p>Etter at fristen har gått ut blir alle søkere vurdert.</p>
+
+      <p>Inntaket skjer vanligvis basert på:</p>
+
+      <ul>
+        <li>karakterer fra ungdomsskolen</li>
+        <li>prioriteringene dine</li>
+        <li>hvor mange plasser skolene har</li>
+      </ul>
+
+      <p>Resultatet av inntaket får du vanligvis på <strong>forsommeren</strong>.</p>
+
+      <h2>Etter du får tilbud</h2>
+
+      <p>Når du får svar må du:</p>
+
+      <ol>
+        <li>Logge inn på Vigo</li>
+        <li>Takke ja eller nei til plassen</li>
+        <li>Bekrefte innen fristen</li>
+      </ol>
+
+      <p>Hvis du ikke svarer innen fristen kan du miste plassen.</p>
+
+      <h2>Endre søknaden</h2>
+
+      <p>Du kan endre søknaden din helt frem til fristen går ut.</p>
+
+      <p>Dette kan være nyttig hvis du:</p>
+      <ul>
+        <li>ombestemmer deg</li>
+        <li>vil prioritere andre skoler</li>
+        <li>vil velge et annet program</li>
+      </ul>
+
+      <h2>Tips før du søker</h2>
+
+      <ul>
+        <li>Snakk med rådgiver på skolen</li>
+        <li>Les om utdanningsprogrammer</li>
+        <li>Tenk på hva du liker å jobbe med</li>
+        <li>Sjekk hvilke skoler som tilbyr programmet</li>
+      </ul>
+
+      <h2>Kilder</h2>
+
+      <ul>
+        <li><a href="https://www.vigo.no" style="color: var(--primary);">https://www.vigo.no</a></li>
+        <li><a href="https://www.vilbli.no" style="color: var(--primary);">https://www.vilbli.no</a></li>
+        <li><a href="https://utdanning.no/tema/soknadsfrister_til_videregaende_opplaering" style="color: var(--primary);">https://utdanning.no/tema/soknadsfrister_til_videregaende_opplaering</a></li>
+      </ul>
     </section>
   </main>
 
@@ -438,7 +547,6 @@
 
       document.documentElement.setAttribute('data-theme', finalTheme);
       updateThemeButtons(theme);
-      updateThemeIcon(finalTheme);
     }
 
     function updateThemeButtons(theme) {

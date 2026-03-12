@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verktøy – Videregående Hjelp</title>
+  <title>Hvordan få bedre karakterer – Videregående Hjelp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     :root {
@@ -54,7 +53,7 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -128,75 +127,107 @@
 
     /* Page Title */
     .page-header {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .page-header h1 {
       font-family: 'Inter Tight', sans-serif;
-      font-size: 40px;
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
 
     .page-header p {
       font-size: 16px;
       color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    /* Content Grid */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .tool-card {
+    /* Content */
+    .content {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
-      transition: all 0.3s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+      line-height: 1.8;
     }
 
-    .tool-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+    .content h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0 20px 0;
+      letter-spacing: -0.02em;
     }
 
-    .tool-icon {
-      font-size: 40px;
-      color: var(--primary);
+    .content h2:first-child {
+      margin-top: 0;
     }
 
-    .tool-card h2 {
+    .content h3 {
       font-family: 'Inter Tight', sans-serif;
       font-size: 20px;
       font-weight: 700;
-      margin: 0;
+      margin: 30px 0 15px 0;
+      color: var(--primary);
     }
 
-    .tool-card p {
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content ul, .content ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .highlight-box {
+      background: var(--surface-light);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+      color: var(--text-muted);
+    }
+
+    .highlight-box strong {
+      color: var(--text);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: gap 0.2s;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .tool-meta {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
     }
 
     /* Settings Modal */
@@ -299,14 +330,6 @@
       border-radius: 50%;
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
     .modal-overlay {
       display: none;
       position: fixed;
@@ -327,13 +350,13 @@
         font-size: 28px;
       }
 
-      .tools-grid {
-        grid-template-columns: 1fr;
+      .content {
+        padding: 24px;
       }
 
       header {
-        flex-direction: column;
-        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
     }
   </style>
@@ -345,9 +368,9 @@
       <div class="header-controls">
         <nav>
           <ul class="nav-links">
-            <li><a href="guides.html">Guider</a></li>
-            <li><a href="tools.html" class="active">Verktøy</a></li>
-            <li><a href="interactives.html">Interaktivt</a></li>
+            <li><a href="/guides.html">Guider</a></li>
+            <li><a href="/tools.html">Verktøy</a></li>
+            <li><a href="/interactives.html">Interaktivt</a></li>
           </ul>
         </nav>
         <button class="settings-btn" id="settingsBtn" aria-label="Settings">
@@ -356,44 +379,88 @@
       </div>
     </header>
 
+    <a href="/guides.html" class="back-link"><span class="material-icons" style="font-size: 20px;">arrow_back</span> Tilbake til alle guider</a>
+
     <section class="page-header">
-      <h1>Verktøy</h1>
-      <p>Praktiske kalkulatorer og verktøy som gjør livet ditt enklere. Planlegg, beregn, og ta bedre beslutninger.</p>
+      <h1>Hvordan få bedre karakterer</h1>
+      <p>Karakterene i videregående skole påvirker hvilke studier du kan søke senere. Her er noen strategier som kan hjelpe deg å lære mer effektivt.</p>
     </section>
 
-    <section class="tools-grid">
-      <a href="Tools/inntakskalkulator.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Inntakskalkulator</h2>
-        <p>Beregn dine sjanser for opptaking basert på karakterer. Støtter flere fylker.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">star</span>
-          <span>Populært verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/point-limit.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Poenggrense Søk</h2>
-        <p>Søk etter fag, fylke og program til å finne ut cirka hvor mye poeng du trenger til å komme inn.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">new_releases</span>
-          <span>Nytt verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/grade-tracker.html" class="tool-card">
-        <span class="material-icons tool-icon">trending_up</span>
-        <h2>Karaktertrakker</h2>
-        <p>Følg dine karakterer og se hvordan de påvirker ditt gjennomsnitt over tid.</p>
-      </a>
-      <a href="Tools/program-finder.html" class="tool-card">
-        <span class="material-icons tool-icon">subject</span>
-        <h2>Fagvelger</h2>
-        <p>Velg fag som passer ditt program og karrieremål. Få anbefalinger basert på dine interesser.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">cake</span>
-          <span>Forbedret</span>
-        </div>
-      </a>
+    <section class="content">
+      <h2>Lag en fast studieplan</h2>
+
+      <p>Lag en ukentlig plan.</p>
+
+      <p>Eksempel:</p>
+
+      <ul>
+        <li>mandag → matematikk</li>
+        <li>tirsdag → norsk</li>
+        <li>onsdag → repetisjon</li>
+      </ul>
+
+      <p>Dette gjør det lettere å holde oversikt.</p>
+
+      <h2>Bruk aktive læringsmetoder</h2>
+
+      <p>Passive metoder (som bare å lese) er mindre effektive.</p>
+
+      <p>Bedre metoder:</p>
+
+      <ul>
+        <li>forklare stoffet til andre</li>
+        <li>lage oppgaver selv</li>
+        <li>lage tankekart</li>
+        <li>bruke flashcards</li>
+      </ul>
+
+      <h2>Jobb jevnlig</h2>
+
+      <p>Ikke vent til dagen før prøven.</p>
+
+      <p>Kort øving hver dag fungerer bedre.</p>
+
+      <h2>Spør læreren om hjelp</h2>
+
+      <p>Hvis du ikke forstår noe:</p>
+
+      <ul>
+        <li>spør i timen</li>
+        <li>send melding i læringsplattform</li>
+        <li>be om ekstra forklaring</li>
+      </ul>
+
+      <h2>Samarbeid med andre</h2>
+
+      <p>Å jobbe i grupper kan hjelpe.</p>
+
+      <p>Du kan:</p>
+
+      <ul>
+        <li>diskutere fag</li>
+        <li>forklare ting til hverandre</li>
+        <li>løse oppgaver sammen</li>
+      </ul>
+
+      <h2>Ta vare på helsen</h2>
+
+      <p>Søvn og helse påvirker læring.</p>
+
+      <p>Prøv å:</p>
+
+      <ul>
+        <li>sove nok</li>
+        <li>spise regelmessig</li>
+        <li>ta pauser</li>
+      </ul>
+
+      <h2>Kilder</h2>
+
+      <ul>
+        <li><a href="https://www.udir.no" style="color: var(--primary);">https://www.udir.no</a></li>
+        <li><a href="https://www.vilbli.no" style="color: var(--primary);">https://www.vilbli.no</a></li>
+        <li><a href="https://utdanning.no" style="color: var(--primary);">https://utdanning.no</a></li>
+      </ul>
     </section>
   </main>
 
@@ -438,7 +505,6 @@
 
       document.documentElement.setAttribute('data-theme', finalTheme);
       updateThemeButtons(theme);
-      updateThemeIcon(finalTheme);
     }
 
     function updateThemeButtons(theme) {

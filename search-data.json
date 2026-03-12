@@ -61,7 +61,47 @@
   },
   {
     "title": "Fagvelger",
-    "url": "Tools/subject-selector.html",
+    "url": "Tools/program-finder.html",
     "keywords": ["fag", "velg", "kombinasjoner", "realfag", "språk"]
+  },
+  {
+    "title": "Fravær og fraværsgrense",
+    "url": "Guides/absence-rules.html",
+    "keywords": ["fravær", "fraværsgrense", "dokumentert", "udokumentert", "skole"]
+  },
+  {
+    "title": "Lærlinger og yrkesfag",
+    "url": "Guides/apprenticeships-and-vocational.html",
+    "keywords": ["lærling", "yrkesfag", "fagbrev", "2+2-modellen", "læretid", "bedrift"]
+  },
+  {
+    "title": "Bytte skole eller program",
+    "url": "Guides/change-school-or-program.html",
+    "keywords": ["bytte", "skole", "program", "søke", "endre", "rådgiver"]
+  },
+  {
+    "title": "Eksamen i videregående",
+    "url": "Guides/exams-in-vgs.html",
+    "keywords": ["eksamen", "trekk", "skriftlig", "muntlig", "sensor", "karakter"]
+  },
+  {
+    "title": "Stipend og økonomi",
+    "url": "Guides/student-finances.html",
+    "keywords": ["stipend", "lånekassen", "utstyrsstipend", "borteboer", "økonomi", "penger"]
+  },
+  {
+    "title": "Rettigheter og skolehverdag",
+    "url": "Guides/student-rights-and-school-life.html",
+    "keywords": ["rettigheter", "elev", "skolemiljø", "rådgivning", "elevråd", "klage"]
+  },
+  {
+    "title": "Få bedre karakterer",
+    "url": "Guides/study-better-and-grades.html",
+    "keywords": ["karakterer", "studieteknikk", "lesing", "notater", "gruppearbeid", "motivasjon"]
+  },
+  {
+    "title": "Søknadsprosessen til VGS",
+    "url": "Guides/vgs-application-process.html",
+    "keywords": ["søknad", "vigo", "frist", "inntak", "prioritere", "bankid"]
   }
 ]

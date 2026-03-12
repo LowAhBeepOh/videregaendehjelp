@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verktøy – Videregående Hjelp</title>
+  <title>Stipend og økonomi for elever – Videregående Hjelp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     :root {
@@ -54,7 +53,7 @@
     }
 
     main {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -128,75 +127,107 @@
 
     /* Page Title */
     .page-header {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .page-header h1 {
       font-family: 'Inter Tight', sans-serif;
-      font-size: 40px;
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
 
     .page-header p {
       font-size: 16px;
       color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
-    /* Content Grid */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 80px;
-    }
-
-    .tool-card {
+    /* Content */
+    .content {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px 24px;
-      transition: all 0.3s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+      line-height: 1.8;
     }
 
-    .tool-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
+    .content h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 40px 0 20px 0;
+      letter-spacing: -0.02em;
     }
 
-    .tool-icon {
-      font-size: 40px;
-      color: var(--primary);
+    .content h2:first-child {
+      margin-top: 0;
     }
 
-    .tool-card h2 {
+    .content h3 {
       font-family: 'Inter Tight', sans-serif;
       font-size: 20px;
       font-weight: 700;
-      margin: 0;
+      margin: 30px 0 15px 0;
+      color: var(--primary);
     }
 
-    .tool-card p {
+    .content p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content ul, .content ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .content strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .highlight-box {
+      background: var(--surface-light);
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+      color: var(--text-muted);
+    }
+
+    .highlight-box strong {
+      color: var(--text);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+      transition: gap 0.2s;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
       color: var(--text-muted);
       font-size: 14px;
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .tool-meta {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-muted);
     }
 
     /* Settings Modal */
@@ -299,14 +330,6 @@
       border-radius: 50%;
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
     .modal-overlay {
       display: none;
       position: fixed;
@@ -327,13 +350,13 @@
         font-size: 28px;
       }
 
-      .tools-grid {
-        grid-template-columns: 1fr;
+      .content {
+        padding: 24px;
       }
 
       header {
-        flex-direction: column;
-        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
     }
   </style>
@@ -345,9 +368,9 @@
       <div class="header-controls">
         <nav>
           <ul class="nav-links">
-            <li><a href="guides.html">Guider</a></li>
-            <li><a href="tools.html" class="active">Verktøy</a></li>
-            <li><a href="interactives.html">Interaktivt</a></li>
+            <li><a href="/guides.html">Guider</a></li>
+            <li><a href="/tools.html">Verktøy</a></li>
+            <li><a href="/interactives.html">Interaktivt</a></li>
           </ul>
         </nav>
         <button class="settings-btn" id="settingsBtn" aria-label="Settings">
@@ -356,44 +379,98 @@
       </div>
     </header>
 
+    <a href="/guides.html" class="back-link"><span class="material-icons" style="font-size: 20px;">arrow_back</span> Tilbake til alle guider</a>
+
     <section class="page-header">
-      <h1>Verktøy</h1>
-      <p>Praktiske kalkulatorer og verktøy som gjør livet ditt enklere. Planlegg, beregn, og ta bedre beslutninger.</p>
+      <h1>Stipend og økonomi for elever</h1>
+      <p>Som elev i videregående skole kan du få økonomisk støtte fra staten. Den viktigste støtten kommer fra <strong>Lånekassen</strong>.</p>
     </section>
 
-    <section class="tools-grid">
-      <a href="Tools/inntakskalkulator.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Inntakskalkulator</h2>
-        <p>Beregn dine sjanser for opptaking basert på karakterer. Støtter flere fylker.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">star</span>
-          <span>Populært verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/point-limit.html" class="tool-card">
-        <span class="material-icons tool-icon">calculate</span>
-        <h2>Poenggrense Søk</h2>
-        <p>Søk etter fag, fylke og program til å finne ut cirka hvor mye poeng du trenger til å komme inn.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">new_releases</span>
-          <span>Nytt verktøy</span>
-        </div>
-      </a>
-      <a href="Tools/grade-tracker.html" class="tool-card">
-        <span class="material-icons tool-icon">trending_up</span>
-        <h2>Karaktertrakker</h2>
-        <p>Følg dine karakterer og se hvordan de påvirker ditt gjennomsnitt over tid.</p>
-      </a>
-      <a href="Tools/program-finder.html" class="tool-card">
-        <span class="material-icons tool-icon">subject</span>
-        <h2>Fagvelger</h2>
-        <p>Velg fag som passer ditt program og karrieremål. Få anbefalinger basert på dine interesser.</p>
-        <div class="tool-meta">
-          <span class="material-icons" style="font-size: 16px;">cake</span>
-          <span>Forbedret</span>
-        </div>
-      </a>
+    <section class="content">
+      <h2>Utstyrsstipend</h2>
+
+      <p>Utstyrsstipend er penger som skal dekke utgifter til skoleutstyr.</p>
+
+      <p>Eksempler:</p>
+
+      <ul>
+        <li>PC</li>
+        <li>bøker</li>
+        <li>arbeidsklær</li>
+        <li>verktøy</li>
+      </ul>
+
+      <p>Alle elever med ungdomsrett kan få dette stipendet.</p>
+
+      <p>Beløpet varierer etter programområde.</p>
+
+      <h2>Hvor mye kan du få?</h2>
+
+      <p>Utstyrsstipend ligger vanligvis mellom:</p>
+
+      <p>ca. 1 200 kr og 6 000 kr per år.</p>
+
+      <p>Pengene utbetales én gang per skoleår.</p>
+
+      <h2>Borteboerstipend</h2>
+
+      <p>Hvis du må flytte hjemmefra for å gå på skole, kan du få borteboerstipend.</p>
+
+      <p>Dette kan være rundt:</p>
+
+      <p>ca. 6 800 kroner per måned.</p>
+
+      <h2>Inntektsavhengig stipend</h2>
+
+      <p>Noen elever kan få ekstra stipend hvis:</p>
+
+      <ul>
+        <li>foreldrene har lav inntekt</li>
+      </ul>
+
+      <p>Dette vurderes automatisk når du søker.</p>
+
+      <h2>Hvordan søke</h2>
+
+      <p>Du søker gjennom nettsiden til Lånekassen.</p>
+
+      <p>Prosessen:</p>
+
+      <ol>
+        <li>Logg inn</li>
+        <li>Velg videregående opplæring</li>
+        <li>Send søknad</li>
+        <li>Signer avtalen</li>
+      </ol>
+
+      <p>Elever under 18 år må ha signatur fra foresatte.</p>
+
+      <h2>Viktige frister</h2>
+
+      <p>Vanlige frister er:</p>
+
+      <ul>
+        <li>15. november</li>
+        <li>15. mars</li>
+      </ul>
+
+      <h2>Tips</h2>
+
+      <ul>
+        <li>Søk så tidlig som mulig</li>
+        <li>Les hva du har krav på</li>
+        <li>Husk å signere avtalen</li>
+      </ul>
+
+      <p>Mange elever mister stipend fordi de ikke fullfører søknaden.</p>
+
+      <h2>Kilder</h2>
+
+      <ul>
+        <li><a href="https://lanekassen.no" style="color: var(--primary);">https://lanekassen.no</a></li>
+        <li><a href="https://lanekassen.no/nb-NO/laresteder/veiledning/utveksling-pa-videregaende/" style="color: var(--primary);">https://lanekassen.no/nb-NO/laresteder/veiledning/utveksling-pa-videregaende/</a></li>
+        <li><a href="https://meloy.vgs.no/for-elever/skolehverdagen/lan-og-stipend/" style="color: var(--primary);">https://meloy.vgs.no/for-elever/skolehverdagen/lan-og-stipend/</a></li>
+      </ul>
     </section>
   </main>
 
@@ -438,7 +515,6 @@
 
       document.documentElement.setAttribute('data-theme', finalTheme);
       updateThemeButtons(theme);
-      updateThemeIcon(finalTheme);
     }
 
     function updateThemeButtons(theme) {
