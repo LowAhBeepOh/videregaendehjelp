@@ -817,7 +817,7 @@
                 <span class="material-icons">arrow_back</span>
                 Tilbake til verktøy
             </a>
-            <h1 class="exam-title">Inntakskalkulator</h1>
+            <h1 class="exam-title">VGS-hjelp sin eksamen (2026)</h1>
         </div>
         <div class="header-right">
             <div class="delivery-time">
@@ -904,7 +904,7 @@
                     <span class="material-icons">assignment</span>
                     <div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Oppgaver</div>
-                        <span>6 oppgaver (2 flervalgs, 4 skrive)</span>
+                        <span>15 oppgaver (Del 1 har 8, Del 2 har 7)</span>
                     </div>
                 </div>
                 <div class="info-item">
@@ -947,199 +947,345 @@
             </div>
 
             <div class="exam-content">
-                <!-- Task 1 -->
-                <div class="task" data-task="1" data-type="multiple">
+                <!-- DEL 1: Without Calculator -->
+                <div style="background: var(--bg-light); padding: 2rem; margin-bottom: 3rem; border-radius: 12px; border-left: 4px solid var(--primary-red);">
+                    <h3 style="color: var(--primary-red); margin-bottom: 0.5rem;">DEL 1 - Uten kalkulator</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Du har 2,5 timer på denne delen. Hjelpemidler: Ikkje tillatt.</p>
+                </div>
+
+                <!-- Task 1 - Del 1 -->
+                <div class="task" data-task="1" data-part="1" data-type="multiple">
                     <div class="task-header">
                         <div class="task-number">1</div>
-                        <h3 class="task-title">Helltunnelen utenfor Trondheim er 4 km lang. En bil kjører i 80 km/h gjennom tunnelen. Hvor lang tid vil bilen bruke gjennom tunnelen?</h3>
+                        <h3 class="task-title">Kor mykje er 25 % av 80?</h3>
                     </div>
                     <div class="task-content">
                         <div class="multiple-choice">
                             <div class="choice-option" onclick="selectChoice(this, 'A')">
                                 <input type="radio" name="task1" value="A" id="t1a">
-                                <label for="t1a">2 minutter</label>
+                                <label for="t1a">16</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'B')">
                                 <input type="radio" name="task1" value="B" id="t1b">
-                                <label for="t1b">3 minutter</label>
+                                <label for="t1b">20</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'C')">
                                 <input type="radio" name="task1" value="C" id="t1c">
-                                <label for="t1c">5 minutter</label>
+                                <label for="t1c">25</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'D')">
                                 <input type="radio" name="task1" value="D" id="t1d">
-                                <label for="t1d">20 minutter</label>
+                                <label for="t1d">40</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Task 2 -->
-                <div class="task" data-task="2" data-type="calculation">
+                <!-- Task 2 - Del 1 -->
+                <div class="task" data-task="2" data-part="1" data-type="calculation">
                     <div class="task-header">
                         <div class="task-number">2</div>
-                        <h3 class="task-title">Figurene nedenfor viser de tre første figurene i et mønster. Figurene er satt sammen av trekanter og firkanter.</h3>
+                        <h3 class="task-title">Løys likninga: 3x + 5 = 20</h3>
                     </div>
                     <div class="task-content">
-                        <div class="task-text">
-                            <p>Figur 1 har 4 trekanter og 1 firkant.<br>
-                            Figur 2 har 6 trekanter og 2 firkanter.<br>
-                            Figur 3 har 8 trekanter og 3 firkanter.</p>
-                        </div>
-                        
-                        <div class="task-subtitle">
-                            <span class="material-icons">edit</span>
-                            a) Hvor mange trekanter og firkanter vil det være i figur nr. 10?
-                        </div>
-                        
                         <div class="calculation-box">
-                            <label>Trekanter:</label>
-                            <input type="number" class="calculation-input" id="task2a-triangles" placeholder="Skriv ditt svar...">
-                        </div>
-                        
-                        <div class="calculation-box" style="margin-top: 1rem;">
-                            <label>Firkanter:</label>
-                            <input type="number" class="calculation-input" id="task2a-squares" placeholder="Skriv ditt svar...">
-                        </div>
-
-                        <div class="task-subtitle" style="margin-top: 2rem;">
-                            <span class="material-icons">functions</span>
-                            b) Lag en formel for antall trekanter i figur n.
-                        </div>
-                        
-                        <div class="input-section">
-                            <textarea class="text-input-area" id="task2b-formula" placeholder="Beskriv formelen og forklar hvordan du kom frem til den..."></textarea>
+                            <label>x = </label>
+                            <input type="number" class="calculation-input" id="task2-answer" placeholder="Skriv ditt svar...">
                         </div>
                     </div>
                 </div>
 
-                <!-- Task 3 -->
-                <div class="task" data-task="3" data-type="text">
+                <!-- Task 3 - Del 1 -->
+                <div class="task" data-task="3" data-part="1" data-type="multiple">
                     <div class="task-header">
                         <div class="task-number">3</div>
-                        <h3 class="task-title">Bruk figuren og samtalen mellom de to jentene nedenfor til å utforske og finne sammenhenger.</h3>
+                        <h3 class="task-title">Kva er <span class="formula">f(2)</span> når <span class="formula">f(x) = 2x² - 3</span>?</h3>
                     </div>
                     <div class="task-content">
-                        <div class="task-text">
-                            <p>I et 5×5 rutenett merker vi ut et 2×2 kvadrat. To jenter undersøker et mønster:</p>
-                            <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-light); border-radius: 8px; font-style: italic;">
-                                "Jeg tok det røde kvadratet, multipliserte 13 med 17 og 12 med 18. Da jeg trakk det laveste produktet fra det høyeste, fikk jeg differansen 5."
-                            </p>
-                            <p style="margin-top: 0.5rem; padding: 1rem; background: var(--bg-light); border-radius: 8px; font-style: italic;">
-                                "Jeg tok det blå kvadratet, multipliserte 5 med 9 og 4 med 10. Da jeg trakk det laveste produktet fra det høyeste, fikk jeg også differansen 5."
-                            </p>
-                        </div>
-
-                        <div class="task-subtitle">
-                            <span class="material-icons">psychology</span>
-                            Er det mulig å finne en generell sammenheng?
-                        </div>
-
-                        <div class="input-section">
-                            <textarea class="text-input-area" id="task3-answer" placeholder="Beskriv mønsteret du finner. Bruk algebra og hensiktsmessige representasjoner. Vis utregninger og forklaringer..."></textarea>
+                        <div class="multiple-choice">
+                            <div class="choice-option" onclick="selectChoice(this, 'A')">
+                                <input type="radio" name="task3" value="A" id="t3a">
+                                <label for="t3a">1</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'B')">
+                                <input type="radio" name="task3" value="B" id="t3b">
+                                <label for="t3b">5</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'C')">
+                                <input type="radio" name="task3" value="C" id="t3c">
+                                <label for="t3c">7</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'D')">
+                                <input type="radio" name="task3" value="D" id="t3d">
+                                <label for="t3d">13</label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Task 4 -->
-                <div class="task" data-task="4" data-type="multiple">
+                <!-- Task 4 - Del 1 -->
+                <div class="task" data-task="4" data-part="1" data-type="multiple">
                     <div class="task-header">
                         <div class="task-number">4</div>
-                        <h3 class="task-title">Trine beskriver grafen til en funksjon: "Grafen er en rett linje. Grafen skjærer y-aksen i 2."</h3>
+                        <h3 class="task-title">Kva er stigningstalet til den lineære funksjonen <span class="formula">y = -2x + 5</span>?</h3>
                     </div>
                     <div class="task-content">
-                        <div class="task-text">
-                            <p>Hvilket av funksjonsuttrykkene nedenfor passer til Trines beskrivelse?</p>
-                        </div>
-                        
                         <div class="multiple-choice">
                             <div class="choice-option" onclick="selectChoice(this, 'A')">
                                 <input type="radio" name="task4" value="A" id="t4a">
-                                <label for="t4a"><span class="formula">y = x² + 2</span></label>
+                                <label for="t4a">-2</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'B')">
                                 <input type="radio" name="task4" value="B" id="t4b">
-                                <label for="t4b"><span class="formula">y = 2x + 1</span></label>
+                                <label for="t4b">2</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'C')">
                                 <input type="radio" name="task4" value="C" id="t4c">
-                                <label for="t4c"><span class="formula">y = 2/x</span></label>
+                                <label for="t4c">5</label>
                             </div>
                             <div class="choice-option" onclick="selectChoice(this, 'D')">
                                 <input type="radio" name="task4" value="D" id="t4d">
-                                <label for="t4d"><span class="formula">y = x + 2</span></label>
+                                <label for="t4d">-5</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Task 5 -->
-                <div class="task" data-task="5" data-type="graph">
+                <!-- Task 5 - Del 1 -->
+                <div class="task" data-task="5" data-part="1" data-type="text">
                     <div class="task-header">
                         <div class="task-number">5</div>
-                        <h3 class="task-title">Eirik har laget en graf som viser sammenhengen mellom euro og norske kroner.</h3>
+                        <h3 class="task-title">Rekn ut og förenkla: <span class="formula">3(2a + 4) - 2(a - 1)</span></h3>
                     </div>
                     <div class="task-content">
-                        <div class="graph-container">
-                            <div class="graph-axis"></div>
-                            <div class="graph-axis-x"></div>
-                            <div class="graph-line"></div>
-                            <span class="axis-label" style="bottom: 22%; left: 5%;">0</span>
-                            <span class="axis-label" style="bottom: 22%; right: 8%;">Euro →</span>
-                            <span class="axis-label" style="top: 15%; left: 5%;">NOK ↑</span>
-                        </div>
-
-                        <div class="task-text">
-                            <p>Grafen er en rett linje gjennom origo. Ved 100 euro tilsvarer det 1027 norske kroner.</p>
-                        </div>
-
-                        <div class="task-subtitle">
-                            <span class="material-icons">functions</span>
-                            Funksjonsuttrykket til grafen er <span class="formula">y = 10,27x</span>
-                        </div>
-
-                        <div class="task-subtitle">
-                            <span class="material-icons">edit_note</span>
-                            Gi en forklaring på funksjonsuttrykket, der du forklarer hva 10,27 og x betyr i denne sammenhengen.
-                        </div>
-
                         <div class="input-section">
-                            <textarea class="text-input-area" id="task5-answer" placeholder="Forklar hva som skjer når x øker med 1, hva skjer med y? Hva representerer tallene i den praktiske situasjonen?"></textarea>
+                            <textarea class="text-input-area" id="task5-answer" placeholder="Vis utrekningane dine..."></textarea>
                         </div>
                     </div>
                 </div>
 
-                <!-- Task 6 -->
-                <div class="task" data-task="6" data-type="modeling">
+                <!-- Task 6 - Del 1 -->
+                <div class="task" data-task="6" data-part="1" data-type="calculation">
                     <div class="task-header">
                         <div class="task-number">6</div>
-                        <h3 class="task-title">Anne er 15 år, og ønsker å ta førerkort for moped. Hun skal kjøpe moped når hun blir 16 år. Hun planlegger å selge den når hun blir 18 år.</h3>
+                        <h3 class="task-title">Ein rettvinkla trekant har grunnlinja 6 cm og høgda 4 cm. Kva er arealet?</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="calculation-box">
+                            <label>Areal = __ cm²</label>
+                            <input type="number" class="calculation-input" id="task6-answer" placeholder="Skriv ditt svar...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 7 - Del 1 -->
+                <div class="task" data-task="7" data-part="1" data-type="multiple">
+                    <div class="task-header">
+                        <div class="task-number">7</div>
+                        <h3 class="task-title">Ei pakke te kosta 45 kroner. No er prisen 20 % lavare. Kva kosta pakken no?</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="multiple-choice">
+                            <div class="choice-option" onclick="selectChoice(this, 'A')">
+                                <input type="radio" name="task7" value="A" id="t7a">
+                                <label for="t7a">25 kr</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'B')">
+                                <input type="radio" name="task7" value="B" id="t7b">
+                                <label for="t7b">36 kr</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'C')">
+                                <input type="radio" name="task7" value="C" id="t7c">
+                                <label for="t7c">40 kr</label>
+                            </div>
+                            <div class="choice-option" onclick="selectChoice(this, 'D')">
+                                <input type="radio" name="task7" value="D" id="t7d">
+                                <label for="t7d">54 kr</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 8 - Del 1 -->
+                <div class="task" data-task="8" data-part="1" data-type="calculation">
+                    <div class="task-header">
+                        <div class="task-number">8</div>
+                        <h3 class="task-title">Skriv ned dei to neste tala i sekvensen: 2, 5, 8, 11, __, __</h3>
+                    </div>
+                    <div class="task-content">
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="calculation-box" style="margin: 0; flex: 1;">
+                                <label>Fjerde tal:</label>
+                                <input type="number" class="calculation-input" id="task8a-answer" placeholder="Tal">
+                            </div>
+                            <div class="calculation-box" style="margin: 0; flex: 1;">
+                                <label>Femte tal:</label>
+                                <input type="number" class="calculation-input" id="task8b-answer" placeholder="Tal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEL 2: With Calculator -->
+                <div style="background: var(--bg-light); padding: 2rem; margin: 3rem 0 3rem 0; border-radius: 12px; border-left: 4px solid var(--success-green);">
+                    <h3 style="color: var(--success-green); margin-bottom: 0.5rem;">DEL 2 - Med hjelpemidler (ikke AI)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Du har 2,5 timer på denne delen. Hjelpemidler: Kalkulator er tillatt.</p>
+                </div>
+
+                <!-- Task 9 - Del 2 -->
+                <div class="task" data-task="9" data-part="2" data-type="calculation">
+                    <div class="task-header">
+                        <div class="task-number">1</div>
+                        <h3 class="task-title">Ein bil kjører 240 km på 3 timar. Kor stor er gjennomsnittsfarten i km/h?</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="calculation-box">
+                            <label>Gjennomsnittsfart = __ km/h</label>
+                            <input type="number" class="calculation-input" id="task9-answer" placeholder="Skriv ditt svar...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 10 - Del 2 -->
+                <div class="task" data-task="10" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">2</div>
+                        <h3 class="task-title">Ei bedrift seld produkter. Inntekta i tusen kroner kan skrivast som <span class="formula">I(x) = -2x² + 12x + 5</span>, der x er antal år etter 2020.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit</span>
+                            a) I kva år var inntekta størst?
+                        </div>
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task10a-answer" placeholder="Forklar korleis du fann svaret..."></textarea>
+                        </div>
+
+                        <div class="task-subtitle" style="margin-top: 2rem;">
+                            <span class="material-icons">edit</span>
+                            b) Kva var den største inntekta?
+                        </div>
+                        <div class="calculation-box">
+                            <label>Inntekt = __ tusen kroner</label>
+                            <input type="number" class="calculation-input" id="task10b-answer" placeholder="Skriv ditt svar...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 11 - Del 2 -->
+                <div class="task" data-task="11" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">3</div>
+                        <h3 class="task-title">I ein klasse er det 24 elevar. 1/3 av elevane speler fotball, 1/4 speler handball, og resten speler ikkje ballidrott.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit</span>
+                            Kor mange elevar speler ikkje ballidrott? Vis korleis du løyste oppgåva.
+                        </div>
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task11-answer" placeholder="Vis framgangsmåten din..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 12 - Del 2 -->
+                <div class="task" data-task="12" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">4</div>
+                        <h3 class="task-title">Ein sylinder har radius 5 cm og høgde 12 cm. (Bruk π ≈ 3,14)</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit</span>
+                            Rekn ut volumet av sylinderen. Vis framgangsmåten.
+                        </div>
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task12-answer" placeholder="Vis dine utrekningar..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 13 - Del 2 -->
+                <div class="task" data-task="13" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">5</div>
+                        <h3 class="task-title">Løys systemet av likningar:</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text" style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            <p style="font-family: 'Courier New', monospace; line-height: 2;">
+                                2x + y = 10<br>
+                                x - y = 2
+                            </p>
+                        </div>
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task13-answer" placeholder="Vis framgangsmåten and svara for x og y..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 14 - Del 2 -->
+                <div class="task" data-task="14" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">6</div>
+                        <h3 class="task-title">Tabellen viser temperatur i grader Celsius målt kl 12:00 på ulike år.</h3>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-text" style="margin-bottom: 1.5rem;">
+                            <table style="width: 100%; text-align: center; border-collapse: collapse;">
+                                <tr style="background: var(--bg-gray);">
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">År</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">2019</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">2020</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">2021</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">2022</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">Temp (°C)</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">12</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">14</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">13</td>
+                                    <td style="padding: 0.75rem; border: 1px solid var(--border-light);">15</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="task-subtitle">
+                            <span class="material-icons">edit</span>
+                            Rekn ut gjennomsnittsmålet og standardavviket.
+                        </div>
+                        <div class="input-section">
+                            <textarea class="text-input-area" id="task14-answer" placeholder="Vis framgangsmåten. Gjennomsnitt: __, Standardavvik: __"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 15 - Del 2 -->
+                <div class="task" data-task="15" data-part="2" data-type="text">
+                    <div class="task-header">
+                        <div class="task-number">7</div>
+                        <h3 class="task-title">Modelleringsoppgåve: Ein fotballklubb skal kjøpe nye draktar til laget sitt.</h3>
                     </div>
                     <div class="task-content">
                         <div class="task-text">
-                            <p><strong>Obligatorisk opplæring:</strong> Samlet pris: kr 8 800 (inkludert 3 kjøretimer)<br>
-                            <strong>Gebyr førerkort moped:</strong> kr 1 150<br>
-                            <strong>Moped:</strong> Peugeot Speedfight 4 Pure - Pris: kr 16 000<br>
-                            <strong>Forsikring:</strong> ca. kr 3 000 per år</p>
-                            
-                            <p style="margin-top: 1rem;"><strong>Tilleggsinformasjon:</strong></p>
+                            <p><strong>Opplysningar:</strong></p>
                             <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                                <li>Verditapet til en ny moped er 25-30% det første året, 20% det andre året og så 10% per år.</li>
-                                <li>Mopeden bruker ca. 1/3 L bensin per mil.</li>
-                                <li>En liter bensin koster ca. kr 15.</li>
-                                <li>Anne bor 2 km fra skolen og fra fotballbanen.</li>
-                                <li>Anne har liten erfaring med moped, så hun trenger trolig flere kjøretimer.</li>
+                                <li>Antall spelarar: 14</li>
+                                <li>Tropedrakt koster 350 kroner per spelar</li>
+                                <li>Treningsdraktene koster 180 kroner per spelar</li>
+                                <li>Trykkingsstudio tilbyr 10 % rabatt ved kjøp av meir enn 20 draktar</li>
+                                <li>Logoen skal trykkes på alle drakter (fast pris: 1 500 kroner)</li>
                             </ul>
                         </div>
 
                         <div class="task-subtitle">
-                            <span class="material-icons">lightbulb</span>
-                            Bruk opplysningene ovenfor til å vise din kompetanse innen modellering og anvendelse.
+                            <span class="material-icons">edit</span>
+                            Lag ein modell for kostnadene. Still relevante spørsmål og gjer nødvendige berekningar. Vurder ulike val klubben kunne gjere.
                         </div>
 
                         <div class="input-section">
-                            <textarea class="text-input-area" id="task6-answer" placeholder="Still relevante matematiske spørsmål, lag modeller, gjør beregninger og vurder gyldighet og avgrensninger. Husk å vise fremgangsmåter og resonnementer..."></textarea>
+                            <textarea class="text-input-area" id="task15-answer" placeholder="Formuler spørsmål, lag modeller, gjer berekningar og gje forslag. Vis all arbeid og resonnementer..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -1161,22 +1307,27 @@
         <div class="results-interface" id="results-interface">
             <div class="results-header">
                 <h2>Eksamen er levert!</h2>
-                <div class="score-display" id="score-display">4/6</div>
-                <div class="score-label">oppgaver besvart tilfredsstillende</div>
+                <div class="score-display" id="score-display">10/15</div>
+                <div class="score-label">poeng samla</div>
             </div>
 
             <div class="results-content">
                 <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
-                    Her ser du en gjennomgang av dine svar med fasit og begrunnelser. 
-                    Husk at på en skriftlig eksamen vurderes også fremgangsmåte, resonnement og kommunikasjon.
+                    Her ser du gjennomgang av dine svar med fasit og forklaringar. 
+                    Husk at på ein skriftleg eksamen vurderast også framgangsmåte, resonnementer og kommunikasjon.
                 </p>
+
+                <!-- DEL 1 RESULTS -->
+                <div style="background: var(--primary-red-light); padding: 1.5rem; margin-bottom: 2rem; border-radius: 12px; border-left: 4px solid var(--primary-red);">
+                    <h3 style="color: var(--primary-red);">DEL 1 - Uten kalkulator</h3>
+                </div>
 
                 <!-- Task 1 Result -->
                 <div class="result-task correct" data-result="1">
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <span class="material-icons" style="color: var(--success-green);">check_circle</span>
-                            <strong>Oppgave 1 - Tidsberegning</strong>
+                            <strong>Oppgåve 1 - Prosent</strong>
                         </div>
                         <div class="result-status correct">
                             <span class="material-icons">check</span>
@@ -1184,104 +1335,75 @@
                         </div>
                     </div>
                     <div class="result-details">
-                        <div class="your-answer">
-                            <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content">3 minutter</div>
-                        </div>
                         <div class="correct-answer">
                             <div class="answer-label">Fasit</div>
-                            <div class="answer-content">3 minutter (B)</div>
+                            <div class="answer-content">25 % av 80 = 20 (A)</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Begrunnelse
+                                    Forklaring
                                 </div>
-                                <p>Tid = Avstand / Hastighet = 4 km / 80 km/t = 0,05 timer = 3 minutter. 
-                                Husk å konvertere timer til minutter ved å multiplisere med 60.</p>
+                                <p>25 % = 1/4, så 1/4 × 80 = 20. Eller: 0,25 × 80 = 20.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Task 2 Result -->
-                <div class="result-task partial" data-result="2">
+                <div class="result-task correct" data-result="2">
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <span class="material-icons" style="color: var(--warning-orange);">adjust</span>
-                            <strong>Oppgave 2 - Figurmønster</strong>
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 2 - Likningsløysing</strong>
                         </div>
-                        <div class="result-status partial">
-                            <span class="material-icons">remove</span>
-                            Delvis riktig
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
                         </div>
                     </div>
                     <div class="result-details">
-                        <div class="your-answer">
-                            <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content">
-                                a) Trekanter: <span id="res2-tri">22</span>, Firkanter: <span id="res2-sq">10</span><br>
-                                b) <span id="res2-form">2n + 2</span>
-                            </div>
-                        </div>
                         <div class="correct-answer">
                             <div class="answer-label">Fasit</div>
-                            <div class="answer-content">
-                                a) Trekanter: 22, Firkanter: 10<br>
-                                b) Antall trekanter = 2n + 2 (eller ekvivalent)
-                            </div>
+                            <div class="answer-content">x = 5</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Begrunnelse
+                                    Forklaring
                                 </div>
-                                <p><strong>a)</strong> Mønsteret for trekanter: 4, 6, 8... øker med 2 hver gang. Dette er en aritmetisk følge. 
-                                For figur 10: 4 + 2·(10-1) = 4 + 18 = 22 trekanter. Firkanter følger figur nummer: 10 firkanter.</p>
-                                <p style="margin-top: 0.5rem;"><strong>b)</strong> Formelen kan utledes ved å se at for figur n: 
-                                Startverdi 4, økning på 2 per steg: T(n) = 4 + 2(n-1) = 2n + 2.</p>
+                                <p>3x + 5 = 20<br>3x = 15<br>x = 5</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Task 3 Result -->
-                <div class="result-task" data-result="3" id="res3-task">
+                <div class="result-task correct" data-result="3">
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
-                            <strong>Oppgave 3 - Algebraisk mønster</strong>
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 3 - Funksjonsverdi</strong>
                         </div>
-                        <div class="result-status" id="res3-status">
-                            <span class="material-icons">schedule</span>
-                            Vurderes
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
                         </div>
                     </div>
                     <div class="result-details">
-                        <div class="your-answer">
-                            <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content" id="res3-ans" style="white-space: pre-wrap;">[Ditt resonnement]</div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">f(2) = 5 (C)</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Fasit og veiledende vurdering
+                                    Forklaring
                                 </div>
-                                <p><strong>Generell sammenheng:</strong> For et 2×2 kvadrat i et rutenett med påfølgende tall, 
-                                er differansen alltid lik avstanden mellom radene (som er 5 i et 5×5 rutenett).</p>
-                                <p style="margin-top: 0.5rem;"><strong>Algebraisk bevis:</strong> La øvre venstre hjørne være n. 
-                                Da er hjørnene: n, n+1, n+5, n+6. 
-                                Produkt av diagonaler: n(n+6) = n² + 6n og (n+1)(n+5) = n² + 6n + 5. 
-                                Differansen er alltid 5.</p>
-                                <p style="margin-top: 0.5rem;"><strong>Vurdering:</strong> Se etter om eleven har:
-                                    <br>• Systematisk undersøkt flere eksempler
-                                    <br>• Formulert en hypotese
-                                    <br>• Brukt algebra for å bevise/generalisiere
-                                    <br>• Kommunisert resonnementet tydelig
-                                </p>
+                                <p>f(2) = 2(2)² - 3 = 2(4) - 3 = 8 - 3 = 5</p>
                             </div>
                         </div>
                     </div>
@@ -1292,7 +1414,7 @@
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <span class="material-icons" style="color: var(--success-green);">check_circle</span>
-                            <strong>Oppgave 4 - Lineær funksjon</strong>
+                            <strong>Oppgåve 4 - Stigningstal</strong>
                         </div>
                         <div class="result-status correct">
                             <span class="material-icons">check</span>
@@ -1300,23 +1422,17 @@
                         </div>
                     </div>
                     <div class="result-details">
-                        <div class="your-answer">
-                            <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content">y = x + 2</div>
-                        </div>
                         <div class="correct-answer">
                             <div class="answer-label">Fasit</div>
-                            <div class="answer-content">y = x + 2 (D)</div>
+                            <div class="answer-content">Stigningstal = -2 (A)</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Begrunnelse
+                                    Forklaring
                                 </div>
-                                <p>En rett linje som skjærer y-aksen i 2 må ha konstantledd 2 (y = ... + 2). 
-                                Alternativ D er den eneste lineære funksjonen (grad 1) med dette konstantleddet. 
-                                A er kvadratisk (parabel), B skjærer i 1, C er hyperbel (ikke lineær).</p>
+                                <p>I funksjonen y = ax + b er a stigingstalet. Her er a = -2.</p>
                             </div>
                         </div>
                     </div>
@@ -1327,7 +1443,7 @@
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <span class="material-icons" style="color: var(--text-muted);">pending</span>
-                            <strong>Oppgave 5 - Proportionalitet</strong>
+                            <strong>Oppgåve 5 - Algebraisk forenkl.</strong>
                         </div>
                         <div class="result-status" id="res5-status">
                             <span class="material-icons">schedule</span>
@@ -1337,33 +1453,188 @@
                     <div class="result-details">
                         <div class="your-answer">
                             <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content" id="res5-ans" style="white-space: pre-wrap;">[Din forklaring]</div>
+                            <div class="answer-content" id="res5-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">4a + 14</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Fasit og veiledende vurdering
+                                    Forklaring
                                 </div>
-                                <p><strong>x</strong> representerer antall euro (den uavhengige variabelen/input).<br>
-                                <strong>10,27</strong> er vekstfaktoren/stigningstallet som forteller hvor mange norske kroner 
-                                man får for 1 euro (kursen).<br>
-                                <strong>y</strong> er antall norske kroner (den avhengige variabelen/output).</p>
-                                <p style="margin-top: 0.5rem;">Når x øker med 1 (1 euro mer), øker y med 10,27 (10,27 kroner mer). 
-                                Dette er en proporsjonal sammenheng (rett linje gjennom origo).</p>
+                                <p>3(2a + 4) - 2(a - 1) = 6a + 12 - 2a + 2 = 4a + 14</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Task 6 Result -->
-                <div class="result-task" data-result="6" id="res6-task">
+                <div class="result-task correct" data-result="6">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 6 - Areal av trekant</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">Areal = 12 cm²</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>Areal av trekant = (grunnlinja × høgda) / 2 = (6 × 4) / 2 = 24 / 2 = 12 cm²</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 7 Result -->
+                <div class="result-task correct" data-result="7">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 7 - Prisnedsett</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">Ny pris = 36 kr (B)</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>20 % rabatt = 20 % av 45 = 9 kr. Ny pris = 45 - 9 = 36 kr.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 8 Result -->
+                <div class="result-task correct" data-result="8">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 8 - Tallsekvens</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">14 og 17</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>Sekvensen aukar med 3 kvar gong: 2, 5, 8, 11, 14, 17. Dette er ein aritmetisk sekvens med d = 3.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEL 2 RESULTS -->
+                <div style="background: #e8f5e9; padding: 1.5rem; margin: 2rem 0; border-radius: 12px; border-left: 4px solid var(--success-green);">
+                    <h3 style="color: var(--success-green);">DEL 2 - Med kalkulator</h3>
+                </div>
+
+                <!-- Task 9 Result -->
+                <div class="result-task correct" data-result="9">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--success-green);">check_circle</span>
+                            <strong>Oppgåve 1 - Gjennomsnittsfart</strong>
+                        </div>
+                        <div class="result-status correct">
+                            <span class="material-icons">check</span>
+                            Riktig
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">80 km/h</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>Gjennomsnittsfart = total avstand / total tid = 240 km / 3 h = 80 km/h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 10 Result -->
+                <div class="result-task" data-result="10" id="res10-task">
                     <div class="result-task-header" onclick="toggleResult(this)">
                         <div style="display: flex; align-items: center; gap: 1rem;">
                             <span class="material-icons" style="color: var(--text-muted);">pending</span>
-                            <strong>Oppgave 6 - Modellering (moped)</strong>
+                            <strong>Oppgåve 2 - Kvadratisk funksjon</strong>
                         </div>
-                        <div class="result-status" id="res6-status">
+                        <div class="result-status" id="res10-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar del a)</div>
+                            <div class="answer-content" id="res10a-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">a) År 2023 (x = 3 år etter 2020)<br>b) Maksimal inntekt = 23 tusen kr</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>For kvadratisk funksjon f(x) = ax² + bx + c er maksimum/minimum ved x = -b/(2a).<br>
+                                Her: x = -12/(2×(-2)) = -12/(-4) = 3<br>
+                                I(3) = -2(9) + 12(3) + 5 = -18 + 36 + 5 = 23 tusen kr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 11 Result -->
+                <div class="result-task" data-result="11" id="res11-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgåve 3 - Brøk og prosent</strong>
+                        </div>
+                        <div class="result-status" id="res11-status">
                             <span class="material-icons">schedule</span>
                             Vurderes
                         </div>
@@ -1371,38 +1642,180 @@
                     <div class="result-details">
                         <div class="your-answer">
                             <div class="answer-label">Ditt svar</div>
-                            <div class="answer-content" id="res6-ans" style="white-space: pre-wrap;">[Din modellering]</div>
+                            <div class="answer-content" id="res11-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">14 elevar speler ikkje ballidrott</div>
                         </div>
                         <div class="explanation">
                             <div class="explanation-box">
                                 <div class="explanation-title">
                                     <span class="material-icons">school</span>
-                                    Veiledende fasit - Viktige elementer
+                                    Forklaring
                                 </div>
-                                <p><strong>Relevante spørsmål å undersøke:</strong></p>
+                                <p>Fotball: 1/3 × 24 = 8 elevar<br>
+                                Handball: 1/4 × 24 = 6 elevar<br>
+                                Ballidrott totalt: 8 + 6 = 14 elevar<br>
+                                Ikkje ballidrott: 24 - 14 = 10 elevar<br>
+                                Eller: (1 - 1/3 - 1/4) × 24 = (12/12 - 4/12 - 3/12) × 24 = 5/12 × 24 = 10 elevar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 12 Result -->
+                <div class="result-task" data-result="12" id="res12-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgåve 4 - Volum av sylinder</strong>
+                        </div>
+                        <div class="result-status" id="res12-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res12-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">Volum ≈ 942 cm³</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>Volum av sylinder = π × r² × h<br>
+                                V = 3,14 × 5² × 12 = 3,14 × 25 × 12 = 3,14 × 300 = 942 cm³</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 13 Result -->
+                <div class="result-task" data-result="13" id="res13-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgåve 5 - Likningssystem</strong>
+                        </div>
+                        <div class="result-status" id="res13-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res13-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">x = 4, y = 2</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p>Addisjon av likningane: (2x + y) + (x - y) = 10 + 2<br>
+                                3x = 12<br>
+                                x = 4<br>
+                                Frå andre likning: 4 - y = 2, så y = 2<br>
+                                Kontroll: 2(4) + 2 = 10 ✓ og 4 - 2 = 2 ✓</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 14 Result -->
+                <div class="result-task" data-result="14" id="res14-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgåve 6 - Statistikk</strong>
+                        </div>
+                        <div class="result-status" id="res14-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res14-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="correct-answer">
+                            <div class="answer-label">Fasit</div>
+                            <div class="answer-content">Gjennomsnitt = 13,5°C, Standardavvik ≈ 1,12°C</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Forklaring
+                                </div>
+                                <p><strong>Gjennomsnitt:</strong> (12 + 14 + 13 + 15) / 4 = 54 / 4 = 13,5°C<br>
+                                <strong>Avvik frå gjennomsnitt:</strong> -1,5, 0,5, -0,5, 1,5<br>
+                                <strong>Standardavvik:</strong> √(((-1,5)² + 0,5² + (-0,5)² + 1,5²) / 4) = √(5 / 4) ≈ 1,12°C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task 15 Result -->
+                <div class="result-task" data-result="15" id="res15-task">
+                    <div class="result-task-header" onclick="toggleResult(this)">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span class="material-icons" style="color: var(--text-muted);">pending</span>
+                            <strong>Oppgåve 7 - Modellering</strong>
+                        </div>
+                        <div class="result-status" id="res15-status">
+                            <span class="material-icons">schedule</span>
+                            Vurderes
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="your-answer">
+                            <div class="answer-label">Ditt svar</div>
+                            <div class="answer-content" id="res15-ans" style="white-space: pre-wrap;">[Ditt svar]</div>
+                        </div>
+                        <div class="explanation">
+                            <div class="explanation-box">
+                                <div class="explanation-title">
+                                    <span class="material-icons">school</span>
+                                    Veiledande fasit
+                                </div>
+                                <p><strong>Relevante spørsmål:</strong></p>
                                 <ul style="margin-left: 1.5rem; margin: 0.5rem 0;">
-                                    <li>Hva blir totale kostnader for 2 år?</li>
-                                    <li>Hva blir salgsverdien etter 2 år?</li>
-                                    <li>Hva koster drivstoffet per år?</li>
-                                    <li>Lønner det seg økonomisk?</li>
+                                    <li>Kva blir kostnadene utan og med rabatt?</li>
+                                    <li>Kor mange draktar må klubben kjøpe for å få rabatt?</li>
+                                    <li>Kva er den mest ekonomiske løysinga?</li>
                                 </ul>
-                                <p style="margin-top: 0.5rem;"><strong>Eksempel på beregninger:</strong><br>
-                                • Verditap år 1: 25% av 16 000 = 4 000 kr → verdi 12 000 kr<br>
-                                • Verditap år 2: 20% av 12 000 = 2 400 kr → salgsverdi 9 600 kr<br>
-                                • Totale kostnader: 8 800 + 1 150 + (16 000 - 9 600) + 6 000 (forsikring) + drivstoff<br>
-                                • Drivstoff: 2 km × 2 turer × 190 skoledager × 2 år = 1 520 km ≈ 507 L ≈ 7 605 kr</p>
-                                <p style="margin-top: 0.5rem;"><strong>Vurdering:</strong> Sensor vektlegger evne til å stille relevante spørsmål, 
-                                lage hensiktsmessige modeller, gjøre kritiske vurderinger av forutsetninger, og kommunisere tydelig.</p>
+                                <p style="margin-top: 0.5rem;"><strong>Eksempel på berekningar:</strong><br>
+                                • Tropedrakt: 14 × 350 = 4 900 kr<br>
+                                • Treningsdraktar: 14 × 180 = 2 520 kr<br>
+                                • Totalt utan rabatt: 4 900 + 2 520 + 1 500 = 8 920 kr<br>
+                                • Med 10 % rabatt på drakter: (4 900 + 2 520) × 0,9 + 1 500 = 5 868 + 1 500 = 7 368 kr<br>
+                                • Sparing: 8 920 - 7 368 = 1 552 kr</p>
+                                <p style="margin-top: 0.5rem;"><strong>Vurdering:</strong> Sensor vektlegg evne til å formulere spørsmål, lage modeller, gjere berekningar og kommunisere tydelig.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-light); border-radius: 12px; text-align: center;">
-                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Tips til videre øving</h3>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Tips til vidare øving</h3>
                     <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
-                        På en ekte eksamen vurderes ikke bare svaret, men også hvordan du kommer frem til det. 
-                        Øv på å forklare tankegangen din tydelig, bruke riktig fagspråk, og vurdere om svarene dine er rimelige.
+                        På ein ekte eksamen vurderast ikkje berre svaret, men også korleis du kjem fram til det. 
+                        Øv på å forklare tankegangen din tydleg, bruke riktig fagspråk, og vurdere om svara dine er rimelige.
                     </p>
                     <button class="btn-primary" onclick="location.reload()" style="margin-top: 1.5rem;">
                         <span class="material-icons">refresh</span>
@@ -1417,22 +1830,33 @@
     <script>
         let selectedSubject = null;
         let examData = {
+            // Del 1 answers
             task1: null,
-            task2a_triangles: null,
-            task2a_squares: null,
-            task2b: null,
+            task2: null,
             task3: null,
             task4: null,
             task5: null,
-            task6: null
+            task6: null,
+            task7: null,
+            task8a: null,
+            task8b: null,
+            // Del 2 answers
+            task9: null,
+            task10a: null,
+            task10b: null,
+            task11: null,
+            task12: null,
+            task13: null,
+            task14: null,
+            task15: null
         };
 
-        // Calculate delivery time (5 hours from now, rounded to nearest hour)
+        // Calculate delivery time (5 hours from now)
         function setDeliveryTime() {
             const now = new Date();
             now.setHours(now.getHours() + 5);
             const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = '00';
+            const minutes = now.getMinutes().toString().padStart(2, '0');
             document.getElementById('delivery-time').textContent = `${hours}:${minutes}`;
         }
 
@@ -1480,13 +1904,22 @@
 
         // Submit exam
         function submitExam() {
-            // Collect all answers
-            examData.task2a_triangles = document.getElementById('task2a-triangles').value;
-            examData.task2a_squares = document.getElementById('task2a-squares').value;
-            examData.task2b = document.getElementById('task2b-formula').value;
-            examData.task3 = document.getElementById('task3-answer').value;
+            // Collect all Del 1 answers
+            examData.task2 = document.getElementById('task2-answer').value;
             examData.task5 = document.getElementById('task5-answer').value;
             examData.task6 = document.getElementById('task6-answer').value;
+            examData.task8a = document.getElementById('task8a-answer').value;
+            examData.task8b = document.getElementById('task8b-answer').value;
+
+            // Collect all Del 2 answers
+            examData.task9 = document.getElementById('task9-answer').value;
+            examData.task10a = document.getElementById('task10a-answer').value;
+            examData.task10b = document.getElementById('task10b-answer').value;
+            examData.task11 = document.getElementById('task11-answer').value;
+            examData.task12 = document.getElementById('task12-answer').value;
+            examData.task13 = document.getElementById('task13-answer').value;
+            examData.task14 = document.getElementById('task14-answer').value;
+            examData.task15 = document.getElementById('task15-answer').value;
 
             // Show results
             document.getElementById('exam-interface').style.display = 'none';
@@ -1497,50 +1930,67 @@
             document.getElementById('step-2').classList.add('completed');
             document.getElementById('step-3').classList.add('active');
 
-            // Populate results with user answers
-            document.getElementById('res2-tri').textContent = examData.task2a_triangles || '[Ikke besvart]';
-            document.getElementById('res2-sq').textContent = examData.task2a_squares || '[Ikke besvart]';
-            document.getElementById('res2-form').textContent = examData.task2b || '[Ikke besvart]';
-            document.getElementById('res3-ans').textContent = examData.task3 || '[Ikke besvart]';
-            document.getElementById('res5-ans').textContent = examData.task5 || '[Ikke besvart]';
-            document.getElementById('res6-ans').textContent = examData.task6 || '[Ikke besvart]';
+            // Populate user answers in results
+            if (examData.task5) document.getElementById('res5-ans').textContent = examData.task5;
+            if (examData.task10a) document.getElementById('res10a-ans').textContent = examData.task10a;
+            if (examData.task11) document.getElementById('res11-ans').textContent = examData.task11;
+            if (examData.task12) document.getElementById('res12-ans').textContent = examData.task12;
+            if (examData.task13) document.getElementById('res13-ans').textContent = examData.task13;
+            if (examData.task14) document.getElementById('res14-ans').textContent = examData.task14;
+            if (examData.task15) document.getElementById('res15-ans').textContent = examData.task15;
 
             // Update status for text tasks based on if they were answered
-            updateTextTaskStatus(3, examData.task3, 'res3-task', 'res3-status');
             updateTextTaskStatus(5, examData.task5, 'res5-task', 'res5-status');
-            updateTextTaskStatus(6, examData.task6, 'res6-task', 'res6-status');
+            updateTextTaskStatus(10, examData.task10a, 'res10-task', 'res10-status');
+            updateTextTaskStatus(11, examData.task11, 'res11-task', 'res11-status');
+            updateTextTaskStatus(12, examData.task12, 'res12-task', 'res12-status');
+            updateTextTaskStatus(13, examData.task13, 'res13-task', 'res13-status');
+            updateTextTaskStatus(14, examData.task14, 'res14-task', 'res14-status');
+            updateTextTaskStatus(15, examData.task15, 'res15-task', 'res15-status');
 
-            // Calculate score
+            // Calculate score (each task worth 1 point, total 15)
             let score = 0;
-            if (examData.task1 === 'B') score++;
-            if (examData.task4 === 'D') score++;
-            if (examData.task2a_triangles === '22') score += 0.5;
-            if (examData.task2a_squares === '10') score += 0.5;
             
-            // Text tasks count as 1 each if answered
-            if (examData.task3 && examData.task3.length > 50) score++;
-            if (examData.task5 && examData.task5.length > 30) score++;
-            if (examData.task6 && examData.task6.length > 100) score++;
+            // Score Del 1 (8 tasks)
+            if (examData.task1 === 'A') score += 1;
+            if (examData.task2 === '5') score += 1;
+            if (examData.task3 === 'C') score += 1;
+            if (examData.task4 === 'A') score += 1;
+            if (examData.task5 && examData.task5.length > 20) score += 1;
+            if (examData.task6 === '12') score += 1;
+            if (examData.task7 === 'B') score += 1;
+            if (examData.task8a === '14' && examData.task8b === '17') score += 1;
+            
+            // Score Del 2 (7 tasks)
+            if (examData.task9 === '80') score += 1;
+            if (examData.task10a && examData.task10a.length > 15 && examData.task10b === '23') score += 1;
+            if (examData.task11 && examData.task11.length > 30) score += 1;
+            if (examData.task12 && examData.task12.length > 30) score += 1;
+            if (examData.task13 && examData.task13.length > 30) score += 1;
+            if (examData.task14 && examData.task14.length > 30) score += 1;
+            if (examData.task15 && examData.task15.length > 50) score += 1;
 
-            document.getElementById('score-display').textContent = Math.round(score) + '/6';
+            document.getElementById('score-display').textContent = score + '/15';
         }
 
         function updateTextTaskStatus(taskNum, answer, taskId, statusId) {
             const taskEl = document.getElementById(taskId);
             const statusEl = document.getElementById(statusId);
             
-            if (answer && answer.length > (taskNum === 6 ? 100 : 30)) {
+            const minLength = taskNum === 15 ? 100 : (taskNum === 6 ? 100 : 40);
+            
+            if (answer && answer.length > minLength) {
                 taskEl.classList.add('correct');
                 statusEl.classList.add('correct');
                 statusEl.innerHTML = '<span class="material-icons">check</span> Besvart';
-            } else if (answer && answer.length > 0) {
+            } else if (answer && answer.length > 20) {
                 taskEl.classList.add('partial');
                 statusEl.classList.add('partial');
                 statusEl.innerHTML = '<span class="material-icons">remove</span> Kort svar';
             } else {
                 taskEl.classList.add('incorrect');
                 statusEl.classList.add('incorrect');
-                statusEl.innerHTML = '<span class="material-icons">close</span> Ikke besvart';
+                statusEl.innerHTML = '<span class="material-icons">close</span> Ikkje besvart';
             }
         }
 
