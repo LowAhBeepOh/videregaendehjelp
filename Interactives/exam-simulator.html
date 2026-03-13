@@ -6,6 +6,7 @@
     <title>VGS-hjelp sin eksamen (2026) - Videregående Hjelp</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="./Data/exam-loader.js"></script>
     <style>
         * {
             margin: 0;
@@ -878,17 +879,13 @@
                     <p>NOR0010 - Hovedmål<br>Skriveoppgaver og tekstanalyse</p>
                 </div>
 
-                <!-- English - Locked -->
-                <div class="subject-card locked" id="card-engelsk">
-                    <div class="lock-badge">
-                        <span class="material-icons">lock</span>
-                        Kommer snart
-                    </div>
+                <!-- English - Available -->
+                <div class="subject-card" onclick="selectSubject('engelsk')" id="card-engelsk">
                     <div class="subject-icon">
                         <span class="material-icons">language</span>
                     </div>
                     <h3>Engelsk</h3>
-                    <p>ENG0010 - Internasjonal engelsk<br>Lese- og skriveferdigheter</p>
+                    <p>ENG0030 - 10. årstrinn<br>Full eksamen med del 1, 2, 3 og 4</p>
                 </div>
             </div>
 
@@ -947,39 +944,23 @@
             </div>
 
             <div class="exam-content">
-                <!-- DEL 1: Without Calculator -->
-                <div style="background: var(--bg-light); padding: 2rem; margin-bottom: 3rem; border-radius: 12px; border-left: 4px solid var(--primary-red);">
-                    <h3 style="color: var(--primary-red); margin-bottom: 0.5rem;">DEL 1 - Uten kalkulator</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Du har 2,5 timer på denne delen. Hjelpemidler: Ikkje tillatt.</p>
-                </div>
+                <!-- Oppgaver blir generert automatisk fra JSON-data -->
+            </div>
 
-                <!-- Task 1 - Del 1 -->
-                <div class="task" data-task="1" data-part="1" data-type="multiple">
-                    <div class="task-header">
-                        <div class="task-number">1</div>
-                        <h3 class="task-title">Kor mykje er 25 % av 80?</h3>
-                    </div>
-                    <div class="task-content">
-                        <div class="multiple-choice">
-                            <div class="choice-option" onclick="selectChoice(this, 'A')">
-                                <input type="radio" name="task1" value="A" id="t1a">
-                                <label for="t1a">16</label>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'B')">
-                                <input type="radio" name="task1" value="B" id="t1b">
-                                <label for="t1b">20</label>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'C')">
-                                <input type="radio" name="task1" value="C" id="t1c">
-                                <label for="t1c">25</label>
-                            </div>
-                            <div class="choice-option" onclick="selectChoice(this, 'D')">
-                                <input type="radio" name="task1" value="D" id="t1d">
-                                <label for="t1d">40</label>
-                            </div>
-                        </div>
-                    </div>
+            <div class="submit-section">
+                <div class="submit-warning">
+                    <span class="material-icons">warning</span>
+                    <span>Når du leverer kan du ikke gå tilbake. Sjekk at alle oppgaver er besvart.</span>
                 </div>
+                <button class="btn-primary" onclick="submitExam()">
+                    <span class="material-icons">check_circle</span>
+                    Lever eksamen
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Interface -->
+        <div class="results-interface" id="results-interface">
 
                 <!-- Task 2 - Del 1 -->
                 <div class="task" data-task="2" data-part="1" data-type="calculation">
@@ -1289,17 +1270,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="submit-section">
-                <div class="submit-warning">
-                    <span class="material-icons">warning</span>
-                    <span>Når du leverer kan du ikke gå tilbake. Sjekk at alle oppgaver er besvart.</span>
-                </div>
-                <button class="btn-primary" onclick="submitExam()">
-                    <span class="material-icons">check_circle</span>
-                    Lever eksamen
-                </button>
             </div>
         </div>
 
@@ -1862,13 +1832,19 @@
 
         // Subject selection
         function selectSubject(subject) {
-            if (subject === 'matte') {
+            if (subject === 'matte' || subject === 'engelsk') {
                 selectedSubject = subject;
                 document.querySelectorAll('.subject-card').forEach(card => {
                     card.classList.remove('selected');
                 });
-                document.getElementById('card-matte').classList.add('selected');
+                const cardId = subject === 'matte' ? 'card-matte' : 'card-engelsk';
+                document.getElementById(cardId).classList.add('selected');
                 document.getElementById('start-btn').disabled = false;
+                
+                // Pre-load exam data
+                if (typeof examLoader !== 'undefined') {
+                    examLoader.loadExamData(subject);
+                }
             }
         }
 
@@ -1876,15 +1852,44 @@
         function startExam() {
             if (!selectedSubject) return;
             
-            document.getElementById('subject-selection').style.display = 'none';
-            document.getElementById('exam-interface').style.display = 'block';
-            document.getElementById('exam-interface').classList.add('fade-in');
-            
-            document.getElementById('step-1').classList.remove('active');
-            document.getElementById('step-1').classList.add('completed');
-            document.getElementById('step-2').classList.add('active');
-            
-            setDeliveryTime();
+            // Load exam data from JSON and generate tasks
+            if (typeof examLoader !== 'undefined') {
+                examLoader.loadExamData(selectedSubject).then(data => {
+                    if (data) {
+                        const examContent = document.querySelector('.exam-content');
+                        if (examContent) {
+                            examContent.innerHTML = '';
+                            
+                            // Generate all tasks from JSON
+                            data.sections.forEach((section, sectionIndex) => {
+                                examContent.innerHTML += examLoader.generateTasksHTML(sectionIndex);
+                            });
+                        }
+                    }
+                    
+                    // Show exam interface
+                    document.getElementById('subject-selection').style.display = 'none';
+                    document.getElementById('exam-interface').style.display = 'block';
+                    document.getElementById('exam-interface').classList.add('fade-in');
+                    
+                    document.getElementById('step-1').classList.remove('active');
+                    document.getElementById('step-1').classList.add('completed');
+                    document.getElementById('step-2').classList.add('active');
+                    
+                    setDeliveryTime();
+                });
+            } else {
+                // Fallback if loader doesn't load
+                document.getElementById('subject-selection').style.display = 'none';
+                document.getElementById('exam-interface').style.display = 'block';
+                document.getElementById('exam-interface').classList.add('fade-in');
+                
+                document.getElementById('step-1').classList.remove('active');
+                document.getElementById('step-1').classList.add('completed');
+                document.getElementById('step-2').classList.add('active');
+                
+                setDeliveryTime();
+            }
         }
 
         // Multiple choice selection

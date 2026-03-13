@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standby-plasser og ventelister – Videregående Hjelp</title>
+  <link rel="shortcut icon" href="../vgshjelp-logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ef5350;
+      --primary-dark: #b71c1c;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface-light: #f5f5f5;
+      --text: #212121;
+      --text-muted: #757575;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    [data-theme="dark"] {
+      --primary: #ff5252;
+      --primary-light: #ff7070;
+      --primary-dark: #d32f2f;
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --surface-light: #2a2a2a;
+      --text: #ffffff;
+      --text-muted: #b0b0b0;
+      --border: #333333;
+      --shadow: 0 2px 8px rgba(0,0,0,0.30);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    main { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .header-controls { display: flex; gap: 20px; align-items: center; }
+    .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .nav-links a.active { font-weight: 700; }
+
+    .settings-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 24px; color: var(--text);
+      transition: color 0.2s; display: flex; align-items: center;
+    }
+
+    .settings-btn:hover { color: var(--primary); }
+    .material-icons { font-size: 24px; }
+
+    .page-header { margin-bottom: 50px; }
+
+    .page-header h1 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; }
+
+    .content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+      line-height: 1.8;
+    }
+
+    .content h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 28px; font-weight: 700;
+      margin: 40px 0 20px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .content h2:first-child { margin-top: 0; }
+
+    .content h3 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 20px; font-weight: 700;
+      margin: 30px 0 15px 0;
+      color: var(--primary);
+    }
+
+    .content p { margin-bottom: 16px; color: var(--text-muted); }
+    .content ul, .content ol { margin-left: 20px; margin-bottom: 16px; color: var(--text-muted); }
+    .content li { margin-bottom: 8px; }
+    .content strong { color: var(--text); font-weight: 700; }
+
+    .highlight-box {
+      background: var(--surface-light);
+      border-left: 4px solid var(--primary);
+      padding: 20px; border-radius: 8px;
+      margin: 24px 0; color: var(--text-muted);
+    }
+
+    .highlight-box strong { color: var(--text); }
+
+    .back-link {
+      display: inline-flex; align-items: center;
+      gap: 8px; color: var(--primary);
+      text-decoration: none; font-weight: 600;
+      margin-bottom: 20px; transition: gap 0.2s;
+    }
+
+    .back-link:hover { gap: 12px; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: -8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timeline-body { padding-bottom: 28px; }
+
+    .timeline-body strong {
+      display: block;
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-body p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .settings-modal {
+      display: none; position: fixed;
+      bottom: 20px; right: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      box-shadow: var(--shadow-lg); z-index: 1000; width: 280px;
+    }
+
+    .settings-modal.show { display: block; animation: slideUp 0.3s ease; }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .settings-modal h3 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 16px; font-weight: 700;
+      margin-bottom: 16px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .close-settings { background: none; border: none; cursor: pointer; font-size: 20px; color: var(--text); padding: 0; }
+    .theme-options { display: flex; flex-direction: column; gap: 12px; }
+
+    .theme-option {
+      padding: 12px 16px;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: transparent; cursor: pointer;
+      font-family: 'Manrope', sans-serif; font-size: 14px;
+      color: var(--text); transition: all 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .theme-option:hover { border-color: var(--primary); background: var(--surface-light); }
+    .theme-option.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .radio {
+      width: 18px; height: 18px;
+      border: 2px solid currentColor;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+    }
+
+    .theme-option.active .radio::after {
+      content: ''; width: 8px; height: 8px;
+      background: currentColor; border-radius: 50%;
+    }
+
+    .modal-overlay {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.3); z-index: 999;
+    }
+
+    .modal-overlay.show { display: block; }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 28px; }
+      .content { padding: 24px; }
+      header { flex-wrap: wrap; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="/" class="logo">Videregående Hjelp</a>
+      <div class="header-controls">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/guides.html" class="active">Guider</a></li>
+            <li><a href="/tools.html">Verktøy</a></li>
+            <li><a href="/interactives.html">Interaktivt</a></li>
+          </ul>
+        </nav>
+        <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+          <span class="material-icons">settings</span>
+        </button>
+      </div>
+    </header>
+
+    <a href="/guides.html" class="back-link">
+      <span class="material-icons" style="font-size: 20px;">arrow_back</span> Tilbake til alle guider
+    </a>
+
+    <section class="page-header">
+      <h1>Standby-plasser og ventelister</h1>
+      <p>Kom ikke inn på skolen eller programmet du ønsket? Her er alt du trenger å vite om ventelistesystemet og hva du faktisk kan gjøre.</p>
+    </section>
+
+    <section class="content">
+
+      <h2>Slik fungerer inntaket</h2>
+
+      <p>Inntak til videregående skole skjer i <strong>flere runder</strong> gjennom sommeren. Søknadene behandles av fylkeskommunen, og skoleplasser tildeles basert på karakterpoeng og søkerrekkefølge. Du svarer på tilbudet via <a href="https://www.vigo.no" style="color: var(--primary);" target="_blank">vigo.no</a>.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-body">
+            <strong>1. mars – Søknadsfrist</strong>
+            <p>Du sender inn søknaden din på vigo.no med ønskede utdanningsprogram og skoler i prioritert rekkefølge.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-body">
+            <strong>Begynnelsen av juli – 1. inntak</strong>
+            <p>Første runde av inntaket er klart. Du mottar SMS og logger inn på vigo.no for å se tilbudet ditt og svare innen fristen (vanligvis ca. én uke).</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-body">
+            <strong>Midten av juli – 2. inntak (supplering)</strong>
+            <p>Andre inntaksrunde. Ledige plasser etter 1. inntak fylles opp. Søkere på venteliste kan rykke opp her.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-body">
+            <strong>Innen 1. september – Alle med ungdomsrett har fått tilbud</strong>
+            <p>Alle elever med rett til videregående opplæring skal ha mottatt et tilbud om skoleplass. Etter dette dato overtar skolene ansvaret for ledige plasser.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Hva er ventelisteplass?</h2>
+
+      <p>Dersom du ikke konkurrerer deg inn på ønsket skole eller program, kan du få tilbud om <strong>ventelisteplass</strong>. Det betyr at du er registrert som interessert, og vil rykke opp dersom noen takker nei til plassen sin eller trekker seg.</p>
+
+      <p>Ventelisteplassering er basert på karakterpoeng – det er ikke "førstemann til mølla".</p>
+
+      <h2>Svarscenariene – hva bør du velge?</h2>
+
+      <h3>Du kom inn på førsteønsket ditt</h3>
+      <p>Gratulerer! Svar <strong>Ja</strong> til plassen. Det er det eneste tilbudet du får i denne runden – lavere ønsker faller automatisk bort. Sier du Nei, står du uten skoleplass og mister plassen.</p>
+
+      <h3>Du kom inn på et lavere ønske, og har ventelisteplass på høyere ønsker</h3>
+      <p>Her har du to alternativer:</p>
+      <ul>
+        <li><strong>Ja til plass + Ja til venteliste (anbefalt):</strong> Du sikrer deg en skoleplass, men står samtidig på venteliste til høyere ønsker. Rykker du opp, mister du den første plassen.</li>
+        <li><strong>Nei til plass + Ja til venteliste (risikabelt):</strong> Du takker nei til den sikre plassen og satser på å komme inn på et høyere ønske. Gjør du dette uten å komme inn, er du uten skoleplass.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>⚠️ Aldri takk nei til det eneste tilbudet du har</strong> uten å være helt sikker på at du har en annen plan. Uten svar innen fristen risikerer du å miste plassen helt.
+      </div>
+
+      <h3>Du fikk kun tilbud om ventelisteplass – ingen skoleplass ennå</h3>
+      <p>Si <strong>Ja til venteliste</strong> for å forbli i inntaket. Sier du Nei, er du ute av prosessen og kan stå uten skoleplass til høsten.</p>
+
+      <h2>Forhåndssvar – planlegg ferie trygt</h2>
+
+      <p>Hvis du vet at du er utilgjengelig i juli (f.eks. på ferie uten internett), kan du registrere <strong>forhåndssvar</strong> på vigo.no. I de fleste fylker er dette tilgjengelig fra 2. mars til 1. juli. Forhåndssvar betyr at du automatisk takker ja til det tilbudet du får – inkludert ventelisteplass.</p>
+
+      <h2>Etter skolestart: hva skjer med ventelistene?</h2>
+
+      <p>Etter skolestart overtar den enkelte skole ansvaret for ledige plasser. Ventelistene fra fylkeskommunen avvikles som regel rundt 1. september. Ønsker du fortsatt å bytte, må du ta <strong>direkte kontakt med ønskeskolen</strong> og spørre om de har ledig plass og om det er mulig å sette deg på venteliste hos dem.</p>
+
+      <div class="highlight-box">
+        <strong>💡 Tips:</strong> Noen skoler har egne ventelister etter skolestart. Ring eller send e-post til inntaksansvarlig ved skolen så tidlig som mulig – jo raskere du er ute, jo bedre.
+      </div>
+
+      <h2>Kan jeg klage på inntaksvedtaket?</h2>
+
+      <p>Ja. Dersom du mener at inntaket er behandlet feil – for eksempel at poengberegningen er gal eller at du skulle hatt fortrinnsrett – kan du klage til fylkeskommunen. Klagefristen er vanligvis <strong>tre uker</strong> fra du mottok vedtaket. Klagen sendes til fylkeskommunen, og dersom de ikke tar klagen til følge, går den videre til Statsforvalteren.</p>
+
+      <h2>Nyttige lenker</h2>
+      <ul>
+        <li><a href="https://www.vigo.no" style="color: var(--primary);" target="_blank">vigo.no</a> – Søk, se tilbud og svar på skoleplass</li>
+        <li><a href="https://www.vilbli.no" style="color: var(--primary);" target="_blank">vilbli.no</a> – Informasjon om inntak, rettigheter og poengberegning</li>
+      </ul>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Videregående Hjelp. Et åpent prosjekt for alle.</p>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="settings-modal" id="settingsModal">
+    <h3>Innstillinger<button class="close-settings" id="closeSettings">×</button></h3>
+    <div class="theme-options">
+      <button class="theme-option" data-theme="system" onclick="setTheme('system')"><span class="radio"></span>System tema</button>
+      <button class="theme-option" data-theme="light" onclick="setTheme('light')"><span class="radio"></span>Lyst tema</button>
+      <button class="theme-option" data-theme="dark" onclick="setTheme('dark')"><span class="radio"></span>Mørkt tema</button>
+    </div>
+  </div>
+
+  <script>
+    function initTheme() { setTheme(localStorage.getItem('theme') || 'system'); }
+    function setTheme(theme) {
+      localStorage.setItem('theme', theme);
+      let final = theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+      document.documentElement.setAttribute('data-theme', final);
+      document.querySelectorAll('.theme-option').forEach(b => b.classList.remove('active'));
+      document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+    }
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettings = document.getElementById('closeSettings');
+    const modalOverlay = document.getElementById('modalOverlay');
+    settingsBtn.addEventListener('click', () => { settingsModal.classList.toggle('show'); modalOverlay.classList.toggle('show'); });
+    closeSettings.addEventListener('click', () => { settingsModal.classList.remove('show'); modalOverlay.classList.remove('show'); });
+    modalOverlay.addEventListener('click', () => { settingsModal.classList.remove('show'); modalOverlay.classList.remove('show'); });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if ((localStorage.getItem('theme') || 'system') === 'system') initTheme(); });
+    initTheme();
+  </script>
+</body>
+</html>
