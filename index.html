@@ -60,14 +60,25 @@
     main {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 20px 60px 20px;
+      padding: 0 16px 40px 16px;
     }
 
     /* Header */
     header {
-      padding: 20px 0;
-      margin-bottom: 40px;
+      padding: 12px 0;
+      margin-bottom: 24px;
       border-bottom: 1px solid var(--border);
+    }
+    
+    @media (min-width: 480px) {
+      main {
+        padding: 0 20px 60px 20px;
+      }
+      
+      header {
+        padding: 20px 0;
+        margin-bottom: 40px;
+      }
     }
 
     .header-content {
@@ -76,12 +87,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 16px;
+    }
+    
+    @media (min-width: 480px) {
+      .header-content {
+        padding: 0 20px;
+      }
     }
 
     .logo {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--text);
       text-decoration: none;
@@ -90,15 +107,29 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 12px;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 13px;
       transition: color 0.2s;
+    }
+    
+    @media (min-width: 480px) {
+      .logo {
+        font-size: 24px;
+      }
+      
+      .nav-links {
+        gap: 24px;
+      }
+      
+      .nav-links a {
+        font-size: 15px;
+      }
     }
 
     .nav-links a:hover {
@@ -111,7 +142,7 @@
 
     /* Search Section */
     .search-container {
-      margin-bottom: 40px;
+      margin-bottom: 24px;
       position: relative;
     }
     
@@ -119,13 +150,24 @@
       width: 100%;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 20px 24px;
+      padding: 14px 16px;
       border-radius: 12px;
       color: var(--text);
       font-family: var(--font-body);
-      font-size: 18px;
+      font-size: 16px;
       outline: none;
       transition: all 0.2s;
+    }
+    
+    @media (min-width: 480px) {
+      .search-container {
+        margin-bottom: 40px;
+      }
+      
+      .search-input {
+        padding: 20px 24px;
+        font-size: 18px;
+      }
     }
 
     .search-results {
@@ -137,20 +179,32 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       margin-top: 8px;
-      max-height: 300px;
+      max-height: 250px;
       overflow-y: auto;
       z-index: 100;
       display: none;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
+    @media (min-width: 480px) {
+      .search-results {
+        max-height: 300px;
+      }
+    }
+
     .search-result-item {
-      padding: 12px 20px;
+      padding: 10px 16px;
       display: block;
       color: var(--text);
       text-decoration: none;
       border-bottom: 1px solid var(--border);
       transition: background 0.2s;
+    }
+
+    @media (min-width: 480px) {
+      .search-result-item {
+        padding: 12px 20px;
+      }
     }
 
     .search-result-item:last-child {
@@ -164,11 +218,24 @@
     .search-result-title {
         font-weight: 700;
         display: block;
+        font-size: 13px;
+    }
+    
+    @media (min-width: 480px) {
+      .search-result-title {
+        font-size: 14px;
+      }
     }
     
     .search-result-meta {
-        font-size: 12px;
+        font-size: 11px;
         color: var(--text-muted);
+    }
+    
+    @media (min-width: 480px) {
+      .search-result-meta {
+        font-size: 12px;
+      }
     }
 
     [data-theme="light"] .search-input {
@@ -190,17 +257,17 @@
     /* Main Actions */
     .main-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .action-btn {
-      padding: 16px;
+      padding: 14px 12px;
       border: none;
       border-radius: 8px;
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.2s;
@@ -209,6 +276,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 44px;
+    }
+    
+    @media (min-width: 480px) {
+      .main-actions {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      
+      .action-btn {
+        padding: 16px;
+        font-size: 16px;
+      }
     }
 
     .action-btn:hover {
@@ -229,7 +310,13 @@
     .bento-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+      .bento-grid {
+        gap: 16px;
+      }
     }
 
     @media (min-width: 768px) {
@@ -287,7 +374,7 @@
     }
 
     .bento-card {
-      padding: 32px;
+      padding: 20px;
       border-radius: 4px;
       text-decoration: none;
       color: #000;
@@ -297,6 +384,20 @@
       transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
       position: relative;
       overflow: hidden;
+      min-height: 160px;
+    }
+
+    @media (min-width: 480px) {
+      .bento-card {
+        padding: 28px;
+        min-height: 180px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .bento-card {
+        padding: 32px;
+      }
     }
 
     .bento-card:hover {
@@ -307,11 +408,23 @@
 
     .card-title {
       font-family: 'Instrument Serif', serif;
-      font-size: 42px;
+      font-size: 28px;
       font-weight: 400;
       font-style: italic;
       line-height: 0.95;
       letter-spacing: -0.03em;
+    }
+
+    @media (min-width: 480px) {
+      .card-title {
+        font-size: 36px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .card-title {
+        font-size: 42px;
+      }
     }
 
     /* Global card styles - can be used on multiple cards */
@@ -323,7 +436,19 @@
       font-family: 'Inter Tight', sans-serif;
       font-weight: 800;
       font-style: normal;
-      font-size: 36px;
+      font-size: 24px;
+    }
+    
+    @media (min-width: 480px) {
+      .card-tools .card-title {
+        font-size: 30px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .card-tools .card-title {
+        font-size: 36px;
+      }
     }
     
     .card-tools .card-icon {
@@ -337,7 +462,19 @@
 
     .card-guides .card-title {
       color: #000;
-      font-size: 48px;
+      font-size: 32px;
+    }
+    
+    @media (min-width: 480px) {
+      .card-guides .card-title {
+        font-size: 40px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .card-guides .card-title {
+        font-size: 48px;
+      }
     }
 
     .card-discord {
@@ -356,21 +493,66 @@
       font-family: 'Manrope', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 24px;
+      font-size: 18px;
       color: #000;
+    }
+    
+    @media (min-width: 480px) {
+      .card-updates .card-title {
+        font-size: 21px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .card-updates .card-title {
+        font-size: 24px;
+      }
+    }
+    
+    .card-updates-content {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    @media (min-width: 480px) {
+      .card-updates-content {
+        font-size: 14px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .card-updates-content {
+        font-size: 16px;
+      }
     }
 
     .card-icon {
       background: #000;
       color: #fff;
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 24px;
       margin-top: auto;
+    }
+    
+    @media (min-width: 480px) {
+      .card-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .card-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 32px;
+      }
     }
     
     .card-tools .card-icon {
@@ -474,7 +656,7 @@
       <!-- Oppdateringer -->
        <a href="#" class="bento-card card-updates pos-full">
         <div class="card-title" style="margin-bottom: 16px;">Oppdateringer</div>
-        <div style="font-size: 16px; color: #555;">
+        <div class="card-updates-content">
           <div style="margin-bottom: 8px;"><strong>Ny kalkulator</strong> • Lagt til støtte for Rogaland og Akershus</div>
           <div><strong>Nettside</strong> • Nytt design lansert!</div>
         </div>
