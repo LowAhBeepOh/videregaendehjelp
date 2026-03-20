@@ -12,31 +12,32 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     :root {
-      --primary: #d32f2f;
-      --primary-light: #ef5350;
-      --primary-dark: #b71c1c;
-      --bg: #f8f9fa;
-      --surface: #ffffff;
-      --surface-light: #f5f5f5;
-      --text: #212121;
-      --text-muted: #757575;
-      --border: #e0e0e0;
-      --shadow: 0 2px 8px rgba(0,0,0,0.08);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+      /* Bold Palette */
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #888;
+      
+      --card-red: #d40b00;
+      --card-lime: #D0F54E;
+      --card-blue: #5865F2;
+      --card-orange: #FF9F0A;
+      --card-green: #30D158;
+      --card-pale: #F2F2F7;
+      
+      --surface: #1c1c1e;
+      --border: #2c2c2e;
+      
+      /* Typography */
+      --font-display: 'Inter Tight', sans-serif;
+      --font-body: 'Manrope', sans-serif;
     }
 
-    [data-theme="dark"] {
-      --primary: #ff5252;
-      --primary-light: #ff7070;
-      --primary-dark: #d32f2f;
-      --bg: #121212;
-      --surface: #1e1e1e;
-      --surface-light: #2a2a2a;
-      --text: #ffffff;
-      --text-muted: #b0b0b0;
-      --border: #333333;
-      --shadow: 0 2px 8px rgba(0,0,0,0.30);
-      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-muted: #555;
+      --surface: #f2f2f7;
+      --border: #e5e5ea;
     }
 
     *, *::before, *::after {
@@ -46,12 +47,12 @@
     }
 
     body {
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      line-height: 1.4;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     main {
@@ -70,10 +71,10 @@
     }
 
     .logo {
-      font-family: 'Inter Tight', sans-serif;
+      font-family: var(--font-display);
       font-size: 24px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--text);
       text-decoration: none;
     }
 
@@ -92,19 +93,19 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 13px;
       transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--text);
     }
 
     .nav-links a.active {
-      color: var(--primary);
-      font-weight: 700;
+      color: var(--text);
+      font-weight: 600;
     }
 
     .settings-btn {
@@ -120,7 +121,7 @@
     }
 
     .settings-btn:hover {
-      color: var(--primary);
+      color: var(--text-muted);
     }
 
     .material-icons {
@@ -133,7 +134,7 @@
     }
 
     .page-header h1 {
-      font-family: 'Inter Tight', sans-serif;
+      font-family: var(--font-display);
       font-size: 40px;
       font-weight: 700;
       margin-bottom: 8px;
@@ -155,38 +156,106 @@
 
     .guide-card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 2px solid var(--border);
       border-radius: 16px;
       padding: 28px 24px;
       transition: all 0.3s;
       cursor: pointer;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
     .guide-card:hover {
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
       transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
 
     .guide-icon {
       font-size: 40px;
-      color: var(--primary);
+      color: var(--text);
+    }
+
+    /* Guide card type styling - Lime for new VGS students */
+    a[href*="new-students"].guide-card,
+    a[href*="program-choice"].guide-card,
+    a[href*="vgs-application-process"].guide-card,
+    a[href*="privatist"].guide-card,
+    a[href*="finished-students"].guide-card {
+      background: var(--card-lime);
+      border-color: var(--card-lime);
+      color: #000000;
+    }
+
+    a[href*="new-students"].guide-card .guide-icon,
+    a[href*="program-choice"].guide-card .guide-icon,
+    a[href*="vgs-application-process"].guide-card .guide-icon,
+    a[href*="privatist"].guide-card .guide-icon,
+    a[href*="finished-students"].guide-card .guide-icon {
+      color: #000000;
+    }
+
+    a[href*="new-students"].guide-card .guide-meta,
+    a[href*="program-choice"].guide-card .guide-meta,
+    a[href*="vgs-application-process"].guide-card .guide-meta,
+    a[href*="privatist"].guide-card .guide-meta,
+    a[href*="finished-students"].guide-card .guide-meta {
+      color: rgba(0,0,0,0.7);
+    }
+
+    /* Guide card type styling - Blue for current VGS students */
+    a[href*="current-students"].guide-card,
+    a[href*="grades-system"].guide-card,
+    a[href*="motivation"].guide-card,
+    a[href*="absence-rules"].guide-card,
+    a[href*="apprenticeships"].guide-card,
+    a[href*="change-school"].guide-card,
+    a[href*="exams-in"].guide-card,
+    a[href*="student-finances"].guide-card,
+    a[href*="student-rights"].guide-card,
+    a[href*="study-better"].guide-card {
+      background: var(--card-blue);
+      border-color: var(--card-blue);
+      color: #ffffff;
+    }
+
+    a[href*="current-students"].guide-card .guide-icon,
+    a[href*="grades-system"].guide-card .guide-icon,
+    a[href*="motivation"].guide-card .guide-icon,
+    a[href*="absence-rules"].guide-card .guide-icon,
+    a[href*="apprenticeships"].guide-card .guide-icon,
+    a[href*="change-school"].guide-card .guide-icon,
+    a[href*="exams-in"].guide-card .guide-icon,
+    a[href*="student-finances"].guide-card .guide-icon,
+    a[href*="student-rights"].guide-card .guide-icon,
+    a[href*="study-better"].guide-card .guide-icon {
+      color: #ffffff;
+    }
+
+    a[href*="current-students"].guide-card .guide-meta,
+    a[href*="grades-system"].guide-card .guide-meta,
+    a[href*="motivation"].guide-card .guide-meta,
+    a[href*="absence-rules"].guide-card .guide-meta,
+    a[href*="apprenticeships"].guide-card .guide-meta,
+    a[href*="change-school"].guide-card .guide-meta,
+    a[href*="exams-in"].guide-card .guide-meta,
+    a[href*="student-finances"].guide-card .guide-meta,
+    a[href*="student-rights"].guide-card .guide-meta,
+    a[href*="study-better"].guide-card .guide-meta {
+      color: rgba(255,255,255,0.8);
     }
 
     .guide-card h2 {
-      font-family: 'Inter Tight', sans-serif;
+      font-family: var(--font-display);
       font-size: 20px;
       font-weight: 700;
       margin: 0;
     }
 
     .guide-card p {
-      color: var(--text-muted);
+      color: inherit;
       font-size: 14px;
       margin: 0;
       flex-grow: 1;
