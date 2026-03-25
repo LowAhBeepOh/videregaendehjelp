@@ -178,12 +178,11 @@
       color: var(--text);
     }
 
-    /* Guide card type styling - Lime for new VGS students */
+    /* Guide card type styling - Lime for before VGS */
     a[href*="new-students"].guide-card,
     a[href*="program-choice"].guide-card,
     a[href*="vgs-application-process"].guide-card,
     a[href*="privatist"].guide-card,
-    a[href*="finished-students"].guide-card,
     a[href*="waitlist"].guide-card,
     a[href*="exams-in-teen"].guide-card,
     a[href*="grades-system"].guide-card,
@@ -198,7 +197,6 @@
     a[href*="program-choice"].guide-card .guide-icon,
     a[href*="vgs-application-process"].guide-card .guide-icon,
     a[href*="privatist"].guide-card .guide-icon,
-    a[href*="finished-students"].guide-card .guide-icon,
     a[href*="waitlist"].guide-card .guide-icon,
     a[href*="exams-in-teen"].guide-card .guide-icon,
     a[href*="grades-system"].guide-card .guide-icon,
@@ -211,12 +209,26 @@
     a[href*="program-choice"].guide-card .guide-meta,
     a[href*="vgs-application-process"].guide-card .guide-meta,
     a[href*="privatist"].guide-card .guide-meta,
-    a[href*="finished-students"].guide-card .guide-meta,
     a[href*="waitlist"].guide-card .guide-meta,
     a[href*="exams-in-teen"].guide-card .guide-meta,
     a[href*="grades-system"].guide-card .guide-meta,
     a[href*="absence-rules"].guide-card .guide-meta,
     a[href*="study-better"].guide-card .guide-meta {
+      color: rgba(0,0,0,0.7);
+    }
+
+    /* Guide card type styling - Orange for after VGS */
+    a[href*="finished-students"].guide-card {
+      background: var(--card-orange);
+      border-color: var(--card-orange);
+      color: #000000;
+    }
+
+    a[href*="finished-students"].guide-card .guide-icon {
+      color: #000000;
+    }
+
+    a[href*="finished-students"].guide-card .guide-meta {
       color: rgba(0,0,0,0.7);
     }
 
@@ -404,6 +416,87 @@
       display: block;
     }
 
+    /* Filter Buttons */
+    .filter-section {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 18px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Manrope', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* Category-specific button colors */
+    .filter-btn[data-filter="før-vgs"] {
+      border-color: var(--card-lime);
+      color: var(--card-lime);
+    }
+
+    .filter-btn[data-filter="før-vgs"]:hover:not(.active) {
+      border-color: var(--card-lime);
+      color: var(--card-lime);
+    }
+
+    .filter-btn[data-filter="før-vgs"].active {
+      background: var(--card-lime);
+      border-color: var(--card-lime);
+      color: #000000;
+    }
+
+    .filter-btn[data-filter="i-vgs"] {
+      border-color: var(--card-blue);
+      color: var(--card-blue);
+    }
+
+    .filter-btn[data-filter="i-vgs"]:hover:not(.active) {
+      border-color: var(--card-blue);
+      color: var(--card-blue);
+    }
+
+    .filter-btn[data-filter="i-vgs"].active {
+      background: var(--card-blue);
+      border-color: var(--card-blue);
+      color: #ffffff;
+    }
+
+    .filter-btn[data-filter="etter-vgs"] {
+      border-color: var(--card-orange);
+      color: var(--card-orange);
+    }
+
+    .filter-btn[data-filter="etter-vgs"]:hover:not(.active) {
+      border-color: var(--card-orange);
+      color: var(--card-orange);
+    }
+
+    .filter-btn[data-filter="etter-vgs"].active {
+      background: var(--card-orange);
+      border-color: var(--card-orange);
+      color: #000000;
+    }
+
     @media (max-width: 768px) {
       .page-header h1 {
         font-size: 28px;
@@ -443,8 +536,15 @@
       <p>Lær alt du trenger å vite om videregående skole. Fra hvordan det fungerer til tips for å lykkes.</p>
     </section>
 
+    <section class="filter-section">
+      <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="før-vgs">Før VGS</button>
+      <button class="filter-btn" data-filter="i-vgs">I VGS</button>
+      <button class="filter-btn" data-filter="etter-vgs">Etter VGS</button>
+    </section>
+
     <section class="guides-grid">
-      <a href="Guides/new-students.html" class="guide-card">
+      <a href="Guides/new-students.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">school</span>
         <h2>Jeg starter på VGS snart</h2>
         <p>Hva du trenger å vite før du begynner, hvordan søke, og hva som venter deg.</p>
@@ -453,7 +553,7 @@
           <span>8 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/current-students.html" class="guide-card">
+      <a href="Guides/current-students.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">assignment</span>
         <h2>Jeg er i videregående nå</h2>
         <p>Praktisk hjelp, tips for studier, og hvordan håndtere utfordringer.</p>
@@ -462,7 +562,7 @@
           <span>12 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/finished-students.html" class="guide-card">
+      <a href="Guides/finished-students.html" class="guide-card" data-category="etter-vgs">
         <span class="material-icons guide-icon">trending_up</span>
         <h2>Jeg er ferdig på VGS</h2>
         <p>Hva kommer videre? Universitet, jobb, eller noe tredje? Alternativer og mulig.</p>
@@ -471,7 +571,7 @@
           <span>10 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/program-choice.html" class="guide-card">
+      <a href="Guides/program-choice.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">menu_book</span>
         <h2>Hvordan velge program</h2>
         <p>Oversikt over de forskjellige programmene og hvordan finne det som passer deg best.</p>
@@ -480,7 +580,7 @@
           <span>7 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/grades-system.html" class="guide-card">
+      <a href="Guides/grades-system.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">assessment</span>
         <h2>Master karaktersystemet</h2>
         <p>Forstå hvordan karakterer beregnes og hva som skal til for å få gode karakterer.</p>
@@ -489,7 +589,7 @@
           <span>6 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/motivation.html" class="guide-card">
+      <a href="Guides/motivation.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">psychology</span>
         <h2>Motivasjon og velvære</h2>
         <p>Tips for å holde motivasjonen oppe og ta vare på din mentale helse.</p>
@@ -498,7 +598,7 @@
           <span>9 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/absence-rules.html" class="guide-card">
+      <a href="Guides/absence-rules.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">event_busy</span>
         <h2>Fravær og fraværsgrense</h2>
         <p>Forstå reglene for fravær i videregående skole og hvordan unngå problemer.</p>
@@ -507,7 +607,7 @@
           <span>5 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/apprenticeships-and-vocational.html" class="guide-card">
+      <a href="Guides/apprenticeships-and-vocational.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">engineering</span>
         <h2>Lærlinger og yrkesfag</h2>
         <p>Alt om 2+2-modellen, fagbrev og hvordan bli lærling i bedrift.</p>
@@ -516,7 +616,7 @@
           <span>7 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/change-school-or-program.html" class="guide-card">
+      <a href="Guides/change-school-or-program.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">swap_horiz</span>
         <h2>Bytte skole eller program</h2>
         <p>Hvordan og når du kan bytte, og hva du må tenke på før du tar valget.</p>
@@ -525,7 +625,7 @@
           <span>4 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/exams-in-teen.html" class="guide-card">
+      <a href="Guides/exams-in-teen.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">quiz</span>
         <h2>Eksamen i Ungdomsskolen</h2>
         <p>Hvordan eksamen fungerer, typer eksamen og tips til forberedelser.</p>
@@ -534,7 +634,7 @@
           <span>8 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/exams-in-vgs.html" class="guide-card">
+      <a href="Guides/exams-in-vgs.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">quiz</span>
         <h2>Eksamen i videregående</h2>
         <p>Hvordan eksamen fungerer, typer eksamen og tips til forberedelser.</p>
@@ -543,7 +643,7 @@
           <span>8 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/student-finances.html" class="guide-card">
+      <a href="Guides/student-finances.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">account_balance_wallet</span>
         <h2>Stipend og økonomi</h2>
         <p>Alt om stipend fra Lånekassen, utstyrsstipend og borteboerstipend.</p>
@@ -552,7 +652,7 @@
           <span>6 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/student-rights-and-school-life.html" class="guide-card">
+      <a href="Guides/student-rights-and-school-life.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">gavel</span>
         <h2>Rettigheter og skolehverdag</h2>
         <p>Dine rettigheter som elev, rådgivning og hvordan påvirke skolemiljøet.</p>
@@ -561,7 +661,7 @@
           <span>5 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/study-better-and-grades.html" class="guide-card">
+      <a href="Guides/study-better-and-grades.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">trending_up</span>
         <h2>Få bedre karakterer</h2>
         <p>Effektive studieteknikker og tips for å forbedre karakterene dine.</p>
@@ -570,7 +670,7 @@
           <span>6 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/vgs-application-process.html" class="guide-card">
+      <a href="Guides/vgs-application-process.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">how_to_reg</span>
         <h2>Søknadsprosessen til VGS</h2>
         <p>Steg-for-steg guide til hvordan søke videregående skole via Vigo.</p>
@@ -579,7 +679,7 @@
           <span>8 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/privatist.html" class="guide-card">
+      <a href="Guides/privatist.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">grade</span>
         <h2>Privatist - ta eksamen uten skole</h2>
         <p>Alt om hvordan ta eksamen uten å gå på skole, påmelding og forberedelse.</p>
@@ -588,7 +688,7 @@
           <span>7 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/waitlist.html" class="guide-card">
+      <a href="Guides/waitlist.html" class="guide-card" data-category="før-vgs">
         <span class="material-icons guide-icon">schedule</span>
         <h2>Standby-plasser og ventelister</h2>
         <p>Hva det betydde å være på ventelisten og hvordan ansettelser fungerer.</p>
@@ -597,7 +697,7 @@
           <span>5 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/failing-grades.html" class="guide-card">
+      <a href="Guides/failing-grades.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">warning</span>
         <h2>Stryk og ikke bestått</h2>
         <p>Hva du bør vite om strykkarakterier og hva du kan gjøre videre.</p>
@@ -606,7 +706,7 @@
           <span>6 minutter lesning</span>
         </div>
       </a>
-      <a href="Guides/first-time-diploma.html" class="guide-card">
+      <a href="Guides/first-time-diploma.html" class="guide-card" data-category="i-vgs">
         <span class="material-icons guide-icon">school</span>
         <h2>Førstegangsvitnemål</h2>
         <p>Hva det er og hva det betyr for opptak.</p>
@@ -695,6 +795,29 @@
       if ((localStorage.getItem('theme') || 'system') === 'system') {
         initTheme();
       }
+    });
+
+    // Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const guideCards = document.querySelectorAll('.guide-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter cards
+        guideCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
 
     // Initialize
