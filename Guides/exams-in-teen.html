@@ -430,14 +430,14 @@
          
              // Skrivemaskin effekt med tilfeldige bokstaver
              let textWords = [];
-             for(let w=0; w<67; w++) {
+             for(let w=0; w<123; w++) {
                textWords.push(Math.random().toString(36).substring(2, 2 + Math.floor(Math.random()*6)));
              }
              let fullText = textWords.join(' ') + ". ";
              
              for(let i=0; i<fullText.length; i++) {
                doc.innerHTML += fullText.charAt(i);
-               await delay(20 + Math.random() * 25); // Random skrivehastighet
+               await delay(7 + Math.random() * 2); // Random skrivehastighet
              }
              await delay(400);
          
