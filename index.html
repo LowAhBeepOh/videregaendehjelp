@@ -297,6 +297,17 @@
       color: #64b5f6;
     }
 
+    .search-external-vilbli {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    [data-theme="dark"] .search-external-vilbli,
+    :not([data-theme="light"]) .search-external-vilbli {
+      background: #2a1800;
+      color: #ffb74d;
+    }
+
     [data-theme="light"] .search-input {
       background: #f5f5f5;
       border: 1px solid #e0e0e0;
@@ -937,6 +948,10 @@
               <a href="https://utdanning.no/sok/#query_value=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-utd">
                 <span class="material-icons" style="font-size:15px">open_in_new</span>
                 Søk på utdanning.no
+              </a>
+              <a href="https://www.vilbli.no/nb/no/sok?elastic=search&q=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-vilbli">
+                <span class="material-icons" style="font-size:15px">open_in_new</span>
+                Søk på vilbli.no
               </a>
             </div>
           </div>
