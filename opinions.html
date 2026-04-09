@@ -202,6 +202,54 @@
     .opinion-badge.badge-staff-mod { background: rgba(88,101,242,0.22); color: #8891f5; }
     .meta-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
+    /* ─── Threads / Replies ─── */
+    .reply-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s; }
+    .reply-btn:hover { border-color: var(--text-muted); color: var(--text); }
+    .reply-toggle { background: none; border: none; color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; padding: 4px 0; transition: color 0.15s; display: inline-flex; align-items: center; gap: 4px; }
+    .reply-toggle:hover { color: var(--text); }
+    .replies-section { margin-top: 12px; }
+    .replies-container { margin-left: 28px; padding-left: 16px; border-left: 2px solid var(--border); }
+    .reply-card { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .reply-card:last-child { border-bottom: none; }
+    .reply-card .opinion-meta { margin-bottom: 8px; }
+    .reply-card .opinion-body { font-size: 13px; }
+    .reply-form { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; margin-left: 28px; padding-left: 16px; }
+    .reply-input { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--font-body); font-size: 13px; padding: 8px 12px; border-radius: 6px; outline: none; resize: none; min-height: 36px; max-height: 120px; }
+    .reply-input:focus { border-color: var(--card-red); }
+    .reply-submit { background: var(--card-red); color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-family: var(--font-display); font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+    .reply-submit:hover:not(:disabled) { opacity: 0.85; }
+    .reply-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ─── Pagination ─── */
+    .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .page-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .page-btn:hover:not(:disabled):not(.active) { border-color: var(--text); color: var(--text); }
+    .page-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .page-info { font-size: 12px; color: var(--text-muted); padding: 0 8px; }
+
+    /* ─── Pinned ─── */
+    .opinion-card.pinned { border: 1px solid rgba(255,159,10,0.3); border-radius: 10px; padding: 20px; margin-bottom: 12px; background: rgba(255,159,10,0.04); }
+    .pin-indicator { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: #FF9F0A; margin-bottom: 8px; }
+
+    /* ─── Hidden posts (mod view) ─── */
+    .opinion-card.hidden-post { opacity: 0.45; border-left: 3px solid var(--card-orange); padding-left: 16px; }
+    .hidden-label { font-size: 11px; font-weight: 700; color: var(--card-orange); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+
+    /* ─── Attachments ─── */
+    .opinion-attachment { position: relative; margin-top: 12px; max-width: 400px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .opinion-attachment img { display: block; width: 100%; height: auto; max-height: 350px; object-fit: cover; }
+    .opinion-attachment.blurred img { filter: blur(20px); pointer-events: none; }
+    .attachment-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); padding: 16px; text-align: center; }
+    .attachment-overlay p { font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 10px; line-height: 1.5; }
+    .reveal-attachment-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--font-body); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .reveal-attachment-btn:hover { border-color: var(--text); }
+    .approve-actions { display: flex; gap: 6px; margin-top: 8px; }
+    .approve-btn { background: rgba(48,209,88,0.15); border: 1px solid rgba(48,209,88,0.4); color: #30D158; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .approve-btn:hover { background: rgba(48,209,88,0.25); }
+    .reject-btn { background: rgba(255,69,58,0.12); border: 1px solid rgba(255,69,58,0.3); color: #ff453a; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .reject-btn:hover { background: rgba(255,69,58,0.2); }
+
   </style>
 </head>
 <body>
@@ -225,6 +273,7 @@
       <div id="opinionsFeed">
         <div class="feed-loading"><div class="spinner"></div>Laster meninger...</div>
       </div>
+      <div id="paginationControls"></div>
     </main>
 
     <aside class="sidebar">
@@ -326,6 +375,11 @@
           <textarea class="form-textarea" id="opinionBody" placeholder="Mer kontekst, opplevelse eller argumentasjon..." maxlength="600"></textarea>
           <div class="char-count" id="bodyCount">0 / 600</div>
         </div>
+        <div class="form-group">
+          <label class="form-label" for="opinionAttachment">Vedlegg – bilde/GIF (valgfritt)</label>
+          <input class="form-input" type="file" id="opinionAttachment" accept="image/png,image/jpeg,image/webp,image/gif">
+          <p class="form-info">Maks 2MB. Vedlegg må godkjennes av en mod/admin før det vises. Admin-vedlegg godkjennes automatisk.</p>
+        </div>
         <div class="form-error" id="writeError"></div>
         <button class="form-btn" id="submitOpinionBtn">Publiser mening</button>
       </div>
@@ -383,6 +437,27 @@
     const SUPABASE_URL  = 'https://wqmkwcrlvgfczbueseip.supabase.co';
     const SUPABASE_ANON  = 'sb_publishable_XCDS-VsKHGbOXaaiUWaHIg_sH3sCfLJ';
     const COOLDOWN_MS   = 5 * 60 * 1000; // 5 minutter
+    const PAGE_SIZE     = 30;
+    const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024; // 2MB
+    const PENDING_PROFILE_KEY = 'meninger_pending_profile';
+
+    // ══════════════════════════════════════════════════
+    //  INNHOLDSFILTER (blokkerer slurs, tillater vanlig banning)
+    // ══════════════════════════════════════════════════
+    const BLOCKED_PATTERNS = [
+      /\bn+[i1!]+[gq9]+(?:e+r|a+)\b/i,
+      /\bneger\b/i,
+      /\bfagg?ot\b/i,
+      /\btr[a4]nn(?:y|ie|is)\b/i,
+      /\bretard(?:ed)?\b/i,
+      /\bpakkis?\b/i,
+      /\bsvarting(?:er)?\b/i,
+    ];
+
+    function containsBlockedContent(text) {
+      const t = String(text || '');
+      return BLOCKED_PATTERNS.some(p => p.test(t));
+    }
 
     const ROLE_OPTIONS = [
       { value: 'ungdom',   label: 'Ungdom' },
@@ -416,8 +491,7 @@
     let profileMap     = {};
     let activeFilter   = 'alle';
     let cooldownTimer  = null;
-    let moderationState = {};
-    const MODERATION_STATE_KEY = 'meninger_moderation_state_v1';
+    let currentPage    = 1;
     const MAX_AVATAR_BYTES = 1024 * 1024; // 1MB
 
     function isMod() {
@@ -553,28 +627,67 @@
       throw new Error('Bildet ble fortsatt over 1MB. Prøv et mindre bilde.');
     }
 
-    function getSanctionForUser(userId) {
-      return moderationState[String(userId)] || { warnings: 0, timeoutUntil: 0, banned: false };
-    }
-
-    function saveModerationState() {
-      localStorage.setItem(MODERATION_STATE_KEY, JSON.stringify(moderationState));
-    }
-
-    function loadModerationState() {
-      try {
-        moderationState = JSON.parse(localStorage.getItem(MODERATION_STATE_KEY) || '{}') || {};
-      } catch (e) {
-        moderationState = {};
+    async function processAttachmentFile(file) {
+      if (!file) return null;
+      const mime = String(file.type || '').toLowerCase();
+      if (!/^image\/(png|jpe?g|webp|gif)$/i.test(mime)) {
+        throw new Error('Kun PNG, JPG, WEBP eller GIF er støttet.');
       }
+      const isGif = mime === 'image/gif';
+      if (isGif) {
+        if (file.size > MAX_ATTACHMENT_BYTES) throw new Error('GIF må være maks 2MB.');
+        return blobToDataUrl(file);
+      }
+      const originalDataUrl = await blobToDataUrl(file);
+      let img = await loadImageFromDataUrl(originalDataUrl);
+      let width = img.naturalWidth;
+      let height = img.naturalHeight;
+      const maxSide = 1200;
+      if (Math.max(width, height) > maxSide) {
+        const scale = maxSide / Math.max(width, height);
+        width = Math.max(1, Math.round(width * scale));
+        height = Math.max(1, Math.round(height * scale));
+      }
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+      const tryEncode = async (type, quality) => {
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, type, quality));
+        if (!blob) return null;
+        return { size: blob.size, dataUrl: await blobToDataUrl(blob) };
+      };
+      let best = null;
+      const tries = [
+        ['image/webp', 0.90], ['image/webp', 0.80],
+        ['image/jpeg', 0.85], ['image/jpeg', 0.75],
+      ];
+      for (const [type, quality] of tries) {
+        const out = await tryEncode(type, quality);
+        if (!out) continue;
+        if (!best || out.size < best.size) best = out;
+        if (out.size <= MAX_ATTACHMENT_BYTES) return out.dataUrl;
+      }
+      if (best && best.size <= MAX_ATTACHMENT_BYTES) return best.dataUrl;
+      throw new Error('Bildet ble for stort. Prøv et mindre bilde.');
+    }
+
+    function getSanctionForProfile(profile) {
+      if (!profile) return { warnings: 0, timeoutUntil: 0, banned: false };
+      return {
+        warnings: Number(profile.warnings || 0),
+        timeoutUntil: profile.timeout_until ? new Date(profile.timeout_until).getTime() : 0,
+        banned: !!profile.banned,
+      };
     }
 
     function getCurrentSanctionMessage() {
-      if (!currentUser) return '';
-      const sanction = getSanctionForUser(currentUser.id);
+      if (!currentUser || !currentProfile) return '';
+      const sanction = getSanctionForProfile(currentProfile);
       if (sanction.banned) return 'Kontoen din er bannet av modereringsteamet.';
-      if (Number(sanction.timeoutUntil || 0) > Date.now()) {
-        return `Du er i timeout i ${formatCountdown(Number(sanction.timeoutUntil) - Date.now())}.`;
+      if (sanction.timeoutUntil > Date.now()) {
+        return `Du er i timeout i ${formatCountdown(sanction.timeoutUntil - Date.now())}.`;
       }
       return '';
     }
@@ -691,16 +804,52 @@
         handle: normalizeHandle(profile.handle, profile.display_name),
         avatar_url: String(profile.avatar_url || '').trim(),
         county: profile.county || '',
+        warnings: Number(profile.warnings || 0),
+        timeout_until: profile.timeout_until || null,
+        banned: !!profile.banned,
       };
     }
 
     async function refreshAuth() {
       const { data: { session } } = await sb.auth.getSession();
       currentUser    = session?.user ?? null;
-      currentProfile = currentUser ? normalizeProfile(await loadProfile(currentUser.id)) : null;
-      if (currentUser) await loadMyReactions();
+      if (currentUser) {
+        await applyPendingProfile(currentUser.id);
+        currentProfile = normalizeProfile(await loadProfile(currentUser.id));
+        await loadMyReactions();
+      } else {
+        currentProfile = null;
+      }
       renderAuthArea();
       renderRoleAndCountySelects();
+    }
+
+    async function applyPendingProfile(userId) {
+      const pendingRaw = localStorage.getItem(PENDING_PROFILE_KEY);
+      if (!pendingRaw) return;
+      try {
+        const pending = JSON.parse(pendingRaw);
+        if (!pending.display_name) return;
+        const existing = await loadProfile(userId);
+        const emailName = currentUser?.email?.split('@')[0] || '';
+        const needsUpdate = !existing ||
+          !existing.display_name ||
+          existing.display_name === emailName ||
+          existing.display_name.charAt(0).toUpperCase() + existing.display_name.slice(1).toLowerCase() === emailName.charAt(0).toUpperCase() + emailName.slice(1).toLowerCase();
+        if (!needsUpdate) { localStorage.removeItem(PENDING_PROFILE_KEY); return; }
+        const { error } = await sb.from('profiles').upsert({
+          id: userId,
+          display_name: pending.display_name,
+          handle: pending.handle || normalizeHandle('', pending.display_name),
+          avatar_url: pending.avatar_url || existing?.avatar_url || null,
+          role: pending.role || existing?.role || 'ungdom',
+          county: pending.county || existing?.county || null,
+          mod_role: existing?.mod_role || 'user',
+        }, { onConflict: 'id' });
+        if (!error) localStorage.removeItem(PENDING_PROFILE_KEY);
+      } catch (e) {
+        console.error('apply pending profile failed:', e);
+      }
     }
 
     function renderAuthArea() {
@@ -852,6 +1001,7 @@
       document.getElementById('successPanel').style.display = 'none';
       document.getElementById('writeSubtitle').textContent  = `Innlogget som ${currentProfile?.display_name ?? ''}`;
       ['opinionTopic','opinionQuote','opinionBody'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('opinionAttachment').value = '';
       document.getElementById('postAsSystem').checked = false;
       document.getElementById('systemPostToggle').style.display = isAdmin() ? '' : 'none';
       document.getElementById('quoteCount').textContent = '0 / 120';
@@ -965,6 +1115,15 @@
       setTab('login');
       document.getElementById('verifyNotice').classList.add('visible');
 
+      // Lagre profildata - brukes ved f\u00f8rste innlogging s\u00e5 navn/handle/bilde faktisk settes
+      localStorage.setItem(PENDING_PROFILE_KEY, JSON.stringify({
+        display_name: name,
+        handle: normalizeHandle(handleInput, name),
+        avatar_url: avatarDataUrl || null,
+        role,
+        county,
+      }));
+
       const upsertProfileFor = async (userId) => {
         const { error: upsertError } = await sb.from('profiles').upsert(
           {
@@ -981,6 +1140,8 @@
 
         if (upsertError) {
           console.error('profiles upsert failed:', upsertError);
+        } else {
+          localStorage.removeItem(PENDING_PROFILE_KEY);
         }
       };
 
@@ -1085,18 +1246,19 @@
       const topic = document.getElementById('opinionTopic').value.trim();
       const quote = document.getElementById('opinionQuote').value.trim();
       const body  = document.getElementById('opinionBody').value.trim();
+      const attachFile = document.getElementById('opinionAttachment').files?.[0] || null;
       const errEl = document.getElementById('writeError');
       errEl.classList.remove('visible');
 
       const rem = getRemainingMs();
-      const sanction = getSanctionForUser(currentUser?.id);
+      const sanction = getSanctionForProfile(currentProfile);
       if (sanction.banned) {
         errEl.textContent = 'Du er bannet og kan ikke publisere.';
         errEl.classList.add('visible');
         return;
       }
-      if (Number(sanction.timeoutUntil || 0) > Date.now()) {
-        errEl.textContent = `Du er i timeout. Prøv igjen om ${formatCountdown(Number(sanction.timeoutUntil) - Date.now())}.`;
+      if (sanction.timeoutUntil > Date.now()) {
+        errEl.textContent = `Du er i timeout. Prøv igjen om ${formatCountdown(sanction.timeoutUntil - Date.now())}.`;
         errEl.classList.add('visible');
         return;
       }
@@ -1111,8 +1273,28 @@
         return;
       }
 
+      // Innholdsfilter - blokker slurs men tillat vanlig banning
+      if (containsBlockedContent(topic) || containsBlockedContent(quote) || containsBlockedContent(body)) {
+        errEl.textContent = 'Innholdet inneholder ord som ikke er tillatt. Fjern støtende språk og prøv igjen.';
+        errEl.classList.add('visible');
+        return;
+      }
+
       const btn = document.getElementById('submitOpinionBtn');
       btn.disabled = true; btn.textContent = 'Publiserer...';
+
+      // Behandle vedlegg
+      let imageDataUrl = null;
+      if (attachFile) {
+        try {
+          imageDataUrl = await processAttachmentFile(attachFile);
+        } catch (e) {
+          btn.disabled = false; btn.textContent = 'Publiser mening';
+          errEl.textContent = e.message || 'Kunne ikke behandle vedlegget.';
+          errEl.classList.add('visible');
+          return;
+        }
+      }
 
       const postAsSystem = isAdmin() && document.getElementById('postAsSystem').checked;
       if (postAsSystem && !/kunngj/i.test(topic)) {
@@ -1121,15 +1303,22 @@
         btn.disabled = false; btn.textContent = 'Publiser mening';
         return;
       }
-      const { error } = await sb.from('meninger').insert({
+
+      // Admin-vedlegg godkjennes automatisk
+      const insertData = {
         user_id: currentUser.id,
         display_name: postAsSystem ? 'System' : currentProfile.display_name,
         role: currentProfile.role,
         county: currentProfile.county || null,
         topic,
         quote,
-        body: body || null
-      });
+        body: body || null,
+        image_url: imageDataUrl || null,
+        image_approved: imageDataUrl ? (isAdmin() ? true : null) : null,
+        image_approved_by: imageDataUrl && isAdmin() ? currentUser.id : null,
+      };
+
+      const { error } = await sb.from('meninger').insert(insertData);
 
       btn.disabled = false; btn.textContent = 'Publiser mening';
 
@@ -1193,9 +1382,16 @@
         handle: normalizeHandle(o.handle, o.display_name),
         isSystemPost: String(o.display_name || '').trim().toLowerCase() === 'system',
         _ups: counts[o.id]?.up ?? 0,
-        _downs: counts[o.id]?.down ?? 0
+        _downs: counts[o.id]?.down ?? 0,
+        parent_id: o.parent_id || null,
+        pinned: !!o.pinned,
+        hidden: !!o.hidden,
+        image_url: o.image_url || null,
+        image_approved: o.image_approved ?? null,
+        image_approved_by: o.image_approved_by || null,
       }));
 
+      currentPage = 1;
       renderOpinions(activeFilter);
       renderStats();
       renderTopics();
@@ -1257,25 +1453,58 @@
 
     function renderOpinions(filter = 'alle') {
       activeFilter = filter;
-      const feed     = document.getElementById('opinionsFeed');
-      const filtered = filter === 'alle' ? allOpinions : allOpinions.filter(o => getOpinionRole(o) === filter);
+      const feed = document.getElementById('opinionsFeed');
 
-      if (filtered.length === 0) {
+      // Bare toppnivå-meninger (ekskluder svar)
+      let topLevel = allOpinions.filter(o => !o.parent_id);
+
+      // Rolle-filter
+      if (filter !== 'alle') {
+        topLevel = topLevel.filter(o => getOpinionRole(o) === filter);
+      }
+
+      // Skjulte poster kan bare mods se
+      const visible = topLevel.filter(o => !o.hidden);
+      const hidden  = topLevel.filter(o => o.hidden);
+      let displayList = isMod() ? [...visible, ...hidden] : visible;
+
+      // Fremhevede (pinned) øverst
+      const pinned   = displayList.filter(o => o.pinned && !o.hidden);
+      const unpinned = displayList.filter(o => !o.pinned || o.hidden);
+      displayList = [...pinned, ...unpinned];
+
+      if (displayList.length === 0) {
         feed.innerHTML = `<div class="opinion-empty"><div class="empty-icon">😕</div><p>Ingen meninger enda...</p></div>`;
+        document.getElementById('paginationControls').innerHTML = '';
         return;
       }
 
-      feed.innerHTML = filtered.map((o, i) => {
+      // Paginering
+      const totalPages = Math.ceil(displayList.length / PAGE_SIZE);
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = displayList.slice(start, start + PAGE_SIZE);
+
+      // Tell svar per mening
+      const replyCounts = {};
+      allOpinions.forEach(o => {
+        if (o.parent_id) replyCounts[o.parent_id] = (replyCounts[o.parent_id] || 0) + 1;
+      });
+
+      feed.innerHTML = pageItems.map((o, i) => {
         const displayName = getOpinionDisplayName(o);
         const handle = o.isSystemPost ? '@system' : normalizeHandle(o.authorProfile?.handle || o.handle, displayName);
         const color     = colorForName(displayName || '?');
         const roleValue = getOpinionRole(o);
         const countyValue = getOpinionCounty(o);
-        const isNew     = i === 0 && filter === 'alle';
+        const isNew     = i === 0 && filter === 'alle' && currentPage === 1 && !o.pinned;
         const badge     = `<span class="opinion-badge badge-role">${escHtml(displayRole(roleValue))}</span>`;
         const county    = countyValue ? `<span class="opinion-badge">${escHtml(countyValue)}</span>` : '';
         const canDelete = canDeletePost(o);
         const canSanction = canModeratePost(o);
+        const canPin = isMod() && !o.isSystemPost;
+        const canHide = isMod() && !o.isSystemPost;
         const allowClickableLinks = o.isSystemPost || ['admin', 'moderator'].includes(o.authorProfile?.mod_role || 'user');
         const avatar = getAvatarMarkup({
           name: displayName,
@@ -1283,8 +1512,11 @@
           color,
           isSystem: o.isSystemPost
         });
-        const moderationButtons = (canSanction || canDelete) ? `
+
+        const moderationButtons = (canSanction || canDelete || canPin || canHide) ? `
           <div class="moderation-actions">
+            ${canPin ? `<button class="mod-btn" data-action="${o.pinned ? 'unpin' : 'pin'}" data-id="${o.id}" title="${o.pinned ? 'Fjern fremheving' : 'Fremhev'}"><span class="material-icons" style="font-size:16px;">push_pin</span></button>` : ''}
+            ${canHide ? `<button class="mod-btn" data-action="${o.hidden ? 'unhide' : 'hide'}" data-id="${o.id}" title="${o.hidden ? 'Vis igjen' : 'Skjul'}"><span class="material-icons" style="font-size:16px;">${o.hidden ? 'visibility' : 'visibility_off'}</span></button>` : ''}
             ${canSanction ? `<button class="mod-btn warn" data-action="warn" data-id="${o.id}" title="Advarsel"><span class="material-icons" style="font-size:16px;">warning</span></button>` : ''}
             ${canSanction ? `<button class="mod-btn timeout" data-action="timeout" data-id="${o.id}" title="Timeout"><span class="material-icons" style="font-size:16px;">hourglass_bottom</span></button>` : ''}
             ${canSanction ? `<button class="mod-btn ban" data-action="ban" data-id="${o.id}" title="Ban"><span class="material-icons" style="font-size:16px;">block</span></button>` : ''}
@@ -1292,8 +1524,19 @@
           </div>
         ` : '';
 
+        const pinnedIndicator = o.pinned ? '<div class="pin-indicator"><span class="material-icons" style="font-size:14px;">push_pin</span> Fremhevet</div>' : '';
+        const hiddenLabel = o.hidden ? '<div class="hidden-label"><span class="material-icons" style="font-size:14px;">visibility_off</span> Skjult</div>' : '';
+        const attachmentHTML = renderAttachmentHTML(o);
+        const replyCount = replyCounts[o.id] || 0;
+
+        const cardClasses = ['opinion-card'];
+        if (o.pinned) cardClasses.push('pinned');
+        if (o.hidden) cardClasses.push('hidden-post');
+
         return `
-          <article class="opinion-card" data-role="${escHtml(o.role)}" id="card-${o.id}">
+          <article class="${cardClasses.join(' ')}" data-role="${escHtml(o.role)}" id="card-${o.id}">
+            ${pinnedIndicator}
+            ${hiddenLabel}
             <div class="opinion-meta">
               ${avatar}
               <div class="meta-text">
@@ -1314,12 +1557,25 @@
             <div class="opinion-topic">${escHtml(o.topic)}</div>
             <blockquote class="opinion-quote">«${renderOpinionText(o.quote, allowClickableLinks)}»</blockquote>
             ${o.body ? `<p class="opinion-body">${renderOpinionText(o.body, allowClickableLinks)}</p>` : ''}
+            ${attachmentHTML}
             ${buildReactionHTML(o.id, o._ups, o._downs)}
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <button class="reply-btn" data-reply-to="${o.id}"><span class="material-icons" style="font-size:14px;">reply</span> Svar</button>
+              ${replyCount > 0 ? `<button class="reply-toggle" data-parent="${o.id}"><span class="material-icons" style="font-size:14px;">forum</span> Vis ${replyCount} svar</button>` : ''}
+            </div>
+            <div class="replies-container" id="replies-${o.id}" style="display:none;"></div>
+            ${currentUser ? `<div class="reply-form" id="reply-form-${o.id}" style="display:none;">
+              <textarea class="reply-input" id="reply-input-${o.id}" placeholder="Skriv et svar..." maxlength="400"></textarea>
+              <button class="reply-submit" data-parent="${o.id}">Send</button>
+            </div>` : ''}
           </article>`;
       }).join('');
 
+      renderPagination(totalPages);
       if (feed.querySelector('.mod-btn')) attachModerationListeners(feed);
-      filtered.forEach(o => attachReactionListeners(o.id));
+      pageItems.forEach(o => attachReactionListeners(o.id));
+      attachReplyListeners(feed);
+      attachAttachmentListeners(feed);
     }
 
     function canModeratePost(opinion) {
@@ -1344,6 +1600,14 @@
             await deleteOpinion(opinionId);
             return;
           }
+          if (action === 'pin' || action === 'unpin') {
+            await togglePin(opinionId);
+            return;
+          }
+          if (action === 'hide' || action === 'unhide') {
+            await toggleHide(opinionId);
+            return;
+          }
           if (!canModeratePost(target)) return;
           await applyModerationAction(target, action);
         });
@@ -1352,30 +1616,38 @@
 
     async function applyModerationAction(opinion, action) {
       if (!canModeratePost(opinion)) return;
-      const key = String(opinion.user_id);
-      const prev = getSanctionForUser(opinion.user_id);
-      const next = { ...prev };
+      const targetUser = opinion.user_id;
+      const targetProfile = profileMap[targetUser] || {};
+      const prev = getSanctionForProfile(targetProfile);
+
       if (action === 'warn') {
-        next.warnings = Number(next.warnings || 0) + 1;
+        const newWarnings = (prev.warnings || 0) + 1;
+        const { error } = await sb.from('profiles').update({ warnings: newWarnings }).eq('id', targetUser);
+        if (error) { alert('Kunne ikke gi advarsel: ' + (error.message || 'Ukjent feil.')); return; }
+        if (profileMap[targetUser]) profileMap[targetUser].warnings = newWarnings;
+        alert(`Advarsel gitt (${newWarnings} totalt).`);
       } else if (action === 'timeout') {
         const minutes = Number(prompt('Timeout i minutter?', '60'));
         if (!Number.isFinite(minutes) || minutes <= 0) return;
-        next.timeoutUntil = Date.now() + (minutes * 60 * 1000);
+        const until = new Date(Date.now() + minutes * 60 * 1000).toISOString();
+        const { error } = await sb.from('profiles').update({ timeout_until: until }).eq('id', targetUser);
+        if (error) { alert('Kunne ikke sette timeout: ' + (error.message || 'Ukjent feil.')); return; }
+        if (profileMap[targetUser]) profileMap[targetUser].timeout_until = until;
+        alert('Timeout aktivert.');
       } else if (action === 'ban') {
         if (!confirm('Banne denne brukeren?')) return;
-        next.banned = true;
-      } else {
-        return;
+        const { error } = await sb.from('profiles').update({ banned: true }).eq('id', targetUser);
+        if (error) { alert('Kunne ikke banne: ' + (error.message || 'Ukjent feil.')); return; }
+        if (profileMap[targetUser]) profileMap[targetUser].banned = true;
+        alert('Brukeren er bannet.');
       }
-      moderationState[key] = next;
-      saveModerationState();
-      if (currentUser?.id === opinion.user_id) renderAuthArea();
-      alert(action === 'warn' ? 'Advarsel gitt.' : action === 'timeout' ? 'Timeout aktivert.' : 'Brukeren er bannet.');
+      if (currentUser?.id === targetUser) await refreshAuth();
     }
 
     function renderStats() {
+      const topLevel = allOpinions.filter(o => !o.parent_id);
       const roles = ROLE_OPTIONS.map(r => {
-        const count = allOpinions.filter(o => getOpinionRole(o) === r.value).length;
+        const count = topLevel.filter(o => getOpinionRole(o) === r.value).length;
         return `
           <div class="stat-row compact">
             <span class="stat-group-label">Fra ${escHtml(r.label)}</span>
@@ -1386,17 +1658,17 @@
       document.getElementById('statsList').innerHTML = `
         <div class="stat-row compact">
           <span class="stat-group-label">Totale meninger</span>
-          <span class="stat-group-value">${allOpinions.length}</span>
+          <span class="stat-group-value">${topLevel.length}</span>
         </div>
         ${roles}
         <div class="stat-row compact">
           <span class="stat-group-label">Siste mening</span>
-          <span class="stat-group-value">${allOpinions.length ? escHtml(formatRelativeOrDate(allOpinions[0].created_at)) : '–'}</span>
+          <span class="stat-group-value">${topLevel.length ? escHtml(formatRelativeOrDate(topLevel[0].created_at)) : '–'}</span>
         </div>`;
     }
 
     function renderTopics() {
-      const topics = [...new Set(allOpinions.slice(0, 12).map(o => o.topic))];
+      const topics = [...new Set(allOpinions.filter(o => !o.parent_id).slice(0, 12).map(o => o.topic))];
       document.getElementById('topicsList').innerHTML = topics.map(t => `<span class="topic-pill">${escHtml(t)}</span>`).join('');
     }
 
@@ -1416,21 +1688,265 @@
       renderOpinions(activeFilter); renderStats(); renderTopics(); renderFilters();
     }
 
+    // ══════════════════════════════════════════════════
+    //  PAGINERING
+    // ══════════════════════════════════════════════════
+    function renderPagination(totalPages) {
+      const el = document.getElementById('paginationControls');
+      if (!el || totalPages <= 1) { if (el) el.innerHTML = ''; return; }
+      let html = '<div class="pagination">';
+      html += `<button class="page-btn" ${currentPage <= 1 ? 'disabled' : ''} data-page="${currentPage - 1}">← Forrige</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        if (totalPages > 7) {
+          if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
+            html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+          } else if (Math.abs(i - currentPage) === 2) {
+            html += '<span class="page-info">…</span>';
+          }
+        } else {
+          html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+      }
+      html += `<button class="page-btn" ${currentPage >= totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">Neste →</button>`;
+      html += '</div>';
+      el.innerHTML = html;
+      el.querySelectorAll('.page-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const p = Number(btn.dataset.page);
+          if (p >= 1 && p <= totalPages && p !== currentPage) {
+            currentPage = p;
+            renderOpinions(activeFilter);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+    }
+
+    // ══════════════════════════════════════════════════
+    //  VEDLEGG (bilder/GIF-er med moderering)
+    // ══════════════════════════════════════════════════
+    function renderAttachmentHTML(o) {
+      if (!o.image_url) return '';
+      const approved = o.image_approved === true;
+      const rejected = o.image_approved === false;
+      if (rejected) return '';
+
+      if (approved) {
+        return `<div class="opinion-attachment"><img src="${escHtml(o.image_url)}" alt="Vedlegg" loading="lazy"></div>`;
+      }
+
+      // Ikke godkjent ennå - vis med blur
+      // Moderator kan godkjenne, MEN ikke sitt eget vedlegg (med mindre admin)
+      const canApproveThis = isMod() && (isAdmin() || String(currentUser?.id) !== String(o.user_id));
+
+      const overlayContent = canApproveThis ? `
+        <p>Venter på godkjenning</p>
+        <div class="approve-actions">
+          <button class="approve-btn" data-approve-id="${o.id}">✓ Godkjenn</button>
+          <button class="reject-btn" data-reject-id="${o.id}">✕ Avvis</button>
+        </div>
+      ` : `
+        <p>Dette vedlegget som har blitt sendt har ikke blitt sjekket av noen mods enda</p>
+        <button class="reveal-attachment-btn" data-reveal-id="${o.id}">Se vedlegg</button>
+      `;
+
+      return `<div class="opinion-attachment blurred" id="attachment-${o.id}">
+        <img src="${escHtml(o.image_url)}" alt="Vedlegg" loading="lazy">
+        <div class="attachment-overlay" id="overlay-${o.id}">
+          ${overlayContent}
+        </div>
+      </div>`;
+    }
+
+    async function approveAttachment(opinionId, approved) {
+      const { error } = await sb.from('meninger').update({
+        image_approved: approved,
+        image_approved_by: currentUser.id,
+      }).eq('id', opinionId);
+      if (error) { alert('Kunne ikke oppdatere vedlegget.'); return; }
+      const op = allOpinions.find(o => o.id === opinionId);
+      if (op) { op.image_approved = approved; op.image_approved_by = currentUser.id; }
+      const container = document.getElementById(`attachment-${opinionId}`);
+      if (container) {
+        if (approved) {
+          container.classList.remove('blurred');
+          const overlay = container.querySelector('.attachment-overlay');
+          if (overlay) overlay.remove();
+        } else {
+          container.remove();
+        }
+      }
+    }
+
+    function attachAttachmentListeners(container) {
+      container.querySelectorAll('.reveal-attachment-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.revealId;
+          const att = document.getElementById(`attachment-${id}`);
+          if (att) att.classList.remove('blurred');
+          const overlay = document.getElementById(`overlay-${id}`);
+          if (overlay) overlay.remove();
+        });
+      });
+      container.querySelectorAll('.approve-btn').forEach(btn => {
+        btn.addEventListener('click', () => approveAttachment(Number(btn.dataset.approveId), true));
+      });
+      container.querySelectorAll('.reject-btn').forEach(btn => {
+        btn.addEventListener('click', () => approveAttachment(Number(btn.dataset.rejectId), false));
+      });
+    }
+
+    // ══════════════════════════════════════════════════
+    //  SVAR / THREADS
+    // ══════════════════════════════════════════════════
+    function openReplyForm(opinionId) {
+      if (!currentUser) { openModal(); return; }
+      const form = document.getElementById(`reply-form-${opinionId}`);
+      if (!form) return;
+      form.style.display = form.style.display === 'none' ? '' : 'none';
+      if (form.style.display !== 'none') {
+        form.querySelector('.reply-input')?.focus();
+      }
+    }
+
+    function toggleReplies(opinionId) {
+      const container = document.getElementById(`replies-${opinionId}`);
+      const toggle = document.querySelector(`.reply-toggle[data-parent="${opinionId}"]`);
+      if (!container) return;
+      const isVisible = container.style.display !== 'none';
+      container.style.display = isVisible ? 'none' : '';
+
+      if (!isVisible) {
+        const replies = allOpinions
+          .filter(o => o.parent_id === opinionId)
+          .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+        container.innerHTML = replies.map(r => {
+          const name = getOpinionDisplayName(r);
+          const rHandle = normalizeHandle(r.authorProfile?.handle || r.handle, name);
+          const color = colorForName(name);
+          const avatar = getAvatarMarkup({ name, avatarUrl: r.authorProfile?.avatar_url || '', color });
+          const attachHTML = renderAttachmentHTML(r);
+          return `<div class="reply-card">
+            <div class="opinion-meta">
+              ${avatar}
+              <div class="meta-text">
+                <div class="meta-name-row">
+                  <span class="meta-name">${escHtml(name)}</span>
+                  ${staffBadgeForOpinion(r)}
+                </div>
+                <div class="meta-handle">${escHtml(rHandle)}</div>
+                <div class="meta-info">${escHtml(formatRelativeOrDate(r.created_at))}</div>
+              </div>
+            </div>
+            <p class="opinion-body">${renderOpinionText(r.body || r.quote, true)}</p>
+            ${attachHTML}
+          </div>`;
+        }).join('');
+        attachAttachmentListeners(container);
+        const form = document.getElementById(`reply-form-${opinionId}`);
+        if (form) form.style.display = '';
+      }
+
+      if (toggle) {
+        const replyCount = allOpinions.filter(o => o.parent_id === opinionId).length;
+        toggle.innerHTML = `<span class="material-icons" style="font-size:14px;">forum</span> ${isVisible ? 'Vis' : 'Skjul'} ${replyCount} svar`;
+      }
+    }
+
+    async function submitReply(parentId) {
+      if (!currentUser || !currentProfile) return;
+      const input = document.getElementById(`reply-input-${parentId}`);
+      const btn = document.querySelector(`.reply-submit[data-parent="${parentId}"]`);
+      if (!input || !btn) return;
+      const text = input.value.trim();
+      if (!text) return;
+
+      if (containsBlockedContent(text)) {
+        alert('Innholdet inneholder ord som ikke er tillatt.');
+        return;
+      }
+
+      const sanction = getSanctionForProfile(currentProfile);
+      if (sanction.banned || sanction.timeoutUntil > Date.now()) {
+        alert('Du kan ikke svare akkurat nå.');
+        return;
+      }
+
+      btn.disabled = true;
+      const parent = allOpinions.find(o => o.id === parentId);
+      const { error } = await sb.from('meninger').insert({
+        user_id: currentUser.id,
+        display_name: currentProfile.display_name,
+        role: currentProfile.role,
+        county: currentProfile.county || null,
+        topic: parent?.topic || 'Svar',
+        quote: text,
+        body: null,
+        parent_id: parentId,
+      });
+      btn.disabled = false;
+      if (error) { alert('Kunne ikke sende svar.'); return; }
+      input.value = '';
+      await loadOpinions();
+    }
+
+    function attachReplyListeners(container) {
+      container.querySelectorAll('.reply-btn').forEach(btn => {
+        btn.addEventListener('click', () => openReplyForm(Number(btn.dataset.replyTo)));
+      });
+      container.querySelectorAll('.reply-toggle').forEach(btn => {
+        btn.addEventListener('click', () => toggleReplies(Number(btn.dataset.parent)));
+      });
+      container.querySelectorAll('.reply-submit').forEach(btn => {
+        btn.addEventListener('click', () => submitReply(Number(btn.dataset.parent)));
+      });
+    }
+
+    // ══════════════════════════════════════════════════
+    //  FREMHEV / SKJUL
+    // ══════════════════════════════════════════════════
+    async function togglePin(opinionId) {
+      const op = allOpinions.find(o => o.id === opinionId);
+      if (!op) return;
+      const newPinned = !op.pinned;
+      const { error } = await sb.from('meninger').update({ pinned: newPinned }).eq('id', opinionId);
+      if (error) { alert('Kunne ikke endre fremheving.'); return; }
+      op.pinned = newPinned;
+      renderOpinions(activeFilter);
+    }
+
+    async function toggleHide(opinionId) {
+      const op = allOpinions.find(o => o.id === opinionId);
+      if (!op) return;
+      const newHidden = !op.hidden;
+      const { error } = await sb.from('meninger').update({ hidden: newHidden }).eq('id', opinionId);
+      if (error) { alert('Kunne ikke endre synlighet.'); return; }
+      op.hidden = newHidden;
+      renderOpinions(activeFilter);
+    }
+
+    // ══════════════════════════════════════════════════
+    //  FILTER + REALTIME + INIT
+    // ══════════════════════════════════════════════════
     document.getElementById('filterGroup').addEventListener('click', e => {
       const btn = e.target.closest('.filter-btn');
       if (!btn) return;
       activeFilter = btn.dataset.filter;
+      currentPage = 1;
       renderOpinions(activeFilter);
       renderFilters();
     });
 
     sb.channel('meninger-changes')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'meninger' }, () => loadOpinions())
-      .on('postgres_changes', { event: 'DELETE',  schema: 'public', table: 'meninger' }, () => loadOpinions())
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'meninger' }, () => loadOpinions())
+      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'meninger' }, () => loadOpinions())
       .subscribe();
 
+    // Auto-refresh hvert 2. minutt som fallback
+    setInterval(() => loadOpinions(), 2 * 60 * 1000);
+
     (async () => {
-      loadModerationState();
       renderRoleAndCountySelects();
       renderFilters();
       await refreshAuth();
