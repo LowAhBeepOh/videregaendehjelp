@@ -238,6 +238,65 @@
       }
     }
 
+    .search-no-results {
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-no-results-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+    }
+
+    .search-external-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search-external-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .search-external-btn:hover {
+      opacity: 0.85;
+      transform: scale(1.03);
+    }
+
+    .search-external-ung {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .search-external-utd {
+      background: #e3f2fd;
+      color: #0d47a1;
+    }
+
+    [data-theme="dark"] .search-external-ung,
+    :not([data-theme="light"]) .search-external-ung {
+      background: #1a3320;
+      color: #81c784;
+    }
+
+    [data-theme="dark"] .search-external-utd,
+    :not([data-theme="light"]) .search-external-utd {
+      background: #0d2137;
+      color: #64b5f6;
+    }
+
     [data-theme="light"] .search-input {
       background: #f5f5f5;
       border: 1px solid #e0e0e0;
@@ -866,7 +925,22 @@
           searchResults.appendChild(div);
         });
       } else {
-        searchResults.style.display = 'none';
+        searchResults.style.display = 'block';
+        searchResults.innerHTML = `
+          <div class="search-no-results">
+            <span class="search-no-results-label">Ingen resultater for «${e.target.value}»</span>
+            <div class="search-external-links">
+              <a href="https://www.ung.no/sok?query=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-ung">
+                <span class="material-icons" style="font-size:15px">open_in_new</span>
+                Søk på ung.no
+              </a>
+              <a href="https://utdanning.no/sok/#query_value=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-utd">
+                <span class="material-icons" style="font-size:15px">open_in_new</span>
+                Søk på utdanning.no
+              </a>
+            </div>
+          </div>
+        `;
       }
     });
 
