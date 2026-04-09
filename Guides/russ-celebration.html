@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Russefeiringen – Videregående Hjelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-light: #ef5350;
+      --primary-dark: #b71c1c;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface-light: #f5f5f5;
+      --text: #212121;
+      --text-muted: #757575;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    [data-theme="dark"] {
+      --primary: #ff5252;
+      --primary-light: #ff7070;
+      --primary-dark: #d32f2f;
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --surface-light: #2a2a2a;
+      --text: #ffffff;
+      --text-muted: #b0b0b0;
+      --border: #333333;
+      --shadow: 0 2px 8px rgba(0,0,0,0.30);
+      --shadow-lg: 0 4px 16px rgba(0,0,0,0.40);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    main { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; margin-bottom: 40px; border-bottom: 1px solid var(--border);
+    }
+
+    .logo { font-family: 'Inter Tight', sans-serif; font-size: 24px; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .header-controls { display: flex; gap: 20px; align-items: center; }
+    .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .settings-btn { background: none; border: none; cursor: pointer; font-size: 24px; color: var(--text); transition: color 0.2s; display: flex; align-items: center; justify-content: center; }
+    .settings-btn:hover { color: var(--primary); }
+    .material-icons { font-size: 24px; }
+
+    .page-header { margin-bottom: 50px; }
+    .page-header h1 { font-family: 'Inter Tight', sans-serif; font-size: 42px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .page-header p { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; }
+
+    .content { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 60px; line-height: 1.8; }
+    .content h2 { font-family: 'Inter Tight', sans-serif; font-size: 28px; font-weight: 700; margin: 40px 0 20px 0; letter-spacing: -0.02em; }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-family: 'Inter Tight', sans-serif; font-size: 20px; font-weight: 700; margin: 30px 0 15px 0; color: var(--primary); }
+    .content p { margin-bottom: 16px; color: var(--text-muted); }
+    .content ul, .content ol { margin-left: 20px; margin-bottom: 16px; color: var(--text-muted); }
+    .content li { margin-bottom: 8px; }
+    .content strong { color: var(--text); font-weight: 700; }
+    .highlight-box { background: var(--surface-light); border-left: 4px solid var(--primary); padding: 20px; border-radius: 8px; margin: 24px 0; color: var(--text-muted); }
+    .highlight-box strong { color: var(--text); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); text-decoration: none; font-weight: 600; margin-bottom: 20px; transition: gap 0.2s; }
+    .back-link:hover { gap: 12px; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+    .settings-modal { display: none; position: fixed; bottom: 20px; right: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: var(--shadow-lg); z-index: 1000; width: 280px; }
+    .settings-modal.show { display: block; animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .settings-modal h3 { font-family: 'Inter Tight', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+    .close-settings { background: none; border: none; cursor: pointer; font-size: 20px; color: var(--text); padding: 0; }
+    .theme-options { display: flex; flex-direction: column; gap: 12px; }
+    .theme-option { padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; background: transparent; cursor: pointer; font-family: 'Manrope', sans-serif; font-size: 14px; color: var(--text); transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+    .theme-option:hover { border-color: var(--primary); background: var(--surface-light); }
+    .theme-option.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .radio { width: 18px; height: 18px; border: 2px solid currentColor; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .theme-option.active .radio::after { content: ''; width: 8px; height: 8px; background: currentColor; border-radius: 50%; }
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); z-index: 999; }
+    .modal-overlay.show { display: block; }
+
+    @media (max-width: 768px) {
+      .page-header h1 { font-size: 28px; }
+      .content { padding: 24px; }
+      header { flex-wrap: wrap; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a href="/" class="logo">Videregående Hjelp</a>
+      <div class="header-controls">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="../guides.html">Guider</a></li>
+            <li><a href="../tools.html">Verktøy</a></li>
+            <li><a href="../interactives.html">Interaktivt</a></li>
+          </ul>
+        </nav>
+        <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+          <span class="material-icons">settings</span>
+        </button>
+      </div>
+    </header>
+
+    <a href="../guides.html" class="back-link"><span class="material-icons" style="font-size: 20px;">arrow_back</span> Tilbake til alle guider</a>
+
+    <section class="page-header">
+      <h1>Russefeiringen</h1>
+      <p>Alt du trenger å vite om russetiden – tradisjoner, farger, økonomi, helse og hvordan ha det gøy uten å ødelegge for deg selv.</p>
+    </section>
+
+    <section class="content">
+      <h2>Hva er russetiden?</h2>
+
+      <p>Russefeiringen er en norsk tradisjon der avgangselever på videregående skole feirer avslutningen av 13 års skolegang. Tradisjonen har røtter tilbake til 1700-tallet, da nordmenn måtte reise til Københavns Universitet for å studere. Ordet «russ» kommer fra det latinske <em>cornua depositurus</em> – «å legge av seg hornene».</p>
+
+      <p>I dag begynner russetiden vanligvis i slutten av april eller begynnelsen av mai, og topper seg rundt <strong>17. mai</strong>. Hvert år er det rundt <strong>42 000 avgangselever</strong> som deltar i russefeiringen.</p>
+
+      <h2>Russefarger – hva betyr de?</h2>
+
+      <h3>Rødruss</h3>
+      <p>Elever som oppnår <strong>generell studiekompetanse</strong>: studiespesialisering, idrettsfag, musikk/dans/drama, kunst/design/arkitektur, medier og kommunikasjon, naturbruk, eller påbygging.</p>
+
+      <h3>Blåruss</h3>
+      <p>Tradisjonelt elever fra <strong>studiespesialisering med økonomi</strong> eller salg, service og reiseliv. Blårussens historie går tilbake til 1916, men 1953 regnes som blårussens fødselsår.</p>
+
+      <h3>Svartruss</h3>
+      <p>Elever fra <strong>yrkesfaglige studieretninger</strong>, spesielt elektro og datateknologi, bygg- og anleggsteknikk, og håndverk.</p>
+
+      <h3>Grønnruss</h3>
+      <p>Elever fra <strong>naturbruk</strong>. Denne fargen ble tatt i bruk rundt 1995.</p>
+
+      <div class="highlight-box">
+        <strong>💡 Godt å vite:</strong> I dag er skillet mellom fargene blitt svakere. Mange elever velger farge etter egen preferanse, ikke bare etter studieretning. Det er helt greit!
+      </div>
+
+      <h2>Russeutstyr og økonomi</h2>
+
+      <h3>Hva koster det?</h3>
+      <p>Russefeiringen kan bli dyrt. Her er typiske kostnader:</p>
+      <ul>
+        <li><strong>Russeklær (bukse/dress):</strong> 500 – 2 000 kr</li>
+        <li><strong>Russelue:</strong> 100 – 300 kr</li>
+        <li><strong>Russekort:</strong> 200 – 800 kr</li>
+        <li><strong>Russebuss/van (delt kostnad):</strong> 10 000 – 100 000+ kr per person</li>
+        <li><strong>Russelåt:</strong> Kan koste opptil 100 000 kr for hele gruppen</li>
+      </ul>
+
+      <h3>Tips for å spare penger</h3>
+      <ul>
+        <li>Du trenger <strong>ikke</strong> buss eller van for å ha en god russetid</li>
+        <li>Kjøp brukt russeutstyr – det finnes mye på Finn.no</li>
+        <li>Sett et budsjett <strong>tidlig</strong> og hold deg til det</li>
+        <li>Ikke la gruppepress styre økonomien din</li>
+        <li>I mange områder er det vanlig med telt eller lokaler i stedet for kjøretøy</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>⚠️ Viktig:</strong> Ikke ta opp lån eller bruk penger du ikke har til russefeiringen. Russetiden varer noen uker – gjeld kan vare i årevis.
+      </div>
+
+      <h2>Russeknuter og tradisjoner</h2>
+
+      <p>Russeknuter er oppgaver som knyttes i dusken på russeluen når de er gjennomført. De første knutene oppsto på 1940-tallet. Russens Hovedstyre lager og viderefører ca. 100 knuter årlig.</p>
+
+      <p><strong>Viktig om knuter:</strong></p>
+      <ul>
+        <li>Knuter er <strong>helt frivillige</strong> – ingen må gjøre noe de ikke vil</li>
+        <li>Noen knuter kan innebære ulovlige handlinger – disse bør du <strong>unngå</strong></li>
+        <li>Respekter andres grenser når du gjennomfører knuter</li>
+      </ul>
+
+      <h3>Andre tradisjoner</h3>
+      <ul>
+        <li><strong>Russekort:</strong> Personlige kort med bilde, sitat og (ofte humoristiske) personopplysninger. Deles ut til venner, familie og barn.</li>
+        <li><strong>Russerevy:</strong> Mange skoler setter opp en revy med humor og underholdning.</li>
+        <li><strong>Russeavis:</strong> Avisliknende trykksak med vittigheter og presentasjon av avgangselever. Se gjerne <a href="https://no.wikipedia.org/wiki/Russefeiring" style="color: var(--primary);">Wikipedia om russefeiring</a> for mer historisk bakgrunn.</li>
+        <li><strong>Russetog:</strong> Parade med russebiler, dans og plakater på 17. mai.</li>
+      </ul>
+
+      <h2>Helse og sikkerhet i russetiden</h2>
+
+      <h3>Alkohol og rus</h3>
+      <ul>
+        <li>Mange russ er <strong>under 18</strong> – det er ulovlig å drikke alkohol under 18 år</li>
+        <li>Overdrevent alkoholforbruk er en vanlig årsak til skader og ulykker i russetiden</li>
+        <li>Du kan ha en fantastisk russetid <strong>uten alkohol</strong></li>
+        <li>Pass på vennene dine og skill aldri noen fra gruppen</li>
+      </ul>
+
+      <h3>Søvn og eksamen</h3>
+      <p>Russetiden kommer <strong>før eksamen</strong>. Mange elever gjør det dårligere på eksamen fordi de er utslitte etter feiringen. Tips:</p>
+      <ul>
+        <li>Planlegg russetiden slik at du får nok hvile før eksamen</li>
+        <li>Sett grenser for deg selv – du trenger ikke være med på alt</li>
+        <li>Husk at karakterene dine varer lenger enn russetiden</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>🛡️ Samtykke:</strong> Alt du gjør i russetiden skal være frivillig – for deg og alle andre. Respekter at noen ikke vil delta på ting, og sørg for at du aldri presser noen til noe de ikke er komfortable med.
+      </div>
+
+      <h3>Trafikksikkerhet</h3>
+      <ul>
+        <li>Russebusser og -biler <strong>må være godkjent</strong> av Statens vegvesen</li>
+        <li>Sjåføren skal <strong>alltid være edru</strong></li>
+        <li>Bruk bilbelte</li>
+        <li>Ikke sitt på taket eller heng ut av vinduer</li>
+      </ul>
+
+      <h2>Kristenruss og alternative feiringer</h2>
+
+      <p>Ikke alle ønsker en russetid med fokus på alkohol og festing. Det finnes alternativer:</p>
+      <ul>
+        <li><strong>Kristenrussen (KRUSS):</strong> Rusfri feiring med egen festival</li>
+        <li><strong>Rusfri russ:</strong> Mange velger å feire uten alkohol – uten å tilhøre en spesifikk organisasjon</li>
+        <li><strong>Stille russ:</strong> Noen velger å ikke delta i den organiserte feiringen, men markerer likevel avslutningen med venner</li>
+      </ul>
+
+      <h2>Russetiden og skolen</h2>
+
+      <p>Selv om russetiden er en elevdrevet aktivitet (ikke arrangert av skolen), påvirker den skolehverdagen:</p>
+      <ul>
+        <li>Fravær i russetiden teller som vanlig fravær – <strong>fraværsgrensen gjelder</strong></li>
+        <li>Dårlig oppførsel kan føre til merknader i ordenskarakteren</li>
+        <li>Skolen kan ha egne regler for russeaktiviteter på skolens område</li>
+      </ul>
+
+      <h2>Kilder</h2>
+      <ul>
+        <li><a href="https://no.wikipedia.org/wiki/Russefeiring" style="color: var(--primary);">Wikipedia – Russefeiring</a></li>
+        <li><a href="https://www.udir.no" style="color: var(--primary);">Utdanningsdirektoratet (udir.no)</a> – Regelverk om fravær og ordensreglement</li>
+        <li><a href="https://www.ung.no" style="color: var(--primary);">ung.no</a> – Offentlig informasjonskanal for ungdom</li>
+        <li><a href="https://www.vegvesen.no" style="color: var(--primary);">Statens vegvesen</a> – Godkjenning av russebiler og -busser</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Videregående Hjelp. Et åpent prosjekt for alle.</p>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="settings-modal" id="settingsModal">
+    <h3>Innstillinger<button class="close-settings" id="closeSettings">×</button></h3>
+    <div class="theme-options" id="themeOptions">
+      <button class="theme-option" data-theme="system" onclick="setTheme('system')"><span class="radio"></span> System tema</button>
+      <button class="theme-option" data-theme="light" onclick="setTheme('light')"><span class="radio"></span> Lyst tema</button>
+      <button class="theme-option" data-theme="dark" onclick="setTheme('dark')"><span class="radio"></span> Mørkt tema</button>
+    </div>
+  </div>
+
+  <script>
+    function initTheme() { const saved = localStorage.getItem('theme') || 'system'; setTheme(saved); }
+    function setTheme(theme) {
+      localStorage.setItem('theme', theme);
+      let finalTheme = theme;
+      if (theme === 'system') { finalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+      document.documentElement.setAttribute('data-theme', finalTheme);
+      updateThemeButtons(theme);
+    }
+    function updateThemeButtons(theme) {
+      document.querySelectorAll('.theme-option').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+    }
+    const settingsBtn = document.getElementById('settingsBtn');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettings = document.getElementById('closeSettings');
+    const modalOverlay = document.getElementById('modalOverlay');
+    settingsBtn.addEventListener('click', () => { settingsModal.classList.toggle('show'); modalOverlay.classList.toggle('show'); });
+    closeSettings.addEventListener('click', () => { settingsModal.classList.remove('show'); modalOverlay.classList.remove('show'); });
+    modalOverlay.addEventListener('click', () => { settingsModal.classList.remove('show'); modalOverlay.classList.remove('show'); });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if ((localStorage.getItem('theme') || 'system') === 'system') { initTheme(); } });
+    initTheme();
+  </script>
+</body>
+</html>

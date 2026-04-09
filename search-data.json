@@ -22,52 +22,37 @@
   {
     "title": "Jeg starter på VGS snart",
     "url": "Guides/new-students.html",
-    "keywords": ["ny student", "start", "første dag", "skolestart"]
+    "keywords": ["ny student", "start", "første dag", "skolestart", "forberede", "ungdomsskole"]
   },
   {
     "title": "Jeg er i videregående nå",
     "url": "Guides/current-students.html",
-    "keywords": ["student", "nåværende", "tips", "råd"]
+    "keywords": ["student", "nåværende", "tips", "råd", "hverdag", "skolegang"]
   },
   {
     "title": "Jeg er ferdig på VGS",
     "url": "Guides/finished-students.html",
-    "keywords": ["ferdig", "vitnemål", "veien videre", "studier"]
+    "keywords": ["ferdig", "vitnemål", "veien videre", "studier", "universitet", "jobb"]
   },
   {
     "title": "Hvordan velge program",
     "url": "Guides/program-choice.html",
-    "keywords": ["valg", "programfag", "linje", "utdanning"]
+    "keywords": ["valg", "programfag", "linje", "utdanning", "studieforberedende", "yrkesfag"]
   },
   {
     "title": "Master karaktersystemet",
     "url": "Guides/grades-system.html",
-    "keywords": ["karakterer", "system", "vurdering", "skala"]
+    "keywords": ["karakterer", "system", "vurdering", "skala", "standpunkt", "halvårsvurdering"]
   },
   {
     "title": "Motivasjon og velvære",
     "url": "Guides/motivation.html",
-    "keywords": ["motivasjon", "helse", "stress", "mestring"]
-  },
-  {
-    "title": "Inntakskalkulator",
-    "url": "Tools/inntakskalkulator.html",
-    "keywords": ["inntak", "poeng", "snitt", "beregn"]
-  },
-  {
-    "title": "Karaktertrakker",
-    "url": "Tools/grade-tracker.html",
-    "keywords": ["karakterer", "oversikt", "snitt", "mål"]
-  },
-  {
-    "title": "Fagvelger",
-    "url": "Tools/program-finder.html",
-    "keywords": ["fag", "velg", "kombinasjoner", "realfag", "språk"]
+    "keywords": ["motivasjon", "helse", "stress", "mestring", "velvære"]
   },
   {
     "title": "Fravær og fraværsgrense",
     "url": "Guides/absence-rules.html",
-    "keywords": ["fravær", "fraværsgrense", "dokumentert", "udokumentert", "skole"]
+    "keywords": ["fravær", "fraværsgrense", "dokumentert", "udokumentert", "skole", "10 prosent"]
   },
   {
     "title": "Lærlinger og yrkesfag",
@@ -80,9 +65,14 @@
     "keywords": ["bytte", "skole", "program", "søke", "endre", "rådgiver"]
   },
   {
+    "title": "Eksamen i ungdomsskolen",
+    "url": "Guides/exams-in-teen.html",
+    "keywords": ["eksamen", "ungdomsskole", "10. klasse", "skriftlig", "muntlig", "forberedelse"]
+  },
+  {
     "title": "Eksamen i videregående",
     "url": "Guides/exams-in-vgs.html",
-    "keywords": ["eksamen", "trekk", "skriftlig", "muntlig", "sensor", "karakter"]
+    "keywords": ["eksamen", "trekk", "skriftlig", "muntlig", "sensor", "karakter", "vgs"]
   },
   {
     "title": "Stipend og økonomi",
@@ -103,5 +93,80 @@
     "title": "Søknadsprosessen til VGS",
     "url": "Guides/vgs-application-process.html",
     "keywords": ["søknad", "vigo", "frist", "inntak", "prioritere", "bankid"]
-  }
+  },
+  {
+    "title": "Privatist - ta eksamen uten skole",
+    "url": "Guides/privatist.html",
+    "keywords": ["privatist", "eksamen", "selvstudium", "påmelding", "privatistordningen"]
+  },
+  {
+    "title": "Standby-plasser og ventelister",
+    "url": "Guides/waitlist.html",
+    "keywords": ["venteliste", "standby", "inntak", "plass", "ledig"]
+  },
+  {
+    "title": "Stryk og ikke bestått",
+    "url": "Guides/failing-grades.html",
+    "keywords": ["stryk", "ikke bestått", "karakter 1", "ny eksamen", "konsekvenser"]
+  },
+  {
+    "title": "Førstegangsvitnemål",
+    "url": "Guides/first-time-diploma.html",
+    "keywords": ["førstegangsvitnemål", "opptak", "universitet", "tilleggspoeng", "24 år"]
+  },
+  {
+    "title": "Russefeiringen",
+    "url": "Guides/russ-celebration.html",
+    "keywords": ["russ", "russefeiring", "russetid", "russebuss", "russeknuter", "rødruss", "blåruss", "feiring"]
+  },
+  {
+    "title": "Deltidsjobb under VGS",
+    "url": "Guides/part-time-job.html",
+    "keywords": ["deltidsjobb", "jobb", "arbeid", "arbeidstid", "skatt", "frikort", "rettigheter", "arbeidsmiljøloven"]
+  },
+  {
+    "title": "Mental helse og helse",
+    "url": "Guides/mental-health.html",
+    "keywords": ["mental helse", "psykisk helse", "stress", "angst", "hjelpetelefon", "helsesykepleier", "søvn", "krisehjelp"]
+  },
+  {
+    "title": "Regelbrudd og konsekvenser",
+    "url": "Guides/rule-violations.html",
+    "keywords": ["regelbrudd", "fusk", "bortvisning", "ordensreglement", "konsekvenser", "klage", "atferdskarakter"]
+  },
+  {
+    "title": "Inntakskalkulator",
+    "url": "Tools/inntakskalkulator.html",
+    "keywords": ["inntak", "poeng", "snitt", "beregn", "kalkulator"]
+  },
+  {
+    "title": "Karaktertrakker",
+    "url": "Tools/grade-tracker.html",
+    "keywords": ["karakterer", "oversikt", "snitt", "mål", "sporing"]
+  },
+  {
+    "title": "Fagvelger",
+    "url": "Tools/program-finder.html",
+    "keywords": ["fag", "velg", "kombinasjoner", "realfag", "språk"]
+  },
+  {
+    "title": "Poenggrense",
+    "url": "Tools/point-limit.html",
+    "keywords": ["poenggrense", "inntak", "snitt", "grense", "skole"]
+  },
+  {
+    "title": "VGS-basics Quiz",
+    "url": "Interactives/vgs-basics-quiz.html",
+    "keywords": ["quiz", "test", "kunnskap", "grunnleggende", "videregående"]
+  },
+  {
+    "title": "Fagordbok Flashcards",
+    "url": "Interactives/fagordbok-flashcards.html",
+    "keywords": ["flashcards", "fagordbok", "termer", "begrep", "lære"]
+  },
+  {
+    "title": "Eksamen Simulator",
+    "url": "Interactives/exam-simulator.html",
+    "keywords": ["eksamen", "simulator", "øvelse", "prøve", "forberedelse"]
+  },
 ]

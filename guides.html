@@ -166,11 +166,44 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      position: relative;
     }
 
     .guide-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .bookmark-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.15);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 5;
+      color: inherit;
+      opacity: 0;
+    }
+
+    .guide-card:hover .bookmark-btn {
+      opacity: 1;
+    }
+
+    .bookmark-btn.bookmarked {
+      opacity: 1;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .bookmark-btn .material-icons {
+      font-size: 20px;
     }
 
     .guide-icon {
@@ -241,7 +274,11 @@
     a[href*="student-finances"].guide-card,
     a[href*="student-rights"].guide-card,
     a[href*="failing-grades"].guide-card,
-    a[href*="first-time-diploma"].guide-card {
+    a[href*="first-time-diploma"].guide-card,
+    a[href*="russ-celebration"].guide-card,
+    a[href*="part-time-job"].guide-card,
+    a[href*="mental-health"].guide-card,
+    a[href*="rule-violations"].guide-card {
       background: var(--card-blue);
       border-color: var(--card-blue);
       color: #ffffff;
@@ -255,7 +292,11 @@
     a[href*="student-finances"].guide-card .guide-icon,
     a[href*="student-rights"].guide-card .guide-icon,
     a[href*="failing-grades"].guide-card .guide-icon,
-    a[href*="first-time-diploma"].guide-card .guide-icon {
+    a[href*="first-time-diploma"].guide-card .guide-icon,
+    a[href*="russ-celebration"].guide-card .guide-icon,
+    a[href*="part-time-job"].guide-card .guide-icon,
+    a[href*="mental-health"].guide-card .guide-icon,
+    a[href*="rule-violations"].guide-card .guide-icon {
       color: #ffffff;
     }
 
@@ -267,7 +308,11 @@
     a[href*="student-finances"].guide-card .guide-meta,
     a[href*="student-rights"].guide-card .guide-meta,
     a[href*="failing-grades"].guide-card .guide-meta,
-    a[href*="first-time-diploma"].guide-card .guide-meta {
+    a[href*="first-time-diploma"].guide-card .guide-meta,
+    a[href*="russ-celebration"].guide-card .guide-meta,
+    a[href*="part-time-job"].guide-card .guide-meta,
+    a[href*="mental-health"].guide-card .guide-meta,
+    a[href*="rule-violations"].guide-card .guide-meta {
       color: rgba(255,255,255,0.8);
     }
 
@@ -549,6 +594,7 @@
 
     <section class="filter-section">
       <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="bokmerker">⭐ Bokmerker</button>
       <button class="filter-btn" data-filter="før-vgs">Før VGS</button>
       <button class="filter-btn" data-filter="i-vgs">I VGS</button>
       <button class="filter-btn" data-filter="etter-vgs">Etter VGS</button>
@@ -726,6 +772,42 @@
           <span>8 minutter lesning</span>
         </div>
       </a>
+      <a href="Guides/russ-celebration.html" class="guide-card" data-category="i-vgs">
+        <span class="material-icons guide-icon">celebration</span>
+        <h2>Russefeiringen</h2>
+        <p>Alt om russetiden – historie, farger, russeknuter, kostnader og tips for en trygg feiring.</p>
+        <div class="guide-meta">
+          <span class="material-icons" style="font-size: 16px;">info</span>
+          <span>10 minutter lesning</span>
+        </div>
+      </a>
+      <a href="Guides/part-time-job.html" class="guide-card" data-category="i-vgs">
+        <span class="material-icons guide-icon">work</span>
+        <h2>Deltidsjobb under VGS</h2>
+        <p>Regler for arbeidstid, rettigheter, skatt og tips for å balansere jobb og skole.</p>
+        <div class="guide-meta">
+          <span class="material-icons" style="font-size: 16px;">info</span>
+          <span>8 minutter lesning</span>
+        </div>
+      </a>
+      <a href="Guides/mental-health.html" class="guide-card" data-category="i-vgs">
+        <span class="material-icons guide-icon">favorite</span>
+        <h2>Mental helse og helse</h2>
+        <p>Ta vare på deg selv – vanlige utfordringer, gode vaner, og hvor du kan få hjelp.</p>
+        <div class="guide-meta">
+          <span class="material-icons" style="font-size: 16px;">info</span>
+          <span>9 minutter lesning</span>
+        </div>
+      </a>
+      <a href="Guides/rule-violations.html" class="guide-card" data-category="i-vgs">
+        <span class="material-icons guide-icon">report_problem</span>
+        <h2>Regelbrudd og konsekvenser</h2>
+        <p>Ordensreglement, fusk, bortvisning, og hvordan klage – kjenn rettighetene dine.</p>
+        <div class="guide-meta">
+          <span class="material-icons" style="font-size: 16px;">info</span>
+          <span>8 minutter lesning</span>
+        </div>
+      </a>
     </section>
   </main>
 
@@ -770,7 +852,6 @@
 
       document.documentElement.setAttribute('data-theme', finalTheme);
       updateThemeButtons(theme);
-      updateThemeIcon(finalTheme);
     }
 
     function updateThemeButtons(theme) {
@@ -808,6 +889,42 @@
       }
     });
 
+    // Bookmark System
+    function getBookmarks() {
+      try { return JSON.parse(localStorage.getItem('bookmarks') || '[]'); } catch { return []; }
+    }
+    function saveBookmarks(arr) { localStorage.setItem('bookmarks', JSON.stringify(arr)); }
+
+    function initBookmarks() {
+      const bookmarks = getBookmarks();
+      document.querySelectorAll('.guide-card').forEach(card => {
+        const url = card.getAttribute('href');
+        const btn = document.createElement('button');
+        btn.className = 'bookmark-btn' + (bookmarks.includes(url) ? ' bookmarked' : '');
+        btn.innerHTML = `<span class="material-icons">${bookmarks.includes(url) ? 'bookmark' : 'bookmark_border'}</span>`;
+        btn.title = bookmarks.includes(url) ? 'Fjern bokmerke' : 'Legg til bokmerke';
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const bm = getBookmarks();
+          const idx = bm.indexOf(url);
+          if (idx > -1) {
+            bm.splice(idx, 1);
+            btn.classList.remove('bookmarked');
+            btn.innerHTML = '<span class="material-icons">bookmark_border</span>';
+            btn.title = 'Legg til bokmerke';
+          } else {
+            bm.push(url);
+            btn.classList.add('bookmarked');
+            btn.innerHTML = '<span class="material-icons">bookmark</span>';
+            btn.title = 'Fjern bokmerke';
+          }
+          saveBookmarks(bm);
+        });
+        card.appendChild(btn);
+      });
+    }
+
     // Filter Functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const guideCards = document.querySelectorAll('.guide-card');
@@ -821,18 +938,26 @@
         button.classList.add('active');
         
         // Filter cards
-        guideCards.forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        if (filter === 'bokmerker') {
+          const bm = getBookmarks();
+          guideCards.forEach(card => {
+            card.style.display = bm.includes(card.getAttribute('href')) ? 'flex' : 'none';
+          });
+        } else {
+          guideCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        }
       });
     });
 
     // Initialize
     initTheme();
+    initBookmarks();
   </script>
 </body>
 </html>

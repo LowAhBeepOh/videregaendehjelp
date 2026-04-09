@@ -690,6 +690,12 @@
       </a>
     </div>
 
+    <!-- Bookmarks -->
+    <div id="bookmarksSection" style="margin-bottom:24px; display:none;">
+      <h2 style="font-family:var(--font-display); font-size:18px; font-weight:700; margin-bottom:12px; color:var(--text-muted);">⭐ Dine bokmerker</h2>
+      <div id="bookmarksList" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+    </div>
+
     <div class="bento-grid" id="bentoGrid">
       <!-- Content populated by JavaScript -->
     </div>
@@ -717,7 +723,11 @@
         { title: "Bytte skole", url: "Guides/change-school-or-program.html" },
         { title: "Lærlingeplasser", url: "Guides/apprenticeships-and-vocational.html" },
         { title: "Venteliste", url: "Guides/waitlist.html" },
-        { title: "Ferdig på VGS", url: "Guides/finished-students.html" }
+        { title: "Ferdig på VGS", url: "Guides/finished-students.html" },
+        { title: "Russefeiringen", url: "Guides/russ-celebration.html" },
+        { title: "Deltidsjobb", url: "Guides/part-time-job.html" },
+        { title: "Mental helse", url: "Guides/mental-health.html" },
+        { title: "Regelbrudd", url: "Guides/rule-violations.html" }
       ],
       tools: [
         { title: "Inntakskalkulator", url: "Tools/inntakskalkulator.html", icon: "arrow_forward" },
@@ -894,7 +904,25 @@
       generateGrid();
       loadLatestOpinionHome();
       subscribeOpinionHome();
+      renderBookmarks();
     });
+
+    // Bookmarks on home page
+    function renderBookmarks() {
+      const section = document.getElementById('bookmarksSection');
+      const list = document.getElementById('bookmarksList');
+      let bm;
+      try { bm = JSON.parse(localStorage.getItem('bookmarks') || '[]'); } catch { bm = []; }
+      if (!bm.length) { section.style.display = 'none'; return; }
+      section.style.display = 'block';
+      // Map URLs to titles from contentData
+      const allItems = [...contentData.guides, ...contentData.tools, ...contentData.interactives];
+      list.innerHTML = bm.map(url => {
+        const item = allItems.find(i => i.url === url);
+        const title = item ? item.title : url.split('/').pop().replace('.html', '');
+        return `<a href="${url}" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;text-decoration:none;font-size:13px;font-weight:700;font-family:var(--font-display);transition:all 0.2s;"><span class="material-icons" style="font-size:16px;color:var(--card-blue);">bookmark</span>${title}</a>`;
+      }).join('');
+    }
 
     // Search Functionality
     const searchInput = document.getElementById('searchInput');
