@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meninger – Videregående Hjelp</title>
+  <title>Meninger - Videregående Hjelp</title>
   <link rel="shortcut icon" href="vgshjelp-logo.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -36,16 +36,20 @@
     .nav-links a:hover { color: var(--text); }
     @media (min-width: 480px) { .nav-links { gap: 24px; } .nav-links a { font-size: 15px; } }
 
-    .page-body { max-width: 1400px; margin: 0 auto; padding: 0 16px 80px; display: grid; grid-template-columns: 1fr; }
-    @media (min-width: 900px) { .page-body { grid-template-columns: 1fr 320px; padding: 0 20px 80px; } }
+    .page-body { max-width: 1200px; margin: 0 auto; padding: 0 0 80px; display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .page-body { grid-template-columns: 1fr 340px; padding: 0; } }
 
-    .feed { border-right: none; padding: 32px 0; }
-    @media (min-width: 900px) { .feed { border-right: 1px solid var(--border); padding: 40px 40px 40px 0; } }
-    .feed-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-    .feed-label { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
-    .filter-group { display: flex; gap: 6px; }
-    .filter-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-body); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer; transition: all 0.15s; }
-    .filter-btn:hover, .filter-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .feed { border-right: none; padding: 0; }
+    @media (min-width: 900px) { .feed { border-right: 1px solid var(--border); } }
+    .feed-header { position: sticky; top: 0; z-index: 10; background: var(--bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+    .feed-header-top { display: flex; align-items: center; padding: 14px 16px 10px; }
+    .feed-label { font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .filter-group { display: flex; overflow-x: auto; scrollbar-width: none; }
+    .filter-group::-webkit-scrollbar { display: none; }
+    .filter-btn { background: none; border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-family: var(--font-body); font-size: 14px; font-weight: 600; padding: 14px 20px; margin-bottom: -1px; cursor: pointer; transition: color 0.15s, background 0.15s; white-space: nowrap; }
+    .filter-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .filter-btn.active { color: var(--text); border-bottom-color: var(--card-red); }
+    [data-theme="light"] .filter-btn:hover { background: rgba(0,0,0,0.04); }
 
     .opinion-empty { text-align: center; color: var(--text-muted); padding: 48px 16px; border: 1px solid var(--border); border-radius: 12px; }
     .opinion-empty .empty-icon { font-size: 36px; margin-bottom: 12px; }
@@ -54,16 +58,27 @@
     .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--text-muted); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .opinion-card { border-bottom: 1px solid var(--border); padding: 28px 0; }
-    .opinion-card:first-of-type { padding-top: 0; }
+    .opinion-card { border-bottom: 1px solid var(--border); padding: 14px 16px; transition: background 0.12s; }
+    .opinion-card:hover { background: rgba(255,255,255,0.018); }
+    [data-theme="light"] .opinion-card:hover { background: rgba(0,0,0,0.018); }
+    /* ─── Twitter 2-col card grid ─── */
+    .card-grid { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; }
+    .card-avatar-col { display: flex; flex-direction: column; align-items: center; padding-top: 2px; }
+    .card-thread-line { width: 2px; background: var(--border); margin-top: 8px; flex: 1; min-height: 20px; border-radius: 1px; }
+    .card-content-col { min-width: 0; padding-bottom: 2px; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; margin-bottom: 2px; }
+    .card-header-main { display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; min-width: 0; flex: 1; }
+    .card-header-aside { display: flex; align-items: center; gap: 4px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
     .opinion-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; font-family: var(--font-display); flex-shrink: 0; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; font-family: var(--font-display); flex-shrink: 0; }
     .avatar img, .user-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
     .meta-text { flex: 1; }
-    .meta-name { font-size: 14px; font-weight: 700; color: var(--text); }
-    .meta-handle { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+    .meta-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .meta-handle { font-size: 13px; color: var(--text-muted); }
+    .meta-time { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+    .meta-dot { color: var(--text-muted); font-size: 13px; margin: 0 1px; }
     .meta-info { font-size: 12px; color: var(--text-muted); }
-    .opinion-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+    .opinion-badge { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
     .badge-elev { background: rgba(208,245,78,0.15); color: #b8d93e; }
     .badge-laerer { background: rgba(88,101,242,0.2); color: #8891f5; }
     .badge-ny { background: var(--card-red); color: #fff; }
@@ -77,28 +92,34 @@
     .mod-btn.ban:hover { border-color: rgba(255,69,58,0.4); color: #ff453a; }
     .mod-btn.delete:hover { border-color: rgba(255,69,58,0.4); color: #ff453a; }
     .mod-note { margin-top: 10px; font-size: 12px; color: #ff9f0a; }
-    .opinion-topic { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-    .opinion-quote { font-family: 'Instrument Serif', serif; font-size: clamp(20px, 3vw, 26px); font-style: italic; line-height: 1.25; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
-    .opinion-body { font-size: 14px; line-height: 1.7; color: var(--text-muted); }
+    .opinion-topic { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--card-blue); margin-bottom: 4px; opacity: 0.85; }
+    .opinion-quote { font-family: 'Instrument Serif', serif; font-size: clamp(18px, 2.4vw, 22px); font-style: italic; line-height: 1.3; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .opinion-body { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 6px; }
     @media (min-width: 480px) { .opinion-body { font-size: 15px; } }
 
-    /* ─── Reactions ─── */
-    .opinion-footer { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+    /* ─── Reactions / Card Actions ─── */
+    .opinion-footer { display: flex; align-items: center; gap: 2px; margin-top: 8px; margin-left: -8px; }
     .reaction-btn {
       display: inline-flex; align-items: center; gap: 5px;
-      background: var(--surface); border: 1px solid var(--border);
+      background: none; border: none;
       color: var(--text-muted); font-family: var(--font-body);
-      font-size: 13px; font-weight: 600; padding: 5px 12px;
+      font-size: 13px; font-weight: 600; padding: 6px 10px;
       border-radius: 999px; cursor: pointer; transition: all 0.15s;
       user-select: none; line-height: 1;
     }
-    .reaction-btn:hover { border-color: var(--text-muted); color: var(--text); }
-    .reaction-btn.active-up   { background: rgba(48,209,88,0.12); border-color: rgba(48,209,88,0.4); color: #30D158; }
-    .reaction-btn.active-down { background: rgba(255,69,58,0.10); border-color: rgba(255,69,58,0.3); color: #ff453a; }
+    .reaction-btn:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+    [data-theme="light"] .reaction-btn:hover { background: rgba(0,0,0,0.06); }
+    .reaction-btn.up-action:hover { color: var(--card-green); background: rgba(48,209,88,0.1); }
+    .reaction-btn.down-action:hover { color: #ff453a; background: rgba(255,69,58,0.1); }
+    .reaction-btn.reply-action:hover { color: var(--card-blue); background: rgba(88,101,242,0.1); }
+    .reaction-btn.active-up   { color: #30D158; }
+    .reaction-btn.active-down { color: #ff453a; }
+    .reactions-group { display: contents; }
 
     /* ─── Sidebar ─── */
-    .sidebar { padding: 32px 0; }
-    @media (min-width: 900px) { .sidebar { padding: 40px 0 40px 40px; } }
+    .sidebar { padding: 32px 16px; }
+    @media (min-width: 900px) { .sidebar { padding: 16px 0 40px 32px; position: sticky; top: 0; height: 100vh; overflow-y: auto; scrollbar-width: none; } }
+    @media (min-width: 900px) { .sidebar::-webkit-scrollbar { display: none; } }
     .sidebar-section { margin-bottom: 40px; }
     .sidebar-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 
@@ -174,7 +195,6 @@
     .form-success p { font-size: 15px; color: var(--text-muted); }
     .form-success strong { color: var(--text); }
   
-    .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
     .user-card { align-items: flex-start; flex-wrap: wrap; }
     .user-info { min-width: 0; }
     .user-email { font-size: 11px; color: var(--text-muted); margin-top: 2px; word-break: break-word; }
@@ -196,17 +216,23 @@
     .stat-group-label { color: var(--text-muted); font-size: 13px; }
     .stat-group-value { font-weight: 700; margin-left: auto; font-size: 13px; }
     .opinion-meta { align-items: flex-start; }
-    .opinion-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .opinion-badges { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
     .opinion-badge.badge-role { text-transform: none; }
     .opinion-badge.badge-staff-admin { background: rgba(255,159,10,0.18); color: #FF9F0A; }
     .opinion-badge.badge-staff-mod { background: rgba(88,101,242,0.22); color: #8891f5; }
     .meta-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    /* ─── Mobile FAB ─── */
+    .fab-compose { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background: var(--card-red); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(212,11,0,0.45); transition: transform 0.15s, box-shadow 0.15s; z-index: 50; }
+    .fab-compose:hover { transform: scale(1.06); box-shadow: 0 6px 26px rgba(212,11,0,0.55); }
+    .fab-compose .material-icons { font-size: 24px; }
+    @media (min-width: 900px) { .fab-compose { display: none; } }
 
     /* ─── Threads / Replies ─── */
-    .reply-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s; }
-    .reply-btn:hover { border-color: var(--text-muted); color: var(--text); }
-    .reply-toggle { background: none; border: none; color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; padding: 4px 0; transition: color 0.15s; display: inline-flex; align-items: center; gap: 4px; }
-    .reply-toggle:hover { color: var(--text); }
+    .reply-btn { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s; font-family: var(--font-body); }
+    .reply-btn:hover { color: var(--card-blue); background: rgba(88,101,242,0.1); }
+    .reply-toggle { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; padding: 6px 10px; border-radius: 999px; transition: all 0.15s; display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-body); }
+    .reply-toggle:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    [data-theme="light"] .reply-toggle:hover { background: rgba(0,0,0,0.06); }
     .replies-section { margin-top: 12px; }
     .replies-container { margin-left: 28px; padding-left: 16px; border-left: 2px solid var(--border); }
     .reply-card { padding: 14px 0; border-bottom: 1px solid var(--border); }
@@ -229,17 +255,25 @@
     .page-info { font-size: 12px; color: var(--text-muted); padding: 0 8px; }
 
     /* ─── Pinned ─── */
-    .opinion-card.pinned { border: 1px solid rgba(255,159,10,0.3); border-radius: 10px; padding: 20px; margin-bottom: 12px; background: rgba(255,159,10,0.04); }
+    .opinion-card.pinned { border-bottom: 1px solid var(--border); border-left: 3px solid rgba(255,159,10,0.6); background: rgba(255,159,10,0.03); padding: 14px 16px 14px 13px; }
     .pin-indicator { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: #FF9F0A; margin-bottom: 8px; }
 
     /* ─── Hidden posts (mod view) ─── */
-    .opinion-card.hidden-post { opacity: 0.45; border-left: 3px solid var(--card-orange); padding-left: 16px; }
+    .opinion-card.hidden-post { opacity: 0.45; border-left: 3px solid var(--card-orange); }
     .hidden-label { font-size: 11px; font-weight: 700; color: var(--card-orange); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
 
     /* ─── Attachments ─── */
-    .opinion-attachment { position: relative; margin-top: 12px; max-width: 400px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
-    .opinion-attachment img { display: block; width: 100%; height: auto; max-height: 350px; object-fit: cover; }
-    .opinion-attachment.blurred img { filter: blur(20px); pointer-events: none; }
+    .opinion-attachment { position: relative; margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .opinion-attachment img { display: block; width: 100%; height: auto; max-height: 350px; object-fit: cover; cursor: zoom-in; transition: opacity 0.15s; }
+    .opinion-attachment img:hover { opacity: 0.9; }
+    .opinion-attachment.blurred img { filter: blur(20px); pointer-events: none; cursor: default; }
+    /* ─── Lightbox ─── */
+    .lightbox { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 20px; cursor: zoom-out; opacity: 0; pointer-events: none; transition: opacity 0.18s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: min(92vw, 1200px); max-height: 90vh; object-fit: contain; border-radius: 2px; box-shadow: 0 24px 80px rgba(0,0,0,0.7); transform: scale(0.96); transition: transform 0.18s; cursor: default; }
+    .lightbox.open img { transform: scale(1); }
+    .lightbox-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
     .attachment-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); padding: 16px; text-align: center; }
     .attachment-overlay p { font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 10px; line-height: 1.5; }
     .reveal-attachment-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--font-body); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
@@ -267,7 +301,9 @@
   <div class="page-body">
     <main class="feed">
       <div class="feed-header">
-        <span class="feed-label">Alle meninger</span>
+        <div class="feed-header-top">
+          <span class="feed-label">Meninger</span>
+        </div>
         <div class="filter-group" id="filterGroup"></div>
       </div>
       <div id="opinionsFeed">
@@ -430,10 +466,16 @@
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bilde i fullskjerm">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img id="lightboxImg" src="" alt="Bilde i fullskjerm">
+  </div>
+
+  <!-- Mobile FAB -->
+  <button class="fab-compose" id="fabCompose"><span class="material-icons">edit</span></button>
+
     <script>
-    // ══════════════════════════════════════════════════
-    //  CONFIG
-    // ══════════════════════════════════════════════════
     const SUPABASE_URL  = 'https://wqmkwcrlvgfczbueseip.supabase.co';
     const SUPABASE_ANON  = 'sb_publishable_XCDS-VsKHGbOXaaiUWaHIg_sH3sCfLJ';
     const COOLDOWN_MS   = 5 * 60 * 1000; // 5 minutter
@@ -948,26 +990,23 @@
       const op = allOpinions.find(o => o.id === opinionId);
       if (op) { op._ups = ups; op._downs = downs; }
 
-      const card = document.getElementById(`card-${opinionId}`);
-      if (card) {
-        const oldFooter = card.querySelector('.opinion-footer');
-        if (oldFooter) oldFooter.outerHTML = buildReactionHTML(opinionId, ups, downs);
-        attachReactionListeners(opinionId);
-      }
+      const rg = document.getElementById(`reactions-${opinionId}`);
+      if (rg) rg.outerHTML = buildReactionHTML(opinionId, ups, downs);
+      attachReactionListeners(opinionId);
     }
 
     function buildReactionHTML(opinionId, ups, downs) {
       const my = myReactions[opinionId];
-      return `<div class="opinion-footer">
-        <button class="reaction-btn ${my === 'up' ? 'active-up' : ''}" data-id="${opinionId}" data-type="up">👍 <span>${ups}</span></button>
-        <button class="reaction-btn ${my === 'down' ? 'active-down' : ''}" data-id="${opinionId}" data-type="down">👎 <span>${downs}</span></button>
-      </div>`;
+      return `<span id="reactions-${opinionId}" style="display:contents">
+        <button class="reaction-btn up-action ${my === 'up' ? 'active-up' : ''}" data-id="${opinionId}" data-type="up"><span class="material-icons" style="font-size:18px;vertical-align:middle">thumb_up_off_alt</span>${ups > 0 ? `<span>${ups}</span>` : ''}</button>
+        <button class="reaction-btn down-action ${my === 'down' ? 'active-down' : ''}" data-id="${opinionId}" data-type="down"><span class="material-icons" style="font-size:18px;vertical-align:middle">thumb_down_off_alt</span>${downs > 0 ? `<span>${downs}</span>` : ''}</button>
+      </span>`;
     }
 
     function attachReactionListeners(opinionId) {
       const card = document.getElementById(`card-${opinionId}`);
       if (!card) return;
-      card.querySelectorAll('.reaction-btn').forEach(btn => {
+      card.querySelectorAll('.reaction-btn[data-type]').forEach(btn => {
         btn.addEventListener('click', () => toggleReaction(Number(btn.dataset.id), btn.dataset.type));
       });
     }
@@ -1537,37 +1576,42 @@
           <article class="${cardClasses.join(' ')}" data-role="${escHtml(o.role)}" id="card-${o.id}">
             ${pinnedIndicator}
             ${hiddenLabel}
-            <div class="opinion-meta">
-              ${avatar}
-              <div class="meta-text">
-                <div class="meta-name-row">
-                  <span class="meta-name">${escHtml(displayName)}</span>
-                  ${staffBadgeForOpinion(o)}
+            <div class="card-grid">
+              <div class="card-avatar-col">
+                ${avatar}
+                ${replyCount > 0 ? '<div class="card-thread-line"></div>' : ''}
+              </div>
+              <div class="card-content-col">
+                <div class="card-header">
+                  <div class="card-header-main">
+                    <span class="meta-name">${escHtml(displayName)}</span>
+                    ${staffBadgeForOpinion(o)}
+                    <span class="meta-handle">${escHtml(handle)}</span>
+                    <span class="meta-dot">·</span>
+                    <span class="meta-time">${escHtml(formatRelativeOrDate(o.created_at))}</span>
+                    ${countyValue ? `<span class="meta-dot">·</span><span class="meta-time">${escHtml(countyValue)}</span>` : ''}
+                  </div>
+                  <div class="card-header-aside">
+                    <div class="opinion-badges">${badge}${isNew ? '<span class="opinion-badge badge-ny">Ny</span>' : ''}</div>
+                    ${moderationButtons}
+                  </div>
                 </div>
-                <div class="meta-handle">${escHtml(handle)}</div>
-                <div class="meta-info">${escHtml(formatRelativeOrDate(o.created_at))}${countyValue ? ` · ${escHtml(countyValue)}` : ''}</div>
-              </div>
-              <div class="opinion-badges">
-                ${badge}
-                ${county}
-                ${isNew ? '<span class="opinion-badge badge-ny">Ny</span>' : ''}
-                ${moderationButtons}
+                <div class="opinion-topic">${escHtml(o.topic)}</div>
+                <blockquote class="opinion-quote">«${renderOpinionText(o.quote, allowClickableLinks)}»</blockquote>
+                ${o.body ? `<p class="opinion-body">${renderOpinionText(o.body, allowClickableLinks)}</p>` : ''}
+                ${attachmentHTML}
+                <div class="opinion-footer">
+                  <button class="reply-btn reaction-btn reply-action" data-reply-to="${o.id}"><span class="material-icons" style="font-size:18px;vertical-align:middle">chat_bubble_outline</span>${replyCount > 0 ? `<span>${replyCount}</span>` : ''}</button>
+                  ${buildReactionHTML(o.id, o._ups, o._downs)}
+                  ${replyCount > 0 ? `<button class="reaction-btn reply-toggle" data-parent="${o.id}"><span class="material-icons" style="font-size:18px;vertical-align:middle">forum</span></button>` : ''}
+                </div>
+                <div class="replies-container" id="replies-${o.id}" style="display:none;"></div>
+                ${currentUser ? `<div class="reply-form" id="reply-form-${o.id}" style="display:none;">
+                  <textarea class="reply-input" id="reply-input-${o.id}" placeholder="Skriv et svar..." maxlength="400"></textarea>
+                  <button class="reply-submit" data-parent="${o.id}">Send</button>
+                </div>` : ''}
               </div>
             </div>
-            <div class="opinion-topic">${escHtml(o.topic)}</div>
-            <blockquote class="opinion-quote">«${renderOpinionText(o.quote, allowClickableLinks)}»</blockquote>
-            ${o.body ? `<p class="opinion-body">${renderOpinionText(o.body, allowClickableLinks)}</p>` : ''}
-            ${attachmentHTML}
-            ${buildReactionHTML(o.id, o._ups, o._downs)}
-            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
-              <button class="reply-btn" data-reply-to="${o.id}"><span class="material-icons" style="font-size:14px;">reply</span> Svar</button>
-              ${replyCount > 0 ? `<button class="reply-toggle" data-parent="${o.id}"><span class="material-icons" style="font-size:14px;">forum</span> Vis ${replyCount} svar</button>` : ''}
-            </div>
-            <div class="replies-container" id="replies-${o.id}" style="display:none;"></div>
-            ${currentUser ? `<div class="reply-form" id="reply-form-${o.id}" style="display:none;">
-              <textarea class="reply-input" id="reply-input-${o.id}" placeholder="Skriv et svar..." maxlength="400"></textarea>
-              <button class="reply-submit" data-parent="${o.id}">Send</button>
-            </div>` : ''}
           </article>`;
       }).join('');
 
@@ -1735,25 +1779,29 @@
         return `<div class="opinion-attachment"><img src="${escHtml(o.image_url)}" alt="Vedlegg" loading="lazy"></div>`;
       }
 
-      // Ikke godkjent ennå - vis med blur
+      // Ikke godkjent ennå
       // Moderator kan godkjenne, MEN ikke sitt eget vedlegg (med mindre admin)
       const canApproveThis = isMod() && (isAdmin() || String(currentUser?.id) !== String(o.user_id));
 
-      const overlayContent = canApproveThis ? `
-        <p>Venter på godkjenning</p>
-        <div class="approve-actions">
-          <button class="approve-btn" data-approve-id="${o.id}">✓ Godkjenn</button>
-          <button class="reject-btn" data-reject-id="${o.id}">✕ Avvis</button>
-        </div>
-      ` : `
-        <p>Dette vedlegget som har blitt sendt har ikke blitt sjekket av noen mods enda</p>
-        <button class="reveal-attachment-btn" data-reveal-id="${o.id}">Se vedlegg</button>
-      `;
+      // Mods/admins ser bildet uten blur + godkjenn/avvis
+      if (canApproveThis) {
+        return `<div class="opinion-attachment" id="attachment-${o.id}">
+          <img src="${escHtml(o.image_url)}" alt="Vedlegg" loading="lazy">
+          <div class="attachment-overlay" id="overlay-${o.id}" style="background:rgba(0,0,0,0.45);padding:12px 16px;justify-content:flex-end;align-items:flex-end;pointer-events:none;">
+            <div class="approve-actions" style="pointer-events:auto;">
+              <button class="approve-btn" data-approve-id="${o.id}">✓ Godkjenn</button>
+              <button class="reject-btn" data-reject-id="${o.id}">✕ Avvis</button>
+            </div>
+          </div>
+        </div>`;
+      }
 
+      // Vanlige brukere ser blur + mulighet til å vise
       return `<div class="opinion-attachment blurred" id="attachment-${o.id}">
         <img src="${escHtml(o.image_url)}" alt="Vedlegg" loading="lazy">
         <div class="attachment-overlay" id="overlay-${o.id}">
-          ${overlayContent}
+          <p>Dette vedlegget som har blitt sendt har ikke blitt sjekket av noen mods enda</p>
+          <button class="reveal-attachment-btn" data-reveal-id="${o.id}">Se vedlegg</button>
         </div>
       </div>`;
     }
@@ -1945,6 +1993,37 @@
 
     // Auto-refresh hvert 2. minutt som fallback
     setInterval(() => loadOpinions(), 2 * 60 * 1000);
+
+    // ══════════════════════════════════════════════════
+    //  LIGHTBOX
+    // ══════════════════════════════════════════════════
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+
+    document.getElementById('opinionsFeed').addEventListener('click', e => {
+      const img = e.target.closest('.opinion-attachment:not(.blurred) img');
+      if (img) openLightbox(img.src);
+    });
+
+    document.getElementById('fabCompose').addEventListener('click', () => {
+      if (currentUser && currentProfile) openWritePanel();
+      else openModal();
+    });
 
     (async () => {
       renderRoleAndCountySelects();
