@@ -284,6 +284,22 @@
     .reject-btn { background: rgba(255,69,58,0.12); border: 1px solid rgba(255,69,58,0.3); color: #ff453a; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
     .reject-btn:hover { background: rgba(255,69,58,0.2); }
 
+    /* ─── Notifications / Toasts ─── */
+    #toastContainer { position: fixed; bottom: 24px; right: 20px; display: flex; flex-direction: column-reverse; gap: 8px; z-index: 300; max-width: 320px; pointer-events: none; }
+    @media (max-width: 899px) { #toastContainer { bottom: 90px; } }
+    .notification-toast { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 13px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: flex; align-items: flex-start; gap: 10px; animation: slideInRight 0.25s ease; pointer-events: all; line-height: 1.5; }
+    .notification-toast.warning { border-color: rgba(255,159,10,0.5); }
+    .notification-toast.danger  { border-color: rgba(255,69,58,0.5); }
+    .notification-toast-msg { flex: 1; }
+    .notification-toast-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px; padding: 0; line-height: 1; flex-shrink: 0; }
+    .notification-toast-close:hover { color: var(--text); }
+    @keyframes slideInRight { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .notification-item { background: rgba(255,159,10,0.07); border: 1px solid rgba(255,159,10,0.2); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+    .notification-item:last-child { margin-bottom: 0; }
+    .notification-item-msg { flex: 1; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .notification-dismiss { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px; padding: 0; line-height: 1; flex-shrink: 0; }
+    .notification-dismiss:hover { color: var(--text); }
+
   </style>
 </head>
 <body>
@@ -316,6 +332,10 @@
       <div class="sidebar-section">
         <div class="sidebar-label">Del din mening</div>
         <div id="authArea"></div>
+      </div>
+      <div class="sidebar-section" id="notificationsSection" style="display:none;">
+        <div class="sidebar-label">Varsler</div>
+        <div id="notificationsArea"></div>
       </div>
       <div class="sidebar-section">
         <div class="sidebar-label">Statistikk</div>
@@ -475,6 +495,9 @@
   <!-- Mobile FAB -->
   <button class="fab-compose" id="fabCompose"><span class="material-icons">edit</span></button>
 
+  <!-- Toast container -->
+  <div id="toastContainer"></div>
+
     <script>
     const SUPABASE_URL  = 'https://wqmkwcrlvgfczbueseip.supabase.co';
     const SUPABASE_ANON  = 'sb_publishable_XCDS-VsKHGbOXaaiUWaHIg_sH3sCfLJ';
@@ -534,6 +557,8 @@
     let activeFilter   = 'alle';
     let cooldownTimer  = null;
     let currentPage    = 1;
+    let profileChannel = null;
+    let notifChannel   = null;
     const MAX_AVATAR_BYTES = 1024 * 1024; // 1MB
 
     function isMod() {
@@ -859,8 +884,13 @@
         await applyPendingProfile(currentUser.id);
         currentProfile = normalizeProfile(await loadProfile(currentUser.id));
         await loadMyReactions();
+        subscribeToMyProfile();
+        subscribeToNotifications();
+        await loadAndShowNotifications();
       } else {
         currentProfile = null;
+        if (profileChannel) { sb.removeChannel(profileChannel); profileChannel = null; }
+        if (notifChannel)   { sb.removeChannel(notifChannel);   notifChannel = null; }
       }
       renderAuthArea();
       renderRoleAndCountySelects();
@@ -952,6 +982,10 @@
       await sb.auth.signOut();
       currentUser = null; currentProfile = null; myReactions = {};
       if (cooldownTimer) { clearInterval(cooldownTimer); cooldownTimer = null; }
+      if (profileChannel) { sb.removeChannel(profileChannel); profileChannel = null; }
+      if (notifChannel)   { sb.removeChannel(notifChannel);   notifChannel = null; }
+      const sec = document.getElementById('notificationsSection');
+      if (sec) sec.style.display = 'none';
       renderAuthArea();
       renderOpinions(activeFilter);
       renderFilters();
@@ -1289,6 +1323,8 @@
       const errEl = document.getElementById('writeError');
       errEl.classList.remove('visible');
 
+      // Re-hent profil for à få oppdatert sanksjonsstatus
+      if (currentUser) currentProfile = normalizeProfile(await loadProfile(currentUser.id));
       const rem = getRemainingMs();
       const sanction = getSanctionForProfile(currentProfile);
       if (sanction.banned) {
@@ -1669,6 +1705,10 @@
         const { error } = await sb.from('profiles').update({ warnings: newWarnings }).eq('id', targetUser);
         if (error) { alert('Kunne ikke gi advarsel: ' + (error.message || 'Ukjent feil.')); return; }
         if (profileMap[targetUser]) profileMap[targetUser].warnings = newWarnings;
+        await sb.from('notifications').insert({
+          user_id: targetUser,
+          message: `⚠️ Du har fått en advarsel fra modereringen. Du har nå ${newWarnings} advarsel${newWarnings === 1 ? '' : 'er'} totalt. Gjentatte advarsler kan føre til timeout eller ban.`,
+        });
         alert(`Advarsel gitt (${newWarnings} totalt).`);
       } else if (action === 'timeout') {
         const minutes = Number(prompt('Timeout i minutter?', '60'));
@@ -1677,12 +1717,20 @@
         const { error } = await sb.from('profiles').update({ timeout_until: until }).eq('id', targetUser);
         if (error) { alert('Kunne ikke sette timeout: ' + (error.message || 'Ukjent feil.')); return; }
         if (profileMap[targetUser]) profileMap[targetUser].timeout_until = until;
+        await sb.from('notifications').insert({
+          user_id: targetUser,
+          message: `⏳ Du har fått en timeout på ${minutes} minutt${minutes === 1 ? '' : 'er'} av modereringen. Du kan ikke poste eller svare i denne perioden.`,
+        });
         alert('Timeout aktivert.');
       } else if (action === 'ban') {
         if (!confirm('Banne denne brukeren?')) return;
         const { error } = await sb.from('profiles').update({ banned: true }).eq('id', targetUser);
         if (error) { alert('Kunne ikke banne: ' + (error.message || 'Ukjent feil.')); return; }
         if (profileMap[targetUser]) profileMap[targetUser].banned = true;
+        await sb.from('notifications').insert({
+          user_id: targetUser,
+          message: `🚫 Kontoen din har blitt bannet av modereringen. Du kan ikke lenger poste eller svare.`,
+        });
         alert('Brukeren er bannet.');
       }
       if (currentUser?.id === targetUser) await refreshAuth();
@@ -1914,6 +1962,8 @@
         return;
       }
 
+      // Re-hent profil for à få oppdatert sanksjonsstatus
+      currentProfile = normalizeProfile(await loadProfile(currentUser.id));
       const sanction = getSanctionForProfile(currentProfile);
       if (sanction.banned || sanction.timeoutUntil > Date.now()) {
         alert('Du kan ikke svare akkurat nå.');
@@ -1974,6 +2024,79 @@
     }
 
     // ══════════════════════════════════════════════════
+    //  VARSLER / NOTIFICATIONS
+    // ══════════════════════════════════════════════════
+    function showNotificationToast(message, type = 'warning') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `notification-toast ${type}`;
+      toast.innerHTML = `<span class="notification-toast-msg">${escHtml(message)}</span><button class="notification-toast-close" title="Lukk">✕</button>`;
+      toast.querySelector('.notification-toast-close').addEventListener('click', () => toast.remove());
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.transition = 'opacity 0.4s';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+      }, 8000);
+    }
+
+    async function loadAndShowNotifications() {
+      if (!currentUser) return;
+      const { data } = await sb.from('notifications')
+        .select('*').eq('user_id', currentUser.id).eq('read', false)
+        .order('created_at', { ascending: false }).limit(10);
+      const sec  = document.getElementById('notificationsSection');
+      const area = document.getElementById('notificationsArea');
+      if (!sec || !area) return;
+      if (!data || data.length === 0) { sec.style.display = 'none'; return; }
+      sec.style.display = '';
+      area.innerHTML = data.map(n => `
+        <div class="notification-item" data-notif-id="${n.id}">
+          <span class="notification-item-msg">${escHtml(n.message)}</span>
+          <button class="notification-dismiss" data-id="${n.id}" title="Merk som lest">✕</button>
+        </div>`).join('');
+      area.querySelectorAll('.notification-dismiss').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = Number(btn.dataset.id);
+          await sb.from('notifications').update({ read: true }).eq('id', id).eq('user_id', currentUser.id);
+          btn.closest('.notification-item').remove();
+          if (!area.querySelector('.notification-item')) sec.style.display = 'none';
+        });
+      });
+    }
+
+    function subscribeToMyProfile() {
+      if (!currentUser) return;
+      if (profileChannel) { sb.removeChannel(profileChannel); profileChannel = null; }
+      profileChannel = sb.channel('my-profile-' + currentUser.id)
+        .on('postgres_changes',
+          { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.${currentUser.id}` },
+          async (payload) => {
+            currentProfile = normalizeProfile(payload.new);
+            renderAuthArea();
+            const msg = getCurrentSanctionMessage();
+            if (msg) showNotificationToast('🚫 ' + msg, 'danger');
+          }
+        )
+        .subscribe();
+    }
+
+    function subscribeToNotifications() {
+      if (!currentUser) return;
+      if (notifChannel) { sb.removeChannel(notifChannel); notifChannel = null; }
+      notifChannel = sb.channel('my-notifications-' + currentUser.id)
+        .on('postgres_changes',
+          { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_id=eq.${currentUser.id}` },
+          async (payload) => {
+            showNotificationToast(payload.new.message, 'warning');
+            await loadAndShowNotifications();
+          }
+        )
+        .subscribe();
+    }
+
+    // ══════════════════════════════════════════════════
     //  FILTER + REALTIME + INIT
     // ══════════════════════════════════════════════════
     document.getElementById('filterGroup').addEventListener('click', e => {
@@ -1985,14 +2108,23 @@
       renderFilters();
     });
 
-    sb.channel('meninger-changes')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'meninger' }, () => loadOpinions())
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'meninger' }, () => loadOpinions())
-      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'meninger' }, () => loadOpinions())
-      .subscribe();
+    let reloadDebounce = null;
+    function debouncedReload() {
+      if (reloadDebounce) clearTimeout(reloadDebounce);
+      reloadDebounce = setTimeout(() => loadOpinions(), 800);
+    }
 
-    // Auto-refresh hvert 2. minutt som fallback
-    setInterval(() => loadOpinions(), 2 * 60 * 1000);
+    sb.channel('main-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'meninger' }, debouncedReload)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'reactions' }, debouncedReload)
+      .subscribe((status) => {
+        if (status === 'CHANNEL_ERROR') {
+          console.warn('Realtime-tilkobling feilet, faller tilbake til polling.');
+        }
+      });
+
+    // Auto-refresh hvert minutt som fallback
+    setInterval(() => loadOpinions(), 60 * 1000);
 
     // ══════════════════════════════════════════════════
     //  LIGHTBOX
