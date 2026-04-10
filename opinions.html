@@ -155,6 +155,9 @@
 
     .topic-pill { display: inline-block; padding: 5px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0 4px 6px 0; cursor: pointer; transition: all 0.15s; }
     .topic-pill:hover { color: var(--text); border-color: var(--text); }
+    .rules-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .rules-list li { font-size: 13px; color: var(--text-muted); line-height: 1.5; padding-left: 16px; position: relative; }
+    .rules-list li::before { content: '×'; position: absolute; left: 0; color: var(--card-red); font-weight: 700; font-size: 14px; line-height: 1.4; }
 
     /* ─── Modal ─── */
     .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -339,12 +342,21 @@
         <div id="notificationsArea"></div>
       </div>
       <div class="sidebar-section">
-        <div class="sidebar-label">Statistikk</div>
-        <div id="statsList"></div>
-      </div>
-      <div class="sidebar-section">
         <div class="sidebar-label">Populære temaer</div>
         <div id="topicsList"></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Regler</div>
+        <ul class="rules-list">
+          <li>Ikke spre falsk informasjon eller rykter</li>
+          <li>Ikke bruk støtende, hatefullt eller diskriminerende språk (normal banning er lov)</li>
+          <li>Ikke del personlig informasjon om deg selv eller andre</li>
+          <li>Ikke spam, reklame eller irrelevante lenker</li>
+          <li>Ikke trakasser eller mobbe andre brukere</li>
+          <li>Ikke send upassende innhold (som 18+)</li>
+          <li>Prøv å hold deg til å skrive meninger</li>
+          <li>Innhold som bryter reglene kan fjernes av moderatorer</li>
+        </ul>
       </div>
     </aside>
   </div>
@@ -992,7 +1004,6 @@
       renderAuthArea();
       renderOpinions(activeFilter);
       renderFilters();
-      renderStats();
     }
 
     // ══════════════════════════════════════════════════
@@ -1478,7 +1489,6 @@
 
       currentPage = 1;
       renderOpinions(activeFilter);
-      renderStats();
       renderTopics();
       renderFilters();
     }
@@ -1859,29 +1869,6 @@
       if (currentUser?.id === targetUser) await refreshAuth();
     }
 
-    function renderStats() {
-      const topLevel = allOpinions.filter(o => !o.parent_id);
-      const roles = ROLE_OPTIONS.map(r => {
-        const count = topLevel.filter(o => getOpinionRole(o) === r.value).length;
-        return `
-          <div class="stat-row compact">
-            <span class="stat-group-label">Fra ${escHtml(r.label)}</span>
-            <span class="stat-group-value">${count}</span>
-          </div>`;
-      }).join('');
-
-      document.getElementById('statsList').innerHTML = `
-        <div class="stat-row compact">
-          <span class="stat-group-label">Totale meninger</span>
-          <span class="stat-group-value">${topLevel.length}</span>
-        </div>
-        ${roles}
-        <div class="stat-row compact">
-          <span class="stat-group-label">Siste mening</span>
-          <span class="stat-group-value">${topLevel.length ? escHtml(formatRelativeOrDate(topLevel[0].created_at)) : '–'}</span>
-        </div>`;
-    }
-
     function renderTopics() {
       const topics = [...new Set(allOpinions.filter(o => !o.parent_id).slice(0, 12).map(o => o.topic))];
       document.getElementById('topicsList').innerHTML = topics.map(t => `<span class="topic-pill">${escHtml(t)}</span>`).join('');
@@ -1900,7 +1887,7 @@
         return;
       }
       allOpinions = allOpinions.filter(o => o.id !== id);
-      renderOpinions(activeFilter); renderStats(); renderTopics(); renderFilters();
+      renderOpinions(activeFilter); renderTopics(); renderFilters();
     }
 
     // ══════════════════════════════════════════════════
