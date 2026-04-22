@@ -18,9 +18,9 @@
 ### 📚 **Content Expansion**
 
 - [ ] **More Guides**
-  - [ ] Mental health & stress management in VGS
+  - [x] Mental health & stress management in VGS
   - [ ] Social life & friend groups
-  - [ ] Job opportunities during/after VGS
+  - [x] Job opportunities during/after VGS
   - [ ] Study abroad or exchange programs
   - [ ] Extracurricular activities & clubs
   - [ ] Time management strategies (specific guides, not just tips)
@@ -30,11 +30,7 @@
   - [ ] University/college preparation
 
 - [ ] **More Tools/Interactives**
-  - [ ] **Exam Prep Checklist** - Countdown to exams with tasks
   - [ ] **Subject Difficulty Calculator** - Based on student struggles
-  - [ ] **Career Path Simulator** - Show job outcomes for different programs
-  - [ ] **School Budget Calculator** - Estimate costs for supplies, transport, etc.
-  - [ ] **Subject Combination Validator** - Warn about conflicting combinations before choosing
 
 ### 🎓 **Learning Features**
 
@@ -46,18 +42,16 @@
 
 ### 🔗 **Integration & Sharing**
 
-- [ ] **Social Sharing** - Share guides on social media
-- [ ] **Email Newsletter** - Weekly tips or new content
 - [ ] **RSS Feed** - Subscribe to new guides
 - [ ] **Discord Bot Integration** - Share content in school Discord servers
-- [ ] **Embed Guides** - Allow schools to embed tools on their sites
+- [x] **Embed Guides** - Allow schools to embed tools on their sites (Technically possible with IFrames in HTML, we haven't restricted that.)
 - [ ] **QR Codes** - Link from school materials to relevant guides
 
 ### ⚙️ **Technical Improvements**
 
 - [ ] **Performance Optimization**
-  - [ ] Lazy load images
-  - [ ] Use WebP images for faster loading
+  - [ ] Lazy load images (Not needed right now)
+  - [ ] Use WebP images for faster loading (Not needed right now)
   - [ ] Implement code splitting
 
 - [ ] **Code Organization**
@@ -67,21 +61,19 @@
   - [ ] Consider static site generator (11ty, Hugo) for scalability
 
 - [ ] **SEO Enhancement**
-  - [ ] Add meta descriptions to all pages
+  - [most] Add meta descriptions to all pages
   - [ ] Implement structured data (Schema.org)
-  - [ ] Create sitemap.xml and robots.txt
+  - [x] Create sitemap.xml and robots.txt
   - [ ] Improve Open Graph tags for social sharing
   - [ ] Focus on keyword optimization
 
 - [ ] **Testing**
-  - [ ] Unit tests for JavaScript functionality
-  - [ ] E2E tests for key user flows
-  - [ ] Accessibility testing (axe, Lighthouse)
-  - [ ] Cross-browser compatibility testing
+  - [x] Unit tests for JavaScript functionality
+  - [x] E2E tests for key user flows
+  - [x] Accessibility testing (axe, Lighthouse)
+  - [x] Cross-browser compatibility testing
 
 - [ ] **Developer Experience**
-  - [ ] Set up build tooling (Webpack, Vite)
+  - [ ] Set up build tooling (Webpack, Vite) (maybe webpack later on idk)
   - [ ] Create component library documentation
-  - [ ] Add TypeScript for safety
-  - [ ] Create CI/CD pipeline
-  - [ ] Add pre-commit hooks for linting
+  - [ ] Add TypeScript for safety (will need a compiler though, unsure if typescript is directly supported in web browsers or not)
