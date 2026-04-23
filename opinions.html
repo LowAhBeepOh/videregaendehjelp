@@ -122,6 +122,73 @@
     .mod-dropdown-item.pin:hover { color: #30D158; background: rgba(48,209,88,0.1); }
     .mod-dropdown-item.hide:hover { color: var(--text); }
     .mod-dropdown-item.copy:hover { color: var(--card-blue); background: rgba(88,101,242,0.1); }
+    .mod-dropdown-item.report:hover { color: #ff453a; background: rgba(255,69,58,0.1); }
+
+    /* ─── Report Modal ─── */
+    .report-reasons { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .report-reason-btn {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-family: var(--font-body); font-size: 14px;
+      padding: 12px 14px; border-radius: 8px; cursor: pointer;
+      transition: all 0.15s; text-align: left;
+    }
+    .report-reason-btn:hover { border-color: var(--card-red); background: rgba(212,11,0,0.08); }
+    .report-reason-btn.selected { border-color: var(--card-red); background: rgba(212,11,0,0.12); }
+    .report-reason-icon { font-size: 18px; }
+    .report-description { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--font-body); font-size: 14px; padding: 10px 12px; border-radius: 6px; resize: vertical; min-height: 60px; }
+    .report-description:focus { border-color: var(--card-red); outline: none; }
+    .report-success { text-align: center; padding: 20px; }
+    .report-success-icon { font-size: 40px; margin-bottom: 10px; }
+
+    /* ─── Reports Panel ─── */
+    .reports-badge { background: var(--card-red); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 999px; margin-left: 6px; }
+    .reports-list { display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto; }
+    .report-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+    .report-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+    .report-reason-tag { background: rgba(255,69,58,0.15); color: #ff453a; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+    .report-time { color: var(--text-muted); }
+    .report-preview { font-size: 13px; color: var(--text); line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .report-actions { display: flex; gap: 6px; }
+    .report-btn { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 4px; border: 1px solid var(--border); background: none; color: var(--text-muted); cursor: pointer; transition: all 0.12s; }
+    .report-btn:hover { border-color: var(--text); color: var(--text); }
+    .report-btn.resolve { background: rgba(48,209,88,0.15); border-color: rgba(48,209,88,0.4); color: #30D158; }
+    .report-btn.resolve:hover { background: rgba(48,209,88,0.25); }
+    .report-btn.dismiss { background: rgba(255,69,58,0.1); border-color: rgba(255,69,58,0.3); color: #ff453a; }
+    .report-btn.dismiss:hover { background: rgba(255,69,58,0.2); }
+    .report-btn.view { background: rgba(88,101,242,0.15); border-color: rgba(88,101,242,0.4); color: #8891f5; }
+    .report-btn.view:hover { background: rgba(88,101,242,0.25); }
+    .view-all-reports-btn { width: 100%; margin-top: 10px; background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+    .view-all-reports-btn:hover { border-color: var(--text); color: var(--text); }
+
+    /* ─── Reports Modal (Full) ─── */
+    .reports-modal-content { max-width: 700px; }
+    .reports-filter-tabs { display: flex; gap: 4px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    .reports-filter-btn { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.12s; }
+    .reports-filter-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    .reports-filter-btn.active { color: var(--text); background: var(--surface); }
+    [data-theme="light"] .reports-filter-btn:hover { background: rgba(0,0,0,0.04); }
+    .reports-full-list { display: flex; flex-direction: column; gap: 12px; max-height: 60vh; overflow-y: auto; padding-right: 4px; }
+    .report-full-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .report-full-item.resolved { opacity: 0.7; }
+    .report-full-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .report-full-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .report-status-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+    .report-status-badge.pending { background: rgba(255,159,10,0.15); color: #FF9F0A; }
+    .report-status-badge.resolved { background: rgba(48,209,88,0.15); color: #30D158; }
+    .report-status-badge.dismissed { background: rgba(255,69,58,0.1); color: #ff453a; }
+    .reported-content-box { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; margin: 10px 0; font-size: 13px; }
+    .reported-content-box .content-quote { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 15px; margin-bottom: 6px; }
+    .reported-content-box .content-body { color: var(--text-muted); }
+    .report-actions-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .report-action-btn { font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 5px; border: 1px solid var(--border); background: none; color: var(--text-muted); cursor: pointer; transition: all 0.12s; display: inline-flex; align-items: center; gap: 4px; }
+    .report-action-btn:hover { border-color: var(--text); color: var(--text); }
+    .report-action-btn.warn { background: rgba(255,159,10,0.1); border-color: rgba(255,159,10,0.4); color: #FF9F0A; }
+    .report-action-btn.warn:hover { background: rgba(255,159,10,0.2); }
+    .report-action-btn.hide { background: rgba(88,101,242,0.1); border-color: rgba(88,101,242,0.4); color: #8891f5; }
+    .report-action-btn.hide:hover { background: rgba(88,101,242,0.2); }
+    .report-action-btn.delete { background: rgba(255,69,58,0.1); border-color: rgba(255,69,58,0.3); color: #ff453a; }
+    .report-action-btn.delete:hover { background: rgba(255,69,58,0.2); }
 
     /* ─── Copy Link Button (for all users) ─── */
     .copy-link-btn { background: none; border: 1px solid transparent; color: var(--text-muted); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s; margin-left: 4px; }
@@ -385,6 +452,11 @@
         <div class="sidebar-label">Varsler</div>
         <div id="notificationsArea"></div>
       </div>
+      <div class="sidebar-section" id="reportsSection" style="display:none;">
+        <div class="sidebar-label">Rapportkø<span class="reports-badge" id="reportsBadge">0</span></div>
+        <div class="reports-list" id="reportsList"></div>
+        <button class="view-all-reports-btn" id="viewAllReportsBtn">Se alle rapporter</button>
+      </div>
       <div class="sidebar-section">
         <div class="sidebar-label">Populære temaer</div>
         <div id="topicsList"></div>
@@ -545,6 +617,71 @@
           <div class="success-icon">🎉</div>
           <p><strong>Meningen er publisert!</strong><br>Takk for at du deler.</p>
         </div>
+      </div>
+
+      <!-- Report Panel -->
+      <div id="reportPanel" style="display:none;">
+        <h2 class="modal-title">Rapporter innhold</h2>
+        <p class="modal-subtitle" id="reportSubtitle">Velg årsak for rapporten</p>
+        <div id="reportStep1">
+          <div class="report-reasons">
+            <button class="report-reason-btn" data-reason="personal_info">
+              <span class="report-reason-icon">⚠️</span>
+              <span>Personlig informasjon lekket</span>
+            </button>
+            <button class="report-reason-btn" data-reason="harassment">
+              <span class="report-reason-icon">😷</span>
+              <span>Mobbing/trakassering</span>
+            </button>
+            <button class="report-reason-btn" data-reason="hate_speech">
+              <span class="report-reason-icon">🚫</span>
+              <span>Hatefult/rasistisk/homofobisk innhold</span>
+            </button>
+            <button class="report-reason-btn" data-reason="inappropriate">
+              <span class="report-reason-icon">🔞</span>
+              <span>Upassende innhold (18+)</span>
+            </button>
+            <button class="report-reason-btn" data-reason="spam">
+              <span class="report-reason-icon">📝</span>
+              <span>Spam/Reklame</span>
+            </button>
+            <button class="report-reason-btn" data-reason="other">
+              <span class="report-reason-icon">❓</span>
+              <span>Annet</span>
+            </button>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Beskrivelse (valgfritt)</label>
+            <textarea class="report-description" id="reportDescription" placeholder=" forklar hvis nødvendig..." maxlength="200"></textarea>
+          </div>
+          <div class="form-error" id="reportError"></div>
+          <button class="form-btn" id="submitReportBtn" disabled>Send rapport</button>
+          <button class="form-btn" id="cancelReportBtn" style="background: var(--surface); color: var(--text); margin-top: 8px;">Avbryt</button>
+        </div>
+        <div id="reportStep2" style="display:none;">
+          <div class="report-success">
+            <div class="report-success-icon">✅</div>
+            <p><strong>Rapport sendt!</strong><br>Takk for at du hjelper oss å holde siden trygg.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports Modal (Full view for mods) -->
+  <div class="modal-backdrop" id="reportsBackdrop">
+    <div class="modal reports-modal-content" role="dialog" aria-modal="true">
+      <button class="modal-close" id="reportsModalClose">✕</button>
+      <h2 class="modal-title">Rapportkø</h2>
+      <p class="modal-subtitle">Administrer rapporterte innlegg</p>
+      <div class="reports-filter-tabs">
+        <button class="reports-filter-btn active" data-filter="pending">Venter</button>
+        <button class="reports-filter-btn" data-filter="resolved">Løst</button>
+        <button class="reports-filter-btn" data-filter="dismissed">Avvist</button>
+        <button class="reports-filter-btn" data-filter="all">Alle</button>
+      </div>
+      <div id="reportsFullList" class="reports-full-list">
+        <div style="padding: 20px; text-align: center; color: var(--text-muted);">Laster rapporter...</div>
       </div>
     </div>
   </div>
@@ -951,11 +1088,14 @@
         await loadMyReactions();
         subscribeToMyProfile();
         subscribeToNotifications();
+        subscribeToReports();
         await loadAndShowNotifications();
+        await loadPendingReports();
       } else {
         currentProfile = null;
         if (profileChannel) { sb.removeChannel(profileChannel); profileChannel = null; }
         if (notifChannel)   { sb.removeChannel(notifChannel);   notifChannel = null; }
+        if (reportsChannel)   { sb.removeChannel(reportsChannel); reportsChannel = null; }
       }
       renderAuthArea();
       renderRoleAndCountySelects();
@@ -1049,8 +1189,11 @@
       if (cooldownTimer) { clearInterval(cooldownTimer); cooldownTimer = null; }
       if (profileChannel) { sb.removeChannel(profileChannel); profileChannel = null; }
       if (notifChannel)   { sb.removeChannel(notifChannel);   notifChannel = null; }
+      if (reportsChannel)   { sb.removeChannel(reportsChannel); reportsChannel = null; }
       const sec = document.getElementById('notificationsSection');
       if (sec) sec.style.display = 'none';
+      const repSec = document.getElementById('reportsSection');
+      if (repSec) repSec.style.display = 'none';
       renderAuthArea();
       renderOpinions(activeFilter);
       renderFilters();
@@ -1690,12 +1833,15 @@
             });
 
         // Modererings-dropdown (i stedet for separate knapper)
+        // Vis meny for mods eller rapporter-knapp for alle
         const showModMenu = canSanction || canDelete || canPin || canHide;
-        const moderationDropdown = showModMenu ? `
+        const showReportOption = !showModMenu && currentUser && currentUser.id !== o.user_id;
+        const moderationDropdown = (showModMenu || showReportOption) ? `
           <div class="mod-dropdown">
             <button class="mod-dropdown-btn" data-dropdown-id="${o.id}" title="Handlinger"><span class="material-icons" style="font-size:18px;">more_vert</span></button>
             <div class="mod-dropdown-menu" id="mod-menu-${o.id}">
               <button class="mod-dropdown-item copy" data-action="copylink" data-id="${o.id}"><span class="material-icons" style="font-size:16px;">link</span> Kopier lenke</button>
+              ${showReportOption ? `<button class="mod-dropdown-item report" data-action="report" data-id="${o.id}"><span class="material-icons" style="font-size:16px;">flag</span> Rapporter</button>` : ''}
               ${canPin ? `<button class="mod-dropdown-item pin" data-action="${o.pinned ? 'unpin' : 'pin'}" data-id="${o.id}"><span class="material-icons" style="font-size:16px;">push_pin</span> ${o.pinned ? 'Fjern fremheving' : 'Fremhev'}</button>` : ''}
               ${canHide ? `<button class="mod-dropdown-item hide" data-action="${o.hidden ? 'unhide' : 'hide'}" data-id="${o.id}"><span class="material-icons" style="font-size:16px;">${o.hidden ? 'visibility' : 'visibility_off'}</span> ${o.hidden ? 'Vis igjen' : 'Skjul'}</button>` : ''}
               ${canSanction ? `<button class="mod-dropdown-item warn" data-action="warn" data-id="${o.id}"><span class="material-icons" style="font-size:16px;">warning</span> Advarsel</button>` : ''}
@@ -1924,6 +2070,13 @@
             copyOpinionLink(opinionId);
             return;
           }
+          if (action === 'report') {
+            const target = allOpinions.find(o => o.id === opinionId);
+            if (target) {
+              openReportPanel('opinion', opinionId, `Rapporter: «${target.quote.slice(0, 50)}${target.quote.length > 50 ? '...' : ''}»`);
+            }
+            return;
+          }
           if (action === 'delete') {
             if (!canDeletePost(target)) return;
             await deleteOpinion(opinionId);
@@ -1983,6 +2136,423 @@
       // Close dropdowns when clicking outside
       document.addEventListener('click', () => {
         feed.querySelectorAll('.mod-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+      });
+    }
+
+    // ══════════════════════════════════════════════════
+    //  REPORTING SYSTEM
+    // ══════════════════════════════════════════════════
+    let currentReportTarget = null; // { type: 'opinion'|'reply', id: number }
+    let selectedReportReason = null;
+    let pendingReports = [];
+
+    const REPORT_REASONS = {
+      personal_info: 'Personlig informasjon lekket',
+      harassment: 'Mobbing/trakassering',
+      hate_speech: 'Hatefult/rasistisk/homofobisk innhold',
+      inappropriate: 'Upassende innhold (18+)',
+      spam: 'Spam/Reklame',
+      other: 'Annet'
+    };
+
+    function openReportPanel(targetType, targetId, contextInfo = '') {
+      currentReportTarget = { type: targetType, id: targetId };
+      selectedReportReason = null;
+
+      hideAllPanels();
+      document.getElementById('reportPanel').style.display = '';
+      document.getElementById('reportStep1').style.display = '';
+      document.getElementById('reportStep2').style.display = 'none';
+      document.getElementById('reportDescription').value = '';
+      document.getElementById('reportError').classList.remove('visible');
+      document.getElementById('submitReportBtn').disabled = true;
+      document.getElementById('reportSubtitle').textContent = contextInfo || 'Velg årsak for rapporten';
+
+      // Reset reason buttons
+      document.querySelectorAll('.report-reason-btn').forEach(btn => btn.classList.remove('selected'));
+
+      backdrop.classList.add('open');
+    }
+
+    function closeReportPanel() {
+      closeModal();
+    }
+
+    // Report reason selection
+    document.querySelectorAll('.report-reason-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.report-reason-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedReportReason = btn.dataset.reason;
+        document.getElementById('submitReportBtn').disabled = false;
+      });
+    });
+
+    document.getElementById('cancelReportBtn').addEventListener('click', closeReportPanel);
+
+    document.getElementById('submitReportBtn').addEventListener('click', async () => {
+      if (!currentReportTarget || !selectedReportReason) return;
+
+      // Verifiser at vi har en aktiv sesjon
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        openModal();
+        return;
+      }
+
+      const description = document.getElementById('reportDescription').value.trim();
+      const btn = document.getElementById('submitReportBtn');
+      const errEl = document.getElementById('reportError');
+
+      errEl.classList.remove('visible');
+      btn.disabled = true;
+      btn.textContent = 'Sender...';
+
+      const insertData = {
+        reporter_id: session.user.id,  // Bruk session.user.id, ikke currentUser.id
+        reason: selectedReportReason,
+        description: description || null,
+        status: 'pending'
+      };
+
+      if (currentReportTarget.type === 'opinion') {
+        insertData.opinion_id = currentReportTarget.id;
+      } else {
+        insertData.reply_id = currentReportTarget.id;
+      }
+
+      const { error } = await sb.from('reports').insert(insertData);
+
+      if (error) {
+        console.error('Report insert error:', error);
+        btn.disabled = false;
+        btn.textContent = 'Send rapport';
+        errEl.textContent = 'Kunne ikke sende rapport: ' + (error.message || 'Ukjent feil');
+        errEl.classList.add('visible');
+        return;
+      }
+
+      // Show success
+      document.getElementById('reportStep1').style.display = 'none';
+      document.getElementById('reportStep2').style.display = '';
+
+      setTimeout(() => {
+        closeReportPanel();
+        btn.disabled = false;
+        btn.textContent = 'Send rapport';
+      }, 1500);
+    });
+
+    // Load reports for mods
+    async function loadPendingReports() {
+      if (!isMod()) return;
+
+      // Verifiser sesjon for mod-handlinger
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        console.log('No session for mod reports loading');
+        return;
+      }
+
+      const { data, error } = await sb.from('reports')
+        .select('*, meninger(*), replies(*)')
+        .eq('status', 'pending')
+        .order('created_at', { ascending: false })
+        .limit(50);
+
+      if (error) {
+        console.error('Failed to load reports:', error);
+        return;
+      }
+
+      pendingReports = data || [];
+      renderReportsBadge();
+      renderReportsSidebar();
+    }
+
+    function renderReportsBadge() {
+      const badge = document.getElementById('reportsBadge');
+      const pendingCount = pendingReports.filter(r => r.status === 'pending').length;
+      badge.textContent = pendingCount;
+      badge.style.display = pendingCount > 0 ? 'inline-block' : 'none';
+    }
+
+    function renderReportsSidebar() {
+      const container = document.getElementById('reportsList');
+      const section = document.getElementById('reportsSection');
+
+      if (!isMod()) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = '';
+
+      const pending = pendingReports.filter(r => r.status === 'pending').slice(0, 5);
+
+      if (pending.length === 0) {
+        container.innerHTML = '<div style="padding: 10px; color: var(--text-muted); font-size: 13px;">Ingen ventende rapporter 🎉</div>';
+        return;
+      }
+
+      container.innerHTML = pending.map(r => {
+        const content = r.meninger || r.replies || {};
+        const preview = content.quote || content.body || '(Innhold ikke tilgjengelig)';
+        const reasonLabel = REPORT_REASONS[r.reason] || r.reason;
+        const timeAgo = formatRelativeOrDate(r.created_at);
+
+        return `
+          <div class="report-item" data-report-id="${r.id}">
+            <div class="report-item-header">
+              <span class="report-reason-tag">${escHtml(reasonLabel)}</span>
+              <span class="report-time">${escHtml(timeAgo)}</span>
+            </div>
+            <div class="report-preview">${escHtml(preview.slice(0, 100))}${preview.length > 100 ? '...' : ''}</div>
+            <div class="report-actions">
+              <button class="report-btn view" data-report-view="${r.id}">Vis</button>
+              <button class="report-btn resolve" data-report-resolve="${r.id}">Løst</button>
+              <button class="report-btn dismiss" data-report-dismiss="${r.id}">Avvis</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Attach listeners
+      container.querySelectorAll('[data-report-view]').forEach(btn => {
+        btn.addEventListener('click', () => viewReport(Number(btn.dataset.reportView)));
+      });
+      container.querySelectorAll('[data-report-resolve]').forEach(btn => {
+        btn.addEventListener('click', () => resolveReport(Number(btn.dataset.reportResolve)));
+      });
+      container.querySelectorAll('[data-report-dismiss]').forEach(btn => {
+        btn.addEventListener('click', () => dismissReport(Number(btn.dataset.reportDismiss)));
+      });
+    }
+
+    async function resolveReport(reportId, moderatorNote = '') {
+      // Verifiser sesjon
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        showNotificationToast('Sesjon utløpt. Logg inn på nytt.', 'danger');
+        return;
+      }
+
+      const { error } = await sb.from('reports')
+        .update({
+          status: 'resolved',
+          resolved_at: new Date().toISOString(),
+          resolved_by: session.user.id,
+          moderator_note: moderatorNote || null
+        })
+        .eq('id', reportId);
+
+      if (error) {
+        showNotificationToast('Kunne ikke markere som løst', 'danger');
+        return;
+      }
+
+      pendingReports = pendingReports.filter(r => r.id !== reportId);
+      renderReportsBadge();
+      renderReportsSidebar();
+      if (document.getElementById('reportsBackdrop').classList.contains('open')) {
+        loadAndRenderFullReports();
+      }
+      showNotificationToast('Rapport markert som løst', 'warning');
+    }
+
+    async function dismissReport(reportId, moderatorNote = '') {
+      // Verifiser sesjon
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        showNotificationToast('Sesjon utløpt. Logg inn på nytt.', 'danger');
+        return;
+      }
+
+      const { error } = await sb.from('reports')
+        .update({
+          status: 'dismissed',
+          resolved_at: new Date().toISOString(),
+          resolved_by: session.user.id,
+          moderator_note: moderatorNote || null
+        })
+        .eq('id', reportId);
+
+      if (error) {
+        showNotificationToast('Kunne ikke avvise rapport', 'danger');
+        return;
+      }
+
+      pendingReports = pendingReports.filter(r => r.id !== reportId);
+      renderReportsBadge();
+      renderReportsSidebar();
+      if (document.getElementById('reportsBackdrop').classList.contains('open')) {
+        loadAndRenderFullReports();
+      }
+      showNotificationToast('Rapport avvist', 'warning');
+    }
+
+    function viewReport(reportId) {
+      const report = pendingReports.find(r => r.id === reportId);
+      if (!report) return;
+
+      // If it's an opinion, navigate to it
+      if (report.opinion_id) {
+        const url = new URL(window.location.href);
+        url.search = `?meningID=${report.opinion_id}`;
+        window.location.href = url.toString();
+      }
+    }
+
+    // Full reports modal
+    let reportsFilter = 'pending';
+    let allReports = [];
+
+    document.getElementById('viewAllReportsBtn').addEventListener('click', () => {
+      openReportsModal();
+    });
+
+    document.getElementById('reportsModalClose').addEventListener('click', () => {
+      document.getElementById('reportsBackdrop').classList.remove('open');
+    });
+
+    document.getElementById('reportsBackdrop').addEventListener('click', e => {
+      if (e.target === document.getElementById('reportsBackdrop')) {
+        document.getElementById('reportsBackdrop').classList.remove('open');
+      }
+    });
+
+    document.querySelectorAll('.reports-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.reports-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        reportsFilter = btn.dataset.filter;
+        loadAndRenderFullReports();
+      });
+    });
+
+    async function openReportsModal() {
+      if (!isMod()) return;
+      document.getElementById('reportsBackdrop').classList.add('open');
+      await loadAndRenderFullReports();
+    }
+
+    async function loadAndRenderFullReports() {
+      const container = document.getElementById('reportsFullList');
+
+      // Verifiser sesjon
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ff453a;">Ikke logget inn.</div>';
+        return;
+      }
+
+      container.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted);">Laster rapporter...</div>';
+
+      let query = sb.from('reports')
+        .select('*, meningers:meninger(*), replies(*)')
+        .order('created_at', { ascending: false })
+        .limit(100);
+
+      if (reportsFilter !== 'all') {
+        query = query.eq('status', reportsFilter);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        container.innerHTML = '<div style="padding: 20px; text-align: center; color: #ff453a;">Kunne ikke laste rapporter.</div>';
+        return;
+      }
+
+      allReports = data || [];
+
+      if (allReports.length === 0) {
+        container.innerHTML = '<div style="padding: 30px; text-align: center; color: var(--text-muted);">Ingen rapporter funnet.</div>';
+        return;
+      }
+
+      container.innerHTML = allReports.map(r => {
+        const content = r.meningers || r.replies || {};
+        const preview = content.quote || content.body || '(Innhold ikke tilgjengelig)';
+        const body = content.body || '';
+        const reasonLabel = REPORT_REASONS[r.reason] || r.reason;
+        const timeAgo = formatRelativeOrDate(r.created_at);
+        const isResolved = r.status === 'resolved' || r.status === 'dismissed';
+        const isPending = r.status === 'pending';
+
+        const statusBadge = r.status === 'pending'
+          ? '<span class="report-status-badge pending">Venter</span>'
+          : r.status === 'resolved'
+            ? '<span class="report-status-badge resolved">Løst</span>'
+            : '<span class="report-status-badge dismissed">Avvist</span>';
+
+        return `
+          <div class="report-full-item ${isResolved ? 'resolved' : ''}" data-report-id="${r.id}">
+            <div class="report-full-header">
+              <div class="report-full-meta">
+                <span class="report-reason-tag">${escHtml(reasonLabel)}</span>
+                ${statusBadge}
+                <span class="report-time">${escHtml(timeAgo)}</span>
+              </div>
+            </div>
+            ${r.description ? `<p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">"${escHtml(r.description)}"</p>` : ''}
+            <div class="reported-content-box">
+              ${content.quote ? `<div class="content-quote">«${escHtml(content.quote.slice(0, 150))}${content.quote.length > 150 ? '...' : ''}»</div>` : ''}
+              ${body ? `<div class="content-body">${escHtml(body.slice(0, 200))}${body.length > 200 ? '...' : ''}</div>` : ''}
+            </div>
+            <div class="report-actions-row">
+              ${isPending ? `
+                <button class="report-action-btn" data-full-resolve="${r.id}">✓ Marker som løst</button>
+                <button class="report-action-btn dismiss" data-full-dismiss="${r.id}">✕ Avvis</button>
+                <button class="report-action-btn hide" data-full-hide="${r.id}">👁 Skjul innlegg</button>
+                <button class="report-action-btn warn" data-full-warn="${r.id}" data-user-id="${content.user_id}">⚠ Advar bruker</button>
+                <button class="report-action-btn delete" data-full-delete="${r.id}">🗑 Slett innlegg</button>
+              ` : ''}
+              ${!isPending && r.moderator_note ? `<span style="font-size: 12px; color: var(--text-muted);">Notat: ${escHtml(r.moderator_note)}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Attach listeners for full report actions
+      container.querySelectorAll('[data-full-resolve]').forEach(btn => {
+        btn.addEventListener('click', () => resolveReport(Number(btn.dataset.fullResolve)));
+      });
+      container.querySelectorAll('[data-full-dismiss]').forEach(btn => {
+        btn.addEventListener('click', () => dismissReport(Number(btn.dataset.fullDismiss)));
+      });
+      container.querySelectorAll('[data-full-hide]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const report = allReports.find(r => r.id === Number(btn.dataset.fullHide));
+          if (report && report.opinion_id) {
+            await toggleHide(report.opinion_id);
+            await resolveReport(report.id, 'Innhold skjult');
+          }
+        });
+      });
+      container.querySelectorAll('[data-full-delete]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const report = allReports.find(r => r.id === Number(btn.dataset.fullDelete));
+          if (report && report.opinion_id) {
+            const target = allOpinions.find(o => o.id === report.opinion_id);
+            if (target && canDeletePost(target)) {
+              await deleteOpinion(report.opinion_id);
+              await resolveReport(report.id, 'Innhold slettet');
+            }
+          }
+        });
+      });
+      container.querySelectorAll('[data-full-warn]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const report = allReports.find(r => r.id === Number(btn.dataset.fullWarn));
+          const userId = btn.dataset.userId;
+          if (report && userId) {
+            const target = allOpinions.find(o => o.id === report.opinion_id);
+            if (target) {
+              await applyModerationAction(target, 'warn');
+            }
+          }
+        });
       });
     }
 
@@ -2391,6 +2961,21 @@
           async (payload) => {
             showNotificationToast(payload.new.message, 'warning');
             await loadAndShowNotifications();
+          }
+        )
+        .subscribe();
+    }
+
+    let reportsChannel = null;
+    function subscribeToReports() {
+      if (!currentUser || !isMod()) return;
+      if (reportsChannel) { sb.removeChannel(reportsChannel); reportsChannel = null; }
+      reportsChannel = sb.channel('reports-channel')
+        .on('postgres_changes',
+          { event: 'INSERT', schema: 'public', table: 'reports' },
+          async (payload) => {
+            showNotificationToast('Ny rapport mottatt!', 'warning');
+            await loadPendingReports();
           }
         )
         .subscribe();
