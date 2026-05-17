@@ -98,6 +98,34 @@ def extract_text_from_html(filepath):
         print(f"Error reading {filepath}: {e}")
         return "", ""
 
+def extract_resources_from_html(filepath):
+    """Extract resource entries from resources.html's JavaScript data array."""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+
+        array_match = re.search(r'const\s+resources\s*=\s*\[(.*?)\];', html_content, re.S)
+        if not array_match:
+            return []
+
+        resources = []
+        for object_match in re.finditer(r'\{(.*?)\}', array_match.group(1), re.S):
+            object_body = object_match.group(1)
+            fields = dict(re.findall(r"(\w+)\s*:\s*'([^']*)'", object_body))
+            if not fields.get('title') or not fields.get('url'):
+                continue
+            resources.append({
+                'title': fields.get('title', '').strip(),
+                'desc': fields.get('desc', '').strip(),
+                'type': fields.get('type', 'resource').strip(),
+                'url': fields.get('url', '').strip(),
+                'meta': fields.get('meta', '').strip()
+            })
+        return resources
+    except Exception as e:
+        print(f"Error reading resources from {filepath}: {e}")
+        return []
+
 def tokenize(text):
     """Simple tokenization - split on non-alphanumeric, lowercase."""
     # Keep underscores for Norwegian compound words
@@ -159,6 +187,7 @@ def main():
     guides_dir = Path('Guides')
     tools_dir = Path('Tools')
     interactives_dir = Path('Interactives')
+    resources_file = Path('resources.html')
 
     index_data = []
     all_tokens = []
@@ -224,6 +253,32 @@ def main():
                 'title': title,
                 'url': str(html_file),
                 'type': 'interactive',
+                'content': text[:500],
+                'tokens': tokens,
+                'keywords': list(set(tokens[:20]))
+            }
+            all_items.append(item)
+            print(f"  ✓ {title}")
+
+    # Process resources
+    print("📦 Indexing resources...")
+    if resources_file.exists():
+        for resource in extract_resources_from_html(resources_file):
+            title = resource['title']
+            text = ' '.join([
+                resource['title'],
+                resource['desc'],
+                resource['type'],
+                resource['meta'],
+                'ressurs ressurser dokument data pdf lenke'
+            ])
+            tokens = tokenize(text)
+            all_tokens.extend(tokens)
+
+            item = {
+                'title': title,
+                'url': resource['url'],
+                'type': 'resource',
                 'content': text[:500],
                 'tokens': tokens,
                 'keywords': list(set(tokens[:20]))

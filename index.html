@@ -692,12 +692,13 @@
           <a href="tools.html">Verktøy</a>
           <a href="interactives.html">Interaktivt</a>
           <a href="calendar.html">Kalender</a>
+          <a href="resources.html">Ressurser</a>
         </nav>
       </div>
     </header>
 
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Søk etter guider, verktøy..." autocomplete="off">
+      <input type="text" id="searchInput" class="search-input" placeholder="Søk etter guider, verktøy, ressurser..." autocomplete="off">
       <div id="searchResults" class="search-results"></div>
     </div>
 
@@ -761,6 +762,10 @@
         { title: "Eksamen Simulator 2026", url: "Interactives/exam-simulator.html", label: "Prøv" },
         { title: "Fagordbok Flashcards", url: "Interactives/fagordbok-flashcards.html", label: "Quiz" },
         { title: "VGS Grunnleggende Quiz", url: "Interactives/vgs-basics-quiz.html", label: "Test" }
+      ],
+      resources: [
+        { title: "Mattesett", url: "https://docs.google.com/spreadsheets/d/1mbJ_Bu6cKbzZH_C79JtD9lM2PLXPUrJaCA78bCRMc-0/edit?usp=sharing", resourceType: "Regneark", icon: "table_chart" },
+        { title: "Hva sensor ser etter", url: "https://docs.google.com/document/d/1PRPltPVveNC9cMQhppMaeO0FSF6VuELzbgGkO-SAgxY/edit?usp=sharing", resourceType: "Dokument", icon: "description" }
       ]
     };
 
@@ -970,7 +975,7 @@
       if (!bm.length) { section.style.display = 'none'; return; }
       section.style.display = 'block';
       // Map URLs to titles from contentData
-      const allItems = [...contentData.guides, ...contentData.tools, ...contentData.interactives];
+      const allItems = [...contentData.guides, ...contentData.tools, ...contentData.interactives, ...contentData.resources];
       list.innerHTML = bm.map(url => {
         const item = allItems.find(i => i.url === url);
         const title = item ? item.title : url.split('/').pop().replace('.html', '');
