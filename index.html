@@ -33,10 +33,10 @@
       --text: #ffffff;
       --text-muted: #888;
       
-      --card-red: #d40b00; /* Interactives */
-      --card-lime: #D0F54E; /* Guides */
-      --card-blue: #5865F2; /* Discord Blurple */
-      --card-orange: #FF9F0A; /* Tools */
+      --card-red: #d40b00;
+      --card-lime: #D0F54E;
+      --card-blue: #5865F2;
+      --card-orange: #FF9F0A;
       --card-green: #30D158;
       --card-pale: #F2F2F7;
       
@@ -46,6 +46,10 @@
       /* Typography */
       --font-display: 'Inter Tight', sans-serif;
       --font-body: 'Manrope', sans-serif;
+      --font-serif: 'Instrument Serif', serif;
+      
+      --ls-tight: -0.015em;
+      --ls-normal: -0.01em;
     }
 
     [data-theme="light"] {
@@ -66,9 +70,10 @@
       font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.4;
+      line-height: 1.5;
       min-height: 100vh;
       overflow-x: hidden;
+      letter-spacing: var(--ls-normal);
     }
 
     /* Layout */
@@ -78,24 +83,21 @@
       padding: 0 16px 40px 16px;
     }
 
-    /* Header */
-    header {
-      padding: 12px 0;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-    
     @media (min-width: 480px) {
-      main {
-        padding: 0 20px 60px 20px;
-      }
-      
-      header {
-        padding: 20px 0;
-        margin-bottom: 40px;
-      }
+      main { padding: 0 20px 60px 20px; }
     }
 
+    /* Header */
+    header {
+      padding: 20px 0;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 1000;
+    }
+    
     .header-content {
       max-width: 1400px;
       margin: 0 auto;
@@ -104,85 +106,133 @@
       align-items: center;
       padding: 0 16px;
     }
-    
-    @media (min-width: 480px) {
-      .header-content {
-        padding: 0 20px;
-      }
-    }
 
     .logo {
       font-family: var(--font-display);
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 800;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
+      transition: opacity 0.2s;
     }
 
-    .nav-links {
+    .logo:hover { opacity: 0.8; }
+
+    .nav-container {
       display: flex;
+      align-items: center;
       gap: 12px;
     }
 
-    .nav-links a {
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 600;
-      font-size: 13px;
-      transition: color 0.2s;
-    }
-    
-    @media (min-width: 480px) {
-      .logo {
-        font-size: 24px;
-      }
-      
-      .nav-links {
-        gap: 24px;
-      }
-      
-      .nav-links a {
-        font-size: 15px;
-      }
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: all 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
     }
-    
-    .subtitle {
-      display: none; /* Hidden in new layout */
+
+    .nav-link .material-icons { 
+      font-size: 20px; 
     }
+
+    .nav-link span { display: none; }
+    @media (min-width: 850px) { .nav-link span { display: inline; } }
+
+    /* Responsive Nav */
+    @media (max-width: 650px) {
+      .nav-link.nav-news { display: none; }
+    }
+
+    .burger-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .burger-btn:hover { background: rgba(255, 255, 255, 0.05); }
+
+    /* Custom Dropdown */
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      min-width: 220px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 1001;
+      margin-top: 12px;
+    }
+
+    .nav-dropdown.active { display: flex; }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .dropdown-item:hover { background: rgba(255, 255, 255, 0.08); }
+    .dropdown-item .material-icons { font-size: 18px; color: var(--text-muted); }
 
     /* Search Section */
     .search-container {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       position: relative;
     }
-    
+
     .search-input {
       width: 100%;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 14px 16px;
-      border-radius: 12px;
+      padding: 16px 20px;
+      border-radius: 14px;
       color: var(--text);
       font-family: var(--font-body);
       font-size: 16px;
       outline: none;
       transition: all 0.2s;
+      letter-spacing: var(--ls-tight);
     }
     
     @media (min-width: 480px) {
-      .search-container {
-        margin-bottom: 40px;
-      }
-      
-      .search-input {
-        padding: 20px 24px;
-        font-size: 18px;
-      }
+      .search-input { padding: 22px 28px; font-size: 18px; }
+    }
+
+    .search-input:focus {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .search-results {
@@ -192,23 +242,17 @@
       right: 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-top: 8px;
-      max-height: 250px;
+      border-radius: 14px;
+      margin-top: 10px;
+      max-height: 400px;
       overflow-y: auto;
       z-index: 100;
       display: none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    @media (min-width: 480px) {
-      .search-results {
-        max-height: 300px;
-      }
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     }
 
     .search-result-item {
-      padding: 10px 16px;
+      padding: 16px 24px;
       display: block;
       color: var(--text);
       text-decoration: none;
@@ -216,470 +260,250 @@
       transition: background 0.2s;
     }
 
-    @media (min-width: 480px) {
-      .search-result-item {
-        padding: 12px 20px;
-      }
-    }
+    .search-result-item:hover { background: rgba(255, 255, 255, 0.05); }
+    .search-result-title { font-weight: 700; font-size: 15px; display: block; }
+    .search-result-meta { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-    .search-result-item:last-child {
-      border-bottom: none;
-    }
-
-    .search-result-meta {
-      display: none; /* Hide keywords from search results */
-    }
-
-    .search-result-item:hover, .search-result-item.active {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    .search-result-title {
-        font-weight: 700;
-        display: block;
-        font-size: 13px;
-    }
-    
-    @media (min-width: 480px) {
-      .search-result-title {
-        font-size: 14px;
-      }
-    }
-    
-    .search-result-meta {
-        font-size: 11px;
-        color: var(--text-muted);
-    }
-    
-    @media (min-width: 480px) {
-      .search-result-meta {
-        font-size: 12px;
-      }
-    }
-
+    /* No Results Styling */
     .search-no-results {
-      padding: 12px 16px;
+      padding: 32px 24px;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
+      align-items: center;
     }
 
     .search-no-results-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
     }
 
     .search-external-links {
       display: flex;
-      gap: 8px;
+      gap: 12px;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
     .search-external-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 7px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--font-display);
+      padding: 10px 20px;
+      border-radius: 10px;
       text-decoration: none;
-      transition: opacity 0.15s, transform 0.15s;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
     }
 
     .search-external-btn:hover {
-      opacity: 0.85;
-      transform: scale(1.03);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .search-external-ung {
-      background: #e8f5e9;
-      color: #1b5e20;
-    }
-
-    .search-external-utd {
-      background: #e3f2fd;
-      color: #0d47a1;
-    }
-
-    [data-theme="dark"] .search-external-ung,
-    :not([data-theme="light"]) .search-external-ung {
-      background: #1a3320;
-      color: #81c784;
-    }
-
-    [data-theme="dark"] .search-external-utd,
-    :not([data-theme="light"]) .search-external-utd {
-      background: #0d2137;
-      color: #64b5f6;
-    }
-
-    .search-external-vilbli {
-      background: #fff3e0;
-      color: #e65100;
-    }
-
-    [data-theme="dark"] .search-external-vilbli,
-    :not([data-theme="light"]) .search-external-vilbli {
-      background: #2a1800;
-      color: #ffb74d;
-    }
-
-    [data-theme="light"] .search-input {
-      background: #f5f5f5;
-      border: 1px solid #e0e0e0;
+      background: #30D158;
       color: #000;
     }
 
-    .search-input:focus {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
+    .search-external-ung:hover {
+      background: #27c14a;
     }
 
-    [data-theme="light"] .search-input:focus {
-      background: #fff;
-      border-color: #ccc;
+    .search-external-vilbli {
+      background: #5865F2;
+      color: #fff;
     }
 
-    /* Main Actions */
-    .main-actions {
+    .search-external-vilbli:hover {
+      background: #4752d4;
+    }
+
+    .search-external-utd {
+      background: #FF9F0A;
+      color: #000;
+    }
+
+    .search-external-utd:hover {
+      background: #e68a00;
+    }
+
+    /* Quick Start Section */
+    .quick-start {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 16px;
+      margin-bottom: 40px;
     }
 
-    .action-btn {
-      padding: 14px 12px;
-      border: none;
-      border-radius: 8px;
+    @media (min-width: 480px) { .quick-start { grid-template-columns: 1fr 1fr; gap: 20px; } }
+
+    .quick-start-btn {
+      padding: 18px;
+      border-radius: 16px;
       font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s;
+      font-size: 16px;
+      font-weight: 700;
       text-decoration: none;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-    }
-    
-    @media (min-width: 480px) {
-      .main-actions {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        margin-bottom: 32px;
-      }
-      
-      .action-btn {
-        padding: 16px;
-        font-size: 16px;
-      }
+      min-height: 64px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: var(--ls-tight);
     }
 
-    .action-btn:hover {
-      transform: scale(1.02);
-    }
-
-    .btn-start {
-      background: #3e5c35; /* Dark Green */
-      color: #b8e994;
-    }
-
-    .btn-current {
-      background: #2c3e50; /* Dark Blue */
-      color: #74b9ff;
-    }
+    .quick-start-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+    .btn-start { background: #3e5c35; color: #b8e994; }
+    .btn-current { background: #2c3e50; color: #74b9ff; }
 
     /* Bento Grid */
     .bento-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 16px;
     }
 
-    @media (min-width: 480px) {
-      .bento-grid {
-        gap: 16px;
-      }
-    }
+    @media (min-width: 768px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
 
-    @media (min-width: 768px) {
-      .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+    .grid-item-featured { grid-column: 1 / -1; }
+    @media (min-width: 1024px) { .grid-item-featured { grid-column: span 2; } }
+    .grid-item-news-featured { grid-column: 1 / -1; }
 
-    @media (min-width: 1024px) {
-      .bento-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    /* Special grid items */
-    .grid-item-featured {
-      grid-column: 1 / -1;
-    }
-
-    @media (min-width: 1024px) {
-      .grid-item-featured {
-        grid-column: span 2;
-      }
-    }
-
+    /* Card Styles */
     .bento-card {
-      padding: 20px;
-      border-radius: 4px;
+      padding: 24px;
+      border-radius: 16px;
       text-decoration: none;
       color: #000;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
       position: relative;
       overflow: hidden;
-      min-height: 160px;
+      min-height: 180px;
     }
 
-    @media (min-width: 480px) {
-      .bento-card {
-        padding: 28px;
-        min-height: 180px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .bento-card {
-        padding: 32px;
-      }
-    }
+    @media (min-width: 768px) { .bento-card { padding: 32px; min-height: 220px; } }
 
     .bento-card:hover {
-      transform: scale(1.02);
-      z-index: 10;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     }
 
     .card-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: 28px;
+      font-family: var(--font-serif);
+      font-size: 32px;
       font-weight: 400;
       font-style: italic;
-      line-height: 0.95;
+      line-height: 1.0;
       letter-spacing: -0.03em;
     }
 
-    @media (min-width: 480px) {
-      .card-title {
-        font-size: 36px;
-      }
-    }
+    @media (min-width: 768px) { .card-title { font-size: 42px; } }
 
-    @media (min-width: 768px) {
-      .card-title {
-        font-size: 42px;
-      }
-    }
-
-    /* Global card styles - can be used on multiple cards */
-    .card-tools {
-        background: var(--card-orange);
-    }
-    
-    .card-tools .card-title {
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 800;
-      font-style: normal;
-      font-size: 24px;
-    }
-    
-    @media (min-width: 480px) {
-      .card-tools .card-title {
-        font-size: 30px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .card-tools .card-title {
-        font-size: 36px;
-      }
-    }
-    
-    .card-tools .card-icon {
-        background: #fff;
-        color: #000;
-    }
-
+    /* Guide Blocks */
     .card-guides {
-        background: var(--card-lime);
+      background: var(--card-lime);
+      color: #000;
     }
 
-    .card-guides .card-title {
-      color: #000;
-      font-size: 32px;
+    .guide-arrow {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-size: 24px;
+      opacity: 0.15;
+      transition: all 0.3s;
     }
+
+    .card-guides:hover .guide-arrow {
+      opacity: 0.5;
+      transform: translate(4px, -4px);
+    }
+
+    /* Tools & Interactives */
+    .card-tools { background: var(--card-orange); }
+    .card-tools .card-title { font-family: var(--font-display); font-weight: 800; font-style: normal; font-size: 26px; letter-spacing: -0.04em; }
     
-    @media (min-width: 480px) {
-      .card-guides .card-title {
-        font-size: 40px;
-      }
-    }
+    .card-interactive { background: var(--card-red); color: #fff; }
+    .card-interactive .card-title { color: #fff; font-family: var(--font-display); font-weight: 800; font-style: normal; font-size: 26px; letter-spacing: -0.04em; }
 
-    @media (min-width: 768px) {
-      .card-guides .card-title {
-        font-size: 48px;
-      }
-    }
+    .card-fun-fact { background: var(--card-green); }
+    .card-fun-fact .card-title { font-family: var(--font-body); font-weight: 700; font-style: normal; font-size: 22px; letter-spacing: -0.02em; line-height: 1.3; }
 
-    .card-discord {
-        background: var(--card-blue);
-    }
-
-    .card-interactive {
-        background: var(--card-red);
-    }
-
-    .card-fun-fact {
-      background: var(--card-green);
-      color: #000;
-    }
-
-    .card-fun-fact .card-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-style: normal;
-      font-size: 18px;
-      color: #000;
-    }
-
-    @media (min-width: 480px) {
-      .card-fun-fact .card-title {
-        font-size: 20px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .card-fun-fact .card-title {
-        font-size: 22px;
-      }
-    }
-
-    .fun-fact-label {
+    .fun-fact-label, .opinions-label {
       font-size: 12px;
-      font-weight: 600;
-      opacity: 0.7;
-      margin-bottom: 8px;
+      font-weight: 800;
+      opacity: 0.6;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .card-discord .opinion-latest-quote {
-      margin-top: 8px;
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: clamp(17px, 2.4vw, 22px);
-      font-weight: 400;
-      line-height: 1.25;
-      color: #fff;
-    }
+    .card-opinions { background: var(--card-blue); color: #fff; }
+    .card-opinions .card-title { font-family: var(--font-serif); font-style: italic; font-size: 24px; color: #fff; line-height: 1.25; }
 
-    @media (min-width: 480px) {
-      .fun-fact-label {
-        font-size: 13px;
-      }
-    }
-
-    .card-updates {
-        background: var(--card-pale);
-    }
-
-    .card-updates .card-title {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-style: normal;
-      font-size: 18px;
-      color: #000;
-    }
-    
-    @media (min-width: 480px) {
-      .card-updates .card-title {
-        font-size: 21px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .card-updates .card-title {
-        font-size: 24px;
-      }
-    }
-    
-    .card-updates-content {
-      font-size: 13px;
-      color: #666;
-    }
-    
-    @media (min-width: 480px) {
-      .card-updates-content {
-        font-size: 14px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .card-updates-content {
-        font-size: 16px;
-      }
-    }
+    .card-updates { background: var(--card-pale); border: 1px solid var(--border); }
+    .card-updates .card-title { font-family: var(--font-body); font-weight: 700; font-style: normal; font-size: 22px; }
 
     .card-icon {
-      background: #000;
-      color: #fff;
+      background: rgba(0,0,0,0.1);
+      color: #000;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
       margin-top: auto;
     }
-    
-    @media (min-width: 480px) {
-      .card-icon {
-        width: 56px;
-        height: 56px;
-        font-size: 28px;
-      }
-    }
-    
-    @media (min-width: 768px) {
-      .card-icon {
-        width: 64px;
-        height: 64px;
-        font-size: 32px;
-      }
-    }
-    
-    .card-tools .card-icon {
-        background: #fff;
-        color: #000;
+
+    .card-interactive .card-icon { background: rgba(255,255,255,0.15); color: #fff; }
+
+    /* News Featured Card */
+    .news-featured-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-radius: 20px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      min-height: 420px;
+      transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
     }
 
-    .discord-svg {
-      width: 80px;
-      height: 80px;
-      fill: #fff;
-    }
-    
+    @media (min-width: 768px) { .news-featured-card { grid-template-columns: 1.3fr 1fr; } }
+
+    .news-featured-left { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+    .news-featured-date { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; opacity: 0.6; }
+    .news-featured-title { font-family: var(--font-display); font-size: 36px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.05em; }
+    .news-featured-desc { font-size: 17px; line-height: 1.6; margin-bottom: 32px; opacity: 0.9; }
+    .news-featured-link { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; margin-top: auto; }
+    .news-featured-right { overflow: hidden; position: relative; }
+    .news-featured-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+    .news-featured-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .news-featured-card:hover .news-featured-image { transform: scale(1.08); }
+
+    /* Bookmarks */
+    .bookmarks-section { margin-bottom: 48px; }
+    .bookmarks-title { font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 20px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em; }
+    .bookmarks-list { display: flex; gap: 14px; flex-wrap: wrap; }
+    .bookmark-item { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 14px; text-decoration: none; font-size: 14px; font-weight: 700; transition: all 0.2s; }
+    .bookmark-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
     /* Footer */
-    footer {
-        margin-top: 40px;
-        text-align: center;
-        color: var(--text-muted);
-        font-size: 12px;
-    }
-
+    footer { margin-top: 100px; text-align: center; color: var(--text-muted); font-size: 14px; padding: 80px 0; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -687,13 +511,41 @@
     <header>
       <div class="header-content">
         <a href="index.html" class="logo">Videregående Hjelp</a>
-        <nav class="nav-links">
-          <a href="guides.html">Guider</a>
-          <a href="tools.html">Verktøy</a>
-          <a href="interactives.html">Interaktivt</a>
-          <a href="calendar.html">Kalender</a>
-          <a href="resources.html">Ressurser</a>
-        </nav>
+        <div class="nav-container">
+          <a href="guides.html" class="nav-link">
+            <i class="material-icons">book</i>
+            <span>Guider</span>
+          </a>
+          <a href="tools.html" class="nav-link">
+            <i class="material-icons">quiz</i>
+            <span>Verktøy</span>
+          </a>
+          <a href="news.html" class="nav-link nav-news">
+            <i class="material-icons">newspaper</i>
+            <span>Nyheter</span>
+          </a>
+          <button class="burger-btn" id="burgerBtn" aria-label="Meny">
+            <i class="material-icons">menu</i>
+          </button>
+          <div class="nav-dropdown" id="navDropdown">
+            <a href="interactives.html" class="dropdown-item">
+              <i class="material-icons">extension</i>
+              Interaktivt
+            </a>
+            <a href="calendar.html" class="dropdown-item">
+              <i class="material-icons">calendar_today</i>
+              Kalender
+            </a>
+            <a href="resources.html" class="dropdown-item">
+              <i class="material-icons">folder</i>
+              Ressurser
+            </a>
+            <a href="news.html" class="dropdown-item nav-news-mobile" style="display:none;">
+              <i class="material-icons">newspaper</i>
+              Nyheter
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -702,29 +554,27 @@
       <div id="searchResults" class="search-results"></div>
     </div>
 
-    <div class="main-actions">
-      <a href="Guides/new-students.html" class="action-btn btn-start">
-        Jeg starter på videregående
-      </a>
-      <a href="Guides/current-students.html" class="action-btn btn-current">
-        Jeg går på videregående
-      </a>
+    <div class="quick-start">
+      <a href="Guides/new-students.html" class="quick-start-btn btn-start">Jeg starter på videregående</a>
+      <a href="Guides/current-students.html" class="quick-start-btn btn-current">Jeg går på videregående</a>
     </div>
 
-    <!-- Bookmarks -->
-    <div id="bookmarksSection" style="margin-bottom:24px; display:none;">
-      <h2 style="font-family:var(--font-display); font-size:18px; font-weight:700; margin-bottom:12px; color:var(--text-muted);">⭐ Dine bokmerker</h2>
-      <div id="bookmarksList" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+    <div id="bookmarksSection" class="bookmarks-section" style="display:none;">
+      <h2 class="bookmarks-title"><i class="material-icons" style="color:var(--card-blue);">bookmark</i> Dine bokmerker</h2>
+      <div id="bookmarksList" class="bookmarks-list"></div>
     </div>
 
     <div class="bento-grid" id="bentoGrid">
-      <!-- Content populated by JavaScript -->
+      <!-- Populated by JS -->
     </div>
+
+    <footer>
+      <p>&copy; 2026 Videregående Hjelp. Alle rettigheter forbeholdt.</p>
+    </footer>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // Data for all available content
     const contentData = {
       guides: [
         { title: "Fraværsgrensen?", url: "Guides/absence-rules.html" },
@@ -774,29 +624,16 @@
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
     function escHtml(str) {
-      return String(str ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+      return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     async function loadLatestOpinionHome() {
       const el = document.getElementById('opinionBoxContent');
       if (!el) return;
-      el.textContent = 'Laster…';
       try {
-        const { data, error } = await sb.from('meninger')
-          .select('quote')
-          .order('created_at', { ascending: false })
-          .limit(1);
+        const { data, error } = await sb.from('meninger').select('quote').order('created_at', { ascending: false }).limit(1);
         if (error) throw error;
-        const row = data && data[0];
-        const q = row?.quote != null ? String(row.quote).trim() : '';
-        if (!q) {
-          el.textContent = 'Ingen meninger enda.';
-          return;
-        }
+        const q = data && data[0]?.quote ? String(data[0].quote).trim() : 'Ingen meninger enda.';
         el.innerHTML = `«${escHtml(q)}»`;
       } catch (e) {
         console.error('loadLatestOpinionHome:', e);
@@ -811,23 +648,22 @@
         .subscribe();
     }
 
-    // Fun facts that rotate bi-daily
     const funFacts = [
       "I Norge har du nå 'fullføringsrett' – det betyr at du har rett til videregående opplæring helt til du har fullført, uavhengig av alder.",
       "Mange skoler tilbyr faget 'E-sport' eller 'Gamedesign' som enten valgfag eller som del av medier og kommunikasjon.",
-      "Du kan ta 'morsmålseksamen' i over 40 ulike språk for å erstatte kravet om fremmedspråk (tysk, fransk eller spansk).",
-      "Du kan få slettet inntil 10 dager dokumentert fravær fra vitnemålet per år hvis det skyldes helse, politisk arbeid eller hjelpearbeid.",
+      "Du kan ta 'morsmålseksamen' i over 40 ulike språk for å erstatte kravet om fremmedspråk.",
+      "Du kan få slettet inntil 10 dager dokumentert fravær fra vitnemålet per år hvis det skyldes helse eller politisk arbeid.",
       "Du betaler en årlig egenandel for elev-PC som tilsvarer utstyrsstipendet, og etter tre år blir maskinen din eiendom.",
       "På utdanningsprogrammet 'Naturbruk' kan du ha jakt, fiske eller hundekjøring som en del av de praktiske fagene.",
       "Flest elever sliter faktisk med eksamen/tentamen. Kilde: experience.",
-      "Det finnes landsdekkende linjer for spesielle interesser, som for eksempel fjellklatring eller toppidrett i distriktene.",
+      "Det finnes landsdekkende linjer for spesielle interesser, som for eksempel fjellklatring eller toppidrett.",
       "Lærlinger tjener i snitt en full årslønn for en fagarbeider fordelt over de to årene de er i lære.",
       "Mange russebussgrupper begynner å planlegge og betale inn penger allerede i 1. klasse – to hele år før selve russetiden starter.",
       "En fullrig russebuss kan fort koste over én million kroner når man regner inn buss, innredning, lyd- og lysanlegg, graffiti, forsikring og sjåfør.",
       "Fra nyttår 2026 ble det forbudt å ha sidevendte seter i russebusser under kjøring – noen grupper hadde allerede brukt årevis på å bygge nettopp det.",
       "Forskning viser at mange elever bruker fraværsgrensen som et 'klippekort' – de sparer opp de tillatte 10 prosentene og tar dem ut som fridager i mai.",
-      "Etter at fraværsgrensen ble innført, begynte noen elever å møte opp på skolen selv om de var syke – fordi de ikke hadde råd til å miste fraværstimer.",
-      "Nesten halvparten av norske videregående elever får lavere karakter til skriftlig eksamen enn de har i standpunkt.",
+      "Etter at fraværsgrensen ble innført, begynte noen elever å møte opp på skolen selv om they var syke – fordi they ikke hadde råd til å miste fraværstimer.",
+      "Nesten halvparten av norske videregående elever får lavere karakter til skriftlig eksamen enn they har i standpunkt.",
       "Det er ingen øvre aldersgrense for å ta fagbrev som praksiskandidat – en 60-åring med lang nok arbeidserfaring kan møte til fagprøven uten én dag i videregående.",
       "Nesten tre av ti elever (28 %) fullfører ikke videregående på normert tid. På yrkesfag er utfordringen størst; her er det nesten fem av ti (47 %) som ikke fullfører innen normert tid (SSB, 2024).",
       "I 2023 fullførte 86,5 prosent av jentene videregående skole, mot 78,1 prosent av guttene.",
@@ -847,7 +683,7 @@
       "Hvis du stryker på eksamen (karakter 1), har du rett til å ta en ny eksamen gratis ved første mulige anledning.",
       "Elever med dokumenterte behov (som dysleksi) har rett til utvidet tid og bruk av hjelpemidler som Lingdys på eksamen.",
       "Skoleåret i videregående opplæring består av 190 dager.",
-      "På enkelte skoler i Trøndelag og Møre og Romsdal er 'pølse i brød' i kantina en så hellig tradisjon at det blir landesorg om de går tomme.",
+      "På enkelte skoler i Trøndelag og Møre og Romsdal er 'pølse i brød' i kantina en så hellig tradisjon at det blir landesorg om they går tomme.",
       "Mange elever tror (feilaktig) på den uoffisielle '15-minutters regelen': Hvis læreren er mer enn et kvarter forsinket, kan man dra hjem.",
       "På utdanningsprogrammet Naturbruk er det ofte traktorstørrelsen på parkeringsplassen som gir høyest status, ikke bilmerket.",
       "Lærerrommet på en gjennomsnittlig skole forbruker nok kaffe i løpet av et år til å fylle et lite svømmebasseng. source: trust me bro"
@@ -856,21 +692,11 @@
     function getTodaysFunFact() {
       const today = new Date();
       const startDate = new Date('2026-04-12');
-      
-      // Finn antall timer siden startdato
       const hoursDiff = Math.floor((today - startDate) / (1000 * 60 * 60));
-      
-      // Finn ut hvor mange 12-timers perioder som har gått
-      // Bruker Math.max(0, ...) for å unngå negative tall før startdato meow meow meow lalala
       const rotationIndex = Math.floor(Math.max(0, hoursDiff) / 12);
-      
-      // Bruk modulo for å loope gjennom listen
-      const factIndex = rotationIndex % funFacts.length;
-      
-      return funFacts[factIndex];
+      return funFacts[rotationIndex % funFacts.length];
     }
 
-    // Shuffle array (Fisher-Yates)
     function shuffleArray(array) {
       const arr = [...array];
       for (let i = arr.length - 1; i > 0; i--) {
@@ -880,289 +706,222 @@
       return arr;
     }
 
-    // Create a random selection of cards
     function generateGrid() {
       const grid = document.getElementById('bentoGrid');
-      
-      // Get random items from each category
       const shuffledGuides = shuffleArray(contentData.guides).slice(0, 8);
       const shuffledTools = shuffleArray(contentData.tools).slice(0, 2);
       const shuffledInteractives = shuffleArray(contentData.interactives).slice(0, 2);
 
-      // Combine all items
-      let items = [...shuffledGuides, ...shuffledTools, ...shuffledInteractives];
       let html = '';
 
-      // Add fun fact as featured item
+      // Fun fact featured
       html += `
         <div class="bento-card card-fun-fact grid-item-featured">
           <div>
-            <div class="fun-fact-label">💡 Fun Fact</div>
+            <div class="fun-fact-label"><i class="material-icons" style="font-size:16px;">lightbulb</i> Visste du at?</div>
             <div class="card-title">${getTodaysFunFact()}</div>
           </div>
         </div>
       `;
 
-      // Add opinions panel as featured item next to fun fact
+      // Opinions featured
       html += `
-        <a href="opinions.html" class="bento-card card-discord grid-item-featured" style="color:#fff; text-decoration: none;">
+        <a href="opinions.html" class="bento-card card-opinions grid-item-featured">
           <div>
-            <div class="fun-fact-label">Meninger</div>
-            <div id="opinionBoxContent" class="opinion-latest-quote" aria-live="polite">Laster…</div>
+            <div class="fun-fact-label"><i class="material-icons" style="font-size:16px;">forum</i> Meninger</div>
+            <div id="opinionBoxContent" class="card-title">Laster…</div>
           </div>
         </a>
       `;
 
-      // Add all content cards
-      items.forEach(item => {
+      // News container
+      html += `<div class="grid-item-news-featured" id="newsFeaturedContainer"></div>`;
+
+      // Guides
+      shuffledGuides.forEach(item => {
+        html += `<a href="${item.url}" class="bento-card card-guides"><div class="card-title">${item.title}</div><i class="material-icons guide-arrow">arrow_outward</i></a>`;
+      });
+
+      // Tools & Interactives
+      shuffledTools.concat(shuffledInteractives).forEach(item => {
         if (item.icon) {
-          // Tool card
-          html += `
-            <a href="${item.url}" class="bento-card card-tools">
-              <div class="card-title">${item.title}</div>
-              <div class="card-icon">
-                <span class="material-icons">${item.icon}</span>
-              </div>
-            </a>
-          `;
+          html += `<a href="${item.url}" class="bento-card card-tools"><div class="card-title">${item.title}</div><div class="card-icon"><i class="material-icons">${item.icon}</i></div></a>`;
         } else if (item.label) {
-          // Interactive card
-          html += `
-            <a href="${item.url}" class="bento-card card-interactive">
-              <div class="card-title" style="font-family: 'Inter Tight', sans-serif; font-weight: 650; color: var(--card-pale);">${item.title}</div>
-              <div class="card-icon" style="width:25%; border-radius: 600px;">
-                <span class="card-title" style="font-size: 14px;">${item.label}</span>
-              </div>
-            </a>
-          `;
-        } else {
-          // Guide card
-          html += `
-            <a href="${item.url}" class="bento-card card-guides">
-              <div class="card-title">${item.title}</div>
-            </a>
-          `;
+          html += `<a href="${item.url}" class="bento-card card-interactive"><div class="card-title">${item.title}</div><div class="card-icon" style="width:auto; padding:0 12px; border-radius:20px;"><span style="font-size:14px; font-weight:700;">${item.label}</span></div></a>`;
         }
       });
 
-      // Add link to Updates page
-      html += `
-        <a href="updates.html" class="bento-card card-updates">
-          <div class="card-title" style="margin-bottom: 16px;">Oppdateringer</div>
-          <div class="card-updates-content">
-            <div style="color: var(--text-muted);">Se alle oppdateringer og nyheter →</div>
-          </div>
-        </a>
-      `;
+      // Updates
+      html += `<a href="updates.html" class="bento-card card-updates"><div class="card-title">Oppdateringer</div><div style="font-size:14px; color:var(--text-muted);">Se plattform-oppdateringer →</div></a>`;
 
       grid.innerHTML = html;
     }
 
-    // Generate grid on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      generateGrid();
-      loadLatestOpinionHome();
-      subscribeOpinionHome();
-      renderBookmarks();
+    // News logic
+    function formatNewsDate(dateString) {
+      const date = new Date(dateString);
+      return isNaN(date.getTime()) ? dateString : date.toLocaleDateString('no-NO', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
+
+    function getDominantColor(imgElement) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          canvas.width = img.width; canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+          const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+          let r = 0, g = 0, b = 0, count = 0;
+          for (let i = 0; i < data.length; i += 16) { 
+            const red = data[i], green = data[i+1], blue = data[i+2];
+            const max = Math.max(red, green, blue), min = Math.min(red, green, blue);
+            const saturation = max === 0 ? 0 : (max - min) / max;
+            if (saturation > 0.3 && max > 40 && max < 220) {
+              r += red; g += green; b += blue; count++;
+            }
+          }
+          if (count === 0) {
+            for (let i = 0; i < data.length; i += 16) { r += data[i]; g += data[i+1]; b += data[i+2]; count++; }
+          }
+          resolve({ r: Math.round(r/count), g: Math.round(g/count), b: Math.round(b/count) });
+        };
+        img.onerror = () => resolve({ r: 48, g: 62, b: 80 });
+        img.src = imgElement.src;
+      });
+    }
+
+    function getContrastColor(r, g, b) {
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      return luminance > 0.5 ? '#000000' : '#ffffff';
+    }
+
+    let featuredNewsItems = [];
+    let currentFeaturedIndex = 0;
+    function renderFeaturedNews(rawNews) {
+      const container = document.getElementById('newsFeaturedContainer');
+      if (!container) return;
+      const sorted = (Array.isArray(rawNews) ? rawNews : (rawNews.news || [])).sort((a, b) => new Date(b.date) - new Date(a.date));
+      if (!sorted.length) return;
+      featuredNewsItems = sorted.slice(0, 3);
+      const render = () => {
+        const item = featuredNewsItems[currentFeaturedIndex];
+        container.innerHTML = `
+          <a href="${item.link}" class="news-featured-card">
+            <div class="news-featured-left" id="featuredLeft">
+              <div>
+                <div class="news-featured-date" id="featuredDate">${escHtml(formatNewsDate(item.date))}</div>
+                <h3 class="news-featured-title" id="featuredTitle">${escHtml(item.name)}</h3>
+                <p class="news-featured-desc" id="featuredDesc">${escHtml(item.desc)}</p>
+              </div>
+              <div class="news-featured-link" id="featuredLink">Les saken <i class="material-icons" style="font-size:16px;">arrow_forward</i></div>
+            </div>
+            <div class="news-featured-right"><img src="${item.thumb}" class="news-featured-image" id="featuredImg"></div>
+          </a>
+        `;
+        const img = document.getElementById('featuredImg');
+        getDominantColor(img).then(color => {
+          const left = document.getElementById('featuredLeft');
+          const contrast = getContrastColor(color.r, color.g, color.b);
+          left.style.backgroundColor = `rgb(${color.r},${color.g},${color.b})`;
+          left.style.color = contrast;
+          document.getElementById('featuredTitle').style.color = contrast;
+          document.getElementById('featuredLink').style.color = contrast;
+          document.getElementById('featuredDate').style.color = contrast === '#000000' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.6)';
+          document.getElementById('featuredDesc').style.color = contrast === '#000000' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.85)';
+        });
+      };
+      render();
+      if (featuredNewsItems.length > 1) setInterval(() => { currentFeaturedIndex = (currentFeaturedIndex + 1) % featuredNewsItems.length; render(); }, 20000);
+    }
+
+    // Header & Dropdown
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navDropdown = document.getElementById('navDropdown');
+    burgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navDropdown.classList.toggle('active');
+    });
+    document.addEventListener('click', () => navDropdown.classList.remove('active'));
+
+    function handleResize() {
+      const isSmall = window.innerWidth < 650;
+      document.querySelector('.nav-news-mobile').style.display = isSmall ? 'flex' : 'none';
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // Search logic
+    let searchData = [], vocab = {}, idf = {}, vocabSize = 0;
+    fetch('search-data.json').then(r => r.json()).then(data => {
+      searchData = data.items || data;
+      vocabSize = data.vocab_size || 0;
+      idf = data.idf || {};
+      Object.keys(idf).forEach((t, i) => vocab[t] = i);
+    }).catch(e => console.error('Error loading search data:', e));
+
+    function tokenize(t) { return (t.toLowerCase().match(/\b[a-zæøå0-9]+\b/gi) || []).filter(s => s.length > 2); }
+    function cosineSimilarity(v1, v2) {
+      let dot = 0, m1 = 0, m2 = 0;
+      for (const i in v1) { m1 += v1[i]**2; if (i in v2) dot += v1[i]*v2[i]; }
+      for (const i in v2) m2 += v2[i]**2;
+      return (m1 && m2) ? dot / (Math.sqrt(m1) * Math.sqrt(m2)) : 0;
+    }
+    function createQueryVector(tokens) {
+      const v = {};
+      tokens.forEach(t => {
+        const idx = vocab[t];
+        if (idx !== undefined) v[idx] = (v[idx] || 0) + (idf[t] || 1.0) / tokens.length;
+      });
+      return v;
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      if (query.length < 2) { searchResults.style.display = 'none'; return; }
+      const tokens = tokenize(query), qVec = createQueryVector(tokens);
+      const scored = searchData.map(item => {
+        let s = 0;
+        if (item.title.toLowerCase() === query) s += 100;
+        else if (item.title.toLowerCase().includes(query)) s += 50;
+        else if (item.keywords && item.keywords.some(k => k.includes(query))) s += 30;
+        if (item.vector && vocabSize > 0) s += cosineSimilarity(qVec, item.vector) * 40;
+        return { item, s };
+      }).filter(x => x.s > 0).sort((a,b) => b.s - a.s).slice(0, 8);
+
+      if (scored.length) {
+        searchResults.style.display = 'block';
+        searchResults.innerHTML = scored.map(x => `<a href="${x.item.url}" class="search-result-item"><span class="search-result-title">${x.item.title}</span><span class="search-result-meta">${x.item.keywords?.slice(0,3).join(', ') || ''}</span></a>`).join('');
+      } else {
+        searchResults.style.display = 'block';
+        searchResults.innerHTML = `<div class="search-no-results"><span class="search-no-results-label">Ingen resultater. Søk eksternt?</span><div class="search-external-links">
+          <a href="https://www.ung.no/sok?query=${encodeURIComponent(query)}" target="_blank" class="search-external-btn search-external-ung">ung.no</a>
+          <a href="https://utdanning.no/sok/#query_value=${encodeURIComponent(query)}" target="_blank" class="search-external-btn search-external-utd">utdanning.no</a>
+          <a href="https://www.vilbli.no/nb/no/sok?elastic=search&q=${encodeURIComponent(query)}" target="_blank" class="search-external-btn search-external-vilbli">vilbli.no</a>
+        </div></div>`;
+      }
     });
 
-    // Bookmarks on home page
     function renderBookmarks() {
-      const section = document.getElementById('bookmarksSection');
-      const list = document.getElementById('bookmarksList');
-      let bm;
-      try { bm = JSON.parse(localStorage.getItem('bookmarks') || '[]'); } catch { bm = []; }
+      const section = document.getElementById('bookmarksSection'), list = document.getElementById('bookmarksList');
+      let bm = JSON.parse(localStorage.getItem('bookmarks') || '[]');
       if (!bm.length) { section.style.display = 'none'; return; }
       section.style.display = 'block';
-      // Map URLs to titles from contentData
-      const allItems = [...contentData.guides, ...contentData.tools, ...contentData.interactives, ...contentData.resources];
+      const all = [...contentData.guides, ...contentData.tools, ...contentData.interactives, ...contentData.resources];
       list.innerHTML = bm.map(url => {
-        const item = allItems.find(i => i.url === url);
-        const title = item ? item.title : url.split('/').pop().replace('.html', '');
-        return `<a href="${url}" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;text-decoration:none;font-size:13px;font-weight:700;font-family:var(--font-display);transition:all 0.2s;"><span class="material-icons" style="font-size:16px;color:var(--card-blue);">bookmark</span>${title}</a>`;
+        const item = all.find(i => i.url === url);
+        return `<a href="${url}" class="bookmark-item"><i class="material-icons" style="font-size:16px;color:var(--card-blue);">bookmark</i>${item ? item.title : url}</a>`;
       }).join('');
     }
 
-    // Search Functionality with Semantic Matching
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    let searchData = [];
-    let vocabSize = 0;
-    let vocab = {};  // token -> index mapping
-    let idf = {};    // token -> idf weight
-
-    // Fetch search data
-    fetch('search-data.json')
-      .then(response => response.json())
-      .then(data => {
-        searchData = data.items || data;
-        vocabSize = data.vocab_size || 0;
-        idf = data.idf || {};
-        // Build reverse vocab from IDF keys
-        Object.keys(idf).forEach((token, idx) => {
-          vocab[token] = idx;
-        });
-      })
-      .catch(error => console.error('Error loading search data:', error));
-
-    // Simple tokenizer matching the Python one
-    function tokenize(text) {
-      const tokens = text.toLowerCase().match(/\b[a-zæøå0-9]+\b/gi) || [];
-      return tokens.filter(t => t.length > 2);
-    }
-
-    // Calculate cosine similarity between two vectors (sparse format)
-    function cosineSimilarity(sparseVec1, sparseVec2) {
-      let dotProduct = 0;
-      let mag1 = 0;
-      let mag2 = 0;
-
-      // Compute dot product and magnitude for vec1
-      for (const idx in sparseVec1) {
-        const val = sparseVec1[idx];
-        mag1 += val * val;
-        if (idx in sparseVec2) {
-          dotProduct += val * sparseVec2[idx];
-        }
-      }
-
-      // Compute magnitude for vec2
-      for (const idx in sparseVec2) {
-        const val = sparseVec2[idx];
-        mag2 += val * val;
-      }
-
-      mag1 = Math.sqrt(mag1);
-      mag2 = Math.sqrt(mag2);
-
-      if (mag1 === 0 || mag2 === 0) return 0;
-      return dotProduct / (mag1 * mag2);
-    }
-
-    // Create TF-IDF weighted vector for query tokens
-    function createQueryVector(tokens) {
-      const vector = {};
-      const tokenCount = {};
-      tokens.forEach(token => {
-        tokenCount[token] = (tokenCount[token] || 0) + 1;
-      });
-      const total = tokens.length;
-      for (const token in tokenCount) {
-        // Use proper vocabulary index if available
-        const idx = vocab[token];
-        if (idx !== undefined) {
-          const tf = tokenCount[token] / total;
-          const idfWeight = idf[token] || 1.0;
-          vector[idx] = tf * idfWeight;
-        }
-      }
-      return vector;
-    }
-
-    // Search with semantic matching
-    function performSearch(query) {
-      const queryTokens = tokenize(query);
-      const queryVector = createQueryVector(queryTokens);
-      const queryLower = query.toLowerCase();
-
-      // Score each item
-      const scored = searchData.map(item => {
-        let score = 0;
-
-        // Keyword match: exact title match (highest)
-        if (item.title.toLowerCase() === queryLower) score += 100;
-        // Keyword match: title contains query
-        else if (item.title.toLowerCase().includes(queryLower)) score += 50;
-        // Keyword match: query word in keywords
-        else if (item.keywords && item.keywords.some(k => k.includes(queryLower))) score += 30;
-
-        // Semantic match: cosine similarity on vectors
-        if (item.vector && vocabSize > 0) {
-          const similarity = cosineSimilarity(queryVector, item.vector);
-          score += similarity * 40; // Scale semantic score
-        }
-
-        return { item, score };
-      });
-
-      // Sort by score and filter out zero-score items
-      return scored
-        .filter(s => s.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 8)
-        .map(s => s.item);
-    }
-
-    searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      searchResults.innerHTML = '';
-
-      if (query.length < 2) {
-        searchResults.style.display = 'none';
-        return;
-      }
-
-      const filtered = performSearch(query);
-
-      if (filtered.length > 0) {
-        searchResults.style.display = 'block';
-        filtered.forEach(item => {
-          const div = document.createElement('a');
-          div.href = item.url;
-          div.className = 'search-result-item';
-          div.innerHTML = `
-            <span class="search-result-title">${item.title}</span>
-            <span class="search-result-meta">${item.keywords?.slice(0, 3).join(', ') || ''}</span>
-          `;
-          searchResults.appendChild(div);
-        });
-      } else {
-        searchResults.style.display = 'block';
-        searchResults.innerHTML = `
-          <div class="search-no-results">
-            <span class="search-no-results-label">Ingen resultater. Søk fra en annen kilde?</span>
-            <div class="search-external-links">
-              <a href="https://www.ung.no/sok?query=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-ung">
-                <span class="material-icons" style="font-size:15px">open_in_new</span>
-                Søk på ung.no
-              </a>
-              <a href="https://utdanning.no/sok/#query_value=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-utd">
-                <span class="material-icons" style="font-size:15px">open_in_new</span>
-                Søk på utdanning.no
-              </a>
-              <a href="https://www.vilbli.no/nb/no/sok?elastic=search&q=${encodeURIComponent(e.target.value)}" target="_blank" class="search-external-btn search-external-vilbli">
-                <span class="material-icons" style="font-size:15px">open_in_new</span>
-                Søk på vilbli.no
-              </a>
-            </div>
-          </div>
-        `;
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      generateGrid(); loadLatestOpinionHome(); subscribeOpinionHome(); renderBookmarks();
+      fetch('News/news-data.json').then(r => r.json()).then(d => renderFeaturedNews(d)).catch(e => console.error(e));
     });
-
-    // Close search when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-        searchResults.style.display = 'none';
-      }
-    });
-
-    // Handle Enter key to go to first result
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const firstResult = searchResults.querySelector('a');
-        if (firstResult) {
-          window.location.href = firstResult.href;
-        }
-      }
-    });
-
-    // Simple theme init (defaults to dark for the 'bold' look)
-    // The previous theme logic is preserved but simplified
-    if (!localStorage.getItem('theme')) {
-        localStorage.setItem('theme', 'dark');
-    }
-    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
   </script>
 </body>
 </html>

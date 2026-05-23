@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyse: Stoppride.no — Videregående Hjelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --text-muted: #888;
+      --surface: #1c1c1e;
+      --border: #2c2c2e;
+      --card-red: #D40B00;
+      --card-green: #30D158;
+      --font-display: 'Inter Tight', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-muted: #555;
+      --surface: #f2f2f7;
+      --border: #e5e5ea;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: var(--text); }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px 80px 20px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .article-date {
+      color: var(--card-red);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .article-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    @media (min-width: 768px) {
+      .article-title { font-size: 56px; }
+    }
+
+    .article-intro {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .article-hero {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      background: var(--surface);
+    }
+
+    .summary-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .summary-box-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--card-red);
+      margin-bottom: 20px;
+    }
+
+    .summary-box strong {
+      font-size: 15px;
+      color: var(--text);
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .summary-box strong:first-of-type {
+      margin-top: 0;
+    }
+
+    .summary-box p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .update-log {
+      border-left: 3px solid var(--border);
+      padding-left: 20px;
+      margin-bottom: 48px;
+    }
+
+    .update-log-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .update-entry {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+
+    .update-entry-date {
+      color: var(--card-red);
+      font-weight: 700;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .update-entry-text {
+      color: var(--text-muted);
+    }
+
+    .article-content {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    [data-theme="light"] .article-content {
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    .article-content p { margin-bottom: 24px; }
+
+    .article-content h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      margin: 48px 0 16px 0;
+      color: var(--text);
+    }
+
+    .article-content ul {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+
+    .article-content li { margin-bottom: 8px; }
+
+    .callout {
+      border-left: 3px solid var(--card-red);
+      background: rgba(212, 11, 0, 0.08);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 16px;
+    }
+
+    .callout.green {
+      border-color: var(--card-green);
+      background: rgba(48, 209, 88, 0.08);
+    }
+
+    .callout.neutral {
+      border-color: var(--text-muted);
+      background: rgba(136, 136, 136, 0.08);
+    }
+
+    .callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--card-red);
+      margin-bottom: 8px;
+    }
+
+    .callout.green .callout-label { color: var(--card-green); }
+    .callout.neutral .callout-label { color: var(--text-muted); }
+
+    .callout p { margin-bottom: 0; font-size: 16px; }
+
+    .stat-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .stat-block { grid-template-columns: 1fr; }
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--card-red);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .source {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: -16px;
+      margin-bottom: 24px;
+    }
+
+    .source a {
+      color: var(--text-muted);
+      text-decoration: underline;
+    }
+
+    .sources-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 40px 0;
+    }
+
+    .sources-list-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .sources-list ul {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sources-list li {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .sources-list a {
+      color: var(--card-red);
+      text-decoration: none;
+    }
+
+    .sources-list a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .neutral-notice {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .neutral-notice .material-icons {
+      font-size: 18px;
+      margin-top: 1px;
+      flex-shrink: 0;
+      color: var(--card-red);
+    }
+
+    .email-thread {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .email-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .email-card-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .email-card-from {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .email-card-from span {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .email-card-date {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .email-card-subject {
+      padding: 10px 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    .email-card-body {
+      padding: 20px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      white-space: pre-wrap;
+    }
+
+    [data-theme="light"] .email-card-body {
+      color: rgba(0,0,0,0.75);
+    }
+
+    .email-pending {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .email-pending .material-icons {
+      font-size: 18px;
+    }
+
+    .email-sender-vgh {
+      border-color: rgba(212, 11, 0, 0.3);
+    }
+
+    .email-sender-vgh .email-card-from {
+      color: var(--card-red);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../news.html" class="back-btn">
+        <span class="material-icons" style="font-size: 18px;" aria-hidden="true">arrow_back</span>
+        Tilbake til nyheter
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="article-meta">
+        <span class="article-date">24. Mai 2026</span>
+        <span class="article-tag">Analyse</span>
+      </div>
+
+      <h1 class="article-title">Analyse: Stoppride.no</h1>
+
+      <p class="article-intro">Videregående Hjelp har gjennomgått innholdet på stoppride.no og kressurs.no. Vi har funnet flere tilfeller av misvisende kildebruk, selektiv informasjon om Stortingets praksis og narrativer som utfordrer nasjonale lover og faglige råd.</p>
+
+      <img
+        src="https://images.unsplash.com/photo-1637631531662-cea0fb4b1d97?q=80&w=1470&auto=format&fit=crop"
+        alt="Pride-flagg"
+        class="article-hero"
+      >
+
+      <div class="summary-box">
+        <div class="summary-box-label">Oppsummering av funn</div>
+        <strong>Misvisende kildebruk</strong>
+        <p>FRIs politiske plattform gjengis uten nødvendig kontekst. Juridisk vern for voksne (BDSM/polyamori) fremstilles feilaktig som statlig promotering.</p>
+        <strong>Selektiv flagg-argumentasjon</strong>
+        <p>Nettsiden utelater at Stortinget faktisk har heist Pride-flagget flere ganger (2021, 2022) etter endringen i flaggloven.</p>
+        <strong>Utfordring av lovverk</strong>
+        <p>Innhold på kressurs.no promoterer narrativer om identitetsendring, noe som står i kontrast til forbudet mot konverteringsterapi vedtatt i 2023.</p>
+        <strong>Bekymringsfull retorikk</strong>
+        <p>Ved å ramme inn Pride som en trussel, risikerer man å øke stigmaet for LHBT+-ungdom, en gruppe med dokumentert høy sårbarhet.</p>
+      </div>
+
+      <div class="update-log">
+        <div class="update-log-label">Oppdateringslogg</div>
+        <div class="update-entry">
+          <span class="update-entry-date">24. mai 2026</span>
+          <span class="update-entry-text">Artikkel publisert. Email sendt til Kristent Ressurssenter (post@kressurs.no) med forespørsel om tilsvar.</span>
+        </div>
+      </div>
+
+      <div class="neutral-notice">
+        <span class="material-icons" aria-hidden="true">info</span>
+        <span>Videregående Hjelp er en uavhengig ressurs. Vi tar ikke stilling til Pride som politisk sak, men ettergår påstander for å sikre at elever har tilgang til korrekt og faktabasert informasjon.</span>
+      </div>
+
+      <div class="article-content">
+
+        <h2>Hva er stoppride.no og kressurs.no?</h2>
+        <p>Stoppride.no er en kampanjeside driftet av Kristent Ressurssenter. Organisasjonen arbeider for tradisjonelle kristne verdier knyttet til samliv og kjønn. Gjennom nettsiden tilbyr de veiledning til foreldre som ønsker å reservere barna sine mot Pride-markeringer i utdanningsinstitusjoner.</p>
+        
+        <p>Mens støttespillere ser på siden som et viktig verktøy for samvittighetsfrihet, peker vår analyse på at innholdet ofte baserer seg på selektiv kildebruk og utdatert informasjon.</p>
+
+        <h2>Sårbarhet og statistikk</h2>
+        <p>Debatten om Pride og LHBT+-rettigheter påvirker livene til mange elever hver dag. Data fra nasjonale undersøkelser viser tydelig at skeive unge møter betydelige utfordringer knyttet til psykisk helse.</p>
+
+        <div class="stat-block">
+          <div class="stat-item">
+            <div class="stat-number">63 %</div>
+            <div class="stat-desc">av binære transpersoner rapporterer om symptomer på depresjon og angst (siste 14 dager), mot 45 % i befolkningen ellers.</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1 av 3</div>
+            <div class="stat-desc">transpersoner oppgir å ha forsøkt å ta sitt eget liv i løpet av livet.</div>
+          </div>
+        </div>
+        <p class="source">Kilde: <a href="https://www.bufdir.no/statistikk-og-analyse/LHBT/helse-livskvalitet/" target="_blank">Bufdir: Seksuell orientering, kjønnsmangfold og levekår (2020)</a></p>
+
+        <h2>Analyse av påstander</h2>
+
+        <p><strong>Hva stoppride.no har rett i</strong></p>
+        <p>Det er korrekt at Pride inneholder politiske elementer. Dette er ikke en hemmelighet; Foreningen FRI er selv tydelige på at regnbueflagget er et politisk symbol for kampen for likeverd og rettigheter.</p>
+
+        <div class="callout green">
+          <div class="callout-label">FRI, foreningenfri.no</div>
+          <p>"Selvsagt er regnbueflagget politisk. Pride har alltid vært en feiring av kampene som er vunnet, og er en anledning til å sette fokus på det vi fortsatt kjemper for."</p>
+        </div>
+
+        <p><strong>Hvor fremstillingen svikter</strong></p>
+
+        <p><strong>1. Sammenblanding av rettsvern og promotering:</strong> Stoppride.no hevder at FRI vil at "BDSM og fetisj skal normaliseres og beskyttes av staten". Dette er en misvisende tolkning av FRIs faktiske plattform, som argumenterer for at voksne menneskers frivillige seksuelle praksis skal inkluderes i <em>diskrimineringsvernet</em>. Det handler om juridisk beskyttelse mot forskjellsbehandling, ikke et krav om statlig promotering.</p>
+
+        <p><strong>2. Selektiv informasjon om Stortinget:</strong> Nettsiden spør retorisk hvorfor Stortinget ikke heiser Pride-flagget. Dette utelater viktige fakta: Stortinget har tidligere markert Pride ved å heise flagget på Løvebakken (blant annet under den offisielle markeringen i 2022). Å fremstille det som om Stortinget konsekvent avstår fra å flagge er derfor ikke i tråd med faktiske hendelser.</p>
+
+        <p><strong>3. Narrativer om identitetsendring:</strong> På kressurs.no publiseres historier som promoterer endring av seksuell orientering gjennom tro. Selv om det presiseres at det ikke ble brukt «terapi», er selve budskapet om at identitet bør endres i direkte strid med råd fra Verdens helseorganisasjon (WHO). Vi minner også om at Stortinget i 2023 vedtok et forbud mot konverteringsterapi på grunn av dokumentert risiko for alvorlig psykisk skade.</p>
+
+        <div class="callout">
+          <div class="callout-label">Vår vurdering</div>
+          <p>Når informasjon presenteres selektivt eller uten nødvendig kontekst, svekkes grunnlaget for en saklig debatt. Vi oppfordrer Kristent Ressurssenter til å sørge for at deres ressurser er i tråd med gjeldende lover og oppdatert faktakunnskap.</p>
+        </div>
+
+        <hr class="divider">
+
+        <h2>Dialog med Kristent Ressurssenter</h2>
+        <p>Vi praktiserer full åpenhet. Under finner du e-posten vi har sendt til organisasjonen. Vi vil publisere deres svar her så snart det foreligger.</p>
+
+        <div class="email-thread">
+          <div class="email-card email-sender-vgh">
+            <div class="email-card-header">
+              <span class="email-card-from">Videregående Hjelp <span>til post@kressurs.no</span></span>
+              <span class="email-card-date">24. mai 2026</span>
+            </div>
+            <h3 class="email-card-subject">Vedrørende analyse av stoppride.no og forespørsel om tilsvar</h3>
+            <div class="email-card-body">Hei,
+
+Vi kontakter dere fra Videregående Hjelp, en ressurs for elever i videregående skole. Vi har nylig publisert en grundig analyse av nettsiden stoppride.no på våre plattformer. Formålet med denne e-posten er å gjøre dere oppmerksomme på saken, samt invitere dere til å gi et direkte tilsvar som vil bli publisert i sin helhet i tilknytning til artikkelen.
+
+Vi har forståelse for at deres arbeid er forankret i kristne verdier og et tradisjonelt verdisyn. Samtidig er vårt oppdrag å sikre at elever har tilgang til informasjon som er faktuelt korrekt og etterrettelig. Gjennom vår analyse har vi identifisert flere punkter som vi mener er misvisende eller presentert uten nødvendig kontekst:
+
+- Misvisende gjengivelse av kilder: FRIs politiske program omtales på en måte som gir et vesentlig annet inntrykk enn det kildematerialet faktisk støtter. For eksempel fremstilles FRIs ønske om diskrimineringsvern for BDSM-utøvere som et krav om at staten skal «normalisere og beskytte» spesifikke seksuelle praksiser. Dette er en sammenblanding av juridisk rettsvern for voksne og statlig promotering.
+- Utdatert og selektiv informasjon om flagging: Nettsiden deres spør retorisk hvorfor Stortinget ikke heiser regnbueflagget, uten å nevne at Stortinget faktisk har heist flagget ved flere anledninger (blant annet ved den offisielle markeringen i 2022). Å bruke Stortinget som argument for at skoler bør avstå fra å flagge, fremstår derfor som misvisende i lys av faktisk praksis og endringen i flaggloven fra 2021.
+- Problematiske narrativer om identitetsendring: Artikkelen «Født sånn eller blitt sånn?» på kressurs.no promoterer en forståelse av at seksuell orientering kan endres gjennom tro. Dette er i strid med internasjonale faglige råd fra WHO. Vi minner om at Stortinget i 2023 vedtok et forbud mot konverteringsterapi nettopp fordi slike narrativer er dokumentert skadelige, særlig for unge i en sårbar utviklingsfase.
+
+Vi er bekymret for at en fremstilling der Pride tegnes som noe barn og foreldre må «beskytte seg mot», bidrar til å utrygghøre LHBT+-ungdom. Nasjonale levekårsdata fra Bufdir (2020) viser at 63 % av binære transpersoner har rapportert om symptomer på depresjon og angst, og at 1 av 3 transpersoner har forsøkt å ta sitt eget liv.
+
+Vårt mål med denne saken er å sikre at informasjonen som når ut til elever og foreldre er korrekt. Vi oppfordrer dere derfor til å foreta en av følgende endringer på stoppride.no:
+1. Legge inn en tydelig advarsel om at informasjonen på siden er omskrevet, tolket eller vinklet ut fra et spesifikt verdisyn, og ikke nødvendigvis representerer en nøytral gjengivelse av kildene.
+2. Oppdatere innholdet på nettsiden direkte slik at det reflekterer nøytral og faktuelt korrekt informasjon i tråd med dagens lovverk og faktiske forhold.
+
+Analysen vår er tilgjengelig på vår nettside. Dersom dere ønsker å korrigere opplysninger eller gi et tilsvar, vil deres tekst bli publisert i sin helhet i e-post-tråden nederst i artikkelen.
+
+Vi ser frem til deres tilbakemelding.
+
+Med vennlig hilsen,
+Videregående Hjelp</div>
+          </div>
+
+          <div class="email-pending">
+            <span class="material-icons" aria-hidden="true">schedule</span>
+            Venter på svar fra Kristent Ressurssenter
+          </div>
+        </div>
+
+        <div class="sources-list">
+          <div class="sources-list-label">Kilder og videre lesning</div>
+          <ul>
+            <li><a href="https://foreningenfri.no/om-oss/fri-mener/politisk-plattform-2024-2026" target="_blank">FRIs politiske plattform 2024–2026</a></li>
+            <li><a href="https://www.bufdir.no/statistikk-og-analyse/LHBT/helse-livskvalitet/" target="_blank">Bufdir: Levekår for LHBT+-personer (2020)</a></li>
+            <li><a href="https://lovdata.no/dokument/NL/lov/1933-06-29-2" target="_blank">Lov om flagging på kommunenes offentlige bygninger (Lovdata)</a></li>
+            <li><a href="https://www.stortinget.no/no/Saker-og-publikasjoner/Saker/Sak/?p=94762" target="_blank">Stortingets vedtak om forbud mot konverteringsterapi (2023)</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <script>
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'dark');
+    }
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
+  </script>
+</body>
+</html>
