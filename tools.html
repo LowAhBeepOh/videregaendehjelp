@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Verktøy for videregående elever, som inntakskalukulator, poenggrenser, program-finder og mer.">
-  <meta name="keywords" content="verktøy, karakterer, inntakskalkulator, poenggrenser, eksamen, videregående">
+  <meta name="description" content="Verktøy og interaktive ressurser for videregående elever, som inntakskalkulator, poenggrenser, kalender og mer.">
+  <meta name="keywords" content="verktøy, interaktivt, karakterer, inntakskalkulator, poenggrenser, eksamen, videregående">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Videregående Hjelp">
   <meta name="language" content="Norwegian">
   <meta property="og:title" content="Verktøy - Videregående Hjelp">
-  <meta property="og:description" content="Bruk verktøy for å spore karakterer, beregne inntak, finne program, og mer.">
+  <meta property="og:description" content="Bruk verktøy og interaktive ressurser for å spore karakterer, beregne inntak, øve til eksamen og mer.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://lowahbeepoh.github.io/videregaaendehjelp/tools.html">
   <meta property="og:image" content="https://lowahbeepoh.github.io/videregaaendehjelp/vgshjelp-logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Verktøy - Videregående Hjelp">
-  <meta name="twitter:description" content="Verktøy for videregående elever.">
+  <meta name="twitter:description" content="Verktøy og interaktive ressurser for videregående elever.">
   <link rel="canonical" href="https://lowahbeepoh.github.io/videregaaendehjelp/tools.html">
   <title>Verktøy - Videregående Hjelp</title>
   <link rel="shortcut icon" href="vgshjelp-logo.png" type="image/x-icon">
@@ -165,7 +165,15 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-bottom: 80px;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      margin: 56px 0 20px;
+      letter-spacing: -0.02em;
     }
 
     .tool-card {
@@ -185,6 +193,18 @@
     .tool-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .tool-card.disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+    .tool-card.disabled:hover {
+      transform: none;
+      box-shadow: none;
     }
 
     .tool-icon {
@@ -362,7 +382,6 @@
           <ul class="nav-links">
             <li><a href="guides.html">Guider</a></li>
             <li><a href="tools.html" class="active">Verktøy</a></li>
-            <li><a href="interactives.html">Interaktivt</a></li>
           </ul>
         </nav>
         <button class="settings-btn" id="settingsBtn" aria-label="Settings">
@@ -373,7 +392,7 @@
 
     <section class="page-header">
       <h1>Verktøy</h1>
-      <p>Praktiske kalkulatorer og verktøy som gjør livet ditt enklere. Planlegg, beregn, og ta bedre beslutninger.</p>
+      <p>Praktiske kalkulatorer, planleggere og interaktive øvinger som gjør skolehverdagen enklere.</p>
     </section>
 
     <section class="tools-grid">
@@ -418,6 +437,19 @@
           <span>Nytt verktøy</span>
         </div>
       </a>
+    </section>
+
+    <h2 class="section-title">Interaktive verktøy</h2>
+    <section class="tools-grid">
+      <div class="tool-card disabled" aria-disabled="true">
+        <span class="material-icons tool-icon">assignment_turned_in</span>
+        <h2>Eksamen Simulator</h2>
+        <p>Øv deg på en realistisk eksamen med autentiske spørsmål og tidspress.</p>
+        <div class="tool-meta">
+          <span class="material-icons" style="font-size: 16px;">construction</span>
+          <span>Ikke ferdig</span>
+        </div>
+      </div>
     </section>
   </main>
 

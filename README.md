@@ -5,13 +5,11 @@ Dette prosjektet er en nettside med informasjon, guider og interaktive verktøy 
 ## 🌐 Nettsted
 - `index.html`: Forsiden med hovedtemaer
 - `guides.html`: Samling guider og råd
-- `interactives.html`: Spill, tester og læringsverktøy
-- `tools.html`: Kalkulatorer og hjelpemidler
-- `updates.html`: Oppdateringer og nyheter
+- `tools.html`: Kalkulatorer, hjelpemidler, spill, tester og læringsverktøy
 
 ## 📂 Innhold
 - `Guides/`: Navigasjon og detaljer om skole, vurdering, eksamen, økonomi og rettigheter
-- `Interactives/`: Tester og simuleringsverktøy (eksamen, ordkort, quiz)
+- `Interactives/`: Interaktive sider som ikke er klare for publisering ennå
 - `Tools/`: Verktøy for poengkalkulator, inntak og karakteroversikt
 
 ## 🚀 Kom i gang

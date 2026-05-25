@@ -98,6 +98,15 @@ def extract_text_from_html(filepath):
         print(f"Error reading {filepath}: {e}")
         return "", ""
 
+def should_index_html(filepath):
+    """Return False for pages explicitly marked noindex."""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            html_content = f.read().lower()
+        return not re.search(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\'][^"\']*noindex', html_content)
+    except Exception:
+        return True
+
 def extract_resources_from_html(filepath):
     """Extract resource entries from resources.html's JavaScript data array."""
     try:
@@ -242,6 +251,9 @@ def main():
     print("🎮 Indexing interactives...")
     if interactives_dir.exists():
         for html_file in sorted(interactives_dir.glob('*.html')):
+            if not should_index_html(html_file):
+                print(f"  - Skipping noindex page: {html_file.name}")
+                continue
             text, title = extract_text_from_html(html_file)
             tokens = tokenize(text)
             all_tokens.extend(tokens)

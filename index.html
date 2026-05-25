@@ -453,9 +453,6 @@
     .card-opinions { background: var(--card-blue); color: #fff; }
     .card-opinions .card-title { font-family: var(--font-serif); font-style: italic; font-size: 24px; color: #fff; line-height: 1.25; }
 
-    .card-updates { background: var(--card-pale); border: 1px solid var(--border); }
-    .card-updates .card-title { font-family: var(--font-body); font-weight: 700; font-style: normal; font-size: 22px; }
-
     .card-icon {
       background: rgba(0,0,0,0.1);
       color: #000;
@@ -528,14 +525,6 @@
             <i class="material-icons">menu</i>
           </button>
           <div class="nav-dropdown" id="navDropdown">
-            <a href="interactives.html" class="dropdown-item">
-              <i class="material-icons">extension</i>
-              Interaktivt
-            </a>
-            <a href="calendar.html" class="dropdown-item">
-              <i class="material-icons">calendar_today</i>
-              Kalender
-            </a>
             <a href="resources.html" class="dropdown-item">
               <i class="material-icons">folder</i>
               Ressurser
@@ -607,11 +596,6 @@
         { title: "Usikkert på hva å velge?", url: "Tools/program-finder.html", icon: "arrow_forward" },
         { title: "Karaktertracker", url: "Tools/grade-tracker.html", icon: "arrow_forward" },
         { title: "Poenggrense", url: "Tools/point-limit.html", icon: "arrow_forward" }
-      ],
-      interactives: [
-        { title: "Eksamen Simulator 2026", url: "Interactives/exam-simulator.html", label: "Prøv" },
-        { title: "Fagordbok Flashcards", url: "Interactives/fagordbok-flashcards.html", label: "Quiz" },
-        { title: "VGS Grunnleggende Quiz", url: "Interactives/vgs-basics-quiz.html", label: "Test" }
       ],
       resources: [
         { title: "Mattesett", url: "https://docs.google.com/spreadsheets/d/1mbJ_Bu6cKbzZH_C79JtD9lM2PLXPUrJaCA78bCRMc-0/edit?usp=sharing", resourceType: "Regneark", icon: "table_chart" },
@@ -709,8 +693,7 @@
     function generateGrid() {
       const grid = document.getElementById('bentoGrid');
       const shuffledGuides = shuffleArray(contentData.guides).slice(0, 8);
-      const shuffledTools = shuffleArray(contentData.tools).slice(0, 2);
-      const shuffledInteractives = shuffleArray(contentData.interactives).slice(0, 2);
+      const shuffledTools = shuffleArray(contentData.tools).slice(0, 4);
 
       let html = '';
 
@@ -742,17 +725,10 @@
         html += `<a href="${item.url}" class="bento-card card-guides"><div class="card-title">${item.title}</div><i class="material-icons guide-arrow">arrow_outward</i></a>`;
       });
 
-      // Tools & Interactives
-      shuffledTools.concat(shuffledInteractives).forEach(item => {
-        if (item.icon) {
-          html += `<a href="${item.url}" class="bento-card card-tools"><div class="card-title">${item.title}</div><div class="card-icon"><i class="material-icons">${item.icon}</i></div></a>`;
-        } else if (item.label) {
-          html += `<a href="${item.url}" class="bento-card card-interactive"><div class="card-title">${item.title}</div><div class="card-icon" style="width:auto; padding:0 12px; border-radius:20px;"><span style="font-size:14px; font-weight:700;">${item.label}</span></div></a>`;
-        }
+      // Tools
+      shuffledTools.forEach(item => {
+        html += `<a href="${item.url}" class="bento-card card-tools"><div class="card-title">${item.title}</div><div class="card-icon"><i class="material-icons">${item.icon}</i></div></a>`;
       });
-
-      // Updates
-      html += `<a href="updates.html" class="bento-card card-updates"><div class="card-title">Oppdateringer</div><div style="font-size:14px; color:var(--text-muted);">Se plattform-oppdateringer →</div></a>`;
 
       grid.innerHTML = html;
     }
@@ -910,7 +886,7 @@
       let bm = JSON.parse(localStorage.getItem('bookmarks') || '[]');
       if (!bm.length) { section.style.display = 'none'; return; }
       section.style.display = 'block';
-      const all = [...contentData.guides, ...contentData.tools, ...contentData.interactives, ...contentData.resources];
+      const all = [...contentData.guides, ...contentData.tools, ...contentData.resources];
       list.innerHTML = bm.map(url => {
         const item = all.find(i => i.url === url);
         return `<a href="${url}" class="bookmark-item"><i class="material-icons" style="font-size:16px;color:var(--card-blue);">bookmark</i>${item ? item.title : url}</a>`;
