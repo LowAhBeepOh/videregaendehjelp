@@ -11,6 +11,7 @@
   :root {
     --primary: #d40b00;
     --primary-light: #FFEBEE;
+    --primary-dark: #b71c1c;
     --bg: #FFFFFF;
     --surface: #FAFAFA;
     --surface2: #F5F5F5;
@@ -19,6 +20,10 @@
     --text: #050505;
     --text-secondary: #555;
     --text-muted: #888;
+    --card-bg: #ffffff;
+    --modal-bg: #ffffff;
+    --input-bg: #ffffff;
+    --topbar-bg: #ffffff;
     --sidebar-w: 240px;
     --topbar-h: 64px;
     
@@ -31,6 +36,28 @@
     --font-display: 'Inter Tight', sans-serif;
     --font-body: 'Manrope', sans-serif;
   }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0f;
+    --surface: #161618;
+    --surface2: #1e1e22;
+    --border: #2a2a2e;
+    --border-strong: #38383d;
+    --text: #f5f5f7;
+    --text-secondary: #98989d;
+    --text-muted: #6b6b72;
+    --card-bg: #1c1c1f;
+    --modal-bg: #1c1c1f;
+    --input-bg: #222226;
+    --topbar-bg: #0e0e12;
+    --primary-light: #2a0a08;
+  }
+
+  body { transition: background-color 0.3s, color 0.3s; }
+  #topbar { transition: background-color 0.3s, border-color 0.3s; }
+  #sidebar { transition: background-color 0.3s, border-color 0.3s; }
+  .modal, .modal-overlay .modal { transition: background-color 0.3s, border-color 0.3s; }
+  .field-input { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: var(--font-body);
@@ -43,7 +70,7 @@
   #topbar {
     height: var(--topbar-h); border-bottom: 1px solid var(--border);
     display: flex; align-items: center; padding: 0 24px; gap: 12px;
-    flex-shrink: 0; background: #fff; z-index: 100;
+    flex-shrink: 0; background: var(--topbar-bg); z-index: 100;
   }
   .site-logo {
     font-family: var(--font-display);
@@ -86,7 +113,7 @@
     font-family: var(--font-body); font-size: 12px; font-weight: 600;
     color: var(--text-secondary); transition: all .15s;
   }
-  .view-pill.active { background: #fff; color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .view-pill.active { background: var(--card-bg); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
   .heatmap-toggle {
     display: flex; align-items: center; gap: 6px;
     padding: 0 14px; border-radius: 10px;
@@ -179,7 +206,7 @@
     display: flex; align-items: center; gap: 8px;
     padding: 5px 16px; border-bottom: 1px solid var(--border);
     font-size: 11px; font-weight: 600; color: var(--text-secondary);
-    background: #fff; flex-shrink: 0;
+    background: var(--card-bg); flex-shrink: 0;
   }
   .heatmap-legend .material-icons-round { font-size: 14px; color: var(--primary); }
   .legend-swatch { width: 18px; height: 10px; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 3px; }
@@ -206,6 +233,7 @@
     transition: background .12s; position: relative; overflow: hidden;
   }
   .month-cell:hover { filter: brightness(0.97); }
+  [data-theme="dark"] .month-cell:hover { filter: brightness(1.15); }
   .month-cell.other-month { opacity: .45; }
   .month-cell.today .day-num { background: var(--primary); color: #fff; border-radius: 50%; }
   /* heatmap */
@@ -213,6 +241,10 @@
   .month-cell[data-heat="1"] { background: #FFFDE7; }
   .month-cell[data-heat="2"] { background: #E8F5E9; }
   .month-cell[data-heat="3"] { background: #E3F2FD; }
+  [data-theme="dark"] .month-cell[data-heat="0"] { background: #2d1a1a; }
+  [data-theme="dark"] .month-cell[data-heat="1"] { background: #2d2a1a; }
+  [data-theme="dark"] .month-cell[data-heat="2"] { background: #1a2d1a; }
+  [data-theme="dark"] .month-cell[data-heat="3"] { background: #1a1a2d; }
 
   .day-num {
     font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 600;
@@ -255,6 +287,10 @@
   .week-day-col[data-heat="1"] { background: #FEFDF0; }
   .week-day-col[data-heat="2"] { background: #F4FBF4; }
   .week-day-col[data-heat="3"] { background: #F0F7FF; }
+  [data-theme="dark"] .week-day-col[data-heat="0"] { background: #2d1a1a; }
+  [data-theme="dark"] .week-day-col[data-heat="1"] { background: #2d2a1a; }
+  [data-theme="dark"] .week-day-col[data-heat="2"] { background: #1a2d1a; }
+  [data-theme="dark"] .week-day-col[data-heat="3"] { background: #1a1a2d; }
   .week-hour-slot { height: 52px; border-bottom: 1px solid var(--border); }
   .week-event {
     position: absolute; left: 2px; right: 2px; border-radius: 5px;
@@ -300,7 +336,7 @@
   }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal {
-    background: #fff; border-radius: 16px; width: 420px; max-width: 95vw;
+    background: var(--modal-bg); border-radius: 16px; width: 420px; max-width: 95vw;
     box-shadow: 0 8px 32px rgba(0,0,0,.14); overflow: hidden;
     transform: translateY(10px); transition: transform .18s;
   }
@@ -313,7 +349,7 @@
   .field-input {
     width: 100%; border: 1.5px solid var(--border-strong); border-radius: 8px;
     padding: 9px 12px; font-family: 'Manrope', sans-serif; font-size: 13px;
-    color: var(--text); outline: none; transition: border-color .15s; background: #fff;
+    color: var(--text); outline: none; transition: border-color .15s; background: var(--input-bg);
   }
   .field-input:focus { border-color: var(--primary); }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -330,13 +366,16 @@
     outline: none;
     cursor: pointer;
   }
+  [data-theme="dark"] .intensity-slider {
+    background: linear-gradient(to right, #38383d, #2255b0, #2a7a3a, #b89500, #b06a00, #991a1a);
+  }
   .intensity-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--card-bg);
     border: 2px solid var(--border-strong);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     cursor: pointer;
@@ -352,6 +391,22 @@
   .btn-ghost:hover { background: var(--border-strong); }
   .btn-danger { background: #FFEBEE; color: var(--primary); }
   .btn-danger:hover { background: #FFCDD2; }
+
+  /* VIEW TRANSITIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SWIPE INDICATOR */
+  .swipe-hint {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; opacity: 0.3;
+    transition: opacity 0.3s;
+    pointer-events: none; z-index: 5;
+  }
+  .swipe-hint .material-icons-round { font-size: 20px; color: var(--text-muted); }
+  @media (min-width: 768px) { .swipe-hint { display: none; } }
 
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -380,6 +435,7 @@
     <span class="material-icons-round">thermostat</span>
     Varmekart
   </button>
+  <button class="icon-btn" id="themeBtn" title="Mørkt/lyst tema"><span class="material-icons-round">dark_mode</span></button>
   <button class="icon-btn" id="searchBtn" title="Søk"><span class="material-icons-round">search</span></button>
 </div>
 
@@ -403,6 +459,9 @@
     <div class="sidebar-item" data-cat="personal"><span class="cat-dot" style="background:var(--card-green);"></span> Personlig</div>
     <div class="sidebar-item" data-cat="social"><span class="cat-dot" style="background:var(--card-lime); border:1px solid #0002;"></span> Sosialt</div>
     <div class="sidebar-item" data-cat="other"><span class="cat-dot" style="background:var(--text-muted);"></span> Annet</div>
+    <div class="sidebar-item" data-cat="norsk"><span class="cat-dot" style="background:#9C27B0;"></span> Norske datoer</div>
+    <div class="sidebar-item" data-cat="vgs"><span class="cat-dot" style="background:#1976D2;"></span> VGS</div>
+    <div class="sidebar-item" data-cat="ungdomsskole"><span class="cat-dot" style="background:#00897B;"></span> Ungdomsskole</div>
 
     <div class="sidebar-label" style="margin-top:12px;">Verktøy</div>
     <div class="sidebar-item" id="focusTimerBtn"><span class="material-icons-round">timer</span> Fokusmåler</div>
@@ -418,7 +477,8 @@
       <span><span class="legend-swatch" style="background:#E8F5E9;"></span>Litt å gjøre</span>&#8594;
       <span><span class="legend-swatch" style="background:#E3F2FD;"></span>Ledig</span>
     </div>
-    <div id="viewContainer" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0;"></div>
+    <div id="viewContainer" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0;position:relative;"></div>
+
   </div>
 </div>
 
@@ -537,7 +597,32 @@ const CAT_COLORS = {
   personal: { bg:'#E8F5E9', text:'#2E7D32', dot:'#30D158' },
   social:   { bg:'#F9FBE7', text:'#827717', dot:'#D0F54E' },
   other:    { bg:'#F5F5F5', text:'#555555', dot:'#BDBDBD' },
+  norsk:        { bg:'#F3E5F5', text:'#7B1FA2', dot:'#9C27B0' },
+  vgs:          { bg:'#E3F2FD', text:'#1565C0', dot:'#1976D2' },
+  ungdomsskole: { bg:'#E0F7FA', text:'#00695C', dot:'#00897B' },
 };
+
+let _cachedIsDark = null;
+function refreshDarkCache() {
+  _cachedIsDark = document.documentElement.getAttribute('data-theme') === 'dark';
+}
+function getCatColors(cat) {
+  if (_cachedIsDark) {
+    const dark = {
+      class:    { bg:'rgba(88,101,242,0.18)', text:'#8a9cff', dot:'#8a9cff' },
+      exam:     { bg:'rgba(212,11,0,0.18)',  text:'#ff6b6b', dot:'#ff6b6b' },
+      deadline: { bg:'rgba(255,159,10,0.18)', text:'#ffb84d', dot:'#ffb84d' },
+      personal: { bg:'rgba(48,209,88,0.18)', text:'#6ddb8a', dot:'#6ddb8a' },
+      social:   { bg:'rgba(208,245,78,0.18)', text:'#d0f54e', dot:'#d0f54e' },
+      other:    { bg:'rgba(150,150,150,0.18)', text:'#b0b0b0', dot:'#b0b0b0' },
+      norsk:    { bg:'rgba(156,39,176,0.18)',  text:'#ce93d8', dot:'#ce93d8' },
+      vgs:      { bg:'rgba(25,118,210,0.18)',  text:'#64b5f6', dot:'#64b5f6' },
+      ungdomsskole: { bg:'rgba(0,137,123,0.18)', text:'#4db6ac', dot:'#4db6ac' },
+    };
+    return dark[cat] || dark.other;
+  }
+  return CAT_COLORS[cat] || CAT_COLORS.other;
+}
 // Intensity 0..10 → load weight
 function getIntensityWeight(val) {
     if (val === 0) return 0.1;
@@ -572,6 +657,97 @@ let editingId = null;
 let selectedIntensity = 5;
 let searchQuery = '';
 
+// ── SYSTEMDATOER 2026 ────────────────────────
+// Beregn påskedato (Gauss' påskeformel)
+function easterDate(year) {
+  const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+  const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const month = Math.floor((h + l - 7 * m + 114) / 31);
+  const day = ((h + l - 7 * m + 114) % 31) + 1;
+  return new Date(year, month - 1, day);
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+function mkEvt(title, date, cat, intensity = 0) {
+  if (typeof date === 'string') date = new Date(date);
+  const dk = dateKey(date);
+  return {
+    title, date: dk, cat, timeMode: 'all_day', intensity,
+    start: '00:00', end: '00:00', notes: '',
+    id: cat + '-' + dk + '-' + title.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9æøå-]/g, '')
+  };
+}
+
+const easter = easterDate(2026);
+
+// ── NORSKE DATOER (offentlige helligdager, flaggdager, merkedager) ──
+const norskeDates = [
+  mkEvt('Første nyttårsdag',          '2026-01-01', 'norsk'),
+  mkEvt('Skjærtorsdag',               addDays(easter, -3), 'norsk'),
+  mkEvt('Langfredag',                 addDays(easter, -2), 'norsk'),
+  mkEvt('Første påskedag',            easter, 'norsk'),
+  mkEvt('Andre påskedag',             addDays(easter, 1), 'norsk'),
+  mkEvt('Offentlig høytidsdag / Arbeidernes dag', '2026-05-01', 'norsk'),
+  mkEvt('Frigjøringsdagen / Veterandagen',        '2026-05-08', 'norsk'),
+  mkEvt('Kristi Himmelfartsdag',      addDays(easter, 39), 'norsk'),
+  mkEvt('Grunnlovsdagen',             '2026-05-17', 'norsk', 5),
+  mkEvt('Første pinsedag',            addDays(easter, 49), 'norsk'),
+  mkEvt('Andre pinsedag',             addDays(easter, 50), 'norsk'),
+  mkEvt('Sankthansaften',             '2026-06-23', 'norsk'),
+  mkEvt('Julaften',                   '2026-12-24', 'norsk'),
+  mkEvt('Første juledag',             '2026-12-25', 'norsk'),
+  mkEvt('Andre juledag',              '2026-12-26', 'norsk'),
+  mkEvt('Nyttårsaften',               '2026-12-31', 'norsk'),
+];
+
+// ── VGS (Udir-datoer for videregående) ──
+const vgsEvents = [
+  mkEvt('Udir - Påmelding til våreksamen åpner',         '2026-01-21', 'vgs'),
+  mkEvt('Udir - Siste frist for påmelding til våreksamen','2026-03-01', 'vgs', 3),
+  mkEvt('Udir - Offentliggjøring av eksamenstrekk, kl. 09:00', '2026-04-28', 'vgs', 4),
+  mkEvt('Udir - Skriftlig eksamen: Teknologi og forskningslære, fremmedspråk, samfunnsfag og økonomi', '2026-05-04', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Norsk hovedmål',      '2026-05-05', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Språk, samfunnsfag og økonomi, engelsk', '2026-05-06', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Biologi, informasjonsteknologi, språk, samfunnsfag og økonomi', '2026-05-07', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Fysikk, språk, samfunnsfag og økonomi', '2026-05-08', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Norsk sidemål',       '2026-05-11', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Kjemi, geografi, språk, samfunnsfag og økonomi', '2026-05-12', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Matematikk, språk, samfunnsfag og økonomi', '2026-05-13', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Matematikk, fremmedspråk, engelsk og yrkesfag', '2026-05-19', 'vgs', 5),
+  mkEvt('Udir - Forhåndssensur i norsk',                 '2026-05-19', 'vgs'),
+  mkEvt('Udir - Skriftlig eksamen: Fremmedspråk, engelsk og yrkesfag', '2026-05-20', 'vgs', 5),
+  mkEvt('Udir - Skriftlig eksamen: Matematikk og yrkesfag (Siste eksamensdag VGS)', '2026-05-21', 'vgs', 5),
+  mkEvt('Udir - Fellessensuren starter i enkelte fylker (VGS & FOV)', '2026-06-16', 'vgs'),
+  mkEvt('Udir - Fellessensuren avsluttes / Endelig sensurfrist', '2026-06-19', 'vgs'),
+  mkEvt('Udir - Frist for registrering av hurtigklage (VGS)', '2026-06-24', 'vgs'),
+  mkEvt('Udir - Ordinær klagefrist / klageregistreringsfrist for skoler (VGS)', '2026-07-01', 'vgs'),
+];
+
+// ── UNGDOMSSKOLE (Udir-datoer for ungdomsskolen) ──
+const ungdomsskoleEvents = [
+  mkEvt('Udir - Påmelding til våreksamen åpner (Grunnskole & VGS)',   '2026-01-21', 'ungdomsskole'),
+  mkEvt('Udir - Siste frist for påmelding til våreksamen (Grunnskole & VGS)', '2026-03-01', 'ungdomsskole', 3),
+  mkEvt('Udir - Offentliggjøring av eksamenstrekk, kl. 09:00 (Grunnskole & VGS)', '2026-04-28', 'ungdomsskole', 4),
+  mkEvt('Udir - Forhåndssensur starter (Ungdomsskole)',               '2026-05-28', 'ungdomsskole'),
+  mkEvt('Udir - Forhåndssensur avsluttes (Ungdomsskole)',             '2026-05-29', 'ungdomsskole'),
+  mkEvt('Udir - Sentral fellessensur starter (Ungdomsskole)',         '2026-06-17', 'ungdomsskole'),
+  mkEvt('Udir - Fellessensuren avsluttes / Endelig sensurfrist (Ungdomsskole & VGS)', '2026-06-19', 'ungdomsskole'),
+  mkEvt('Udir - Påmelding til nasjonale prøver og kartleggingsprøver åpner (Grunnskole)', '2026-08-03', 'ungdomsskole'),
+  mkEvt('Udir - Gjennomføringsperiode for Nasjonale prøver starter (Ungdomsskole)', '2026-08-31', 'ungdomsskole'),
+  mkEvt('Udir - Gjennomføringsperiode for Nasjonale prøver avsluttes (Ungdomsskole)', '2026-09-25', 'ungdomsskole'),
+];
+
+// Slå sammen alle systemhendelser
+const systemEvents = [...norskeDates, ...vgsEvents, ...ungdomsskoleEvents];
+
 let events = JSON.parse(localStorage.getItem('cal_ev3') || '[]');
 function saveEvents(){ localStorage.setItem('cal_ev3', JSON.stringify(events)); }
 
@@ -580,7 +756,8 @@ function dateKey(d){
   return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
 }
 function getEventsForDate(dk){
-  return events.filter(e => {
+  const all = [...events, ...systemEvents];
+  return all.filter(e => {
     const matchesCat = (filterCat==='all'||e.cat===filterCat);
     const matchesSearch = searchQuery ? e.title.toLowerCase().includes(searchQuery.toLowerCase()) : true;
     return e.date===dk && matchesCat && matchesSearch;
@@ -589,7 +766,7 @@ function getEventsForDate(dk){
 // Score a day by event intensity + duration
 function dayScoreRaw(dk){
   let s = 0;
-  for(const e of events.filter(e=>e.date===dk)){
+  for(const e of [...events, ...systemEvents].filter(e=>e.date===dk)){
     const intens = e.intensity || 0;
     const weight = getIntensityWeight(intens);
     if(e.timeMode === 'just_happens' || e.timeMode === 'deadline' || e.timeMode === 'all_day') {
@@ -615,7 +792,7 @@ function dayScore(dk) {
         d.setDate(d.getDate() + offset);
         const targetDk = dateKey(d);
         
-        for(const e of events.filter(e => e.date === targetDk)) {
+        for(const e of [...events, ...systemEvents].filter(e => e.date === targetDk)) {
             const intens = e.intensity || 0;
             const weight = getIntensityWeight(intens);
             const dist = Math.abs(offset);
@@ -701,18 +878,18 @@ function navigate(dir){
   else if(currentView==='week') cursor.setDate(cursor.getDate()+dir*7);
   else if(currentView==='day') cursor.setDate(cursor.getDate()+dir);
   else cursor.setDate(cursor.getDate()+dir*14);
-  render();
+  const swipeDir = dir > 0 ? 'right' : 'left';
+  render(true, swipeDir);
 }
 document.getElementById('prevBtn').onclick  = ()=>navigate(-1);
-document.getElementById('nextBtn').onclick  = ()=>navigate(1);
-document.getElementById('todayBtn').onclick = ()=>{ cursor=new Date(today); render(); };
+document.getElementById('nextBtn').onclick  = ()=>navigate(1);  document.getElementById('todayBtn').onclick = ()=>{ cursor=new Date(today); render(true, null); };
 
 document.querySelectorAll('.view-pill').forEach(btn=>{
   btn.onclick=()=>{
     document.querySelectorAll('.view-pill').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     currentView=btn.dataset.view;
-    render();
+    render(true, null);
   };
 });
 document.getElementById('heatmapBtn').onclick=()=>{
@@ -721,10 +898,8 @@ document.getElementById('heatmapBtn').onclick=()=>{
   document.getElementById('heatmapLegend').style.display=heatmapOn?'flex':'none';
   render();
 };
-document.querySelectorAll('[data-cat]').forEach(el=>{
-  el.onclick=()=>{
-    document.querySelectorAll('[data-cat]').forEach(e=>e.classList.remove('active'));
-    el.classList.add('active'); filterCat=el.dataset.cat; render();
+document.querySelectorAll('[data-cat]').forEach(el=>{  el.onclick=()=>{ document.querySelectorAll('[data-cat]').forEach(e=>e.classList.remove('active'));
+    el.classList.add('active'); filterCat=el.dataset.cat; render(true, null);
   };
 });
 
@@ -742,7 +917,7 @@ function renderMini(){
     if(dt.getMonth() !== m) el.classList.add('other-month');
     el.textContent = dt.getDate();
     if(dt.toDateString() === today.toDateString()) el.classList.add('today');
-    el.onclick = () => { cursor = new Date(dt); render(); };
+    el.onclick = () => { cursor = new Date(dt); render(true, null); };
     grid.appendChild(el);
   }
 }
@@ -756,26 +931,75 @@ function getWeekNumber(d) {
 }
 
 // ── RENDER ROUTER ─────────────────────────────
-function render(){
-  const vc=document.getElementById('viewContainer'); vc.innerHTML='';
+function buildViewWrapper() {
+  const w = document.createElement('div');
+  w.style.cssText = 'width:100%;height:100%;display:flex;flex-direction:column;';
   const y=cursor.getFullYear(), m=cursor.getMonth();
   if(currentView==='month'){
     document.getElementById('navTitle').textContent=`${MONTHS[m]} ${y}`;
-    renderMonth(vc,y,m);
+    renderMonth(w,y,m);
   } else if(currentView==='week'){
     const ws=weekStart(cursor), we=new Date(ws); we.setDate(we.getDate()+6);
     document.getElementById('navTitle').textContent=`${MONTHS[ws.getMonth()].slice(0,3)} ${ws.getDate()} – ${we.getDate()}, ${ws.getFullYear()}`;
-    renderWeek(vc,ws);
+    renderWeek(w,ws);
   } else if(currentView==='day'){
     document.getElementById('navTitle').textContent=`${DAYS[cursor.getDay()===0?6:cursor.getDay()-1]}, ${MONTHS[m].slice(0,3)} ${cursor.getDate()}, ${y}`;
-    renderDay(vc,cursor);
+    renderDay(w,cursor);
   } else {
     const title = searchQuery ? `Søkeresultater for "${searchQuery}"` : `Agenda — ${MONTHS[m]} ${y}`;
     document.getElementById('navTitle').textContent=title;
-    renderAgenda(vc,cursor);
+    renderAgenda(w,cursor);
+  }
+  return w;
+}
+
+function render(withTransition = true, swipeDir = null){
+  const vc = document.getElementById('viewContainer');
+  const newWrap = buildViewWrapper();
+  const oldWrap = vc.firstElementChild;
+
+  if (withTransition && swipeDir && oldWrap) {
+    // Slide animasjon: gammel ut, ny inn samtidig
+    const outX = swipeDir === 'right' ? '-100%' : '100%';
+    const inFromX = swipeDir === 'right' ? '100%' : '-100%';
+
+    // Wrapp nytt innhold absolutt – starter utenfor skjerm
+    newWrap.style.position = 'absolute';
+    newWrap.style.top = '0';
+    newWrap.style.left = '0';
+    newWrap.style.transform = `translateX(${inFromX})`;
+    vc.appendChild(newWrap);
+
+    // Animer gammelt ut
+    oldWrap.style.transition = 'transform 0.28s cubic-bezier(0.2, 0, 0, 1), opacity 0.28s ease';
+    oldWrap.style.transform = `translateX(${outX})`;
+    oldWrap.style.opacity = '0';
+
+    // Animer nytt inn — tving reflow så browseren registrerer startposisjonen
+    newWrap.getBoundingClientRect();
+    newWrap.style.transition = 'transform 0.28s cubic-bezier(0.2, 0, 0, 1), opacity 0.28s ease';
+    newWrap.style.transform = 'translateX(0)';
+    newWrap.style.opacity = '1';
+
+    // Rydd opp etter animasjonen
+    setTimeout(() => {
+      vc.innerHTML = '';
+      newWrap.style.position = '';
+      newWrap.style.transform = '';
+      newWrap.style.opacity = '';
+      newWrap.style.transition = '';
+      vc.appendChild(newWrap);
+    }, 310);
+  } else {
+    vc.innerHTML = '';
+    vc.appendChild(newWrap);
+    if (withTransition) {
+      newWrap.style.animation = 'fadeIn 0.18s ease-out';
+    }
   }
   renderMini();
 }
+
 function weekStart(d){ 
   const dt=new Date(d); 
   // Monday start
@@ -826,7 +1050,7 @@ function renderMonth(container,y,m){
     const dayEvts=getEventsForDate(dk);
     dayEvts.slice(0,3).forEach(e=>{
       const chip=document.createElement('div'); chip.className='event-chip';
-      const c=CAT_COLORS[e.cat], dotCol = getIntensityColor(e.intensity || 0);
+      const c=getCatColors(e.cat), dotCol = getIntensityColor(e.intensity || 0);
       chip.style.background=c.bg; chip.style.color=c.text;
       if(heatmapOn){ const dot=document.createElement('div'); dot.className='chip-dot'; dot.style.background=dotCol; chip.appendChild(dot); }
       const lbl=document.createElement('span'); lbl.textContent=e.title; chip.appendChild(lbl);
@@ -872,7 +1096,7 @@ function renderWeek(container,ws){
       const [sh,sm]=e.start.split(':').map(Number), [eh,em]=e.end.split(':').map(Number);
       const top=(sh*60+sm)/60*52, height=Math.max(24,((eh*60+em)-(sh*60+sm))/60*52);
       const ev=document.createElement('div'); ev.className='week-event';
-      const c=CAT_COLORS[e.cat], dotCol = getIntensityColor(e.intensity || 0);
+      const c=getCatColors(e.cat), dotCol = getIntensityColor(e.intensity || 0);
       ev.style.cssText=`top:${top}px;height:${height}px;background:${c.bg};color:${c.text};border-left:3px solid ${dotCol};`;
       ev.textContent=e.title; ev.onclick=()=>openEditModal(e);
       col.appendChild(ev);
@@ -888,7 +1112,7 @@ function renderDay(container,date){
   const dv=document.createElement('div'); dv.className='day-view';
   const dk=dateKey(date);
   const hdr=document.createElement('div'); hdr.className='day-header';
-  hdr.innerHTML=`<div><div class="day-date-big">${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()].slice(0,3)} <span>${date.getDate()}</span></div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${date.toDateString()===today.toDateString()?'Today':''}</div></div>`;
+  hdr.innerHTML=`<div><div class="day-date-big">${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()].slice(0,3)} <span>${date.getDate()}</span></div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${date.toDateString()===today.toDateString()?'I dag':''}</div></div>`;
   if(heatmapOn){
     const hl=heatLevel(dk);
     const labels=['Very Heavy','Heavy','Light','Free'], bgs=['#FFEBEE','#FFFDE7','#E8F5E9','#E3F2FD'], cols=['#C62828','#E65100','#2E7D32','#1565C0'];
@@ -904,7 +1128,7 @@ function renderDay(container,date){
     const [sh,sm]=e.start.split(':').map(Number), [eh,em]=e.end.split(':').map(Number);
     const top=(sh*60+sm)/60*60, height=Math.max(28,((eh*60+em)-(sh*60+sm))/60*60);
     const ev=document.createElement('div'); ev.className='day-event';
-    const c=CAT_COLORS[e.cat], dotCol = getIntensityColor(e.intensity || 0);
+    const c=getCatColors(e.cat), dotCol = getIntensityColor(e.intensity || 0);
     ev.style.cssText=`top:${top}px;height:${height}px;background:${c.bg};color:${c.text};border-left:3px solid ${dotCol};`;
     ev.innerHTML=`<strong>${e.title}</strong><div style="font-size:10px;opacity:.75;margin-top:1px;">${e.start}–${e.end} · ${getIntensityLabel(e.intensity)} intensitet</div>`;
     ev.onclick=()=>openEditModal(e); grid.appendChild(ev);
@@ -926,7 +1150,7 @@ function renderAgenda(container,startDate){
     const evCol=document.createElement('div'); evCol.className='agenda-events';
     if(!dayEvts.length){ const no=document.createElement('div'); no.className='agenda-no-events'; no.textContent='—'; evCol.appendChild(no); }
     else dayEvts.forEach(e=>{
-      const c=CAT_COLORS[e.cat], dotCol = getIntensityColor(e.intensity || 0);
+      const c=getCatColors(e.cat), dotCol = getIntensityColor(e.intensity || 0);
       const item=document.createElement('div'); item.className='agenda-event';
       const timeStr = e.timeMode === 'all_day' ? 'Hele dagen' : (e.timeMode === 'just_happens' ? '' : (e.timeMode === 'deadline' ? `Frist: ${e.start}` : `${e.start} – ${e.end}`));
       item.innerHTML=`
@@ -958,12 +1182,36 @@ function openAddModal(dk){
   document.getElementById('evtNotes').value='';
   document.getElementById('evtRepeat').value='none';
   document.getElementById('deleteEvtBtn').style.display='none';
+  document.getElementById('saveEvtBtn').style.display='';
+  document.getElementById('cancelEvtBtn').textContent='Avbryt';
   setIntensityUI(2);
   updateTimeModeUI();
   document.getElementById('modalOverlay').classList.add('open');
   setTimeout(()=>document.getElementById('evtTitle').focus(),60);
 }
 function openEditModal(e){
+  // Systemhendelser er skrivebeskyttet
+  const isSystem = e.cat === 'norsk' || e.cat === 'vgs' || e.cat === 'ungdomsskole';
+  if (isSystem) {
+    document.getElementById('modalTitle').textContent='🔒 ' + e.cat.charAt(0).toUpperCase() + e.cat.slice(1);
+    document.getElementById('evtTitle').value=e.title;
+    document.getElementById('evtDate').value=e.date;
+    document.getElementById('evtCat').value='udir';
+    document.getElementById('evtTimeMode').value=e.timeMode||'all_day';
+    document.getElementById('evtStart').value='';
+    document.getElementById('evtEnd').value='';
+    document.getElementById('evtNotes').value='Offisiell dato — kan ikke redigeres';
+    document.getElementById('evtRepeat').value='none';
+    document.getElementById('deleteEvtBtn').style.display='none';
+    setIntensityUI(e.intensity||0);
+    updateTimeModeUI();
+    document.getElementById('modalOverlay').classList.add('open');
+    document.getElementById('saveEvtBtn').style.display='none';
+    document.getElementById('cancelEvtBtn').textContent='Lukk';
+    return;
+  }
+  document.getElementById('saveEvtBtn').style.display='';
+  document.getElementById('cancelEvtBtn').textContent='Avbryt';
   editingId=e.id;
   document.getElementById('modalTitle').textContent='Rediger hendelse';
   document.getElementById('evtTitle').value=e.title;
@@ -1073,9 +1321,81 @@ document.getElementById('focusTimerBtn').onclick=()=>document.getElementById('fo
 document.getElementById('focusClose').onclick=()=>document.getElementById('focusModalOverlay').classList.remove('open');
 document.getElementById('focusModalOverlay').onclick=e=>{ if(e.target===e.currentTarget) document.getElementById('focusModalOverlay').classList.remove('open'); };
 
+// ── SWIPE NAVIGATION ──────────────────────────
+(function setupSwipe(){
+  const vc = document.getElementById('viewContainer');
+  let startX = 0, startY = 0, swiping = false;
+
+  vc.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    swiping = false;
+  }, { passive: true });
+
+  vc.addEventListener('touchmove', (e) => {
+    if (!startX) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > 10 || Math.abs(dy) > 10) swiping = true;
+  }, { passive: true });
+
+  vc.addEventListener('touchend', (e) => {
+    if (!swiping) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    
+    // Only horizontal swipes
+    if (Math.abs(dx) < Math.abs(dy) || Math.abs(dx) < 40) {
+      startX = 0; startY = 0; swiping = false;
+      return;
+    }
+    
+    if (dx < 0) navigate(1); // Swipe left = next
+    else navigate(-1);        // Swipe right = previous
+    startX = 0; startY = 0; swiping = false;
+  }, { passive: true });
+})();
+
+// ── THEME MANAGEMENT ───────────────────────────
+function initTheme() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  setTheme(saved);
+}
+
+function setTheme(theme) {
+  localStorage.setItem('theme', theme);
+  
+  let finalTheme = theme;
+  if (theme === 'system') {
+    finalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  
+  document.documentElement.setAttribute('data-theme', finalTheme);
+  refreshDarkCache();
+  const btn = document.getElementById('themeBtn');
+  if (btn) {
+    btn.innerHTML = `<span class="material-icons-round">${finalTheme === 'dark' ? 'dark_mode' : 'light_mode'}</span>`;
+  }
+}
+
+document.getElementById('themeBtn').onclick = () => {
+  const current = localStorage.getItem('theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+  localStorage.setItem('theme', next);
+};
+
+// System Theme Listener
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if ((localStorage.getItem('theme') || 'dark') === 'system') {
+    initTheme();
+  }
+});
+
 // ── INIT ──────────────────────────────────────
+initTheme();
 setIntensityUI(5);
-render();
+render(false);
 </script>
 </body>
 </html>
