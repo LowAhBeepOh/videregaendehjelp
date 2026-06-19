@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24f80a75-a09f-4f80-94e0-d9103f0d734d"></script>
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Videregående Hjelp - Ressurser. PDF-er, datasett og nyttige dokumenter for elever.">
   <title>Ressurser – Videregående Hjelp</title>
@@ -12,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="assets/css/profile.css">
   <style>
     :root {
       --bg: #050505;
@@ -119,6 +121,12 @@
 
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--text); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
     @media (min-width: 480px) {
       .nav-links { gap: 24px; }
@@ -528,13 +536,16 @@
   <main>
     <header>
       <div class="header-content">
-        <a href="index.html" class="logo">Videregående Hjelp</a>
+      <a href="index.html" class="logo">Videregående Hjelp</a>
+      <div class="header-right">
         <nav class="nav-links">
           <a href="guides.html">Guider</a>
           <a href="tools.html">Verktøy</a>
           <a href="ressurser.html" class="active">Ressurser</a>
         </nav>
+        <a href="profile.html" class="profile-pill" aria-label="Min profil"></a>
       </div>
+    </div>
     </header>
 
     <div class="page-header">
@@ -643,5 +654,6 @@
 
     renderGrid('alle');
   </script>
+  <script src="assets/js/profile.js"></script>
 </body>
 </html>

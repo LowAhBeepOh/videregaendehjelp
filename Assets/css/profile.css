@@ -1,0 +1,122 @@
+/* Shared styles for the local-only profile system.
+   Mounted by every page that links Assets/js/profile.js, so VHprofile.renderHeader()
+   can populate .profile-pill without depending on per-page CSS. */
+
+/* .profile-pill — 36×36 circle used in the header right-side on every
+   top-level page. Color and content are painted at runtime by VHprofile
+   (deterministic initials palette or stored avatar). */
+.profile-pill {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--card-blue);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, 'Inter Tight', sans-serif);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.profile-pill:hover {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+.profile-pill:focus-visible {
+  outline: 2px solid var(--card-blue);
+  outline-offset: 2px;
+}
+
+.profile-pill img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* .grade-pill — small trinn-tag shown on learn.html next to the greeting.
+   Rendered by VHprofile.renderGradePill(); CSS variable fallbacks keep styles
+   stable on pages that don't define both --font-display and the card colors. */
+.grade-pill {
+  display: inline-block;
+  background: var(--card-blue);
+  color: #fff;
+  font-family: var(--font-display, 'Inter Tight', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* .trinn-toggle — only visible for Alumni / Lærer profiles so they can
+   override which trinn's content the page surfaces. Wired on learn.html. */
+.trinn-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-family: var(--font-body, 'Manrope', sans-serif);
+  flex-wrap: wrap;
+}
+
+.trinn-toggle[hidden] { display: none; }
+
+.trinn-toggle-label {
+  font-family: var(--font-body, 'Manrope', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-right: 6px;
+}
+
+.trinn-toggle-btn {
+  background: transparent;
+  /* Slightly muted border (instead of full --border) keeps inactive
+     buttons readable on the dark theme, where --border (#2c2c2e)
+     blends into the bg (#050505). */
+  border: 1px solid var(--text-muted);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display, 'Inter Tight', sans-serif);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.trinn-toggle-btn:hover { border-color: var(--text-muted); }
+
+.trinn-toggle-btn[data-view="8-10"].active {
+  background: var(--card-lime);
+  color: #000;
+  border-color: var(--card-lime);
+}
+
+.trinn-toggle-btn[data-view="VG1-VG2"].active {
+  background: var(--card-blue);
+  color: #fff;
+  border-color: var(--card-blue);
+}
+
+/* Tint transitions. Loaded on every page that pulls in profile.css so the
+   tint cross-fades smoothly when the user picks a preset or toggles scope
+   on profile.html, and so the existing theme switcher (System/Lys/Mørk) also
+   softens its bg snap. Keep these short to avoid visible lag on slow devices
+   — 0.35s reads as deliberate without feeling sluggish. */
+body { transition: background-color 0.35s ease; }
+.surface, .bento-card, .profile-card, .bookmark-item { transition: background-color 0.35s ease, border-color 0.35s ease; }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24f80a75-a09f-4f80-94e0-d9103f0d734d"></script>
+<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Videregående Hjelp - Ressurs for elever. Finn guider, verktøy, og svar på spørsmål om skole, karakterer, eksamen og mer.">
   <meta name="keywords" content="videregående, VGS, skole, guider, karakterer, eksamen, verktøy, hjelp, elev">
@@ -25,6 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="assets/css/profile.css">
   <meta name="google-site-verification" content="Y7XlvpaXywMWF1nyDWMvVBPMhRLdXPOGewGGlMqAwtc" />
   <style>
     :root {
@@ -150,6 +152,13 @@
     .nav-link span { display: none; }
     @media (min-width: 850px) { .nav-link span { display: inline; } }
 
+    /* Header-right wrapper — keeps nav-container and profile-pill aligned */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
     /* Responsive Nav */
     @media (max-width: 650px) {
       .nav-link.nav-news { display: none; }
@@ -211,6 +220,54 @@
       margin-bottom: 32px;
       position: relative;
     }
+
+    .user-heading {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    @media (min-width: 768px) {
+      .user-heading { font-size: 48px; }
+    }
+
+    .user-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .user-heading-row .user-heading { margin-bottom: 0; }
+
+    .profile-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin: 0;
+      padding: 8px 14px;
+      background: var(--card-blue);
+      color: #fff;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+    .profile-cta:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .profile-cta[hidden] { display: none; }
+    .profile-cta .material-icons { font-size: 18px; }
 
     .search-input {
       width: 100%;
@@ -331,35 +388,7 @@
       background: #e68a00;
     }
 
-    /* Quick Start Section */
-    .quick-start {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    @media (min-width: 480px) { .quick-start { grid-template-columns: 1fr 1fr; gap: 20px; } }
-
-    .quick-start-btn {
-      padding: 18px;
-      border-radius: 16px;
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 64px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      letter-spacing: var(--ls-tight);
-    }
-
-    .quick-start-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-    .btn-start { background: #3e5c35; color: #b8e994; }
-    .btn-current { background: #2c3e50; color: #74b9ff; }
+    /* Quick Start CTA row removed — guides are reached via the bento grid below. */
 
     /* Bento Grid */
     .bento-grid {
@@ -507,45 +536,50 @@
   <main>
     <header>
       <div class="header-content">
-        <a href="index.html" class="logo">Videregående Hjelp</a>
-        <div class="nav-container">
-          <a href="guides.html" class="nav-link">
-            <i class="material-icons">book</i>
-            <span>Guider</span>
-          </a>
-          <a href="tools.html" class="nav-link">
-            <i class="material-icons">quiz</i>
-            <span>Verktøy</span>
-          </a>
-          <a href="news.html" class="nav-link nav-news">
-            <i class="material-icons">newspaper</i>
-            <span>Nyheter</span>
-          </a>
-          <button class="burger-btn" id="burgerBtn" aria-label="Meny">
-            <i class="material-icons">menu</i>
-          </button>
-          <div class="nav-dropdown" id="navDropdown">
-            <a href="resources.html" class="dropdown-item">
-              <i class="material-icons">folder</i>
-              Ressurser
+        <a         href="index.html" class="logo">Videregående Hjelp</a>
+        <div class="header-right">
+          <div class="nav-container">
+            <a href="guides.html" class="nav-link">
+              <i class="material-icons">book</i>
+              <span>Guider</span>
             </a>
-            <a href="news.html" class="dropdown-item nav-news-mobile" style="display:none;">
+            <a href="tools.html" class="nav-link">
+              <i class="material-icons">quiz</i>
+              <span>Verktøy</span>
+            </a>
+            <a href="news.html" class="nav-link nav-news">
               <i class="material-icons">newspaper</i>
-              Nyheter
+              <span>Nyheter</span>
             </a>
+            <button class="burger-btn" id="burgerBtn" aria-label="Meny">
+              <i class="material-icons">menu</i>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+              <a href="resources.html" class="dropdown-item">
+                <i class="material-icons">folder</i>
+                Ressurser
+              </a>
+              <a href="news.html" class="dropdown-item nav-news-mobile" style="display:none;">
+                <i class="material-icons">newspaper</i>
+                Nyheter
+              </a>
+            </div>
           </div>
+          <a href="profile.html" class="profile-pill" aria-label="Min profil"></a>
         </div>
       </div>
     </header>
 
     <div class="search-container">
+      <div class="user-heading-row">
+        <div class="user-heading" id="userHeading" hidden></div>
+        <a id="profileCta" class="profile-cta" href="profile.html" hidden>
+          <span class="material-icons">person_add</span>
+          <span>Lag profil</span>
+        </a>
+      </div>
       <input type="text" id="searchInput" class="search-input" placeholder="Søk etter guider, verktøy, ressurser..." autocomplete="off">
       <div id="searchResults" class="search-results"></div>
-    </div>
-
-    <div class="quick-start">
-      <a href="Guides/new-students.html" class="quick-start-btn btn-start">Jeg starter på videregående</a>
-      <a href="Guides/current-students.html" class="quick-start-btn btn-current">Jeg går på videregående</a>
     </div>
 
     <div id="bookmarksSection" class="bookmarks-section" style="display:none;">
@@ -893,11 +927,58 @@
       }).join('');
     }
 
+    function paintGreeting() {
+      if (!window.VHprofile) return;
+      const heading = document.getElementById('userHeading');
+      const cta = document.getElementById('profileCta');
+      if (!heading || !cta) return;
+      const DEFAULT_NAME = 'Bruker';
+      const name = VHprofile.get().name;
+      // No profile yet: fixed welcoming greeting + clear CTA to set one up.
+      // Has profile: random greeting + name.
+      if (!name || name === DEFAULT_NAME) {
+        heading.textContent = 'Velkommen, Elev';
+        cta.hidden = false;
+      } else {
+        const greetings = [
+          'Hei', 'Heia', 'Yo', 'Skjer\u2019a', 'Velkommen',
+          'Godt \u00e5 se deg', 'Hallais', 'Hallaien', 'Halla',
+          'Yo gang', 'Hi m8', 'G\u2019day mate', 'Heisann',
+          'Hallo', 'Salut', 'H\u00e9', 'Hva skjer\u2019a',
+          'Halla p\u00e5 deg', 'Hei igjen', 'St\u00e5 p\u00e5',
+        ];
+        const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+        heading.textContent = `${greeting}, ${name}`;
+        cta.hidden = true;
+      }
+      heading.hidden = false;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       generateGrid(); loadLatestOpinionHome(); subscribeOpinionHome(); renderBookmarks();
       fetch('News/news-data.json').then(r => r.json()).then(d => renderFeaturedNews(d)).catch(e => console.error(e));
     });
-    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+    // Resolve stored 'system'|'light'|'dark' before first paint.
+    // Pairs with VHprofile.applyTheme() which re-runs at end of body.
+    (function () {
+      var stored = localStorage.getItem('theme') || 'dark';
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var resolved = stored === 'system' ? (prefersDark ? 'dark' : 'light') : stored;
+      document.documentElement.setAttribute('data-theme', resolved);
+    })();
+  </script>
+  <script src="assets/js/profile.js"></script>
+  <script>
+    // Paint greeting on first load + re-paint after any profile change so the
+    // name stays in sync if the user updates it on profile.html in another tab.
+    (function () {
+      function run() { try { paintGreeting(); } catch (e) {} }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+    })();
   </script>
 </body>
 </html>

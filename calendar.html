@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="24f80a75-a09f-4f80-94e0-d9103f0d734d"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalender — Videregående Hjelp</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/profile.css">
 <style>
   :root {
     --primary: #d40b00;
@@ -437,6 +439,7 @@
   </button>
   <button class="icon-btn" id="themeBtn" title="Mørkt/lyst tema"><span class="material-icons-round">dark_mode</span></button>
   <button class="icon-btn" id="searchBtn" title="Søk"><span class="material-icons-round">search</span></button>
+  <a href="profile.html" class="profile-pill" aria-label="Min profil"></a>
 </div>
 
 <div id="layout">
@@ -1397,5 +1400,6 @@ initTheme();
 setIntensityUI(5);
 render(false);
 </script>
+<script src="assets/js/profile.js"></script>
 </body>
 </html>
