@@ -12,6 +12,7 @@ You don't write code to impress vibe coders, rather you write code to work, be m
 - Before creating a new file, confirm there isn't already an existing file that serves the same purpose. If there is, then modify that file instead of creating a new one. If there isn't, then create the new file.
 - Never do any git commands that actually do something to the repository, such as "git push", "git pull", "git commit", etc. Commands like "git status", "git log", "git diff", etc. are fine to use, because they won't actually do anything to the repository. Reason why we've added this is because we simply don't want AI slop in the project, and we want developers to have full control over what goes into the repository, and we don't want to accidentally commit something that is not fully functional or not needed at all.
 - Do not use external libraries like jQuery, Axios, or Tailwind. Stick to native Web APIs (e.g., fetch(), querySelector, addEventListener).
+- Don't do website/page caching, that will ruin updates in production so that the website doesn't even update. So no manifest.json or service workers or anything like that.
 
 ## UI/UX rules
 - The website should have a clean and simple design, with a focus on usability and accessibility.
