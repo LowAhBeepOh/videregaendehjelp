@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="assets/css/profile.css">
+  <link rel="stylesheet" href="Assets/css/profile.css">
   <style>
     :root {
       /* Bold Palette */
@@ -350,7 +350,7 @@
     }
 
     // Theme UI lives on profile.html. VHprofile.applyTheme() runs at end of
-    // body (assets/js/profile.js) and re-applies when the OS preference flips.
+    // body (Assets/js/profile.js) and re-applies when the OS preference flips.
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if ((localStorage.getItem('theme') || 'system') === 'system') {
         initTheme();
@@ -360,6 +360,6 @@
     // Initialize
     initTheme();
   </script>
-  <script src="assets/js/profile.js"></script>
+  <script src="Assets/js/profile.js"></script>
 </body>
 </html>
