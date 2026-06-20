@@ -1,0 +1,834 @@
+/* ============================================
+   Frutiger Aero Secret Theme
+   ============================================ */
+
+html[data-frutiger="aero"] {
+  --fa-bg-start: #7dd3c0;
+  --fa-bg-mid: #a8e6cf;
+  --fa-bg-end: #d4f1f4;
+  --fa-text: #0a3d3d;
+  --fa-text-muted: #2d7a6a;
+  --fa-surface: rgba(255, 255, 255, 0.58);
+  --fa-surface-hover: rgba(255, 255, 255, 0.80);
+  --fa-border: rgba(100, 200, 180, 0.45);
+  --fa-accent: #1a9e8a;
+  --fa-accent-light: #3dd4b8;
+  --fa-accent-glow: rgba(26, 158, 138, 0.28);
+  --fa-shadow: 0 10px 36px rgba(40, 140, 120, 0.18);
+  --fa-shadow-sm: 0 2px 14px rgba(40, 140, 120, 0.12);
+  --fa-inset-light: inset 0 1px 0 rgba(255, 255, 255, 0.70);
+
+  /* Override all site font variables so PT Sans is used everywhere */
+  --font-display: 'PT Sans', sans-serif;
+  --font-body: 'PT Sans', sans-serif;
+  --font-serif: 'PT Sans', sans-serif;
+}
+
+/* Body: greener sky-to-nature gradient with aurora overlays */
+html[data-frutiger="aero"] body {
+  background:
+    radial-gradient(ellipse 90% 60% at 10% 90%, rgba(120, 230, 150, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 70% at 90% 10%, rgba(140, 220, 240, 0.30) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 45%),
+    linear-gradient(165deg, #a8e0d8 0%, #c5f0e0 25%, #d8f0f8 55%, #e8f8f4 80%, #f4fcfa 100%) fixed;
+  color: var(--fa-text);
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* Ambient bubble / aurora texture overlay */
+html[data-frutiger="aero"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 20%, rgba(255, 255, 255, 0.50) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 85% 80%, rgba(160, 240, 200, 0.40) 0%, transparent 55%),
+    radial-gradient(circle at 40% 60%, rgba(200, 250, 220, 0.25) 0%, transparent 40%),
+    radial-gradient(ellipse 50% 40% at 70% 15%, rgba(180, 245, 255, 0.30) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 30% at 30% 85%, rgba(140, 230, 160, 0.20) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle noise / grain texture for graphic richness */
+html[data-frutiger="aero"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Layer stacking: main/header/footer above overlays, but NOT dropdown here */
+html[data-frutiger="aero"] main,
+html[data-frutiger="aero"] header,
+html[data-frutiger="aero"] footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header: fully transparent glass that flows into the background */
+html[data-frutiger="aero"] header {
+  background: transparent !important;
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border-bottom: 1px solid var(--fa-border);
+}
+
+html[data-frutiger="aero"] .header-content {
+  background: transparent !important;
+}
+
+html[data-frutiger="aero"] .logo {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .nav-link,
+html[data-frutiger="aero"] .nav-links a,
+html[data-frutiger="aero"] .dropdown-item {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .nav-link:hover,
+html[data-frutiger="aero"] .nav-links a:hover,
+html[data-frutiger="aero"] .dropdown-item:hover {
+  color: var(--fa-text);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+html[data-frutiger="aero"] .nav-links a.active {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .burger-btn {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .burger-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Dropdown: keep absolute, adjust top so it sits clearly below the header */
+html[data-frutiger="aero"] .nav-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 16px;
+  background: var(--fa-surface);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid var(--fa-border);
+  box-shadow: var(--fa-shadow);
+  z-index: 1002;
+  corner-shape: squircle;
+  border-radius: 18px;
+}
+
+/* Base card glassmorphism + squircle corners */
+html[data-frutiger="aero"] .bento-card,
+html[data-frutiger="aero"] .guide-card,
+html[data-frutiger="aero"] .tool-card,
+html[data-frutiger="aero"] .content,
+html[data-frutiger="aero"] .search-results,
+html[data-frutiger="aero"] .settings-modal,
+html[data-frutiger="aero"] .news-featured-card {
+  background: var(--fa-surface) !important;
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--fa-border) !important;
+  box-shadow: var(--fa-shadow), var(--fa-inset-light);
+  color: var(--fa-text) !important;
+  corner-shape: squircle;
+  border-radius: 22px;
+}
+
+/* Glossy highlight on cards */
+html[data-frutiger="aero"] .bento-card::before,
+html[data-frutiger="aero"] .guide-card::before,
+html[data-frutiger="aero"] .tool-card::before,
+html[data-frutiger="aero"] .news-featured-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+
+html[data-frutiger="aero"] .bento-card,
+html[data-frutiger="aero"] .guide-card,
+html[data-frutiger="aero"] .tool-card,
+html[data-frutiger="aero"] .news-featured-card {
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-frutiger="aero"] .bento-card:hover,
+html[data-frutiger="aero"] .guide-card:hover,
+html[data-frutiger="aero"] .tool-card:hover,
+html[data-frutiger="aero"] .news-featured-card:hover {
+  background: var(--fa-surface-hover) !important;
+  box-shadow: 0 14px 44px rgba(40, 140, 120, 0.24), var(--fa-inset-light);
+}
+
+html[data-frutiger="aero"] a[href*="new-students"].guide-card,
+html[data-frutiger="aero"] a[href*="program-choice"].guide-card,
+html[data-frutiger="aero"] a[href*="vgs-application-process"].guide-card,
+html[data-frutiger="aero"] a[href*="privatist"].guide-card,
+html[data-frutiger="aero"] a[href*="waitlist"].guide-card,
+html[data-frutiger="aero"] a[href*="exams-in-teen"].guide-card,
+html[data-frutiger="aero"] a[href*="grades-system"].guide-card,
+html[data-frutiger="aero"] a[href*="absence-rules"].guide-card,
+html[data-frutiger="aero"] a[href*="study-better"].guide-card,
+html[data-frutiger="aero"] a[href*="p-eller-t-matte"].guide-card,
+html[data-frutiger="aero"] a[href*="finished-students"].guide-card,
+html[data-frutiger="aero"] a[href*="current-students"].guide-card,
+html[data-frutiger="aero"] a[href*="motivation"].guide-card,
+html[data-frutiger="aero"] a[href*="apprenticeships"].guide-card,
+html[data-frutiger="aero"] a[href*="change-school"].guide-card,
+html[data-frutiger="aero"] a[href*="exams-in-vgs"].guide-card,
+html[data-frutiger="aero"] a[href*="student-finances"].guide-card,
+html[data-frutiger="aero"] a[href*="student-rights"].guide-card,
+html[data-frutiger="aero"] a[href*="failing-grades"].guide-card,
+html[data-frutiger="aero"] a[href*="first-time-diploma"].guide-card,
+html[data-frutiger="aero"] a[href*="russ-celebration"].guide-card,
+html[data-frutiger="aero"] a[href*="part-time-job"].guide-card,
+html[data-frutiger="aero"] a[href*="mental-health"].guide-card,
+html[data-frutiger="aero"] a[href*="rule-violations"].guide-card {
+  background: var(--fa-surface) !important;
+  border-color: var(--fa-border) !important;
+  color: var(--fa-text) !important;
+  corner-shape: squircle;
+  border-radius: 22px;
+}
+
+html[data-frutiger="aero"] .guide-card .guide-icon {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .guide-card .guide-meta {
+  color: var(--fa-text-muted) !important;
+}
+
+html[data-frutiger="aero"] .guide-card h2 {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .card-guides {
+  background: rgba(180, 245, 170, 0.42) !important;
+  border-color: rgba(120, 220, 110, 0.50) !important;
+}
+
+html[data-frutiger="aero"] .card-tools {
+  background: rgba(255, 225, 150, 0.42) !important;
+  border-color: rgba(235, 190, 80, 0.50) !important;
+}
+
+html[data-frutiger="aero"] .card-interactive {
+  background: rgba(255, 160, 150, 0.42) !important;
+  border-color: rgba(230, 100, 90, 0.50) !important;
+}
+
+html[data-frutiger="aero"] .card-fun-fact {
+  background: rgba(150, 235, 190, 0.42) !important;
+  border-color: rgba(90, 210, 150, 0.50) !important;
+}
+
+html[data-frutiger="aero"] .card-opinions {
+  background: rgba(160, 190, 250, 0.42) !important;
+  border-color: rgba(110, 150, 240, 0.50) !important;
+}
+
+html[data-frutiger="aero"] .card-guides .card-title,
+html[data-frutiger="aero"] .card-tools .card-title,
+html[data-frutiger="aero"] .card-interactive .card-title,
+html[data-frutiger="aero"] .card-fun-fact .card-title,
+html[data-frutiger="aero"] .card-opinions .card-title {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .card-interactive .card-icon,
+html[data-frutiger="aero"] .card-guides .guide-arrow {
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .card-icon {
+  background: rgba(255, 255, 255, 0.40);
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .search-input {
+  background: rgba(255, 255, 255, 0.50);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 18px;
+}
+
+html[data-frutiger="aero"] .search-input:focus {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: var(--fa-accent-light);
+}
+
+html[data-frutiger="aero"] .search-input::placeholder {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] h1,
+html[data-frutiger="aero"] h2,
+html[data-frutiger="aero"] h3,
+html[data-frutiger="aero"] .user-heading,
+html[data-frutiger="aero"] .page-header h1,
+html[data-frutiger="aero"] .card-title,
+html[data-frutiger="aero"] .news-featured-title,
+html[data-frutiger="aero"] .section-title {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] p,
+html[data-frutiger="aero"] .page-header p,
+html[data-frutiger="aero"] .news-featured-desc {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .filter-btn {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 14px;
+}
+
+html[data-frutiger="aero"] .filter-btn:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: var(--fa-accent-light);
+}
+
+html[data-frutiger="aero"] .filter-btn.active {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border-color: var(--fa-accent);
+  box-shadow: 0 2px 12px var(--fa-accent-glow);
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="før-vgs"] {
+  border-color: rgba(120, 220, 100, 0.55);
+  color: #257a35;
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="før-vgs"].active {
+  background: linear-gradient(180deg, #98e898, #68c868);
+  color: #fff;
+  border-color: #58b858;
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="i-vgs"] {
+  border-color: rgba(90, 170, 230, 0.55);
+  color: #155a8a;
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="i-vgs"].active {
+  background: linear-gradient(180deg, #80b8f8, #5098e8);
+  color: #fff;
+  border-color: #4088d8;
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="etter-vgs"] {
+  border-color: rgba(230, 180, 70, 0.55);
+  color: #7a5a10;
+}
+
+html[data-frutiger="aero"] .filter-btn[data-filter="etter-vgs"].active {
+  background: linear-gradient(180deg, #f8d068, #e8b038);
+  color: #fff;
+  border-color: #d8a028;
+}
+
+html[data-frutiger="aero"] .bookmark-item {
+  background: var(--fa-surface);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  corner-shape: squircle;
+  border-radius: 16px;
+}
+
+html[data-frutiger="aero"] .bookmark-item:hover {
+  background: var(--fa-surface-hover);
+}
+
+html[data-frutiger="aero"] .highlight-box {
+  background: rgba(255, 255, 255, 0.45);
+  border-left-color: var(--fa-accent);
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .highlight-box strong {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .back-link {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] footer {
+  border-top-color: var(--fa-border);
+  color: var(--fa-text-muted);
+}
+
+/* News featured: force dark readable text regardless of JS contrast injection */
+html[data-frutiger="aero"] .news-featured-left {
+  background: var(--fa-surface) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .news-featured-left .news-featured-title,
+html[data-frutiger="aero"] .news-featured-left .news-featured-desc,
+html[data-frutiger="aero"] .news-featured-left .news-featured-date,
+html[data-frutiger="aero"] .news-featured-left .news-featured-link {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .news-featured-left .news-featured-desc {
+  opacity: 0.85;
+}
+
+html[data-frutiger="aero"] .news-featured-left .news-featured-date {
+  opacity: 0.65;
+}
+
+html[data-frutiger="aero"] .profile-pill {
+  box-shadow: 0 2px 10px var(--fa-accent-glow);
+}
+
+html[data-frutiger="aero"] .grade-pill {
+  box-shadow: 0 2px 8px var(--fa-accent-glow);
+}
+
+html[data-frutiger="aero"] .theme-option {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 14px;
+}
+
+html[data-frutiger="aero"] .theme-option:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: var(--fa-accent-light);
+}
+
+html[data-frutiger="aero"] .theme-option.active {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border-color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .modal-overlay {
+  background: rgba(8, 50, 45, 0.28);
+}
+
+html[data-frutiger="aero"] {
+  scrollbar-color: rgba(100, 200, 170, 0.40) rgba(100, 200, 170, 0.12);
+  scrollbar-width: thin;
+}
+
+html[data-frutiger="aero"] ::-webkit-scrollbar {
+  width: 10px;
+}
+html[data-frutiger="aero"] ::-webkit-scrollbar-track {
+  background: rgba(100, 200, 170, 0.12);
+  border-radius: 999px;
+}
+html[data-frutiger="aero"] ::-webkit-scrollbar-thumb {
+  background: rgba(100, 200, 170, 0.40);
+  border-radius: 999px;
+}
+html[data-frutiger="aero"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 200, 170, 0.60);
+}
+
+html[data-frutiger="aero"] .tool-card.disabled {
+  opacity: 0.35;
+}
+
+html[data-frutiger="aero"] .search-external-btn {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  corner-shape: squircle;
+  border-radius: 12px;
+}
+
+html[data-frutiger="aero"] .content {
+  background: var(--fa-surface) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html[data-frutiger="aero"] .content h2,
+html[data-frutiger="aero"] .content h3 {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .content p,
+html[data-frutiger="aero"] .content ul,
+html[data-frutiger="aero"] .content ol,
+html[data-frutiger="aero"] .content li {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .content strong {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .content a {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .trinn-toggle-btn {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 999px;
+}
+
+html[data-frutiger="aero"] .trinn-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+html[data-frutiger="aero"] .trinn-toggle-btn[data-view="8-10"].active {
+  background: linear-gradient(180deg, #a8f098, #78d868);
+  color: #fff;
+  border-color: #68c858;
+}
+
+html[data-frutiger="aero"] .trinn-toggle-btn[data-view="VG1-VG2"].active {
+  background: linear-gradient(180deg, #80b8f8, #5098e8);
+  color: #fff;
+  border-color: #4088d8;
+}
+
+html[data-frutiger="aero"] .fun-fact-label,
+html[data-frutiger="aero"] .opinions-label {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .news-featured-date {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .news-featured-link {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .search-result-item {
+  border-bottom-color: var(--fa-border);
+}
+
+html[data-frutiger="aero"] .search-result-item:hover {
+  background: rgba(255, 255, 255, 0.30);
+}
+
+html[data-frutiger="aero"] .search-result-title {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .search-result-meta {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .search-no-results-label {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .settings-btn {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .settings-btn:hover {
+  color: var(--fa-accent);
+}
+
+html[data-frutiger="aero"] .close-settings {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .profile-card,
+html[data-frutiger="aero"] .section-card {
+  background: var(--fa-surface);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid var(--fa-border);
+  box-shadow: var(--fa-shadow), var(--fa-inset-light);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 24px;
+}
+
+html[data-frutiger="aero"] .profile-card h2,
+html[data-frutiger="aero"] .profile-card h3,
+html[data-frutiger="aero"] .section-card h2,
+html[data-frutiger="aero"] .section-card h3 {
+  color: var(--fa-text) !important;
+}
+
+html[data-frutiger="aero"] .profile-card p,
+html[data-frutiger="aero"] .section-card p {
+  color: var(--fa-text-muted);
+}
+
+/* ============================================
+   Frutiger Aero — profile.html specific elements
+   ============================================ */
+
+/* Text inputs */
+html[data-frutiger="aero"] .field-input {
+  background: rgba(255, 255, 255, 0.50);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 16px;
+}
+
+html[data-frutiger="aero"] .field-input:focus {
+  background: rgba(255, 255, 255, 0.80);
+  border-color: var(--fa-accent-light);
+  outline: none;
+}
+
+html[data-frutiger="aero"] .field-input::placeholder {
+  color: var(--fa-text-muted);
+}
+
+/* Grade radio options */
+html[data-frutiger="aero"] .grade-option {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 16px;
+}
+
+html[data-frutiger="aero"] .grade-option:hover {
+  background: rgba(255, 255, 255, 0.60);
+}
+
+html[data-frutiger="aero"] .grade-option[data-color="lime"]:has(input:checked) {
+  background: linear-gradient(180deg, #b0f0a0, #80d060);
+  color: #fff;
+  border-color: #70c050;
+}
+
+html[data-frutiger="aero"] .grade-option[data-color="blue"]:has(input:checked) {
+  background: linear-gradient(180deg, #8ab8f8, #5a98e8);
+  color: #fff;
+  border-color: #4a88d8;
+}
+
+html[data-frutiger="aero"] .grade-option[data-color="orange"]:has(input:checked) {
+  background: linear-gradient(180deg, #ffd080, #f0b040);
+  color: #000;
+  border-color: #e0a030;
+}
+
+html[data-frutiger="aero"] .grade-option[data-color="red"]:has(input:checked) {
+  background: linear-gradient(180deg, #f07070, #d04040);
+  color: #fff;
+  border-color: #c03030;
+}
+
+/* Avatar preview circle */
+html[data-frutiger="aero"] .avatar-preview {
+  box-shadow: 0 2px 10px var(--fa-accent-glow);
+}
+
+/* Buttons on profile.html */
+html[data-frutiger="aero"] .btn-save,
+html[data-frutiger="aero"] .avatar-file-label {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border: 1px solid var(--fa-accent);
+  box-shadow: 0 2px 12px var(--fa-accent-glow), var(--fa-inset-light);
+  corner-shape: squircle;
+  border-radius: 999px;
+}
+
+html[data-frutiger="aero"] .btn-save:hover,
+html[data-frutiger="aero"] .avatar-file-label:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--fa-accent-glow), var(--fa-inset-light);
+}
+
+html[data-frutiger="aero"] .btn-clear,
+html[data-frutiger="aero"] .avatar-clear {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 999px;
+}
+
+html[data-frutiger="aero"] .btn-clear:hover,
+html[data-frutiger="aero"] .avatar-clear:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: var(--fa-accent-light);
+  color: var(--fa-text);
+}
+
+/* Theme segment buttons */
+html[data-frutiger="aero"] .theme-segment-btn {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 14px;
+}
+
+html[data-frutiger="aero"] .theme-segment-btn:hover {
+  background: rgba(255, 255, 255, 0.60);
+  border-color: var(--fa-accent-light);
+}
+
+html[data-frutiger="aero"] .theme-segment-btn.active[data-grade="lime"] {
+  background: linear-gradient(180deg, #b0f0a0, #80d060);
+  color: #fff;
+  border-color: #70c050;
+}
+
+html[data-frutiger="aero"] .theme-segment-btn.active[data-grade="blue"] {
+  background: linear-gradient(180deg, #8ab8f8, #5a98e8);
+  color: #fff;
+  border-color: #4a88d8;
+}
+
+html[data-frutiger="aero"] .theme-segment-btn.active[data-grade="orange"] {
+  background: linear-gradient(180deg, #ffd080, #f0b040);
+  color: #000;
+  border-color: #e0a030;
+}
+
+html[data-frutiger="aero"] .theme-segment-btn.active[data-grade="red"] {
+  background: linear-gradient(180deg, #f07070, #d04040);
+  color: #fff;
+  border-color: #c03030;
+}
+
+html[data-frutiger="aero"] .theme-segment-btn.active[data-grade="default"] {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border-color: var(--fa-accent);
+}
+
+/* Tint preset buttons */
+html[data-frutiger="aero"] .tint-preset-btn {
+  background: rgba(255, 255, 255, 0.40);
+  border-color: var(--fa-border);
+  color: var(--fa-text);
+  corner-shape: squircle;
+  border-radius: 14px;
+}
+
+html[data-frutiger="aero"] .tint-preset-btn:hover {
+  background: rgba(255, 255, 255, 0.60);
+  border-color: var(--fa-accent-light);
+}
+
+html[data-frutiger="aero"] .tint-preset-btn.active[data-grade="lime"] {
+  background: linear-gradient(180deg, #b0f0a0, #80d060);
+  color: #fff;
+  border-color: #70c050;
+}
+
+html[data-frutiger="aero"] .tint-preset-btn.active[data-grade="blue"] {
+  background: linear-gradient(180deg, #8ab8f8, #5a98e8);
+  color: #fff;
+  border-color: #4a88d8;
+}
+
+html[data-frutiger="aero"] .tint-preset-btn.active[data-grade="orange"] {
+  background: linear-gradient(180deg, #ffd080, #f0b040);
+  color: #000;
+  border-color: #e0a030;
+}
+
+html[data-frutiger="aero"] .tint-preset-btn.active[data-grade="red"] {
+  background: linear-gradient(180deg, #f07070, #d04040);
+  color: #fff;
+  border-color: #c03030;
+}
+
+html[data-frutiger="aero"] .tint-preset-btn.active[data-grade="default"] {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border-color: var(--fa-accent);
+}
+
+/* Tint scope checkbox row */
+html[data-frutiger="aero"] .tint-scope-row {
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .tint-scope-row input[type="checkbox"] {
+  accent-color: var(--fa-accent);
+}
+
+/* Tint settings <details> wrapper */
+html[data-frutiger="aero"] .tint-settings {
+  border-color: var(--fa-border);
+}
+
+html[data-frutiger="aero"] .tint-settings > summary {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .tint-settings > summary::before,
+html[data-frutiger="aero"] .tint-settings > summary::after {
+  color: var(--fa-text-muted);
+}
+
+html[data-frutiger="aero"] .tint-settings > summary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--fa-text);
+}
+
+html[data-frutiger="aero"] .tint-settings-hint {
+  color: var(--fa-text-muted);
+}
+
+/* Privacy note */
+html[data-frutiger="aero"] .privacy-note {
+  color: var(--fa-text-muted);
+  border-left-color: var(--fa-border);
+}
+
+/* Profile card grade-driven overrides reset for Frutiger Aero glass */
+html[data-frutiger="aero"] .profile-card[data-grade] .avatar-preview,
+html[data-frutiger="aero"] .profile-card[data-grade] .avatar-file-label,
+html[data-frutiger="aero"] .profile-card[data-grade] .btn-save {
+  background: linear-gradient(180deg, var(--fa-accent-light), var(--fa-accent));
+  color: #fff;
+  border-color: var(--fa-accent);
+}
+
+/* Status message */
+html[data-frutiger="aero"] .status-message {
+  color: var(--fa-accent);
+}

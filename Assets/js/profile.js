@@ -156,6 +156,11 @@
   // matchMedia API. Called once on script load (via renderAll) and again any
   // time the saved value changes or the OS preference flips.
   function applyTheme() {
+    // Secret themes force light mode — don't override them.
+    if (localStorage.getItem('vhjelp:frutiger') === '1' ||
+        localStorage.getItem('vhjelp:newspaper') === '1') {
+      return;
+    }
     const stored = localStorage.getItem('theme') || 'system';
     const prefersDark =
       window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -398,8 +403,70 @@
     });
   }
 
+  // Secret theme CSS + font injection helpers
+  const THEMES = {
+    frutiger: {
+      css: 'Assets/css/frutiger-aero.css',
+      fonts: ['https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'],
+      attr: { name: 'data-frutiger', value: 'aero' },
+      storage: 'vhjelp:frutiger',
+    },
+    newspaper: {
+      css: 'Assets/css/newspaper.css',
+      fonts: [
+        'https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap',
+        'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap',
+      ],
+      attr: { name: 'data-newspaper', value: 'true' },
+      storage: 'vhjelp:newspaper',
+    },
+  };
+
+  function injectLink(id, href, rel) {
+    if (document.getElementById(id)) return;
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = rel || 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  function removeLink(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+
+  function applySecretThemes() {
+    let anyActive = false;
+
+    for (const key of Object.keys(THEMES)) {
+      const t = THEMES[key];
+      const enabled = localStorage.getItem(t.storage) === '1';
+      const cssId = 'vhjelp-theme-css-' + key;
+      const fontIds = t.fonts.map((_, i) => 'vhjelp-theme-font-' + key + '-' + i);
+
+      if (enabled) {
+        anyActive = true;
+        document.documentElement.setAttribute(t.attr.name, t.attr.value);
+        injectLink(cssId, t.css);
+        t.fonts.forEach((href, i) => injectLink(fontIds[i], href));
+      } else {
+        document.documentElement.removeAttribute(t.attr.name);
+        removeLink(cssId);
+        fontIds.forEach(removeLink);
+      }
+    }
+
+    // All secret themes are light-mode only — force light when any is active.
+    // When none are active, let applyTheme() restore the user's preference.
+    if (anyActive) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
   function renderAll() {
     applyTheme();
+    applySecretThemes();
     applyTint();
     renderHeader();
     renderGradePill();
@@ -540,6 +607,52 @@
     GRADE_TINT,
     GRADE_TO_PICKER_COLOR,
   };
+
+  // Secret themes — console-only easter eggs.
+  // Activating one automatically deactivates the others (mutual exclusion).
+  function activateSecretTheme(key) {
+    for (const k of Object.keys(THEMES)) {
+      if (k === key) {
+        localStorage.setItem(THEMES[k].storage, '1');
+      } else {
+        localStorage.removeItem(THEMES[k].storage);
+      }
+    }
+    applySecretThemes();
+  }
+
+  function deactivateAllSecretThemes() {
+    for (const k of Object.keys(THEMES)) {
+      localStorage.removeItem(THEMES[k].storage);
+    }
+    applySecretThemes();
+    applyTheme();
+  }
+
+  window.fun = window.fun || {};
+  window.fun.secret = window.fun.secret || {};
+
+  window.fun.secret.Frutiger = function (state) {
+    if (state === 1) {
+      activateSecretTheme('frutiger');
+      console.log('%c Frutiger Aero aktivert ', 'background: #9fd4f0; color: #0d3b5c; font-weight: bold; padding: 4px 8px; border-radius: 4px;');
+    } else {
+      deactivateAllSecretThemes();
+      console.log('%c Frutiger Aero deaktivert ', 'background: #e0e0e0; color: #333; font-weight: bold; padding: 4px 8px; border-radius: 4px;');
+    }
+  };
+
+  window.fun.secret.Newspaper = function (state) {
+    if (state === 1) {
+      activateSecretTheme('newspaper');
+      console.log('%c Newspaper aktivert ', 'background: #f4f1ea; color: #111; font-weight: bold; padding: 4px 8px; border-radius: 0; border: 1px solid #111;');
+    } else {
+      deactivateAllSecretThemes();
+      console.log('%c Newspaper deaktivert ', 'background: #e0e0e0; color: #333; font-weight: bold; padding: 4px 8px; border-radius: 4px;');
+    }
+  };
+
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderAll);
