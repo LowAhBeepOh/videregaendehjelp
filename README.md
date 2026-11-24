@@ -1,5 +1,5 @@
 # 📚 Videregående Hjelp
-
+**Vil ikke bli oppdatert på lenge**
 Dette prosjektet er en nettside med informasjon, guider og interaktive verktøy for elever i norsk videregående skole.
 
 ## 🌐 Nettsted
